@@ -62,7 +62,7 @@
     .btn-whatsapp { background:#25d366; color:var(--white); box-shadow:0 4px 18px rgba(37,211,102,.3); }
     .btn-whatsapp:hover { background:#1ebe5d; transform:translateY(-2px); }
     .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; z-index:1; }
-    .hero-slideshow { position:relative; width:480px; height:240px; border-radius:28px; overflow:hidden; box-shadow:var(--shadow),0 0 0 1px rgba(42,122,122,.08); animation:floatCard 5s ease-in-out infinite; flex-shrink:0; }
+    .hero-slideshow { position:relative; width:560px; height:315px; border-radius:28px; overflow:hidden; box-shadow:var(--shadow),0 0 0 1px rgba(42,122,122,.08); animation:floatCard 5s ease-in-out infinite; flex-shrink:0; }
     .hero-slideshow img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; }
     .hero-slideshow img.active { opacity:1; }
     .hero-slideshow-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
@@ -238,7 +238,7 @@
       .hero { grid-template-columns:1fr; min-height:auto; padding:3rem 4% 2rem; gap:2.5rem; }
       .hero::before { display:none; }
       .hero-visual { order:-1; }
-      .hero-slideshow { width:100%; max-width:400px; height:200px; }
+      .hero-slideshow { width:100%; max-width:100%; height:220px; }
       .trust-bar { gap:1rem; padding:1rem 4%; }
       .trust-item { font-size:.8rem; }
       section { padding:3.5rem 4%; }
@@ -376,6 +376,10 @@
         <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="feature-text"><strong>Лесно достапна локација</strong><span>Во склоп на Дом за стари лица ОАЗА, Илинден</span></div>
       </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="feature-text"><strong>Телемедицина</strong><span>Онлајн консултации за матични пациенти — без чекање</span></div
+      </div>
     </div>
   </div>
 </section>
@@ -391,6 +395,7 @@
     
     <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Упати и рецепти</h3><p>Издавање упати кон специјалисти, болнички рецепти и потврди.</p></div>
     <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Советување и едукација</h3><p>Здравствен совет, исхрана, стил на живот и превенција на болести.</p></div>
+    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Телемедицина</h3><p>Онлајн консултации за матични пациенти — брзо, лесно и од дома.</p></div>
   </div>
 </section>
 
@@ -408,7 +413,9 @@
       </div>
     </div>
     <div class="insurance-cards">
-      
+      <div class="ins-card"><div class="ins-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg></div><div><h4>Матична пракса со ФЗОМ</h4><p>Целосна здравствена заштита без доплата</p></div></div>
+      <div class="ins-card"><div class="ins-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div><div><h4>Приватни прегледи</h4><p>Достапни за сите граѓани, без упат</p></div></div>
+      <div class="ins-card"><div class="ins-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div><div><h4>Телемедицина за матични</h4><p>Онлајн консултација без физичка посета</p></div></div>
     </div>
   </div>
 </div>
@@ -475,7 +482,7 @@
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card"><div class="stars">★★★★★</div><div class="quote-mark">"</div><p class="testimonial-text">Д-р Стевчева е исклучително посветена и стручна. Секогаш одвојува време да ги објасни дијагнозата и терапијата. Се чувствувам сигурна во нејзините раце.</p><div class="testimonial-author"><div class="author-avatar">М.К.</div><div><div class="author-name">М. Коцевска</div><div class="author-type">Матичен пациент</div></div></div></div>
-    <div class="testimonial-card"><div class="stars">★★★★★</div><div class="quote-mark">"</div><p class="testimonial-text">Ординацијата е модерна, чиста и добро организирана. Нема долго чекање. Препорачувам без резерва.</p><div class="testimonial-author"><div class="author-avatar">А.П.</div><div><div class="author-name">А. Петровски</div><div class="author-type">Матичен пациент</div></div></div></div>
+    <div class="testimonial-card"><div class="stars">★★★★★</div><div class="quote-mark">"</div><p class="testimonial-text">Ординацијата е модерна, чиста и добро организирана. Нема долго чекање, а телемедицинската консултација ми заштеди многу време. Препорачувам без резерва.</p><div class="testimonial-author"><div class="author-avatar">А.П.</div><div><div class="author-name">А. Петровски</div><div class="author-type">Матичен пациент</div></div></div></div>
     <div class="testimonial-card"><div class="stars">★★★★★</div><div class="quote-mark">"</div><p class="testimonial-text">Конечно лекар кој навистина слуша! Многу сум задоволна со грижата и вниманието. Ординацијата е блиску до нас во Илинден и многу лесно достапна.</p><div class="testimonial-author"><div class="author-avatar">С.И.</div><div><div class="author-name">С. Илиевска</div><div class="author-type">Приватен пациент</div></div></div></div>
   </div>
 </section>
@@ -513,6 +520,7 @@
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
         <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
         
       </div>
@@ -527,10 +535,11 @@
 <footer>
   <div class="footer-brand">
     <div class="footer-logo">
-      <svg width="32" height="32" viewBox="0 0 44 44" fill="none"><rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/><path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/><ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/><ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/><ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/></svg>
-      <span>Оаза Медика</span>
+      <img src="logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
+        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
+      <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
     </div>
-    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи достапни за сите граѓани.</p>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
   </div>
   <div>
     <h4>Брзи линкови</h4>
