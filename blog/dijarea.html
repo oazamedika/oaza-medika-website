@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>дијареа: Рехидратација, исхрана и пробиотици – Оаза Медика</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --teal-light:#e4f2f2;
+      --green:#1a5c2a; --green-light:#e8f5ec;
+      --cream:#f9faf8; --white:#ffffff;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.8; }
+
+    /* NAV */
+    nav {
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid rgba(42,122,122,.12);
+      padding:0 5%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:64px;
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+    .nav-home { text-decoration:none; color:var(--teal); font-weight:600; font-size:.88rem; display:flex; align-items:center; gap:6px; }
+    .nav-home:hover { color:var(--teal-dark); }
+    .nav-blog { text-decoration:none; color:var(--text-light); font-size:.82rem; }
+    .nav-blog:hover { color:var(--teal); }
+
+    /* LAYOUT */
+    .container { max-width:760px; margin:0 auto; padding:3rem 5% 5rem; }
+
+    /* HEADER */
+    .blog-label {
+      font-size:.75rem; font-weight:700; letter-spacing:.12em;
+      text-transform:uppercase; color:var(--teal); margin-bottom:.6rem;
+    }
+    h1 {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1.9rem,4vw,2.8rem);
+      color:var(--text);
+      margin-bottom:1rem;
+      line-height:1.2;
+    }
+    .meta {
+      display:flex; gap:1rem; flex-wrap:wrap;
+      font-size:.82rem; color:var(--text-light);
+      margin-bottom:2.5rem;
+      padding-bottom:2rem;
+      border-bottom:1px solid rgba(42,122,122,.1);
+    }
+
+    /* CONTENT */
+    .content p { margin-bottom:1.3rem; color:var(--text-mid); font-weight:300; font-size:1rem; }
+    .content h2 {
+      font-family:'Playfair Display',serif;
+      font-size:1.5rem; color:var(--text);
+      margin:2.5rem 0 .8rem;
+    }
+    .content h3 {
+      font-family:'Playfair Display',serif;
+      font-size:1.1rem; color:var(--teal);
+      margin:1.8rem 0 .5rem;
+    }
+    .content ul, .content ol {
+      margin:.5rem 0 1.3rem 1.5rem;
+      color:var(--text-mid); font-weight:300;
+    }
+    .content li { margin-bottom:.4rem; }
+    .content strong { color:var(--text); font-weight:600; }
+
+    /* TIP BOX */
+    .tip-box {
+      background:var(--green-light);
+      border-left:4px solid var(--green);
+      border-radius:0 12px 12px 0;
+      padding:1.2rem 1.5rem;
+      margin:2rem 0;
+      font-size:.93rem;
+      color:var(--green);
+      line-height:1.7;
+    }
+    .tip-box strong { color:var(--green); }
+
+    /* CTA STRIP */
+    .cta-strip {
+      background:linear-gradient(135deg,var(--teal),var(--green));
+      border-radius:16px;
+      padding:2rem 2.5rem;
+      text-align:center;
+      margin-top:3rem;
+    }
+    .cta-strip p { color:rgba(255,255,255,.85); font-weight:300; margin-bottom:1rem; }
+    .cta-strip a {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--white); color:var(--teal);
+      padding:.7rem 1.6rem; border-radius:50px;
+      font-weight:700; font-size:.9rem; text-decoration:none;
+      transition:transform .2s;
+    }
+    .cta-strip a:hover { transform:translateY(-2px); }
+
+    /* BACK */
+    .back-link {
+      display:inline-flex; align-items:center; gap:6px;
+      margin-top:3rem; color:var(--teal);
+      text-decoration:none; font-weight:600; font-size:.88rem;
+      border:2px solid var(--teal); border-radius:50px;
+      padding:.5rem 1.2rem; transition:all .2s;
+    }
+    .back-link:hover { background:var(--teal); color:var(--white); }
+
+    @media(max-width:600px) {
+      .container { padding:2rem 4% 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-home">← Оаза Медика</a>
+  <a href="../index.html#blog" class="nav-blog">Едукативен блог</a>
+</nav>
+
+<div class="container">
+
+  <p class="blog-label">ДИГЕСТИВНО ЗДРАВЈЕ</p>
+  <h1>Како кога имаме дијареа: Рехидратација, исхрана и пробиотици</h1>
+  <div class="meta">
+    <span>📅 Март 2026</span>
+    <span>✍️ Д-р Гордана Стевчева</span>
+  </div>
+  <div class="content">
+
+    <p>Дијареата е чест и непријатен здравствен проблем кој најчесто поминува сам од себе по неколку дена. Сепак, правилниот домашен третман е клучен за да се спречат компликации, пред сè дехидратација. Главниот фокус при домашното лекување треба да биде на надоместување на течностите, смирување на дигестивниот систем преку соодветна исхрана и обновување на цревната флора.</p>
+
+    <h2>1. Рехидратација: Најважниот чекор</h2>
+    <p>Губењето на течности и електролити е најопасната последица од дијареата. Затоа, првиот и најважен чекор е континуирана рехидратација.</p>
+    <ul>
+      <li><strong>Орални рехидратациски соли (ОРС):</strong> Ова е најефикасниот начин за враќање на изгубените електролити како натриум и калиум.</li>
+      <li><strong>Бистри течности:</strong> Пијте многу вода, бистри супи и благи чаеви (како камилица или нане).</li>
+      <li><strong>Што да избегнувате:</strong> Кафе, алкохол, многу слатки сокови и газирани пијалоци, бидејќи тие можат дополнително да ги иритираат цревата.</li>
+    </ul>
+
+    <h2>2. Исхрана: БРАТ диета и лесна храна</h2>
+    <p>Кога стомакот е вознемирен, потребна му е храна која лесно се вари и која помага во зацврстување на столицата. Најпознатиот пристап е таканаречената БРАТ диета (Банани, Ориз, Пире од јаболка, Тост).</p>
+
+    <img src="pictures-blog/dieta.jpg" alt="БРАТ Диета и лесна храна" style="width:100%; border-radius:12px; margin: 1.5rem 0; display:block;">
+    
+
+    <ul>
+      <li><strong>Банани:</strong> Лесни за варење и богати со калиум кој се губи при дијареа.</li>
+      <li><strong>Бел ориз и тост:</strong> Обезбедуваат енергија без да го оптоваруваат дигестивниот тракт.</li>
+      <li><strong>Храна која треба да се избегнува:</strong> Млечни производи, мрсна, пржена и силно зачинета храна, како и храна богата со нерастворливи растителни влакна која предизвикува гасови.</li>
+    </ul>
+
+    <div class="tip-box">
+      💡 <strong>Важно:</strong> Доколку дијареата трае подолго од 2 дена (кај возрасни) или 24 часа (кај деца), или е проследена со висока температура, силни болки во стомакот или крв во столицата, веднаш побарајте лекарска помош!
+    </div>
+
+    <h2>3. Пробиотици: Обновување на цревната флора</h2>
+    <p>Пробиотиците се „добри“ бактерии кои помагаат во одржувањето на здрава цревна средина. За време на дијареа, голем дел од овие бактерии се исфрлаат од организмот, па нивното надоместување е од големо значење за брзо закрепнување.</p>
+    <ul>
+      <li><strong>Пробиотски суплементи:</strong> Тие се најбрзиот и најбезбедниот начин да се внесат концентрирани дози на корисни бактерии (како <em>Lactobacillus</em> или <em>Saccharomyces boulardii</em>) за време на акутна дијареа.</li>
+      <li>Навремената употреба на пробиотици може значително да го скрати времетраењето на симптомите и да го врати балансот во дигестивниот тракт.</li>
+    </ul>
+
+    <p><strong>Заклучок:</strong> Со правилна рехидратација, внимателна исхрана и употреба на пробиотици, повеќето случаи на дијареа успешно се менаџираат во домашни услови. Слушајте го вашето тело и не брзајте со враќање кон вообичаената исхрана додека симптомите целосно не се повлечат.</p>
+
+  </div>
+
+  <div class="cta-strip">
+    <p>Имате прашање или сакате да закажете преглед?</p>
+    <a href="../index.html#contact">📞 Контактирајте не</a>
+  </div>
+
+  <a class="back-link" href="../index.html#blog">← Назад кон блогот</a>
+
+</div>
+
+</body>
+</html>
