@@ -266,6 +266,16 @@
       .hero h1 { font-size:1.9rem; }
       .hero-actions { flex-direction:column; }
     }
+    /* WEATHER WIDGET */
+    .weather-widget { position:fixed; top:80px; right:1.5rem; z-index:90; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-radius:14px; padding:.75rem 1.1rem; box-shadow:0 4px 20px rgba(42,122,122,.15); border:1px solid rgba(42,122,122,.12); display:flex; align-items:center; gap:.65rem; min-width:160px; transition:box-shadow .2s; }
+    .weather-widget:hover { box-shadow:0 6px 28px rgba(42,122,122,.22); }
+    .weather-icon { font-size:1.6rem; line-height:1; flex-shrink:0; }
+    .weather-info { display:flex; flex-direction:column; gap:1px; }
+    .weather-temp { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--text); line-height:1.1; }
+    .weather-desc { font-size:.7rem; color:var(--text-light); text-transform:capitalize; line-height:1.2; }
+    .weather-loc { font-size:.65rem; color:var(--teal); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
+    .weather-loading { font-size:.78rem; color:var(--text-light); }
+    @media(max-width:768px){ .weather-widget { top:auto; bottom:5.5rem; right:1rem; min-width:auto; padding:.6rem .9rem; } }
     @keyframes spin { to { transform:rotate(360deg); } }
   </style>
 </head>
@@ -305,6 +315,7 @@
     <li><a href="#novosti">Новости</a></li>
     <li><a href="#blog">Блог</a></li>
     <li><a href="#faq">ЧПП</a></li>
+    <li><a href="/tools-module/tools.html">Алатки</a></li>
     <li><a href="#contact" class="nav-cta">Контакт</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Мени">
@@ -312,7 +323,15 @@
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- WEATHER WIDGET -->
+<div class="weather-widget" id="weatherWidget" title="Времето во Општина Илинден">
+  <div class="weather-icon" id="weatherIcon">🌤️</div>
+  <div class="weather-info">
+    <div class="weather-temp" id="weatherTemp"><span class="weather-loading">…</span></div>
+    <div class="weather-desc" id="weatherDesc">Илинден, МК</div>
+    <div class="weather-loc" id="weatherLoc">Се вчитува…</div>
+  </div>
+</div>
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge">Општа медицина · Илинден</div>
@@ -527,7 +546,7 @@
   <div class="faq-list">
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="/cdn-cgi/l/email-protection#1d74737b725d727c677c70787974767c337076"><span class="__cf_email__" data-cfemail="026b6c646d426d6378636f67666b69632c6f69">[email&#160;protected]</span></a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">5</span>Што е телемедицина и кој може да ја користи?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">6</span>Дали нудите и приватни прегледи (без фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
@@ -544,13 +563,13 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#b7ded9d1d8f7d8d6cdd6dad2d3dedcd699dadc"><span class="__cf_email__" data-cfemail="741d1a121b341b150e151911101d1f155a191f">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="mailto:info@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
-        <a href="mailto:info@oazamedika.mk" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
+        <a href="/cdn-cgi/l/email-protection#1c75727a735c737d667d71797875777d327177" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="/cdn-cgi/l/email-protection#442d2a222b042b253e252921202d2f256a292f" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
         
       </div>
@@ -587,7 +606,7 @@
     <h4>Контакт</h4>
     <ul>
       <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#365f5850597659574c575b53525f5d57185b5d"><span class="__cf_email__" data-cfemail="4a23242c250a252b302b272f2e23212b642721">[email&#160;protected]</span></a></li>
       <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
       <li><a href="#">Илинден, Македонија</a></li>
       <li><a href="#">Пон–Пет 07:30–15:00</a></li>
@@ -794,16 +813,60 @@ function initScrollReveal() {
 
 /* ── HERO SLIDESHOW ─────────────────────────────── */
 function initSlideshow() {
-  var imgs = document.querySelectorAll('#heroSlideshow img');
-  var dots = document.querySelectorAll('#heroSlideshow .hero-slideshow-dots span');
-  if (!imgs.length) return;
+  var allImgs = document.querySelectorAll('#heroSlideshow img');
+  var dotsContainer = document.querySelector('#heroSlideshow .hero-slideshow-dots');
+  if (!allImgs.length) return;
+
+  // Filter to only images that loaded successfully (not hidden by onerror)
+  var imgs = Array.prototype.filter.call(allImgs, function(img) {
+    return img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
+  });
+
+  // If images haven't loaded yet, wait and retry
+  if (imgs.length === 0) {
+    var loadedCount = 0;
+    var totalImgs = allImgs.length;
+    function tryInit() {
+      loadedCount++;
+      if (loadedCount >= totalImgs) {
+        imgs = Array.prototype.filter.call(allImgs, function(img) {
+          return img.style.display !== 'none' && img.naturalWidth > 0;
+        });
+        if (imgs.length > 0) startSlideshow(imgs, dotsContainer);
+      }
+    }
+    Array.prototype.forEach.call(allImgs, function(img) {
+      if (img.complete) { tryInit(); }
+      else { img.addEventListener('load', tryInit); img.addEventListener('error', tryInit); }
+    });
+    return;
+  }
+  startSlideshow(imgs, dotsContainer);
+}
+
+function startSlideshow(imgs, dotsContainer) {
+  // Rebuild dots to match actual number of working images
+  if (dotsContainer) {
+    var dotsHtml = '';
+    for (var d = 0; d < imgs.length; d++) {
+      dotsHtml += '<span' + (d === 0 ? ' class="active"' : '') + '></span>';
+    }
+    dotsContainer.innerHTML = dotsHtml;
+  }
+  var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
+
+  // Reset all images, activate first
+  Array.prototype.forEach.call(imgs, function(img, idx) {
+    img.classList.toggle('active', idx === 0);
+  });
+
   var cur = 0;
   function goTo(n) {
     imgs[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
+    if (dots[cur]) dots[cur].classList.remove('active');
     cur = (n + imgs.length) % imgs.length;
     imgs[cur].classList.add('active');
-    dots[cur].classList.add('active');
+    if (dots[cur]) dots[cur].classList.add('active');
   }
   for (var i = 0; i < dots.length; i++) {
     (function(idx) {
@@ -817,35 +880,70 @@ function initSlideshow() {
   var timer = setInterval(function() { goTo(cur + 1); }, 4000);
 }
 
+/* ── WEATHER WIDGET ─────────────────────────────── */
+function initWeather() {
+  var WX_ICONS = {
+    0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
+    45:'🌫️', 48:'🌫️',
+    51:'🌦️', 53:'🌦️', 55:'🌧️',
+    61:'🌧️', 63:'🌧️', 65:'🌧️',
+    71:'❄️', 73:'❄️', 75:'❄️', 77:'🌨️',
+    80:'🌦️', 81:'🌧️', 82:'⛈️',
+    85:'🌨️', 86:'🌨️',
+    95:'⛈️', 96:'⛈️', 99:'⛈️'
+  };
+  var WX_DESC = {
+    0:'Ведро', 1:'Претежно ведро', 2:'Делумно облачно', 3:'Облачно',
+    45:'Магла', 48:'Слана магла',
+    51:'Слаба ситна киша', 53:'Умерена ситна киша', 55:'Густа ситна киша',
+    61:'Слаб дожд', 63:'Умерен дожд', 65:'Силен дожд',
+    71:'Слаб снег', 73:'Умерен снег', 75:'Силен снег', 77:'Снежни зрнца',
+    80:'Слаби врнежи', 81:'Умерени врнежи', 82:'Силни врнежи',
+    85:'Слаби снежни врнежи', 86:'Силни снежни врнежи',
+    95:'Грмотевична бура', 96:'Бура со град', 99:'Силна бура со град'
+  };
+  // Координати на Општина Илинден, Македонија
+  var lat = 41.9924, lon = 21.6225;
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
+            '&current=temperature_2m,weathercode&wind_speed_unit=kmh&timezone=Europe%2FSkopje';
+  fetch(url)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var temp = Math.round(d.current.temperature_2m);
+      var code = d.current.weathercode;
+      document.getElementById('weatherIcon').textContent = WX_ICONS[code] || '🌡️';
+      document.getElementById('weatherTemp').textContent = temp + '°C';
+      document.getElementById('weatherDesc').textContent = WX_DESC[code] || 'Непознато';
+      document.getElementById('weatherLoc').textContent = 'Илинден, МК';
+    })
+    .catch(function() {
+      document.getElementById('weatherTemp').textContent = '–°C';
+      document.getElementById('weatherDesc').textContent = 'Нема податоци';
+      document.getElementById('weatherLoc').textContent = 'Илинден, МК';
+    });
+}
+
 /* ── WIRE EVERYTHING ON DOM READY ───────────────── */
 document.addEventListener('DOMContentLoaded', function() {
 
-  document.getElementById('ctaRegBtn').addEventListener('click', openReg);
-  document.getElementById('regCloseBtn').addEventListener('click', closeReg);
-  document.getElementById('regOverlay').addEventListener('click', function(e) { if (e.target === this) closeReg(); });
-  document.getElementById('regSuccessCloseBtn').addEventListener('click', closeReg);
-  document.getElementById('regSubmitBtn').addEventListener('click', submitRegistration);
-  document.getElementById('modalCloseBtn').addEventListener('click', closeNovostModal);
-  document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeNovostModal(); });
-  document.getElementById('hamburger').addEventListener('click', function() {
-    document.getElementById('navLinks').classList.toggle('open');
-  });
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var t = document.querySelector(this.getAttribute('href'));
-      if (t) {
-        e.preventDefault();
-        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-        document.getElementById('navLinks').classList.remove('open');
-      }
-    });
+  document.getElementById('ctaRegBtn') && document.getElementById('ctaRegBtn').addEventListener('click', openReg);
+  document.getElementById('regCloseBtn') && document.getElementById('regCloseBtn').addEventListener('click', closeReg);
+  document.getElementById('regOverlay') && document.getElementById('regOverlay').addEventListener('click', function(e) { if (e.target === this) closeReg(); });
+  document.getElementById('regSuccessCloseBtn') && document.getElementById('regSuccessCloseBtn').addEventListener('click', closeReg);
+  document.getElementById('regSubmitBtn') && document.getElementById('regSubmitBtn').addEventListener('click', submitRegistration);
+  document.getElementById('modalCloseBtn') && document.getElementById('modalCloseBtn').addEventListener('click', closeNovostModal);
+  document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeNovostModal(); });
+  document.getElementById('hamburger') && document.getElementById('hamburger').addEventListener('click', function() {
+    var nl = document.getElementById('navLinks');
+    if (nl) nl.classList.toggle('open');
   });
 
-  renderNovosti();
   buildTicker();
-  initSlideshow();
-  initScrollReveal();
+  renderNovosti();
   initFaq();
+  initScrollReveal();
+  initSlideshow();
+  initWeather();
 });
 </script>
 </body>
