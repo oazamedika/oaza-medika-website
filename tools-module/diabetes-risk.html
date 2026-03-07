@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ризик од дијабетес – ПЗУ Оаза Медика, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    .page-hero { position:relative; height:380px; overflow:hidden; display:flex; align-items:flex-end; }
+    .page-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .page-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,42,34,0.9) 0%, rgba(42,122,122,0.45) 60%, transparent 100%); }
+    .page-hero-content { position:relative; z-index:1; padding:3rem 5%; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:var(--white); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1rem; backdrop-filter:blur(4px); }
+    .page-hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); color:var(--white); max-width:700px; }
+    .page-hero p { font-size:1rem; color:rgba(255,255,255,.85); max-width:560px; margin-top:.7rem; font-weight:300; }
+
+    .container { max-width:760px; margin:0 auto; padding:0 5%; }
+    section { padding:4rem 5%; }
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.5rem,3vw,2rem); color:var(--text); margin-bottom:.5rem; }
+    .section-desc { font-size:.92rem; color:var(--text-mid); font-weight:300; line-height:1.75; margin-bottom:.5rem; }
+
+    .calc-section { background:var(--white); }
+    .calc-card { background:var(--cream); border-radius:20px; padding:2.5rem 2rem; border:1px solid rgba(42,122,122,.12); margin-top:2rem; }
+
+    /* Question blocks */
+    .q-block { margin-bottom:1.6rem; padding-bottom:1.6rem; border-bottom:1px solid rgba(42,122,122,.08); }
+    .q-block:last-of-type { border-bottom:none; margin-bottom:.5rem; }
+    .q-label { font-size:.88rem; font-weight:600; color:var(--text); margin-bottom:.7rem; display:flex; align-items:baseline; gap:.5rem; }
+    .q-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:50%; background:var(--teal); color:#fff; font-size:.72rem; font-weight:700; flex-shrink:0; }
+    .q-opts { display:flex; flex-direction:column; gap:.5rem; }
+    .q-opt {
+      display:flex; align-items:center; gap:.9rem;
+      padding:.75rem 1rem;
+      border-radius:10px;
+      border:1.5px solid rgba(42,122,122,.15);
+      background:var(--white); cursor:pointer; transition:all .2s;
+      font-size:.88rem; color:var(--text-mid); font-weight:300;
+    }
+    .q-opt:hover { border-color:var(--teal); background:var(--teal-light); }
+    .q-opt.selected { border-color:var(--teal); background:var(--teal-light); color:var(--teal-dark); font-weight:600; }
+    .q-opt-radio { width:18px; height:18px; border-radius:50%; border:2px solid rgba(42,122,122,.3); flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+    .q-opt.selected .q-opt-radio { border-color:var(--teal); background:var(--teal); }
+    .q-opt.selected .q-opt-radio::after { content:''; width:6px; height:6px; border-radius:50%; background:#fff; }
+    .q-opt-pts { margin-left:auto; font-size:.76rem; color:var(--text-light); font-weight:600; flex-shrink:0; }
+    .q-opt.selected .q-opt-pts { color:var(--teal); }
+
+    /* Progress */
+    .progress-bar-wrap { margin-bottom:1.8rem; }
+    .progress-bar-track { height:6px; background:rgba(42,122,122,.12); border-radius:6px; overflow:hidden; }
+    .progress-bar-fill { height:100%; background:linear-gradient(90deg, var(--teal), var(--green-mid)); border-radius:6px; transition:width .4s ease; width:0%; }
+    .progress-label { font-size:.76rem; color:var(--text-light); margin-top:.3rem; text-align:right; }
+
+    /* Score display */
+    .score-display { display:flex; align-items:center; justify-content:center; gap:1rem; margin-bottom:1.2rem; }
+    .score-badge { background:var(--teal); color:#fff; border-radius:50px; padding:.4rem 1.2rem; font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; }
+
+    .calc-btn {
+      width:100%; padding:1rem; background:var(--teal); color:var(--white);
+      border:none; border-radius:50px; font-family:'Lato',sans-serif;
+      font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s;
+      display:flex; align-items:center; justify-content:center; gap:8px;
+    }
+    .calc-btn:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(42,122,122,.3); }
+    .calc-btn:disabled { background:rgba(42,122,122,.3); transform:none; box-shadow:none; cursor:not-allowed; }
+
+    .result-box { display:none; margin-top:2rem; border-radius:16px; overflow:hidden; border:1px solid rgba(42,122,122,.15); animation:fadeUp .4s ease; }
+    .result-box.show { display:block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+    .result-header { padding:1.6rem 2rem; display:flex; align-items:center; gap:1.4rem; }
+    .result-score-circle { width:84px; height:84px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; font-family:'Playfair Display',serif; }
+    .result-score-circle .score-num { font-size:1.8rem; font-weight:700; line-height:1; }
+    .result-score-circle .score-unit { font-size:.65rem; font-weight:600; letter-spacing:.04em; opacity:.85; }
+    .result-label { font-family:'Playfair Display',serif; font-size:1.3rem; }
+    .result-sub { font-size:.88rem; font-weight:300; margin-top:.2rem; }
+    .result-body { padding:1.6rem 2rem; background:var(--white); }
+    .result-body h4 { font-size:.95rem; color:var(--text); margin-bottom:.8rem; }
+    .suggestion-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .suggestion-list li { display:flex; gap:.8rem; font-size:.88rem; color:var(--text-mid); font-weight:300; line-height:1.6; }
+    .suggestion-list li::before { content:'→'; color:var(--teal); font-weight:700; flex-shrink:0; }
+
+    .risk-very-low  .result-header { background:var(--green-light); }
+    .risk-very-low  .result-score-circle { background:var(--teal); color:#fff; }
+    .risk-very-low  .result-label { color:var(--teal-dark); }
+    .risk-low       .result-header { background:#e8f5e9; }
+    .risk-low       .result-score-circle { background:#388e3c; color:#fff; }
+    .risk-low       .result-label { color:#2e7d32; }
+    .risk-moderate  .result-header { background:#fff8e1; }
+    .risk-moderate  .result-score-circle { background:#f9a825; color:#fff; }
+    .risk-moderate  .result-label { color:#e65100; }
+    .risk-high      .result-header { background:#fbe9e7; }
+    .risk-high      .result-score-circle { background:#c62828; color:#fff; }
+    .risk-high      .result-label { color:#b71c1c; }
+    .risk-very-high .result-header { background:#3e0000; }
+    .risk-very-high .result-score-circle { background:#7f0000; color:#fff; }
+    .risk-very-high .result-label { color:#ffcdd2; }
+    .risk-very-high .result-sub { color:rgba(255,255,255,.7); }
+
+    .citation-box { background:var(--cream); border:1px solid rgba(42,122,122,.1); border-radius:12px; padding:1.4rem 1.6rem; margin-top:2rem; font-size:.78rem; color:var(--text-light); line-height:1.7; }
+    .citation-box strong { color:var(--text-mid); font-weight:600; }
+    .disclaimer { margin-top:.8rem; padding:.9rem 1.1rem; background:#fff8e1; border-left:3px solid #f9a825; border-radius:0 8px 8px 0; font-size:.78rem; color:#6d4c00; line-height:1.65; }
+
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { height:300px; }
+      .calc-card { padding:1.8rem 1.2rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div style="display:none;" id="navLogoFallback">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+      </svg>
+      <div class="nav-logo-text"><span>Оаза Медика</span><span>Ординација – Илинден</span></div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#about">За нас</a></li>
+    <li><a href="../index.html#services">Услуги</a></li>
+    <li><a href="tools.html">Алатки</a></li>
+    <li><a href="../index.html#insurance">Фонд</a></li>
+    <li><a href="../index.html#novosti">Новости</a></li>
+    <li><a href="../index.html#blog">Блог</a></li>
+    <li><a href="../index.html#faq">ЧПП</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <img src="diabetes-risk.png" alt="Ризик од дијабетес" onerror="this.style.display='none';" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2c0 0-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z"/></svg>
+      Здравствен калкулатор · Оаза Медика
+    </div>
+    <h1>Ризик од Дијабетес Тип 2</h1>
+    <p>Прашалникот FINDRISC проценува веројатноста за развој на дијабетес тип 2 во следните 10 години.</p>
+  </div>
+</div>
+
+<section class="calc-section">
+  <div class="container">
+    <p class="section-label">FINDRISC · Finnish Diabetes Risk Score</p>
+    <h2 class="section-title">Одговорете на 8 прашања</h2>
+    <p class="section-desc">Прашалникот е брз, без потреба од лабораториски наоди и е валидиран за популациски скрининг.</p>
+
+    <div class="calc-card">
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">0 / 8 одговорени</div>
+      </div>
+
+      <!-- Q1: Age -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">1</span> Колку години имате?</div>
+        <div class="q-opts" id="q1">
+          <div class="q-opt" onclick="selectOpt('q1',this,0)"><div class="q-opt-radio"></div>Под 45 години<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q1',this,2)"><div class="q-opt-radio"></div>45–54 години<span class="q-opt-pts">2 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q1',this,3)"><div class="q-opt-radio"></div>55–64 години<span class="q-opt-pts">3 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q1',this,4)"><div class="q-opt-radio"></div>65 и повеќе<span class="q-opt-pts">4 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q2: BMI -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">2</span> Кој е вашиот индекс на телесна маса (BMI)?</div>
+        <div class="q-opts" id="q2">
+          <div class="q-opt" onclick="selectOpt('q2',this,0)"><div class="q-opt-radio"></div>Под 25 kg/m² (нормална тежина)<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q2',this,1)"><div class="q-opt-radio"></div>25–30 kg/m² (прекумерна тежина)<span class="q-opt-pts">1 поен</span></div>
+          <div class="q-opt" onclick="selectOpt('q2',this,3)"><div class="q-opt-radio"></div>Над 30 kg/m² (дебелина)<span class="q-opt-pts">3 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q3: Waist -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">3</span> Колку е обемот на вашиот струк?</div>
+        <div class="q-opts" id="q3">
+          <div class="q-opt" onclick="selectOpt('q3',this,0)"><div class="q-opt-radio"></div>Маж: под 94 cm · Жена: под 80 cm<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q3',this,3)"><div class="q-opt-radio"></div>Маж: 94–102 cm · Жена: 80–88 cm<span class="q-opt-pts">3 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q3',this,4)"><div class="q-opt-radio"></div>Маж: над 102 cm · Жена: над 88 cm<span class="q-opt-pts">4 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q4: Physical activity -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">4</span> Дали практикувате физичка активност барем 30 минути дневно?</div>
+        <div class="q-opts" id="q4">
+          <div class="q-opt" onclick="selectOpt('q4',this,0)"><div class="q-opt-radio"></div>Да, секојдневно или речиси секојдневно<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q4',this,2)"><div class="q-opt-radio"></div>Не<span class="q-opt-pts">2 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q5: Vegetables/fruit -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">5</span> Колку често јадете зеленчук, овошје или интегрален леб?</div>
+        <div class="q-opts" id="q5">
+          <div class="q-opt" onclick="selectOpt('q5',this,0)"><div class="q-opt-radio"></div>Секој ден<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q5',this,1)"><div class="q-opt-radio"></div>Не секој ден<span class="q-opt-pts">1 поен</span></div>
+        </div>
+      </div>
+
+      <!-- Q6: BP medication -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">6</span> Дали некогаш редовно земате лекови за висок крвен притисок?</div>
+        <div class="q-opts" id="q6">
+          <div class="q-opt" onclick="selectOpt('q6',this,0)"><div class="q-opt-radio"></div>Не<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q6',this,2)"><div class="q-opt-radio"></div>Да<span class="q-opt-pts">2 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q7: High blood sugar history -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">7</span> Дали некогаш вам е констатиран висок шеќер во крвта (пред-дијабетес, гестациски дијабетес)?</div>
+        <div class="q-opts" id="q7">
+          <div class="q-opt" onclick="selectOpt('q7',this,0)"><div class="q-opt-radio"></div>Не<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q7',this,5)"><div class="q-opt-radio"></div>Да<span class="q-opt-pts">5 поени</span></div>
+        </div>
+      </div>
+
+      <!-- Q8: Family history -->
+      <div class="q-block">
+        <div class="q-label"><span class="q-num">8</span> Дали некој од вашето семејство имал или има дијабетес тип 1 или тип 2?</div>
+        <div class="q-opts" id="q8">
+          <div class="q-opt" onclick="selectOpt('q8',this,0)"><div class="q-opt-radio"></div>Не<span class="q-opt-pts">0 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q8',this,3)"><div class="q-opt-radio"></div>Да — баба/дедо, тетка/вујко, братучед<span class="q-opt-pts">3 поени</span></div>
+          <div class="q-opt" onclick="selectOpt('q8',this,5)"><div class="q-opt-radio"></div>Да — родител, брат/сестра или сопствено дете<span class="q-opt-pts">5 поени</span></div>
+        </div>
+      </div>
+
+      <div class="score-display">
+        <span style="font-size:.88rem; color:var(--text-mid);">Тековен збир на поени:</span>
+        <span class="score-badge" id="liveScore">0 / 26</span>
+      </div>
+
+      <button class="calc-btn" id="calcBtn" onclick="calcDiabetes()" disabled>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2c0 0-7 8-7 13a7 7 0 0014 0c0-5-7-13-7-13z"/></svg>
+        Прикажи го ризикот
+      </button>
+
+      <div class="result-box" id="diabResult">
+        <div class="result-header" id="diabHeader">
+          <div class="result-score-circle" id="diabCircle">
+            <span class="score-num" id="diabValue">--</span>
+            <span class="score-unit">FINDRISC</span>
+          </div>
+          <div>
+            <div class="result-label" id="diabCategory">—</div>
+            <div class="result-sub" id="diabSub">—</div>
+          </div>
+        </div>
+        <div class="result-body">
+          <h4>Препораки и следни чекори</h4>
+          <ul class="suggestion-list" id="diabSuggestions"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="citation-box">
+      <strong>Извор и методологија:</strong> Овој калкулатор имплементира го официјалниот
+      <strong>FINDRISC (Finnish Diabetes Risk Score)</strong> прашалник, развиен од
+      <strong>Prof. Jaakko Tuomilehto и Prof. Jaana Lindström</strong> на
+      <strong>Националниот институт за јавно здравје на Финска (KTL / THL)</strong> во 2001 година.
+      FINDRISC е валидиран во повеќе европски популации и е официјално препорачан за скрининг на ниво
+      на примарна здравствена заштита од страна на <strong>Меѓународната федерација за дијабетес (IDF)</strong>
+      и <strong>Европската асоцијација за проучување на дијабетесот (EASD)</strong>.
+      <br><br>
+      <em>Референца: Lindström J, Tuomilehto J. The Diabetes Risk Score: A practical tool to predict type 2 diabetes risk.
+      Diabetes Care. 2003;26(3):725–731. DOI: 10.2337/diacare.26.3.725</em>
+      <div class="disclaimer">
+        ⚠️ <strong>Напомена:</strong> FINDRISC е скрининг алатка и <strong>не поставува дијагноза на дијабетес</strong>.
+        Лицата со умерен или висок ризик треба да побараат лекарска консултација и лабораториски тест на гликемија
+        на гладно или орален тест за толеранција на гликоза (ОГТТ). Само лекар може да постави дијагноза.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="../logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;" onerror="this.style.display='none';" />
+      <span>Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ.</p>
+  </div>
+  <div>
+    <h4>Алатки</h4>
+    <ul>
+      <li><a href="tools.html">Сите алатки</a></li>
+      <li><a href="bmi.html">BMI Калкулатор</a></li>
+      <li><a href="cardiac-dis.html">Кардиоваскуларен ризик</a></li>
+      <li><a href="diabetes-risk.html">Ризик од дијабетес</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10, Илинден</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+var answers = {}; // { q1: 0, q2: 3, ... }
+
+function selectOpt(groupId, el, pts) {
+  var prev = document.querySelectorAll('#' + groupId + ' .q-opt');
+  prev.forEach(function(o) { o.classList.remove('selected'); });
+  el.classList.add('selected');
+  answers[groupId] = pts;
+  updateProgress();
+}
+
+function totalScore() {
+  return Object.values(answers).reduce(function(a, b) { return a + b; }, 0);
+}
+
+function updateProgress() {
+  var answered = Object.keys(answers).length;
+  var pct = (answered / 8) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = answered + ' / 8 одговорени';
+  document.getElementById('liveScore').textContent = totalScore() + ' / 26';
+  document.getElementById('calcBtn').disabled = answered < 8;
+}
+
+function calcDiabetes() {
+  var score = totalScore();
+
+  var catClass, label, sub, suggs;
+
+  if (score <= 7) {
+    catClass = 'risk-very-low';
+    label    = 'Многу низок ризик';
+    sub      = score + ' поени · ~1 од 100 лица ќе развие дијабетес';
+    suggs = [
+      'Одличен резултат! Одржувајте ги здравите навики: активност, балансирана исхрана и нормална тежина.',
+      'Проверувајте го шеќерот во крвта на рутински преглед еднаш на 3–5 години.',
+      'Продолжете со редовна физичка активност — главниот заштитен фактор против дијабетес.',
+      'Ограничете ги рафинираните шеќери, бело брашно и слатки пијалоци во исхраната.',
+      'Закажете годишен превентивен преглед кај матичен лекар.'
+    ];
+  } else if (score <= 11) {
+    catClass = 'risk-low';
+    label    = 'Низок ризик';
+    sub      = score + ' поени · ~1 од 25 лица ќе развие дијабетес';
+    suggs = [
+      'Консултирајте го матичниот лекар за скрининг тест на шеќер во крвта на гладно.',
+      'Постигнете или одржете нормален BMI (под 25) — секои 5 кг помалку значајно го намалуваат ризикот.',
+      'Зголемете ја физичката активност на минимум 150 минути умерено оптоварување неделно.',
+      'Заменете ги белите јаглехидрати (бел леб, ориз) со интегрални варијанти.',
+      'Намалете го внесот на заситени масти и избегнувајте трансмасти (маргарин, пржена храна).'
+    ];
+  } else if (score <= 14) {
+    catClass = 'risk-moderate';
+    label    = 'Умерен ризик';
+    sub      = score + ' поени · ~1 од 6 лица ќе развие дијабетес';
+    suggs = [
+      'Препорачлива е лекарска консултација и тест на гликемија на гладно (нормала: под 6.1 mmol/L).',
+      'Намалете ја тежината доколку BMI е над 25 — дури 5–7% намалување значајно го намалува ризикот.',
+      'Вклучете секојдневно шетање 30–45 минути — физичката активност ја подобрува инсулинската чувствителност.',
+      'Следете ги нивоата на крвен притисок и холестерол — тие се придружни ризик-фактори.',
+      'Препорачана исхрана: медитерански модел со акцент на маслиново масло, риба, легуминози и свежо овошје.'
+    ];
+  } else if (score <= 20) {
+    catClass = 'risk-high';
+    label    = 'Висок ризик';
+    sub      = score + ' поени · ~1 од 3 лица ќе развие дијабетес';
+    suggs = [
+      'Потребна е итна лекарска консултација и лабораториска евалуација (HbA1c, ОГТТ, гликемија).',
+      'При пред-дијабетес (HbA1c 5.7–6.4%), структурирана промена на начинот на живот може да го спречи прогресот.',
+      'Намалете телесната тежина за барем 7% ако имате прекумерна тежина или дебелина.',
+      'Ограничете внесот на калории со намалување на порциите и елиминирање на шеќерни пијалоци.',
+      'Испратете ги децата и браќата/сестрите на скрининг — семејниот ризик е значаен.'
+    ];
+  } else {
+    catClass = 'risk-very-high';
+    label    = 'Многу висок ризик';
+    sub      = score + ' поени · ~1 од 2 лица ќе развие дијабетес';
+    suggs = [
+      'Потребна е итна лекарска консултација — не одложувајте преглед и лабораториска проверка.',
+      'Побарајте тест на HbA1c и гликемија на гладно; постои висока веројатност за постоечки пред-дијабетес.',
+      'При потврден пред-дијабетес, лекарот може да разгледа метформин терапија (според ADA/EASD препораки).',
+      'Структурирана програма за промена на начинот на живот (DPP модел) ги намалува ризиците за 58%.',
+      'Редовно следење на: HbA1c (на 6 месеци), крвен притисок, бубрежна функција и очен преглед (мрежница).'
+    ];
+  }
+
+  var box    = document.getElementById('diabResult');
+  var header = document.getElementById('diabHeader');
+  var circle = document.getElementById('diabCircle');
+
+  box.className    = 'result-box show ' + catClass;
+  header.className = 'result-header';
+  circle.className = 'result-score-circle';
+
+  document.getElementById('diabValue').textContent    = score;
+  document.getElementById('diabCategory').textContent = label;
+  document.getElementById('diabSub').textContent      = sub;
+
+  document.getElementById('diabSuggestions').innerHTML = suggs.map(function(s) {
+    return '<li>' + s + '</li>';
+  }).join('');
+
+  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+</body>
+</html>

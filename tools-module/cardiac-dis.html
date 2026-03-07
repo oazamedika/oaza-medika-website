@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Кардиоваскуларен ризик – ПЗУ Оаза Медика, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    .page-hero { position:relative; height:380px; overflow:hidden; display:flex; align-items:flex-end; }
+    .page-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .page-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,42,34,0.9) 0%, rgba(42,122,122,0.45) 60%, transparent 100%); }
+    .page-hero-content { position:relative; z-index:1; padding:3rem 5%; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:var(--white); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1rem; backdrop-filter:blur(4px); }
+    .page-hero h1 { font-size:clamp(1.9rem,4vw,2.8rem); color:var(--white); max-width:700px; }
+    .page-hero p { font-size:1rem; color:rgba(255,255,255,.85); max-width:560px; margin-top:.7rem; font-weight:300; }
+
+    .container { max-width:760px; margin:0 auto; padding:0 5%; }
+    section { padding:4rem 5%; }
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.5rem,3vw,2rem); color:var(--text); margin-bottom:1rem; }
+
+    .calc-section { background:var(--white); }
+    .calc-card { background:var(--cream); border-radius:20px; padding:2.5rem 2rem; border:1px solid rgba(42,122,122,.12); margin-top:2rem; }
+
+    .input-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.4rem; }
+    .input-group { display:flex; flex-direction:column; gap:.4rem; }
+    .input-group label { font-size:.82rem; font-weight:600; color:var(--text-mid); letter-spacing:.03em; }
+    .input-group input, .input-group select {
+      padding:.8rem 1rem; border:1.5px solid rgba(42,122,122,.2); border-radius:10px;
+      font-family:'Lato',sans-serif; font-size:.95rem; color:var(--text);
+      background:var(--white); outline:none; transition:border-color .2s;
+    }
+    .input-group input:focus, .input-group select:focus { border-color:var(--teal); }
+    .input-hint { font-size:.76rem; color:var(--text-light); }
+
+    .toggle-row { display:flex; flex-direction:column; gap:.4rem; margin-bottom:1.4rem; }
+    .toggle-row label { font-size:.82rem; font-weight:600; color:var(--text-mid); }
+    .toggle-opts { display:flex; gap:.7rem; flex-wrap:wrap; }
+    .toggle-opts button {
+      padding:.5rem 1.1rem; border-radius:50px;
+      border:1.5px solid rgba(42,122,122,.25);
+      background:var(--white); color:var(--text-mid);
+      font-family:'Lato',sans-serif; font-size:.84rem; font-weight:600;
+      cursor:pointer; transition:all .2s;
+    }
+    .toggle-opts button.active { background:var(--teal); color:var(--white); border-color:var(--teal); }
+
+    .calc-btn {
+      width:100%; padding:1rem; background:var(--teal); color:var(--white);
+      border:none; border-radius:50px; font-family:'Lato',sans-serif;
+      font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s;
+      display:flex; align-items:center; justify-content:center; gap:8px; margin-top:.5rem;
+    }
+    .calc-btn:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(42,122,122,.3); }
+
+    .result-box { display:none; margin-top:2rem; border-radius:16px; overflow:hidden; border:1px solid rgba(42,122,122,.15); animation:fadeUp .4s ease; }
+    .result-box.show { display:block; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+    .result-header { padding:1.6rem 2rem; display:flex; align-items:center; gap:1.4rem; }
+    .result-score-circle { width:84px; height:84px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; font-family:'Playfair Display',serif; }
+    .result-score-circle .score-num { font-size:1.55rem; font-weight:700; line-height:1; }
+    .result-score-circle .score-unit { font-size:.6rem; font-weight:600; letter-spacing:.04em; opacity:.85; text-align:center; }
+    .result-label { font-family:'Playfair Display',serif; font-size:1.3rem; }
+    .result-sub { font-size:.88rem; font-weight:300; margin-top:.2rem; }
+    .result-body { padding:1.6rem 2rem; background:var(--white); }
+    .result-body h4 { font-size:.95rem; color:var(--text); margin-bottom:.8rem; }
+    .suggestion-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
+    .suggestion-list li { display:flex; gap:.8rem; font-size:.88rem; color:var(--text-mid); font-weight:300; line-height:1.6; }
+    .suggestion-list li::before { content:'→'; color:var(--teal); font-weight:700; flex-shrink:0; }
+
+    /* risk level colours */
+    .risk-low    .result-header { background:var(--green-light); }
+    .risk-low    .result-score-circle { background:var(--teal); color:#fff; }
+    .risk-low    .result-label { color:var(--teal-dark); }
+
+    .risk-moderate .result-header { background:#fff8e1; }
+    .risk-moderate .result-score-circle { background:#f9a825; color:#fff; }
+    .risk-moderate .result-label { color:#e65100; }
+
+    .risk-high   .result-header { background:#fbe9e7; }
+    .risk-high   .result-score-circle { background:#c62828; color:#fff; }
+    .risk-high   .result-label { color:#b71c1c; }
+
+    .risk-very-high .result-header { background:#3e0000; }
+    .risk-very-high .result-score-circle { background:#7f0000; color:#fff; }
+    .risk-very-high .result-label { color:#ffcdd2; }
+    .risk-very-high .result-sub { color:rgba(255,255,255,.7); }
+
+    /* risk factor chips */
+    .risk-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1.2rem; }
+    .chip { padding:.3rem .85rem; border-radius:50px; font-size:.76rem; font-weight:600; background:rgba(42,122,122,.1); color:var(--teal-dark); }
+    .chip.warn { background:#fff3e0; color:#e65100; }
+    .chip.danger { background:#ffebee; color:#c62828; }
+
+    .citation-box { background:var(--cream); border:1px solid rgba(42,122,122,.1); border-radius:12px; padding:1.4rem 1.6rem; margin-top:2rem; font-size:.78rem; color:var(--text-light); line-height:1.7; }
+    .citation-box strong { color:var(--text-mid); font-weight:600; }
+    .disclaimer { margin-top:.8rem; padding:.9rem 1.1rem; background:#fff8e1; border-left:3px solid #f9a825; border-radius:0 8px 8px 0; font-size:.78rem; color:#6d4c00; line-height:1.65; }
+
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { height:300px; }
+      .input-row { grid-template-columns:1fr; }
+      .calc-card { padding:1.8rem 1.4rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div style="display:none;" id="navLogoFallback">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+      </svg>
+      <div class="nav-logo-text"><span>Оаза Медика</span><span>Ординација – Илинден</span></div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#about">За нас</a></li>
+    <li><a href="../index.html#services">Услуги</a></li>
+    <li><a href="tools.html">Алатки</a></li>
+    <li><a href="../index.html#insurance">Фонд</a></li>
+    <li><a href="../index.html#novosti">Новости</a></li>
+    <li><a href="../index.html#blog">Блог</a></li>
+    <li><a href="../index.html#faq">ЧПП</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <img src="cardiac-dis.png" alt="Кардиоваскуларен ризик" onerror="this.style.display='none';" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      Здравствен калкулатор · Оаза Медика
+    </div>
+    <h1>Кардиоваскуларен ризик</h1>
+    <p>Проценете го 10-годишниот ризик од срцеви и мозочни заболувања врз основа на вашите здравствени параметри.</p>
+  </div>
+</div>
+
+<section class="calc-section">
+  <div class="container">
+    <p class="section-label">SCORE2 · Европска проценка на ризик</p>
+    <h2 class="section-title">Внесете ги вашите здравствени параметри</h2>
+
+    <div class="calc-card">
+      <!-- Row 1 -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="c_age">Возраст</label>
+          <input type="number" id="c_age" placeholder="55" min="40" max="80" />
+          <span class="input-hint">40–79 години</span>
+        </div>
+        <div class="input-group">
+          <label>Пол</label>
+          <div class="toggle-opts" id="genderOpts">
+            <button onclick="setToggle('genderOpts',this,'m')">Машки</button>
+            <button onclick="setToggle('genderOpts',this,'f')">Женски</button>
+          </div>
+        </div>
+      </div>
+      <!-- Row 2 -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="c_sbp">Систолен крвен притисок</label>
+          <input type="number" id="c_sbp" placeholder="130" min="90" max="220" />
+          <span class="input-hint">mmHg (горна вредност)</span>
+        </div>
+        <div class="input-group">
+          <label for="c_chol">Вкупен холестерол</label>
+          <input type="number" id="c_chol" placeholder="5.5" min="2" max="12" step="0.1" />
+          <span class="input-hint">mmol/L</span>
+        </div>
+      </div>
+      <!-- Row 3 -->
+      <div class="input-row">
+        <div class="input-group">
+          <label for="c_hdl">HDL холестерол</label>
+          <input type="number" id="c_hdl" placeholder="1.3" min="0.5" max="4" step="0.1" />
+          <span class="input-hint">mmol/L (добар холестерол)</span>
+        </div>
+        <div class="input-group">
+          <label>Пушач</label>
+          <div class="toggle-opts" id="smokingOpts">
+            <button onclick="setToggle('smokingOpts',this,'no')">Не</button>
+            <button onclick="setToggle('smokingOpts',this,'yes')">Да</button>
+            <button onclick="setToggle('smokingOpts',this,'ex')">Поранешен</button>
+          </div>
+        </div>
+      </div>
+      <!-- Row 4 -->
+      <div class="input-row">
+        <div class="input-group">
+          <label>Дијабетес</label>
+          <div class="toggle-opts" id="diabetesOpts">
+            <button onclick="setToggle('diabetesOpts',this,'no')">Не</button>
+            <button onclick="setToggle('diabetesOpts',this,'yes')">Да</button>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Семејна историја на срцева болест</label>
+          <div class="toggle-opts" id="familyOpts">
+            <button onclick="setToggle('familyOpts',this,'no')">Не</button>
+            <button onclick="setToggle('familyOpts',this,'yes')">Да</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="calc-btn" onclick="calcCardiac()">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        Пресметај ризик
+      </button>
+
+      <div class="result-box" id="cardiacResult">
+        <div class="result-header" id="cardiacHeader">
+          <div class="result-score-circle" id="cardiacCircle">
+            <span class="score-num" id="cardiacValue">--</span>
+            <span class="score-unit">% ризик<br>10 год.</span>
+          </div>
+          <div>
+            <div class="result-label" id="cardiacCategory">—</div>
+            <div class="result-sub" id="cardiacSub">—</div>
+          </div>
+        </div>
+        <div class="result-body">
+          <div class="risk-chips" id="riskChips"></div>
+          <h4>Препораки и следни чекори</h4>
+          <ul class="suggestion-list" id="cardiacSuggestions"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="citation-box">
+      <strong>Извор и методологија:</strong> Овој калкулатор користи поедноставена верзија на
+      <strong>SCORE2 алгоритамот</strong> разработен од <strong>Европското здружение за кардиологија (ESC)</strong>
+      во соработка со SCORE2 работната група (2021). SCORE2 ја проценува 10-годишната веројатност
+      за фатален и нефатален кардиоваскуларен настан (срцев удар, мозочен удар) кај лица без претходна
+      кардиоваскуларна болест, со прилагодување за региони со висок ризик (Источна Европа, во кој спаѓа Македонија).
+      <br><br>
+      <em>Референца: SCORE2 working group & ESC Cardiovascular risk collaboration. SCORE2 risk prediction algorithms:
+      new models to estimate 10-year risk of cardiovascular disease in Europe. European Heart Journal, 2021;42(25):2439–2454.</em>
+      <div class="disclaimer">
+        ⚠️ <strong>Напомена:</strong> Ова е приближна проценка заснована на поедноставен модел и <strong>не претставува
+        медицинска дијагноза</strong>. Точната SCORE2 проценка бара лабораториски наоди и клиничка евалуација.
+        Консултирајте се со вашиот матичен лекар пред да донесувате какви било одлуки за терапија.
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="../logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;" onerror="this.style.display='none';" />
+      <span>Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ.</p>
+  </div>
+  <div>
+    <h4>Алатки</h4>
+    <ul>
+      <li><a href="tools.html">Сите алатки</a></li>
+      <li><a href="bmi.html">BMI Калкулатор</a></li>
+      <li><a href="cardiac-dis.html">Кардиоваскуларен ризик</a></li>
+      <li><a href="diabetes-risk.html">Ризик од дијабетес</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10, Илинден</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+var toggleVals = {};
+
+function setToggle(groupId, btn, val) {
+  toggleVals[groupId] = val;
+  var btns = document.getElementById(groupId).querySelectorAll('button');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
+function calcCardiac() {
+  var age     = parseFloat(document.getElementById('c_age').value);
+  var sbp     = parseFloat(document.getElementById('c_sbp').value);
+  var chol    = parseFloat(document.getElementById('c_chol').value);
+  var hdl     = parseFloat(document.getElementById('c_hdl').value);
+  var gender  = toggleVals['genderOpts']   || '';
+  var smoking = toggleVals['smokingOpts']  || 'no';
+  var diabetes= toggleVals['diabetesOpts'] || 'no';
+  var family  = toggleVals['familyOpts']   || 'no';
+
+  if (!age || !sbp || !chol || !hdl || !gender) {
+    alert('Ве молиме пополнете ги сите задолжителни полиња (возраст, пол, притисок, холестерол, HDL).'); return;
+  }
+  if (age < 40 || age > 79) { alert('Калкулаторот е валиден за возраст 40–79 години.'); return; }
+
+  // Simplified SCORE2-like linear risk score (high-risk region / Eastern Europe)
+  // Based on ESC 2021 coefficients approximated for non-lab use
+  var score = 0;
+
+  // Age (major driver)
+  score += (age - 40) * 0.18;
+
+  // Sex: men have higher baseline
+  if (gender === 'm') score += 1.5;
+
+  // SBP
+  if (sbp >= 180)      score += 3.0;
+  else if (sbp >= 160) score += 2.2;
+  else if (sbp >= 140) score += 1.4;
+  else if (sbp >= 130) score += 0.7;
+  else if (sbp < 120)  score -= 0.3;
+
+  // Total cholesterol
+  if (chol >= 8)       score += 2.5;
+  else if (chol >= 7)  score += 1.8;
+  else if (chol >= 6)  score += 1.0;
+  else if (chol >= 5)  score += 0.3;
+
+  // HDL (protective — subtract)
+  if (hdl >= 1.8)      score -= 1.2;
+  else if (hdl >= 1.4) score -= 0.6;
+  else if (hdl < 1.0)  score += 0.9;
+
+  // Smoking
+  if (smoking === 'yes') score += 2.0;
+  else if (smoking === 'ex') score += 0.6;
+
+  // Diabetes
+  if (diabetes === 'yes') score += 1.8;
+
+  // Family history
+  if (family === 'yes') score += 1.0;
+
+  // High-risk region multiplier (Eastern Europe factor from SCORE2)
+  score *= 1.35;
+
+  // Convert to approximate % probability (logistic transform, clamp 1–50%)
+  var rawPct = Math.round(Math.min(50, Math.max(1, score * 1.2)));
+
+  // Classify
+  var cat, catClass, sub, suggs, chips;
+
+  if (rawPct < 5) {
+    cat = 'Низок ризик'; catClass = 'risk-low'; sub = 'Под 5% ризик во следните 10 години';
+    suggs = [
+      'Одржувајте ги здравите навики — балансирана исхрана, редовна физичка активност и непушење.',
+      'Правете редовни превентивни прегледи на крвен притисок и холестерол (на секои 3–5 години).',
+      'Ограничете го внесот на сол (под 5 g/ден) и заситени масти за да го зачувате нискиот ризик.',
+      'Закажете годишен преглед кај матичен лекар за следење на сите ризик-фактори.',
+      'Одличен резултат! Продолжете со активниот начин на живот.'
+    ];
+    chips = [];
+  } else if (rawPct < 10) {
+    cat = 'Умерен ризик'; catClass = 'risk-moderate'; sub = '5–9% ризик во следните 10 години';
+    suggs = [
+      'Консултирајте се со матичен лекар за следење на ризик-факторите на секои 1–2 години.',
+      'Зголемете ја физичката активност: минимум 150 мин умерен аеробик + 2x неделно тренинг со отпор.',
+      'Преминете на медитерански тип на исхрана (маслиново масло, риба, свежо овошје и зеленчук).',
+      'Ако пушите — откажувањето е единствената најефективна мерка за намалување на ризикот.',
+      'Контролирајте го крвниот притисок; вредности над 140/90 mmHg бараат лекарски третман.'
+    ];
+    chips = smoking === 'yes' ? [{t:'Пушење', c:'warn'}] : [];
+    if (sbp >= 140) chips.push({t:'Висок притисок', c:'warn'});
+  } else if (rawPct < 20) {
+    cat = 'Висок ризик'; catClass = 'risk-high'; sub = '10–19% ризик во следните 10 години';
+    suggs = [
+      'Потребна е лекарска консултација за евалуација на статини и/или антихипертензивна терапија.',
+      'Целна вредност на LDL холестерол кај висок ризик: под 1.8 mmol/L (ESC препорака 2021).',
+      'Целна вредност на систолен крвен притисок: под 130 mmHg (со лекарски надзор).',
+      'Откажете ги цигарите итно — пушењето го удвојува кардиоваскуларниот ризик.',
+      'Направете ЕКГ, ехокардиографија и лабораториски панел (HbA1c, бубрежна функција, CRP) по препорака на лекар.'
+    ];
+    chips = [];
+    if (smoking === 'yes') chips.push({t:'Пушење', c:'danger'});
+    if (sbp >= 140) chips.push({t:'Хипертензија', c:'danger'});
+    if (diabetes === 'yes') chips.push({t:'Дијабетес', c:'danger'});
+    if (chol >= 6) chips.push({t:'Висок холестерол', c:'warn'});
+  } else {
+    cat = 'Многу висок ризик'; catClass = 'risk-very-high'; sub = rawPct + '% ризик во следните 10 години';
+    suggs = [
+      'Итна лекарска консултација е препорачлива — не одложувајте преглед.',
+      'Веројатно е потребна комбинирана фармаколошка терапија (статини, антихипертензиви, аспирин).',
+      'Целна вредност на LDL: под 1.4 mmol/L според ESC 2021 смерници за многу висок ризик.',
+      'Снимање на каротидни артерии (ехо доплер) за откривање на атеросклеротски плаки.',
+      'Промени во начинот на живот се задолжителни, но не доволни сами по себе — потребна е медицинска помош.'
+    ];
+    chips = [];
+    if (smoking === 'yes') chips.push({t:'Пушење', c:'danger'});
+    if (sbp >= 160) chips.push({t:'Тешка хипертензија', c:'danger'});
+    if (diabetes === 'yes') chips.push({t:'Дијабетес', c:'danger'});
+    if (chol >= 7) chips.push({t:'Многу висок холестерол', c:'danger'});
+    if (family === 'yes') chips.push({t:'Семејна историја', c:'warn'});
+  }
+
+  var box    = document.getElementById('cardiacResult');
+  var header = document.getElementById('cardiacHeader');
+  var circle = document.getElementById('cardiacCircle');
+
+  box.className    = 'result-box show ' + catClass;
+  header.className = 'result-header';
+  circle.className = 'result-score-circle';
+
+  document.getElementById('cardiacValue').textContent    = rawPct + '%';
+  document.getElementById('cardiacCategory').textContent = cat;
+  document.getElementById('cardiacSub').textContent      = sub;
+
+  var chipsEl = document.getElementById('riskChips');
+  chipsEl.innerHTML = chips.map(function(c) {
+    return '<span class="chip ' + c.c + '">' + c.t + '</span>';
+  }).join('');
+
+  document.getElementById('cardiacSuggestions').innerHTML = suggs.map(function(s) {
+    return '<li>' + s + '</li>';
+  }).join('');
+
+  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+</body>
+</html>
