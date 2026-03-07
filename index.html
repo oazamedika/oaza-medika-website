@@ -123,6 +123,11 @@
     .ins-card h4 { font-size:.95rem; color:var(--white); margin-bottom:2px; }
     .ins-card p { font-size:.82rem; color:rgba(255,255,255,.75); margin:0; }
 
+    /* BLOG */
+    .blog { background:var(--cream); }
+    .blog-card { background:var(--white); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; transition:all .3s; text-decoration:none; color:inherit; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+
     /* NOVOSTI */
     .novosti { background:var(--white); }
     .novosti-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.8rem; }
@@ -194,13 +199,19 @@
     /* FAQ */
     .faq { background:var(--white); }
     .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:900px; }
-    .faq-item { background:var(--cream); border-radius:var(--radius); border:1px solid rgba(42,122,122,.1); overflow:hidden; }
-    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.3rem 1.5rem; font-family:'Lato',sans-serif; font-size:.92rem; font-weight:600; color:var(--text); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; transition:color .2s; }
+    /* FAQ REDESIGN */
+    .faq-list { display:flex; flex-direction:column; gap:.75rem; max-width:760px; margin:0 auto; }
+    .faq-item { background:var(--white); border-radius:16px; border:1.5px solid rgba(42,122,122,.12); overflow:hidden; transition:border-color .2s, box-shadow .2s; }
+    .faq-item:hover { border-color:rgba(42,122,122,.35); box-shadow:0 4px 16px rgba(42,122,122,.08); }
+    .faq-item.open { border-color:var(--teal); box-shadow:0 4px 20px rgba(42,122,122,.12); }
+    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.2rem 1.5rem; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:600; color:var(--text); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
     .faq-question:hover { color:var(--teal); }
-    .faq-question .arrow { width:22px; height:22px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s; color:var(--teal); font-size:.8rem; }
-    .faq-item.open .arrow { transform:rotate(180deg); }
-    .faq-answer { max-height:0; overflow:hidden; transition:max-height .35s ease,padding .3s; font-size:.88rem; color:var(--text-mid); font-weight:300; line-height:1.7; padding:0 1.5rem; }
-    .faq-item.open .faq-answer { max-height:400px; padding:0 1.5rem 1.3rem; }
+    .faq-num { font-size:.72rem; font-weight:700; color:var(--teal); background:var(--teal-light); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-right:.75rem; }
+    .faq-question-inner { display:flex; align-items:center; flex:1; }
+    .faq-arrow { width:28px; height:28px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s, background .2s; color:var(--teal); font-size:.85rem; }
+    .faq-item.open .faq-arrow { transform:rotate(180deg); background:var(--teal); color:white; }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; font-size:.9rem; color:var(--text-mid); font-weight:300; line-height:1.8; padding:0 1.5rem 0 3.75rem; }
+    .faq-item.open .faq-answer { max-height:300px; padding:.25rem 1.5rem 1.3rem 3.75rem; }
 
     /* CONTACT */
     .contact { background:var(--cream); }
@@ -292,6 +303,7 @@
     <li><a href="#services">Услуги</a></li>
     <li><a href="#insurance">Фонд</a></li>
     <li><a href="#novosti">Новости</a></li>
+    <li><a href="#blog">Блог</a></li>
     <li><a href="#faq">ЧПП</a></li>
     <li><a href="#contact" class="nav-cta">Контакт</a></li>
   </ul>
@@ -428,8 +440,63 @@
   </div>
 </section>
 
+<!-- ЕДУКАТИВЕН БЛОГ -->
+<section class="blog" id="blog">
+  <div class="section-header">
+    <p class="section-label">Едукативен блог</p>
+    <h2 class="section-title">Здравствени совети и информации</h2>
+    <p class="section-sub">Корисни текстови за превенција, здрав живот и чести прашања од д-р Стевчева.</p>
+  </div>
+  <div class="novosti-grid">
+
+    <!-- БЛОГ КАРТИЧКА 1 -->
+    <a href="blog/visok-pritisok.html" class="novost-card blog-card">
+      <div class="novost-img" style="background:#e4f2f2;">🫀</div>
+      <div class="novost-body">
+        <div class="novost-meta">
+          <span class="novost-kat">Кардиологија</span>
+          <span class="novost-datum">📅 Мај 2025</span>
+        </div>
+        <h3 class="novost-naslov">Висок крвен притисок — што треба да знаете</h3>
+        <p class="novost-kratko">Хипертензијата е „тивок убиец". Дознајте кои се симптомите, ризик-факторите и како да го контролирате притисокот.</p>
+        <span class="novost-link">Прочитај повеќе →</span>
+      </div>
+    </a>
+
+    <!-- БЛОГ КАРТИЧКА 2 -->
+    <a href="blog/dijabetes.html" class="novost-card blog-card">
+      <div class="novost-img" style="background:#e8f5ec;">🩸</div>
+      <div class="novost-body">
+        <div class="novost-meta">
+          <span class="novost-kat">Дијабетес</span>
+          <span class="novost-datum">📅 Јун 2025</span>
+        </div>
+        <h3 class="novost-naslov">Дијабетес тип 2 — превенција и животен стил</h3>
+        <p class="novost-kratko">Со правилна исхрана и физичка активност може да го одложите или спречите развојот на дијабетес тип 2.</p>
+        <span class="novost-link">Прочитај повеќе →</span>
+      </div>
+    </a>
+
+    <!-- БЛОГ КАРТИЧКА 3 -->
+    <a href="blog/stres.html" class="novost-card blog-card">
+      <div class="novost-img" style="background:#fef9e7;">🧘</div>
+      <div class="novost-body">
+        <div class="novost-meta">
+          <span class="novost-kat">Ментално здравје</span>
+          <span class="novost-datum">📅 Јул 2025</span>
+        </div>
+        <h3 class="novost-naslov">Стрес и здравје — како да се справите</h3>
+        <p class="novost-kratko">Хроничниот стрес влијае на срцето, имунитетот и спиењето. Неколку практични совети за секојдневен живот.</p>
+        <span class="novost-link">Прочитај повеќе →</span>
+      </div>
+    </a>
+
+    <!-- ➕ НОВА КАРТИЧКА: копирај еден блок погоре, промени href, емоџи, категорија, наслов, опис -->
+
+  </div>
+</section>
+
 <!-- NOVOST MODAL -->
-<div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <div class="modal-header">
       <div>
@@ -490,14 +557,14 @@
     <h2 class="section-title">Најчести прашања</h2>
     <p class="section-sub">Имате прашање? Можеби веќе го имаме одговорот.</p>
   </div>
-  <div class="faq-grid" id="faqGrid">
-    <div class="faq-item"><button class="faq-question">Како да се запишам како матичен пациент?<span class="arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
-    <div class="faq-item"><button class="faq-question">Дали работите со ФЗОМ (здравствен фонд)?<span class="arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
-    <div class="faq-item"><button class="faq-question">Можам ли да закажам преглед онлајн или телефонски?<span class="arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
-    <div class="faq-item"><button class="faq-question">Кои се работните часови на ординацијата?<span class="arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
-    <div class="faq-item"><button class="faq-question">Што е телемедицина и кој може да ја користи?<span class="arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
-    <div class="faq-item"><button class="faq-question">Дали нудите и приватни прегледи (без фонд)?<span class="arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
-  </div>
+  <div class="faq-list">
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="/cdn-cgi/l/email-protection#265647454f4348524f6649475c474b43424f4d47084b4d"><span class="__cf_email__" data-cfemail="4c3c2d2f25292238250c232d362d21292825272d622127">[email&#160;protected]</span></a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">5</span>Што е телемедицина и кој може да ја користи?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">6</span>Дали нудите и приватни прегледи (без фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
+    </div>
 </section>
 
 <!-- CONTACT -->
@@ -510,13 +577,13 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#1161707278747f6578517e706b707c7475787a703f7c7a"><span class="__cf_email__" data-cfemail="e79786848e8289938ea788869d868a82838e8c86c98a8c">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
-        <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
+        <a href="/cdn-cgi/l/email-protection#750514161c101b011c351a140f141810111c1e145b181e" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="/cdn-cgi/l/email-protection#5e2e3f3d373b302a371e313f243f333b3a37353f703335" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
         
       </div>
@@ -544,6 +611,7 @@
       <li><a href="#services">Услуги</a></li>
       <li><a href="#insurance">Фонд / ФЗОМ</a></li>
       <li><a href="#novosti">Новости</a></li>
+      <li><a href="#blog">Едукативен блог</a></li>
       <li><a href="#faq">Прашања</a></li>
       <li><a href="#contact">Контакт</a></li>
     </ul>
@@ -552,7 +620,7 @@
     <h4>Контакт</h4>
     <ul>
       <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#a4d4c5c7cdc1cad0cde4cbc5dec5c9c1c0cdcfc58ac9cf"><span class="__cf_email__" data-cfemail="4131202228242f3528012e203b202c2425282a206f2c2a">[email&#160;protected]</span></a></li>
       <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
       <li><a href="#">Илинден, Македонија</a></li>
       <li><a href="#">Пон–Пет 07:30–15:00</a></li>
@@ -565,305 +633,228 @@
      SCRIPTS
      novosti.js must be in the same folder as index.html
 ════════════════════════════════════════════════════════ -->
-<script src="novosti.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="novosti.js"></script>
 <script>
+/* ═══════════════════════════════════════════════════
+   OAZA MEDIKA — MAIN SCRIPT
+═══════════════════════════════════════════════════ */
 
-  /* ── EmailJS config ─────────────────────────────────────────
-     Replace the four REPLACE_ME values with your real keys.
-     Get them from emailjs.com after setup.
-  ─────────────────────────────────────────────────────────── */
-  var EJS_KEY     = 'REPLACE_ME_PUBLIC_KEY';
-  var EJS_SERVICE = 'REPLACE_ME_SERVICE_ID';
-  var EJS_NOTIFY  = 'REPLACE_ME_NOTIFY_TEMPLATE_ID';
-  var EJS_REPLY   = 'REPLACE_ME_REPLY_TEMPLATE_ID';
+/* EmailJS config — replace with your real keys */
+var EJS_KEY     = 'REPLACE_ME_PUBLIC_KEY';
+var EJS_SERVICE = 'REPLACE_ME_SERVICE_ID';
+var EJS_NOTIFY  = 'REPLACE_ME_NOTIFY_TEMPLATE_ID';
+var EJS_REPLY   = 'REPLACE_ME_REPLY_TEMPLATE_ID';
 
-  if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
-    emailjs.init({ publicKey: EJS_KEY });
+if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
+  emailjs.init({ publicKey: EJS_KEY });
+}
+
+/* ── TICKER ─────────────────────────────────────── */
+function buildTicker() {
+  var wrap = document.getElementById('tickerWrap');
+  var track = document.getElementById('tickerTrack');
+  if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
+    wrap.style.display = 'none'; return;
   }
-
-  /* ── Helpers: open / close registration overlay ─────────── */
-  function openReg() {
-    document.getElementById('regOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
+  var items = NOVOSTI.concat(NOVOSTI);
+  var html = '';
+  for (var i = 0; i < items.length; i++) {
+    var idx = i % NOVOSTI.length;
+    html += '<span class="ticker-item" data-idx="' + idx + '">' +
+            '<span style="opacity:.6">📰</span> ' + items[i].naslov +
+            '<span style="opacity:.4;font-size:.7rem"> ' + items[i].datum + '</span>' +
+            '</span><span class="ticker-sep">·</span>';
   }
-
-  function closeReg() {
-    document.getElementById('regOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-    setTimeout(function() {
-      document.getElementById('regFormWrap').style.display = 'block';
-      document.getElementById('regSuccess').classList.remove('show');
-      document.getElementById('regName').value = '';
-      document.getElementById('regEmail').value = '';
-      document.getElementById('regPhone').value = '';
-      document.getElementById('regNote').value = '';
-      var btn = document.getElementById('regSubmitBtn');
-      btn.disabled = false;
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Испрати барање';
-    }, 300);
-  }
-
-  /* ── Helpers: open / close novost modal ─────────────────── */
-  function openNovostModal(i) {
-    var n = NOVOSTI[i];
-    document.getElementById('modalMeta').innerHTML =
-      '<span class="novost-kat">' + n.kategorija + '</span>' +
-      '<span class="novost-datum" style="font-size:.8rem;color:var(--text-light)">📅 ' + n.datum + '</span>';
-    document.getElementById('modalTitle').textContent = n.naslov;
-    document.getElementById('modalBody').innerHTML = n.telo;
-    document.getElementById('modalOverlay').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeNovostModal() {
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  /* ── Ticker ─────────────────────────────────────────────── */
-  function buildTicker() {
-    var track = document.getElementById('tickerTrack');
-    if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
-      document.getElementById('tickerWrap').style.display = 'none';
-      return;
-    }
-    var items = NOVOSTI.concat(NOVOSTI); // duplicate for seamless loop
-    var html = '';
-    for (var i = 0; i < items.length; i++) {
-      var idx = i % NOVOSTI.length;
-      html += '<span class="ticker-item" data-idx="' + idx + '">' +
-                '<span style="opacity:.6">📰</span> ' + items[i].naslov +
-                ' <span style="opacity:.4;font-size:.7rem">' + items[i].datum + '</span>' +
-              '</span><span class="ticker-sep">·</span>';
-    }
-    track.innerHTML = html;
-
-    // click on ticker item → scroll to novosti + open modal
-    track.querySelectorAll('.ticker-item').forEach(function(el) {
-      el.addEventListener('click', function() {
-        var idx = parseInt(this.getAttribute('data-idx'));
-        var sec = document.getElementById('novosti');
-        window.scrollTo({ top: sec.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-        setTimeout(function() { openNovostModal(idx); }, 400);
-      });
+  track.innerHTML = html;
+  track.querySelectorAll('.ticker-item').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var i = parseInt(this.getAttribute('data-idx'));
+      var top = document.getElementById('novosti').getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+      setTimeout(function() { openNovostModal(i); }, 400);
     });
-
-    var pos = 0;
-    var half = 0;
-    function tick() {
-      if (!half) half = track.scrollWidth / 2;
-      pos += 0.5;
-      if (pos >= half) pos = 0;
-      track.style.transform = 'translateX(-' + pos + 'px)';
-      requestAnimationFrame(tick);
-    }
+  });
+  var pos = 0;
+  function tick() {
+    pos += 0.5;
+    if (pos >= track.scrollWidth / 2) pos = 0;
+    track.style.transform = 'translateX(-' + pos + 'px)';
     requestAnimationFrame(tick);
   }
+  requestAnimationFrame(tick);
+}
 
-  /* ── Render novosti cards ───────────────────────────────── */
-  var IKONI = {
-    'Соопштение': { e: '📢', b: '#e4f2f2' },
-    'Превенција':  { e: '🛡️', b: '#e8f5ec' },
-    'Совет':       { e: '💡', b: '#fef9e7' },
-    'Промена':     { e: '🔄', b: '#f0f0f0' }
+/* ── NOVOSTI ────────────────────────────────────── */
+var IKONI = {
+  'Соопштение': { e: '📢', b: '#e4f2f2' },
+  'Превенција':  { e: '🛡️', b: '#e8f5ec' },
+  'Совет':       { e: '💡', b: '#fef9e7' },
+  'Промена':     { e: '🔄', b: '#f0f0f0' }
+};
+
+function renderNovosti() {
+  var g = document.getElementById('novostiGrid');
+  if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
+    g.innerHTML = '<p style="color:var(--text-light);font-size:.9rem;">Нема новости засега.</p>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < NOVOSTI.length; i++) {
+    var n = NOVOSTI[i];
+    var ik = IKONI[n.kategorija] || { e: '📄', b: '#f0f0f0' };
+    html += '<div class="novost-card" data-novost="' + i + '">' +
+      '<div class="novost-img" style="background:' + (n.slika ? 'none' : ik.b) + '">' +
+        (n.slika ? '<img src="' + n.slika + '" style="width:100%;height:100%;object-fit:cover"/>' : '<span style="font-size:2.8rem">' + ik.e + '</span>') +
+      '</div>' +
+      '<div class="novost-body">' +
+        '<div class="novost-meta"><span class="novost-kat">' + n.kategorija + '</span><span class="novost-datum">📅 ' + n.datum + '</span></div>' +
+        '<h3 class="novost-naslov">' + n.naslov + '</h3>' +
+        '<p class="novost-kratko">' + n.kratko + '</p>' +
+        '<span class="novost-link">Прочитај повеќе →</span>' +
+      '</div></div>';
+  }
+  g.innerHTML = html;
+  g.querySelectorAll('.novost-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      openNovostModal(parseInt(this.getAttribute('data-novost')));
+    });
+  });
+}
+
+/* ── NOVOST MODAL ───────────────────────────────── */
+function openNovostModal(i) {
+  var n = NOVOSTI[i];
+  document.getElementById('modalMeta').innerHTML =
+    '<span class="novost-kat">' + n.kategorija + '</span>' +
+    '<span class="novost-datum" style="font-size:.8rem;color:var(--text-light)">📅 ' + n.datum + '</span>';
+  document.getElementById('modalTitle').textContent = n.naslov;
+  document.getElementById('modalBody').innerHTML = n.telo;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeNovostModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+/* ── REGISTRATION POPUP ─────────────────────────── */
+function openReg() {
+  document.getElementById('regOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeReg() {
+  document.getElementById('regOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+  setTimeout(function() {
+    document.getElementById('regFormWrap').style.display = '';
+    document.getElementById('regSuccess').classList.remove('show');
+    document.getElementById('regName').value = '';
+    document.getElementById('regEmail').value = '';
+    document.getElementById('regPhone').value = '';
+    document.getElementById('regNote').value = '';
+  }, 300);
+}
+
+function submitRegistration() {
+  var name  = document.getElementById('regName').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+  var phone = document.getElementById('regPhone').value.trim();
+  var note  = document.getElementById('regNote').value.trim();
+  if (!name)  { alert('Ве молиме внесете Име и Презиме.'); return; }
+  if (!email || email.indexOf('@') === -1) { alert('Ве молиме внесете валидна е-маил адреса.'); return; }
+  var btn = document.getElementById('regSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Се испраќа…';
+  var params = {
+    from_name:  name,
+    from_email: email,
+    phone:      phone || '(не е наведен)',
+    note:       note  || '(без напомена)',
+    date:       new Date().toLocaleString('mk-MK')
   };
+  function onSuccess() {
+    document.getElementById('regFormWrap').style.display = 'none';
+    document.getElementById('regSuccess').classList.add('show');
+  }
+  function onError() {
+    btn.disabled = false;
+    btn.textContent = 'Испрати барање';
+    alert('Се појави грешка. Јавете се директно на 070 123 123.');
+  }
+  if (EJS_KEY === 'REPLACE_ME_PUBLIC_KEY') {
+    setTimeout(onSuccess, 1200);
+  } else {
+    emailjs.send(EJS_SERVICE, EJS_NOTIFY, params)
+      .then(function() { return emailjs.send(EJS_SERVICE, EJS_REPLY, params); })
+      .then(onSuccess)
+      .catch(onError);
+  }
+}
 
-  function renderNovosti() {
-    var g = document.getElementById('novostiGrid');
-    if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
-      g.innerHTML = '<p style="color:var(--text-light)">Нема новости засега.</p>';
-      return;
-    }
-    var html = '';
-    for (var i = 0; i < NOVOSTI.length; i++) {
-      var n = NOVOSTI[i];
-      var ik = IKONI[n.kategorija] || { e: '📄', b: '#f0f0f0' };
-      var imgHtml = n.slika
-        ? '<img src="' + n.slika + '" style="width:100%;height:100%;object-fit:cover"/>'
-        : '<span style="font-size:2.8rem">' + ik.e + '</span>';
-      html +=
-        '<div class="novost-card" data-novost="' + i + '">' +
-          '<div class="novost-img" style="background:' + (n.slika ? 'none' : ik.b) + '">' + imgHtml + '</div>' +
-          '<div class="novost-body">' +
-            '<div class="novost-meta">' +
-              '<span class="novost-kat">' + n.kategorija + '</span>' +
-              '<span class="novost-datum">📅 ' + n.datum + '</span>' +
-            '</div>' +
-            '<h3 class="novost-naslov">' + n.naslov + '</h3>' +
-            '<p class="novost-kratko">' + n.kratko + '</p>' +
-            '<span class="novost-link">Прочитај повеќе →</span>' +
-          '</div>' +
-        '</div>';
-    }
-    g.innerHTML = html;
+/* ── SCROLL REVEAL ──────────────────────────────── */
+function initScrollReveal() {
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.service-card,.testimonial-card,.ins-card,.novost-card').forEach(function(el) {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .5s ease, transform .5s ease';
+    obs.observe(el);
+  });
+}
 
-    // attach click listeners after rendering
-    g.querySelectorAll('.novost-card').forEach(function(card) {
-      card.addEventListener('click', function() {
-        openNovostModal(parseInt(this.getAttribute('data-novost')));
+/* ── HERO SLIDESHOW ─────────────────────────────── */
+function initSlideshow() {
+  var imgs = document.querySelectorAll('#heroSlideshow img');
+  var dots = document.querySelectorAll('#heroSlideshow .hero-slideshow-dots span');
+  if (!imgs.length) return;
+  var cur = 0;
+  function goTo(n) {
+    imgs[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + imgs.length) % imgs.length;
+    imgs[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+  for (var i = 0; i < dots.length; i++) {
+    (function(idx) {
+      dots[idx].addEventListener('click', function() {
+        goTo(idx);
+        clearInterval(timer);
+        timer = setInterval(function() { goTo(cur + 1); }, 4000);
       });
-    });
+    })(i);
   }
+  var timer = setInterval(function() { goTo(cur + 1); }, 4000);
+}
 
-  /* ── FAQ accordion ──────────────────────────────────────── */
-  function initFaq() {
-    var questions = document.querySelectorAll('.faq-question');
-    for (var i = 0; i < questions.length; i++) {
-      questions[i].onclick = function() {
-        var item = this.parentElement;
-        var isOpen = item.classList.contains('open');
-        var all = document.querySelectorAll('.faq-item');
-        for (var j = 0; j < all.length; j++) all[j].classList.remove('open');
-        if (!isOpen) item.classList.add('open');
-      };
-    }
-  }
+/* ── WIRE EVERYTHING ON DOM READY ───────────────── */
+document.addEventListener('DOMContentLoaded', function() {
 
-  /* ── Submit registration ────────────────────────────────── */
-  function submitRegistration() {
-    var name  = document.getElementById('regName').value.trim();
-    var email = document.getElementById('regEmail').value.trim();
-    var phone = document.getElementById('regPhone').value.trim();
-    var note  = document.getElementById('regNote').value.trim();
-
-    if (!name)  { alert('Ве молиме внесете Име и Презиме.'); return; }
-    if (!email || email.indexOf('@') === -1) { alert('Ве молиме внесете валидна е-маил адреса.'); return; }
-
-    var btn = document.getElementById('regSubmitBtn');
-    btn.disabled = true;
-    btn.innerHTML = '<span style="display:inline-block;animation:spin 1s linear infinite">⏳</span> Се испраќа…';
-
-    var params = {
-      from_name:  name,
-      from_email: email,
-      phone:      phone || '(не е наведен)',
-      note:       note  || '(без напомена)',
-      date:       new Date().toLocaleString('mk-MK')
-    };
-
-    function onSuccess() {
-      document.getElementById('regFormWrap').style.display = 'none';
-      document.getElementById('regSuccess').classList.add('show');
-    }
-
-    function onError() {
-      btn.disabled = false;
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Испрати барање';
-      alert('Се појави грешка. Јавете се директно на 070 123 123.');
-    }
-
-    if (EJS_KEY === 'REPLACE_ME_PUBLIC_KEY') {
-      // EmailJS not yet configured — show success after short delay (demo mode)
-      setTimeout(onSuccess, 1200);
-    } else {
-      emailjs.send(EJS_SERVICE, EJS_NOTIFY, params)
-        .then(function() {
-          return emailjs.send(EJS_SERVICE, EJS_REPLY, params);
-        })
-        .then(onSuccess)
-        .catch(onError);
-    }
-  }
-
-  /* ── Smooth scroll for nav links ────────────────────────── */
-  function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          window.scrollTo({
-            top: target.getBoundingClientRect().top + window.pageYOffset - 80,
-            behavior: 'smooth'
-          });
-          document.getElementById('navLinks').classList.remove('open');
-        }
-      });
+  document.getElementById('ctaRegBtn').addEventListener('click', openReg);
+  document.getElementById('regCloseBtn').addEventListener('click', closeReg);
+  document.getElementById('regOverlay').addEventListener('click', function(e) { if (e.target === this) closeReg(); });
+  document.getElementById('regSuccessCloseBtn').addEventListener('click', closeReg);
+  document.getElementById('regSubmitBtn').addEventListener('click', submitRegistration);
+  document.getElementById('modalCloseBtn').addEventListener('click', closeNovostModal);
+  document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeNovostModal(); });
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) {
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+        document.getElementById('navLinks').classList.remove('open');
+      }
     });
-  }
-
-  /* ── Scroll reveal ──────────────────────────────────────── */
-  function initScrollReveal() {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        if (e.isIntersecting) {
-          e.target.style.opacity = '1';
-          e.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.service-card,.testimonial-card,.ins-card,.novost-card').forEach(function(el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity .5s ease, transform .5s ease';
-      obs.observe(el);
-    });
-  }
-
-  /* ══════════════════════════════════════════════════════════
-     WIRE UP ALL EVENT LISTENERS — runs after page loads
-  ══════════════════════════════════════════════════════════ */
-  document.addEventListener('DOMContentLoaded', function() {
-
-    // CTA button — open registration popup
-    document.getElementById('ctaRegBtn').addEventListener('click', openReg);
-
-    // Registration popup — close button
-    document.getElementById('regCloseBtn').addEventListener('click', closeReg);
-
-    // Registration popup — click outside to close
-    document.getElementById('regOverlay').addEventListener('click', function(e) {
-      if (e.target === this) closeReg();
-    });
-
-    // Registration popup — success close button
-    document.getElementById('regSuccessCloseBtn').addEventListener('click', closeReg);
-
-    // Registration — submit button
-    document.getElementById('regSubmitBtn').addEventListener('click', submitRegistration);
-
-    // Novost modal — close button
-    document.getElementById('modalCloseBtn').addEventListener('click', closeNovostModal);
-
-
-    // Novost modal — click outside to close
-    document.getElementById('modalOverlay').addEventListener('click', function(e) {
-      if (e.target === this) closeNovostModal();
-    });
-
-    // Hamburger menu
-    document.getElementById('hamburger').addEventListener('click', function() {
-      document.getElementById('navLinks').classList.toggle('open');
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-      a.addEventListener('click', function(e) {
-        var t = document.querySelector(this.getAttribute('href'));
-        if (t) {
-          e.preventDefault();
-          window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
-          document.getElementById('navLinks').classList.remove('open');
-        }
-      });
-    });
-
-    // Escape key closes all modals
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') { closeReg(); closeNovostModal(); }
-    });
-
-    // Init
-    buildTicker();
-    renderNovosti();
-    initFaq();
-    initScrollReveal();
-
-    /* HERO SLIDESHOW */
-    (function() {
-      var imgs = document.querySelectorAll('#heroSlideshow img');
-      var dots = document.querySelectorAll('#heroSlideshow .hero-slideshow-dots span');
-      var cur = 0;
-      function goTo(n) {
-        imgs[cu
+  });
+  document.
