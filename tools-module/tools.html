@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дигитални алатки – ПЗУ Оаза Медика, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-fallback { display:flex; align-items:center; gap:12px; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    /* HERO BANNER */
+    .page-hero { position:relative; height:420px; overflow:hidden; display:flex; align-items:flex-end; }
+    .page-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .page-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,92,42,0.85) 0%, rgba(42,122,122,0.4) 60%, transparent 100%); }
+    .page-hero-content { position:relative; z-index:1; padding:3rem 5%; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:var(--white); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1rem; backdrop-filter:blur(4px); }
+    .page-hero h1 { font-size:clamp(2rem,4vw,3rem); color:var(--white); max-width:700px; }
+    .page-hero p { font-size:1.05rem; color:rgba(255,255,255,.85); max-width:580px; margin-top:.8rem; font-weight:300; }
+
+    /* SECTIONS */
+    .container { max-width:960px; margin:0 auto; padding:0 5%; }
+    section { padding:4.5rem 5%; }
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.7rem,3vw,2.3rem); color:var(--text); margin-bottom:1rem; }
+    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:660px; line-height:1.8; }
+
+    /* ── ONLINE TOOLS SECTION ── */
+    .online-tools { background:var(--white); }
+    .tools-grid-top { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:2.5rem; }
+
+    .tool-card {
+      background:var(--cream);
+      border-radius:var(--radius);
+      padding:2rem 1.6rem;
+      border:1px solid rgba(42,122,122,.1);
+      display:flex;
+      flex-direction:column;
+      gap:1rem;
+      cursor:pointer;
+      transition:all .3s;
+      position:relative;
+      overflow:hidden;
+      text-align:center;
+      align-items:center;
+    }
+    .tool-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:4px;
+      background:linear-gradient(90deg, var(--teal), var(--green-mid));
+      transform:scaleX(0);
+      transition:transform .3s;
+      transform-origin:left;
+    }
+    .tool-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+    .tool-card:hover::before { transform:scaleX(1); }
+
+    .tool-icon-wrap {
+      width:72px; height:72px;
+      border-radius:18px;
+      background:var(--teal-light);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+      overflow:hidden;
+    }
+    .tool-icon-wrap img { width:44px; height:44px; object-fit:contain; }
+    .tool-card h3 { font-size:1.05rem; color:var(--text); margin:0; }
+    .tool-card p { font-size:.87rem; color:var(--text-light); font-weight:300; line-height:1.65; margin:0; flex:1; }
+
+    .tool-btn {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:.55rem 1.2rem;
+      background:var(--teal);
+      color:var(--white);
+      border:none; border-radius:50px;
+      font-family:'Lato',sans-serif; font-size:.84rem; font-weight:600;
+      cursor:pointer; transition:all .2s; text-decoration:none;
+      margin-top:auto;
+    }
+    .tool-btn:hover { background:var(--teal-dark); transform:translateY(-1px); }
+
+    /* ── CALCULATORS SECTION ── */
+    .calculators { background:var(--cream); }
+    .calc-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; margin-top:2.5rem; }
+
+    .calc-card {
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:2rem 1.6rem;
+      border:1px solid rgba(42,122,122,.1);
+      display:flex; flex-direction:column; gap:1rem;
+      text-decoration:none; color:inherit;
+      transition:all .3s; position:relative; overflow:hidden;
+      text-align:center; align-items:center;
+    }
+    .calc-card::after {
+      content:'';
+      position:absolute;
+      bottom:0; left:0;
+      width:100%; height:4px;
+      background:linear-gradient(90deg, var(--green-mid), var(--teal));
+      transform:scaleX(0);
+      transition:transform .3s;
+      transform-origin:right;
+    }
+    .calc-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+    .calc-card:hover::after { transform:scaleX(1); }
+
+    .calc-icon-wrap {
+      width:72px; height:72px;
+      border-radius:18px;
+      background:var(--green-light);
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+    }
+    .calc-card h3 { font-size:1.05rem; color:var(--text); margin:0; }
+    .calc-card p { font-size:.87rem; color:var(--text-light); font-weight:300; line-height:1.65; margin:0; flex:1; }
+    .calc-link-label {
+      font-size:.84rem; font-weight:600; color:var(--teal);
+      display:inline-flex; align-items:center; gap:5px;
+      margin-top:auto;
+    }
+
+    /* ── MODAL / POPUP ── */
+    .modal-overlay {
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(26,42,34,.7);
+      backdrop-filter:blur(4px);
+      z-index:500;
+      align-items:center; justify-content:center;
+      padding:1.5rem;
+    }
+    .modal-overlay.open { display:flex; }
+
+    .modal-box {
+      background:var(--white);
+      border-radius:20px;
+      width:100%; max-width:900px;
+      height:min(85vh, 640px);
+      display:flex; flex-direction:column;
+      overflow:hidden;
+      box-shadow:0 20px 60px rgba(0,0,0,.3);
+      animation:modalIn .3s ease;
+    }
+    @keyframes modalIn {
+      from { opacity:0; transform:translateY(24px) scale(.97); }
+      to   { opacity:1; transform:translateY(0)   scale(1); }
+    }
+
+    .modal-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 1.4rem;
+      border-bottom:1px solid rgba(42,122,122,.12);
+      background:var(--cream);
+      flex-shrink:0;
+    }
+    .modal-header h4 { font-family:'Playfair Display',serif; font-size:1rem; color:var(--text); }
+    .modal-close {
+      width:34px; height:34px;
+      border-radius:50%; border:none; background:rgba(42,122,122,.1);
+      color:var(--teal); font-size:1.2rem; cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+      transition:background .2s;
+    }
+    .modal-close:hover { background:rgba(42,122,122,.2); }
+
+    .modal-iframe {
+      flex:1;
+      border:none;
+      width:100%; height:100%;
+    }
+
+    .modal-loading {
+      position:absolute; inset:0;
+      display:flex; align-items:center; justify-content:center;
+      background:var(--cream);
+      font-size:.9rem; color:var(--text-light);
+      gap:.6rem;
+    }
+    .spinner {
+      width:22px; height:22px;
+      border:2.5px solid rgba(42,122,122,.2);
+      border-top-color:var(--teal);
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* IFRAME FALLBACK */
+    .modal-fallback {
+      display:none;
+      flex-direction:column; align-items:center; justify-content:center;
+      gap:1.2rem; padding:2.5rem 2rem; text-align:center;
+      flex:1;
+    }
+    .modal-fallback.show { display:flex; }
+    .modal-fallback-icon { width:64px; height:64px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center; }
+    .modal-fallback h4 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--text); }
+    .modal-fallback p { font-size:.88rem; color:var(--text-mid); font-weight:300; max-width:380px; line-height:1.7; }
+    .modal-fallback-btn { display:inline-flex; align-items:center; gap:7px; padding:.65rem 1.4rem; background:var(--teal); color:var(--white); border-radius:50px; font-family:'Lato',sans-serif; font-size:.88rem; font-weight:600; text-decoration:none; transition:background .2s; }
+    .modal-fallback-btn:hover { background:var(--teal-dark); }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { height:320px; }
+      .page-hero h1 { font-size:1.7rem; }
+      .tools-grid-top,
+      .calc-grid { grid-template-columns:1fr; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+      .modal-box { height:90vh; }
+    }
+    @media(min-width:769px) and (max-width:1024px) {
+      .tools-grid-top,
+      .calc-grid { grid-template-columns:repeat(3,1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div class="nav-logo-fallback" id="navLogoFallback" style="display:none;">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+        <ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span>Оаза Медика</span>
+        <span>Ординација – Илинден</span>
+      </div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#about">За нас</a></li>
+    <li><a href="../index.html#services">Услуги</a></li>
+    <li><a href="/tools-module/tools.html">Алатки</a></li>
+    <li><a href="../index.html#insurance">Фонд</a></li>
+    <li><a href="../index.html#novosti">Новости</a></li>
+    <li><a href="../index.html#blog">Блог</a></li>
+    <li><a href="../index.html#faq">ЧПП</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="page-hero">
+  <img src="tools.png" alt="Дигитални здравствени алатки – Оаза Медика"
+    onerror="this.style.background='linear-gradient(135deg,#1a5c2a,#2a7a7a)'; this.style.display='block';" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      Дигитални алатки · Оаза Медика
+    </div>
+    <h1>Вашето здравје – на еден клик</h1>
+    <p>Онлајн услуги и калкулатори за брза проверка, закажување и следење на вашето здравје.</p>
+  </div>
+</div>
+
+<!-- ONLINE TOOLS SECTION -->
+<section class="online-tools">
+  <div class="container">
+    <p class="section-label">Онлајн услуги</p>
+    <h2 class="section-title">Брзи е-услуги на ФЗОМ и МЗ</h2>
+    <p class="section-sub">
+      Пристапете до официјалните портали на Фондот за здравствено осигурување и Министерството за здравство директно — без напуштање на оваа страница.
+    </p>
+
+    <div class="tools-grid-top">
+
+      <!-- TOOL 1: Осигурување -->
+      <div class="tool-card" onclick="openModal('modal-osiguruvanje', 'Проверка на осигурување – ФЗОМ', 'https://moeosiguruvanje.fzo.org.mk/')">
+        <div class="tool-icon-wrap">
+          <img src="osiguruvanje-icon.png" alt="Осигурување"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<svg width=\'44\' height=\'44\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#2a7a7a\' stroke-width=\'1.8\'><path d=\'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\'/></svg>';" />
+        </div>
+        <h3>Провери осигурување</h3>
+        <p>Проверете дали сте активно осигурено лице преку официјалниот портал на ФЗОМ — за само неколку секунди.</p>
+        <button class="tool-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Провери сега
+        </button>
+      </div>
+
+      <!-- TOOL 2: Слободни термини -->
+      <div class="tool-card" onclick="openModal('modal-termini', 'Слободни термини – Мој Термин', 'https://mojtermin.mk/map/specijalist')">
+        <div class="tool-icon-wrap">
+          <img src="termin-icon.png" alt="Термини"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<svg width=\'44\' height=\'44\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#2a7a7a\' stroke-width=\'1.8\'><rect x=\'3\' y=\'4\' width=\'18\' height=\'18\' rx=\'2\'/><line x1=\'16\' y1=\'2\' x2=\'16\' y2=\'6\'/><line x1=\'8\' y1=\'2\' x2=\'8\' y2=\'6\'/><line x1=\'3\' y1=\'10\' x2=\'21\' y2=\'10\'/></svg>';" />
+        </div>
+        <h3>Слободни термини</h3>
+        <p>Пронајдете достапни термини кај специјалисти низ целата земја преку системот Мој Термин на Министерството за здравство.</p>
+        <button class="tool-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Пребарај термини
+        </button>
+      </div>
+
+      <!-- TOOL 3: Мое Здравје App -->
+      <div class="tool-card" id="card-app" style="cursor:default;">
+        <div class="tool-icon-wrap">
+          <img src="app-icon.png" alt="Мое Здравје"
+            onerror="this.style.display='none'; this.parentElement.innerHTML='<svg width=\'44\' height=\'44\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#2a7a7a\' stroke-width=\'1.8\'><rect x=\'5\' y=\'2\' width=\'14\' height=\'20\' rx=\'2\'/><line x1=\'12\' y1=\'18\' x2=\'12.01\' y2=\'18\'/></svg>';" />
+        </div>
+        <h3>Мое Здравје – апликација</h3>
+        <p>Преземете ја официјалната апликација „Мое Здравје" за пристап до вашите здравствени податоци, наоди и е-рецепти.</p>
+        <!-- Mobile: single relevant store button; Desktop: both buttons -->
+        <div id="app-btns" style="display:flex; flex-direction:column; gap:.55rem; width:100%; margin-top:auto;">
+          <a id="btn-ios" href="https://apps.apple.com/al/app/moe-zdravje/id1585980981" target="_blank" class="tool-btn" style="justify-content:center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            App Store
+          </a>
+          <a id="btn-android" href="https://play.google.com/store/apps/details?id=com.sorsix.pinga.moezdravje&hl=en" target="_blank" class="tool-btn" style="justify-content:center; background:var(--green-mid);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 001.94-.19l10.86-6.27-2.44-2.44zM.69 1.1A2 2 0 000 2.56v18.88a2 2 0 00.69 1.46l.08.07 10.57-10.57v-.25zM20.33 10.3l-2.9-1.68-2.72 2.72 2.72 2.72 2.92-1.69a2 2 0 000-3.07zM5.12.43L16 6.7l-2.44 2.44z"/></svg>
+            Google Play
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS SECTION -->
+<section class="calculators">
+  <div class="container">
+    <p class="section-label">Здравствени калкулатори</p>
+    <h2 class="section-title">Проверете го своето здравје</h2>
+    <p class="section-sub">
+      Користете ги нашите бесплатни калкулатори за следење на индексот на телесна маса, проценка на кардиоваскуларен ризик и ризик од дијабетес тип 2.
+    </p>
+
+    <div class="calc-grid">
+
+      <!-- BMI -->
+      <a href="bmi.html" class="calc-card">
+        <div class="calc-icon-wrap">
+          <!-- Weighing scale SVG -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="18" fill="#e8f5ec"/>
+            <!-- scale base platform -->
+            <rect x="12" y="32" width="20" height="3" rx="1.5" fill="#2a7a7a"/>
+            <!-- center pole -->
+            <rect x="21" y="26" width="2" height="7" rx="1" fill="#2a7a7a"/>
+            <!-- scale bowl / dome -->
+            <path d="M13 26 Q13 18 22 18 Q31 18 31 26 Z" fill="none" stroke="#2a7a7a" stroke-width="2" stroke-linejoin="round"/>
+            <!-- flat top rim of bowl -->
+            <line x1="13" y1="26" x2="31" y2="26" stroke="#2a7a7a" stroke-width="2" stroke-linecap="round"/>
+            <!-- tick marks on dome -->
+            <line x1="22" y1="18" x2="22" y2="20.5" stroke="#2e7d42" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="16.5" y1="19.8" x2="17.6" y2="21.8" stroke="#2e7d42" stroke-width="1.3" stroke-linecap="round"/>
+            <line x1="27.5" y1="19.8" x2="26.4" y2="21.8" stroke="#2e7d42" stroke-width="1.3" stroke-linecap="round"/>
+            <!-- needle -->
+            <line x1="22" y1="26" x2="27" y2="21" stroke="#1a5c2a" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="22" cy="26" r="1.5" fill="#1a5c2a"/>
+          </svg>
+        </div>
+        <h3>BMI Калкулатор</h3>
+        <p>Пресметајте го вашиот Body Mass Index и дознајте дали сте во здрав опсег за вашата висина и тежина.</p>
+        <span class="calc-link-label">
+          Отвори калкулатор
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <!-- CARDIAC RISK -->
+      <a href="cardiac-dis.html" class="calc-card">
+        <div class="calc-icon-wrap">
+          <!-- Heart ECG SVG -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="18" fill="#e8f5ec"/>
+            <path d="M22 32 C22 32 10 24 10 17 C10 13 13 11 16 11 C18.5 11 20.5 12.5 22 14 C23.5 12.5 25.5 11 28 11 C31 11 34 13 34 17 C34 24 22 32 22 32Z" fill="none" stroke="#2a7a7a" stroke-width="2" stroke-linejoin="round"/>
+            <polyline points="12,22 16,22 18,18 20,26 22,20 24,24 26,22 32,22" stroke="#1a5c2a" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Кардиоваскуларен ризик</h3>
+        <p>Проценете го вашиот ризик од срцеви заболувања врз основа на возраст, крвен притисок, холестерол и навики.</p>
+        <span class="calc-link-label">
+          Отвори калкулатор
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+      <!-- DIABETES RISK -->
+      <a href="diabetes-risk.html" class="calc-card">
+        <div class="calc-icon-wrap">
+          <!-- Blood drop / glucose SVG -->
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="18" fill="#e8f5ec"/>
+            <path d="M22 10 C22 10 13 20 13 26 C13 31 17 35 22 35 C27 35 31 31 31 26 C31 20 22 10 22 10Z" fill="none" stroke="#2a7a7a" stroke-width="2" stroke-linejoin="round"/>
+            <line x1="17" y1="28" x2="27" y2="28" stroke="#2e7d42" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="22" y1="23" x2="22" y2="33" stroke="#2e7d42" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>Ризик од дијабетес</h3>
+        <p>Направете брза самопроценка на ризикот од дијабетес тип 2 со помош на валидиран скрининг прашалник.</p>
+        <span class="calc-link-label">
+          Отвори калкулатор
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="../logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
+        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
+      <span id="footerLogoFallback" style="display:none;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
+  </div>
+  <div>
+    <h4>Брзи линкови</h4>
+    <ul>
+      <li><a href="../index.html#about">За нас</a></li>
+      <li><a href="../index.html#services">Услуги</a></li>
+      <li><a href="../index.html#insurance">Фонд / ФЗОМ</a></li>
+      <li><a href="../index.html#novosti">Новости</a></li>
+      <li><a href="../index.html#blog">Едукативен блог</a></li>
+      <li><a href="../index.html#faq">Прашања</a></li>
+      <li><a href="../index.html#contact">Контакт</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#6900070f062906081308040c0d000208470402"><span class="__cf_email__" data-cfemail="a4cdcac2cbe4cbc5dec5c9c1c0cdcfc58ac9cf">[email&#160;protected]</span></a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
+      <li><a href="#">Илинден, Македонија</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="modal-osiguruvanje">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h4>Проверка на осигурување – ФЗОМ</h4>
+      <button class="modal-close" onclick="closeModal('modal-osiguruvanje')">✕</button>
+    </div>
+    <div style="position:relative; flex:1; display:flex; flex-direction:column;">
+      <div class="modal-loading" id="loading-osiguruvanje">
+        <div class="spinner"></div>
+        Се вчитува…
+      </div>
+      <iframe class="modal-iframe"
+        id="iframe-osiguruvanje"
+        src="about:blank"
+        data-src="https://moeosiguruvanje.fzo.org.mk/"
+        data-url="https://moeosiguruvanje.fzo.org.mk/"
+        title="Проверка на осигурување"
+        style="flex:1;">
+      </iframe>
+      <div class="modal-fallback" id="fallback-osiguruvanje">
+        <div class="modal-fallback-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Страницата не може да се вчита овде</h4>
+        <p>Порталот на ФЗОМ не дозволува прикажување во рамки. Отворете го директно во нов таб.</p>
+        <a href="https://moeosiguruvanje.fzo.org.mk/" target="_blank" class="modal-fallback-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Отвори на fzo.org.mk
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-termini">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h4>Слободни термини – Мој Термин</h4>
+      <button class="modal-close" onclick="closeModal('modal-termini')">✕</button>
+    </div>
+    <div style="position:relative; flex:1; display:flex; flex-direction:column;">
+      <div class="modal-loading" id="loading-termini">
+        <div class="spinner"></div>
+        Се вчитува…
+      </div>
+      <iframe class="modal-iframe"
+        id="iframe-termini"
+        src="about:blank"
+        data-src="https://mojtermin.mk/map/specijalist"
+        data-url="https://mojtermin.mk/map/specijalist"
+        title="Слободни термини"
+        style="flex:1;">
+      </iframe>
+      <div class="modal-fallback" id="fallback-termini">
+        <div class="modal-fallback-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h4>Страницата не може да се вчита овде</h4>
+        <p>Порталот Мој Термин не дозволува прикажување во рамки. Отворете го директно во нов таб.</p>
+        <a href="https://mojtermin.mk/map/specijalist" target="_blank" class="modal-fallback-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Отвори на mojtermin.mk
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── NAV HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ── MODAL + IFRAME FALLBACK LOGIC ── */
+var IFRAME_TIMEOUT = 8000; // ms before showing fallback if no load event
+
+function openModal(id) {
+  var overlay   = document.getElementById(id);
+  var key       = id.replace('modal-', '');
+  var iframe    = document.getElementById('iframe-' + key);
+  var loader    = document.getElementById('loading-' + key);
+  var fallback  = document.getElementById('fallback-' + key);
+
+  // Reset state
+  if (fallback)  { fallback.classList.remove('show'); fallback.style.display = ''; }
+  if (loader)    { loader.style.display = 'flex'; }
+  if (iframe)    { iframe.style.display = 'block'; }
+
+  // Lazy-load iframe src on first open
+  if (iframe && (iframe.src === 'about:blank' || iframe.src === window.location.href)) {
+    iframe.src = iframe.dataset.src;
+  }
+
+  // onload handler — hide loader; detect blank/blocked pages
+  if (iframe) {
+    iframe.onload = function() {
+      if (loader) loader.style.display = 'none';
+      // Try to detect X-Frame-Options block (will appear as empty/about:blank)
+      try {
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (!doc || doc.body.innerHTML === '') {
+          showFallback(key);
+        }
+      } catch(e) {
+        // Cross-origin — this is expected when page loads normally; not a block
+      }
+    };
+
+    // Timeout fallback: if iframe hasn't fired a useful load after N seconds
+    var timer = setTimeout(function() {
+      if (loader && loader.style.display !== 'none') {
+        showFallback(key);
+      }
+    }, IFRAME_TIMEOUT);
+
+    // Cancel timer if load fires quickly
+    var originalOnload = iframe.onload;
+    iframe.onload = function() {
+      clearTimeout(timer);
+      if (originalOnload) originalOnload.call(this);
+    };
+  }
+
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showFallback(key) {
+  var loader   = document.getElementById('loading-' + key);
+  var iframe   = document.getElementById('iframe-' + key);
+  var fallback = document.getElementById('fallback-' + key);
+  if (loader)   loader.style.display = 'none';
+  if (iframe)   { iframe.style.display = 'none'; }
+  if (fallback) { fallback.classList.add('show'); }
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(o) {
+      o.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+/* ── APP STORE BUTTONS — mobile shows only relevant store ── */
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+function isAndroid() {
+  return /Android/.test(navigator.userAgent);
+}
+
+(function() {
+  var btnIOS     = document.getElementById('btn-ios');
+  var btnAndroid = document.getElementById('btn-android');
+  var card       = document.getElementById('card-app');
+  if (!btnIOS || !btnAndroid) return;
+
+  if (isIOS()) {
+    // iOS: show only App Store button; hide Play
+    btnAndroid.style.display = 'none';
+    card.style.cursor = 'pointer';
+  } else if (isAndroid()) {
+    // Android: show only Play Store button; hide App Store
+    btnIOS.style.display = 'none';
+    card.style.cursor = 'pointer';
+  }
+  // Desktop: both buttons visible (default)
+})();
+</script>
+</body>
+</html>
