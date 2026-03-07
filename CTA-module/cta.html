@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Избери матичен лекар – ПЗУ Оаза Медика, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-fallback { display:flex; align-items:center; gap:12px; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    /* BTN */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
+    .btn-primary { background:var(--teal); color:var(--white); box-shadow:0 4px 18px rgba(42,122,122,.3); }
+    .btn-primary:hover { background:var(--teal-dark); transform:translateY(-2px); }
+    .btn-secondary { background:transparent; color:var(--teal); border:2px solid var(--teal); }
+    .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
+
+    /* HERO BANNER */
+    .page-hero { position:relative; height:420px; overflow:hidden; display:flex; align-items:flex-end; }
+    .page-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .page-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,92,42,0.85) 0%, rgba(42,122,122,0.4) 60%, transparent 100%); }
+    .page-hero-content { position:relative; z-index:1; padding:3rem 5%; width:100%; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:var(--white); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1rem; backdrop-filter:blur(4px); }
+    .page-hero h1 { font-size:clamp(2rem,4vw,3rem); color:var(--white); max-width:700px; }
+    .page-hero p { font-size:1.05rem; color:rgba(255,255,255,.85); max-width:580px; margin-top:.8rem; font-weight:300; }
+
+    /* SECTIONS */
+    .container { max-width:900px; margin:0 auto; padding:0 5%; }
+    section { padding:4.5rem 5%; }
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.7rem,3vw,2.3rem); color:var(--text); margin-bottom:1rem; }
+    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:660px; line-height:1.8; }
+
+    /* BENEFITS */
+    .benefits { background:var(--white); }
+    .benefits-intro { font-size:1rem; color:var(--text-mid); font-weight:300; line-height:1.85; margin-bottom:1rem; max-width:780px; }
+    .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:1.4rem; margin-top:2.5rem; }
+    .benefit-card { background:var(--cream); border-radius:var(--radius); padding:1.8rem; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; gap:.8rem; transition:all .3s; position:relative; overflow:hidden; }
+    .benefit-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--teal); transform:scaleY(0); transition:transform .3s; transform-origin:bottom; }
+    .benefit-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .benefit-card:hover::before { transform:scaleY(1); }
+    .benefit-icon { width:48px; height:48px; border-radius:12px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .benefit-card h3 { font-size:1rem; color:var(--text); margin:0; }
+    .benefit-card p { font-size:.87rem; color:var(--text-light); font-weight:300; line-height:1.65; margin:0; }
+
+    /* PROCESS */
+    .process { background:var(--cream); }
+    .process-text { font-size:1rem; color:var(--text-mid); font-weight:300; line-height:1.85; max-width:780px; margin-bottom:1rem; }
+    .process-text strong { color:var(--text); font-weight:600; }
+    .process-steps { display:flex; flex-direction:column; gap:1.2rem; margin-top:2.5rem; max-width:780px; }
+    .step { display:flex; gap:1.4rem; align-items:flex-start; background:var(--white); border-radius:var(--radius); padding:1.5rem; border:1px solid rgba(42,122,122,.1); }
+    .step-num { width:38px; height:38px; border-radius:50%; background:var(--teal); color:var(--white); font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .step-body h4 { font-size:.95rem; color:var(--text); margin-bottom:.3rem; }
+    .step-body p { font-size:.87rem; color:var(--text-mid); font-weight:300; line-height:1.65; }
+    .walkin-box { background:linear-gradient(135deg, var(--teal-light), var(--green-light)); border-radius:16px; padding:1.6rem 2rem; margin-top:2rem; display:flex; align-items:center; gap:1.2rem; max-width:780px; border:1px solid rgba(42,122,122,.15); }
+    .walkin-icon { font-size:2rem; flex-shrink:0; }
+    .walkin-box p { font-size:.93rem; color:var(--text-mid); font-weight:300; line-height:1.7; }
+    .walkin-box p strong { color:var(--teal); font-weight:700; }
+
+    /* FORM SECTION */
+    .form-section { background:linear-gradient(135deg, #1a3a2a 0%, #1d5e5e 100%); padding:5rem 5%; }
+    .form-section .section-label { color:rgba(255,255,255,.6); }
+    .form-section .section-title { color:var(--white); }
+    .form-section .section-sub { color:rgba(255,255,255,.75); }
+    .form-card { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:24px; padding:3rem; max-width:680px; margin-top:2.5rem; backdrop-filter:blur(8px); }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+    .form-field { margin-bottom:1.3rem; }
+    .form-field label { display:block; font-size:.82rem; font-weight:600; color:rgba(255,255,255,.75); margin-bottom:.45rem; letter-spacing:.03em; }
+    .form-field input,
+    .form-field textarea,
+    .form-field select { width:100%; padding:.85rem 1rem; border:1.5px solid rgba(255,255,255,.2); border-radius:10px; font-family:'Lato',sans-serif; font-size:.92rem; color:var(--white); background:rgba(255,255,255,.08); transition:border-color .2s, background .2s; outline:none; }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color:rgba(255,255,255,.35); }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.12); }
+    .form-field select option { background:#1d5e5e; color:var(--white); }
+    .form-field textarea { resize:vertical; min-height:90px; }
+    .form-note { background:rgba(255,255,255,.08); border-left:3px solid rgba(255,255,255,.4); border-radius:0 8px 8px 0; padding:.85rem 1rem; font-size:.82rem; color:rgba(255,255,255,.7); margin-bottom:1.4rem; line-height:1.65; }
+    .form-submit { width:100%; padding:1rem; background:var(--white); color:var(--teal-dark); border:none; border-radius:50px; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .form-submit:hover { background:var(--teal-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.2); }
+    .form-submit:disabled { background:rgba(255,255,255,.3); color:rgba(255,255,255,.5); cursor:not-allowed; transform:none; box-shadow:none; }
+    .form-success { display:none; flex-direction:column; align-items:center; text-align:center; padding:2rem; gap:1rem; }
+    .form-success.show { display:flex; }
+    .form-success-icon { width:72px; height:72px; border-radius:50%; background:rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; font-size:2.2rem; }
+    .form-success h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--white); }
+    .form-success p { font-size:.9rem; color:rgba(255,255,255,.75); font-weight:300; max-width:400px; }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { height:320px; }
+      .page-hero h1 { font-size:1.7rem; }
+      .form-row { grid-template-columns:1fr; }
+      .form-card { padding:2rem 1.5rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+      .step { flex-direction:column; gap:.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div class="nav-logo-fallback" id="navLogoFallback" style="display:none;">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+        <ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span>Оаза Медика</span>
+        <span>Ординација – Илинден</span>
+      </div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#about">За нас</a></li>
+    <li><a href="../index.html#services">Услуги</a></li>
+    <li><a href="../index.html#insurance">Фонд</a></li>
+    <li><a href="../index.html#novosti">Новости</a></li>
+    <li><a href="../index.html#blog">Блог</a></li>
+    <li><a href="../index.html#faq">ЧПП</a></li>
+    <li><a href="../index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="page-hero">
+  <img src="../il.png" alt="ПЗУ Оаза Медика – Илинден" />
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-badge">Матична пракса · ФЗОМ</div>
+    <h1>Изберете го вашиот матичен лекар во ПЗУ Оаза Медика</h1>
+    <p>Сигурна, достапна и топла здравствена грижа — во срцето на Илинден.</p>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <p class="section-label">Зошто матичен лекар?</p>
+    <h2 class="section-title">Придобивки на матичен пациент наспроти приватен пациент</h2>
+    <p class="benefits-intro">
+      Како осигурено лице во Република Северна Македонија, имате право на целосна примарна здравствена заштита без доплата — доколку имате избран матичен лекар со договор со ФЗОМ. Матичниот лекар е вашата прва точка на контакт со здравствениот систем: тој ве познава, ја следи вашата здравствена историја и ве насочува кон вистинската специјалистичка грижа кога е потребно.
+    </p>
+    <p class="benefits-intro">
+      Приватните прегледи се достапни за секого, но секоја посета се наплаќа поединечно. Со избор на матичен лекар во Оаза Медика преку ФЗОМ, вие добивате постојан и познат лекар — без трошоци при секоја посета, со упати и рецепти покриени од Фондот.
+    </p>
+
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Прегледи без доплата</h3>
+        <p>Како матичен пациент со активно здравствено осигурување, сите редовни прегледи кај вашиот избран лекар се на товар на ФЗОМ — без дополнителни трошоци.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        </div>
+        <h3>Рецепти и упати покриени</h3>
+        <p>Лековите пропишани од вашиот матичен лекар, кои се на Листата на лекови на ФЗОМ, се бесплатни или со минимална доплата. Упатите кон специјалисти исто така се покриени.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Личен однос и континуитет</h3>
+        <p>Вашиот матичен лекар ја познава вашата целосна здравствена историја, хроничните состојби и семејните фактори на ризик — за подобра и побрза дијагноза.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Телемедицина за матични</h3>
+        <p>Матичните пациенти на Оаза Медика имаат пристап до онлајн консултации — без физичка посета, за помали прашања и следење на состојби.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <h3>Приоритет при закажување</h3>
+        <p>Матичните пациенти имаат приоритет при закажување прегледи во ординацијата. Нема потреба да чекате за рутински прегледи и обнова на рецепти.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+        </div>
+        <h3>Превентивна грижа</h3>
+        <p>Редовни контроли, вакцинации и скрининг програми — покриени за матичните пациенти преку ФЗОМ, за да го зачувате здравјето пред да се појави проблем.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="container">
+    <p class="section-label">Постапка за упис</p>
+    <h2 class="section-title">Како да се запишете — чекор по чекор</h2>
+
+    <p class="process-text">
+      Иако ФЗОМ го олесни процесот на промена на матичен лекар преку своите електронски сервиси, <strong>финалниот чекор сè уште бара лично присуство</strong> — пациентот мора да го потпише <strong>Образецот за избран лекар (ИЛ-1 Образец)</strong> директно во ординацијата каде сака да се запише. Овој образец е законска обврска и не може да се потпише онлајн.
+    </p>
+    <p class="process-text">
+      Процедурата е едноставна и трае само неколку минути. Еве ги чекорите:
+    </p>
+
+    <div class="process-steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Проверете го вашето здравствено осигурување</h4>
+          <p>Уверете се дека вашето здравствено осигурување преку ФЗОМ е активно. Можете да го проверите на <a href="https://moe.fzo.org.mk" target="_blank" style="color:var(--teal);">moe.fzo.org.mk</a> или да јавите во подрачната служба на ФЗОМ.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Одјава од претходниот матичен лекар (ако имате)</h4>
+          <p>Доколку веќе имате избран матичен лекар, потребно е да се одјавите преку вашата стара ординација. Тие пополнуваат ИЛ-1 образец одјава. Еден примерок го добивате вие — однесете го со вас.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Дојдете лично во Оаза Медика</h4>
+          <p>Посетете нè на адресата: <strong>ул. 2 бр. 105, лок. 10, Илинден</strong> (во склоп на Домот за стари лица ОАЗА, веднаш до ОУ „Гоце Делчев"). Работиме <strong>Пон–Пет, 07:30–15:00</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Потпишете го ИЛ-1 Образецот за избран лекар</h4>
+          <p>Во ординацијата ќе пополниме ИЛ-1 Образец пријава за вас. Потребно е <strong>лична карта</strong> и <strong>здравствена картичка</strong>. Постапката трае само неколку минути — и веднаш сте запишани.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="walkin-box">
+      <div class="walkin-icon">🚶</div>
+      <p>Можете исто така едноставно да <strong>влезете без претходна најава</strong> и да кажете дека сакате да се запишете како матичен пациент во ПЗУ Оаза Медика. Нашиот тим ќе ве поведе низ целата постапка на лице место.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="cta-form">
+  <div class="container">
+    <p class="section-label">Пријавете се однапред</p>
+    <h2 class="section-title">Испратете барање за упис</h2>
+    <p class="section-sub">Пополнете го формуларот и ние ќе ве контактираме за да ги потврдиме деталите. Сè уште ќе биде потребна кратка посета за потпис на образецот, но така ќе заштедите време.</p>
+
+    <div class="form-card">
+      <div id="ctaFormWrap">
+        <div class="form-note">
+          📋 По испраќањето ќе добиете <strong>потврда</strong> на вашата е-маил адреса. Нашиот тим ќе ве контактира во рок од 1 работен ден.
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ctaName">Име и презиме *</label>
+            <input type="text" id="ctaName" placeholder="Пр. Ана Петровска" />
+          </div>
+          <div class="form-field">
+            <label for="ctaPhone">Телефонски број *</label>
+            <input type="tel" id="ctaPhone" placeholder="07X XXX XXX" />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="ctaEmail">Е-маил адреса *</label>
+          <input type="email" id="ctaEmail" placeholder="vase.ime@email.com" />
+        </div>
+
+        <div class="form-field">
+          <label for="ctaDob">Датум на раѓање</label>
+          <input type="date" id="ctaDob" />
+        </div>
+
+        <div class="form-field">
+          <label for="ctaInsurance">Статус на осигурување</label>
+          <select id="ctaInsurance">
+            <option value="">— Изберете —</option>
+            <option value="fzom-active">Активно ФЗОМ осигурување</option>
+            <option value="fzom-check">Не сум сигурен/на — треба проверка</option>
+            <option value="private">Без ФЗОМ — приватен пациент</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="ctaNote">Дополнителна напомена (по желба)</label>
+          <textarea id="ctaNote" placeholder="Прашања, специфични состојби или нешто друго што сакате да ни кажете..."></textarea>
+        </div>
+
+        <button class="form-submit" id="ctaSubmitBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg>
+          Испрати барање за упис
+        </button>
+      </div>
+
+      <div class="form-success" id="ctaSuccess">
+        <div class="form-success-icon">✅</div>
+        <h3>Барањето е примено!</h3>
+        <p>Ви благодариме на интересот. Проверете ја вашата е-маил адреса — испративме потврда. Ќе ве контактираме наскоро за да го потврдиме уписот.</p>
+        <a href="../index.html" class="btn btn-primary" style="margin-top:.5rem; background:var(--white); color:var(--teal-dark);">Назад кон почетна</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="../logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
+        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
+      <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
+  </div>
+  <div>
+    <h4>Брзи линкови</h4>
+    <ul>
+      <li><a href="../index.html#about">За нас</a></li>
+      <li><a href="../index.html#services">Услуги</a></li>
+      <li><a href="../index.html#insurance">Фонд / ФЗОМ</a></li>
+      <li><a href="../index.html#novosti">Новости</a></li>
+      <li><a href="../index.html#blog">Едукативен блог</a></li>
+      <li><a href="../index.html#faq">Прашања</a></li>
+      <li><a href="../index.html#contact">Контакт</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
+      <li><a href="#">Илинден, Македонија</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<script>
+/* ═══════════════════════════════
+   CTA PAGE — EmailJS CONFIG
+   Replace these 4 values with your real keys
+═══════════════════════════════ */
+var EJS_KEY     = '_bKQIm7DfH-RkzzEQ';
+var EJS_SERVICE = 'service_vvnl6qv';
+var EJS_NOTIFY  = 'template_eecrhx7';
+var EJS_REPLY   = 'template_1ydm9f2';
+
+if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
+  emailjs.init({ publicKey: EJS_KEY });
+}
+
+function submitCta() {
+  var name      = document.getElementById('ctaName').value.trim();
+  var phone     = document.getElementById('ctaPhone').value.trim();
+  var email     = document.getElementById('ctaEmail').value.trim();
+  var dob       = document.getElementById('ctaDob').value;
+  var insurance = document.getElementById('ctaInsurance').value;
+  var note      = document.getElementById('ctaNote').value.trim();
+
+  if (!name)  { alert('Ве молиме внесете Име и Презиме.'); return; }
+  if (!phone) { alert('Ве молиме внесете телефонски број.'); return; }
+  if (!email || email.indexOf('@') === -1) { alert('Ве молиме внесете валидна е-маил адреса.'); return; }
+
+  var btn = document.getElementById('ctaSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Се испраќа…';
+
+  var insuranceLabels = {
+    'fzom-active': 'Активно ФЗОМ осигурување',
+    'fzom-check':  'Не е сигурен/на — треба проверка',
+    'private':     'Без ФЗОМ — приватен пациент',
+    '':            '(не е наведено)'
+  };
+
+  var params = {
+    from_name:  name,
+    from_email: email,
+    phone:      phone,
+    dob:        dob || '(не е наведен)',
+    insurance:  insuranceLabels[insurance] || insurance,
+    note:       note || '(без напомена)',
+    date:       new Date().toLocaleString('mk-MK')
+  };
+
+  function onSuccess() {
+    document.getElementById('ctaFormWrap').style.display = 'none';
+    document.getElementById('ctaSuccess').classList.add('show');
+  }
+  function onError() {
+    btn.disabled = false;
+    btn.textContent = 'Испрати барање за упис';
+    alert('Се појави грешка. Јавете се директно на 070 123 123.');
+  }
+
+  if (EJS_KEY === 'REPLACE_ME_PUBLIC_KEY') {
+    setTimeout(onSuccess, 1200);
+  } else {
+    emailjs.send(EJS_SERVICE, EJS_NOTIFY, params)
+      .then(function() { return emailjs.send(EJS_SERVICE, EJS_REPLY, params); })
+      .then(onSuccess)
+      .catch(onError);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('ctaSubmitBtn').addEventListener('click', submitCta);
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
