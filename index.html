@@ -267,15 +267,12 @@
       .hero-actions { flex-direction:column; }
     }
     /* WEATHER WIDGET */
-    .weather-widget { position:fixed; top:80px; right:1.5rem; z-index:90; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); border-radius:14px; padding:.75rem 1.1rem; box-shadow:0 4px 20px rgba(42,122,122,.15); border:1px solid rgba(42,122,122,.12); display:flex; align-items:center; gap:.65rem; min-width:160px; transition:box-shadow .2s; }
-    .weather-widget:hover { box-shadow:0 6px 28px rgba(42,122,122,.22); }
-    .weather-icon { font-size:1.6rem; line-height:1; flex-shrink:0; }
+    .weather-widget { position:absolute; top:14px; right:14px; z-index:10; background:rgba(0,0,0,0.28); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border-radius:12px; padding:.55rem .9rem; display:flex; align-items:center; gap:.55rem; pointer-events:none; }
+    .weather-icon { font-size:1.45rem; line-height:1; flex-shrink:0; }
     .weather-info { display:flex; flex-direction:column; gap:1px; }
-    .weather-temp { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--text); line-height:1.1; }
-    .weather-desc { font-size:.7rem; color:var(--text-light); text-transform:capitalize; line-height:1.2; }
-    .weather-loc { font-size:.65rem; color:var(--teal); font-weight:600; letter-spacing:.04em; text-transform:uppercase; }
-    .weather-loading { font-size:.78rem; color:var(--text-light); }
-    @media(max-width:768px){ .weather-widget { top:auto; bottom:5.5rem; right:1rem; min-width:auto; padding:.6rem .9rem; } }
+    .weather-temp { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:#fff; line-height:1.1; }
+    .weather-desc { font-size:.68rem; color:rgba(255,255,255,.82); text-transform:capitalize; line-height:1.2; }
+    .weather-loc { font-size:.62rem; color:rgba(255,255,255,.6); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
     @keyframes spin { to { transform:rotate(360deg); } }
   </style>
 </head>
@@ -322,16 +319,6 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-
-<!-- WEATHER WIDGET -->
-<div class="weather-widget" id="weatherWidget" title="Времето во Општина Илинден">
-  <div class="weather-icon" id="weatherIcon">🌤️</div>
-  <div class="weather-info">
-    <div class="weather-temp" id="weatherTemp"><span class="weather-loading">…</span></div>
-    <div class="weather-desc" id="weatherDesc">Илинден, МК</div>
-    <div class="weather-loc" id="weatherLoc">Се вчитува…</div>
-  </div>
-</div>
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-badge">Општа медицина · Илинден</div>
@@ -350,15 +337,24 @@
   </div>
   <div class="hero-visual">
     <div class="hero-slideshow" id="heroSlideshow">
-      <img src="1.jpg" alt="Оаза Медика" class="active" onerror="this.style.display='none'"/>
-      <img src="2.jpg" alt="Оаза Медика" onerror="this.style.display='none'"/>
-      <img src="3.jpg" alt="Оаза Медика" onerror="this.style.display='none'"/>
-      <img src="4.jpg" alt="Оаза Медика" onerror="this.style.display='none'"/>
+      <img src="1.jpg" alt="Оаза Медика" class="active"/>
+      <img src="2.jpg" alt="Оаза Медика"/>
+      <img src="3.jpg" alt="Оаза Медика"/>
+      <img src="4.jpg" alt="Оаза Медика"/>
       <div class="hero-slideshow-dots">
         <span class="active" data-idx="0"></span>
         <span data-idx="1"></span>
         <span data-idx="2"></span>
         <span data-idx="3"></span>
+      </div>
+      <!-- WEATHER WIDGET overlaid on slideshow -->
+      <div class="weather-widget" id="weatherWidget" title="Времето во Општина Илинден">
+        <div class="weather-icon" id="weatherIcon">🌤️</div>
+        <div class="weather-info">
+          <div class="weather-temp" id="weatherTemp">…</div>
+          <div class="weather-desc" id="weatherDesc">Се вчитува</div>
+          <div class="weather-loc" id="weatherLoc">Илинден, МК</div>
+        </div>
       </div>
     </div>
   </div>
@@ -813,58 +809,20 @@ function initScrollReveal() {
 
 /* ── HERO SLIDESHOW ─────────────────────────────── */
 function initSlideshow() {
-  var allImgs = document.querySelectorAll('#heroSlideshow img');
-  var dotsContainer = document.querySelector('#heroSlideshow .hero-slideshow-dots');
-  if (!allImgs.length) return;
-
-  // Filter to only images that loaded successfully (not hidden by onerror)
-  var imgs = Array.prototype.filter.call(allImgs, function(img) {
-    return img.style.display !== 'none' && img.complete && img.naturalWidth > 0;
-  });
-
-  // If images haven't loaded yet, wait and retry
-  if (imgs.length === 0) {
-    var loadedCount = 0;
-    var totalImgs = allImgs.length;
-    function tryInit() {
-      loadedCount++;
-      if (loadedCount >= totalImgs) {
-        imgs = Array.prototype.filter.call(allImgs, function(img) {
-          return img.style.display !== 'none' && img.naturalWidth > 0;
-        });
-        if (imgs.length > 0) startSlideshow(imgs, dotsContainer);
-      }
-    }
-    Array.prototype.forEach.call(allImgs, function(img) {
-      if (img.complete) { tryInit(); }
-      else { img.addEventListener('load', tryInit); img.addEventListener('error', tryInit); }
-    });
-    return;
-  }
-  startSlideshow(imgs, dotsContainer);
-}
-
-function startSlideshow(imgs, dotsContainer) {
-  // Rebuild dots to match actual number of working images
-  if (dotsContainer) {
-    var dotsHtml = '';
-    for (var d = 0; d < imgs.length; d++) {
-      dotsHtml += '<span' + (d === 0 ? ' class="active"' : '') + '></span>';
-    }
-    dotsContainer.innerHTML = dotsHtml;
-  }
-  var dots = dotsContainer ? dotsContainer.querySelectorAll('span') : [];
-
-  // Reset all images, activate first
-  Array.prototype.forEach.call(imgs, function(img, idx) {
-    img.classList.toggle('active', idx === 0);
-  });
-
+  var imgs = document.querySelectorAll('#heroSlideshow img');
+  var dots = document.querySelectorAll('#heroSlideshow .hero-slideshow-dots span');
+  var total = imgs.length;
+  if (!total) return;
   var cur = 0;
+  // Ensure first slide is active
+  for (var j = 0; j < total; j++) {
+    imgs[j].classList.toggle('active', j === 0);
+    if (dots[j]) dots[j].classList.toggle('active', j === 0);
+  }
   function goTo(n) {
     imgs[cur].classList.remove('active');
     if (dots[cur]) dots[cur].classList.remove('active');
-    cur = (n + imgs.length) % imgs.length;
+    cur = (n + total) % total;
     imgs[cur].classList.add('active');
     if (dots[cur]) dots[cur].classList.add('active');
   }
