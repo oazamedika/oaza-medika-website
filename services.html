@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Услуги – Оаза Медика | Ординација по општа медицина, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-fallback { display:flex; align-items:center; gap:12px; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-links a.active { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    /* BTN */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
+    .btn-primary { background:var(--teal); color:var(--white); box-shadow:0 4px 18px rgba(42,122,122,.3); }
+    .btn-primary:hover { background:var(--teal-dark); transform:translateY(-2px); }
+    .btn-secondary { background:transparent; color:var(--teal); border:2px solid var(--teal); }
+    .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
+
+    /* PAGE HERO */
+    .page-hero { background:linear-gradient(135deg, var(--teal-light) 0%, var(--green-light) 100%); padding:4.5rem 5% 3.5rem; text-align:center; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; top:-40%; left:-10%; width:50vw; height:200%; background:radial-gradient(ellipse,rgba(42,122,122,.1) 0%,transparent 70%); pointer-events:none; }
+    .page-hero::after { content:''; position:absolute; bottom:-30%; right:-5%; width:40vw; height:160%; background:radial-gradient(ellipse,rgba(26,92,42,.08) 0%,transparent 70%); pointer-events:none; }
+    .page-hero-inner { position:relative; z-index:1; max-width:720px; margin:0 auto; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--teal); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1.4rem; box-shadow:0 2px 12px rgba(42,122,122,.12); }
+    .page-hero-badge::before { content:''; width:7px; height:7px; background:var(--teal); border-radius:50%; }
+    .page-hero h1 { font-size:clamp(2rem,4vw,3.2rem); color:var(--text); margin-bottom:1rem; }
+    .page-hero h1 em { font-style:normal; color:var(--teal); }
+    .page-hero p { font-size:1.05rem; color:var(--text-mid); font-weight:300; max-width:580px; margin:0 auto; }
+
+    /* SLIDESHOW */
+    .slideshow-section { padding:0 5% 4rem; }
+    .slideshow-wrap { position:relative; width:100%; max-width:860px; height:420px; margin:0 auto; border-radius:28px; overflow:hidden; box-shadow:var(--shadow), 0 0 0 1px rgba(42,122,122,.08); }
+    .slideshow-wrap img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; }
+    .slideshow-wrap img.active { opacity:1; }
+    .slideshow-dots { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+    .slideshow-dots span { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; transition:background .3s; }
+    .slideshow-dots span.active { background:#fff; }
+    .slideshow-arrow { position:absolute; top:50%; transform:translateY(-50%); z-index:2; background:rgba(255,255,255,.18); backdrop-filter:blur(4px); border:none; cursor:pointer; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:1.1rem; transition:background .2s; }
+    .slideshow-arrow:hover { background:rgba(255,255,255,.32); }
+    .slideshow-arrow.prev { left:14px; }
+    .slideshow-arrow.next { right:14px; }
+
+    /* SECTION SHARED */
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.6rem,2.5vw,2.2rem); color:var(--text); margin-bottom:.8rem; }
+    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; }
+    .section-header { margin-bottom:2.5rem; }
+
+    /* SERVICES CONTENT */
+    .services-content { padding:4rem 5%; }
+    .services-content > .section-header { max-width:860px; margin-left:auto; margin-right:auto; margin-bottom:3rem; }
+
+    /* SERVICE BLOCK — top-level categories */
+    .service-block { max-width:860px; margin:0 auto 3rem; background:var(--white); border-radius:20px; overflow:hidden; border:1px solid rgba(42,122,122,.1); box-shadow:var(--shadow); }
+    .service-block-header { display:flex; align-items:flex-start; gap:1.2rem; padding:2rem 2.2rem 1.5rem; border-bottom:1px solid rgba(42,122,122,.08); }
+    .service-block-num { width:40px; height:40px; border-radius:12px; background:var(--teal); color:var(--white); font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:3px; }
+    .service-block-title { font-family:'Playfair Display',serif; font-size:1.25rem; color:var(--text); margin-bottom:.3rem; }
+    .service-block-sub { font-size:.9rem; color:var(--text-mid); font-weight:300; }
+    .service-block-body { padding:1.8rem 2.2rem 2rem; }
+
+    /* SUBSECTION within a block */
+    .sub-section { margin-bottom:1.8rem; }
+    .sub-section:last-child { margin-bottom:0; }
+    .sub-section-title { font-size:.8rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:1rem; display:flex; align-items:center; gap:8px; }
+    .sub-section-title::after { content:''; flex:1; height:1px; background:rgba(42,122,122,.15); }
+
+    /* ITEM LIST — bullet items */
+    .item-list { display:flex; flex-direction:column; gap:.7rem; }
+    .item-row { display:flex; align-items:flex-start; gap:10px; font-size:.93rem; color:var(--text-mid); font-weight:300; }
+    .item-dot { width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:.55rem; }
+
+    /* SCREENING CARDS grid */
+    .screening-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(360px,1fr)); gap:1.2rem; }
+    .screening-card { background:var(--cream); border-radius:var(--radius); padding:1.4rem 1.6rem; border:1px solid rgba(42,122,122,.1); transition:all .3s; }
+    .screening-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(42,122,122,.1); border-color:rgba(42,122,122,.22); }
+    .screening-card-head { display:flex; align-items:center; gap:10px; margin-bottom:.8rem; }
+    .screening-card h4 { font-family:'Playfair Display',serif; font-size:1rem; color:var(--text); }
+    .screening-card p { font-size:.86rem; color:var(--text-mid); font-weight:300; line-height:1.65; margin-bottom:.6rem; }
+    .screening-detail { font-size:.82rem; color:var(--text-light); font-weight:300; line-height:1.6; }
+    .screening-detail strong { color:var(--teal); font-weight:600; font-size:.75rem; letter-spacing:.05em; text-transform:uppercase; display:block; margin-bottom:.2rem; }
+
+    /* PRICING TABLE */
+    .pricing-section { max-width:860px; margin:0 auto; background:linear-gradient(135deg,var(--teal) 0%,var(--green) 100%); border-radius:20px; padding:2.5rem 2.5rem; color:var(--white); box-shadow:var(--shadow); }
+    .pricing-section h2 { color:var(--white); font-size:1.4rem; margin-bottom:.4rem; }
+    .pricing-section > p { color:rgba(255,255,255,.8); font-size:.9rem; font-weight:300; margin-bottom:1.8rem; }
+    .pricing-table { width:100%; border-collapse:collapse; }
+    .pricing-table th { text-align:left; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.6); padding:.5rem 1rem .8rem; border-bottom:1px solid rgba(255,255,255,.15); }
+    .pricing-table td { padding:.85rem 1rem; font-size:.9rem; color:rgba(255,255,255,.88); font-weight:300; border-bottom:1px solid rgba(255,255,255,.08); vertical-align:top; }
+    .pricing-table tr:last-child td { border-bottom:none; }
+    .pricing-table td:first-child { font-weight:600; color:var(--white); }
+    .pricing-badge { display:inline-block; padding:.2rem .7rem; border-radius:50px; font-size:.72rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; }
+    .badge-free { background:rgba(255,255,255,.2); color:rgba(255,255,255,.95); }
+    .badge-part { background:rgba(255,209,102,.2); color:#ffe082; }
+    .badge-paid { background:rgba(255,100,100,.18); color:#ffb3b3; }
+
+    /* CTA STRIP */
+    .cta-strip { max-width:860px; margin:3rem auto 0; text-align:center; padding:3rem 2rem; background:var(--white); border-radius:20px; border:1px solid rgba(42,122,122,.1); box-shadow:var(--shadow); }
+    .cta-strip h3 { font-size:1.4rem; color:var(--text); margin-bottom:.6rem; }
+    .cta-strip p { color:var(--text-mid); font-weight:300; font-size:.95rem; margin-bottom:1.8rem; max-width:480px; margin-left:auto; margin-right:auto; }
+    .cta-strip-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; margin-top:5rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { padding:3rem 4% 2.5rem; }
+      .slideshow-section { padding:0 4% 3rem; }
+      .slideshow-wrap { height:240px; border-radius:18px; }
+      .services-content { padding:2.5rem 4%; }
+      .service-block-header { padding:1.4rem 1.4rem 1.2rem; }
+      .service-block-body { padding:1.2rem 1.4rem 1.5rem; }
+      .screening-grid { grid-template-columns:1fr; }
+      .pricing-section { padding:1.8rem 1.4rem; }
+      .pricing-table th, .pricing-table td { padding:.7rem .6rem; font-size:.82rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+      .cta-strip { padding:2rem 1.4rem; }
+    }
+    @media(max-width:480px) {
+      .page-hero h1 { font-size:1.85rem; }
+      .cta-strip-actions { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div class="nav-logo-fallback" id="navLogoFallback" style="display:none;">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+        <ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span>Оаза Медика</span>
+        <span>Ординација – Илинден</span>
+      </div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">За нас</a></li>
+    <li><a href="services.html" class="active">Услуги</a></li>
+    <li><a href="tools-module/tools.html">Алатки</a></li>
+    <li><a href="index.html#insurance">Фонд</a></li>
+    <li><a href="index.html#novosti">Новости</a></li>
+    <li><a href="index.html#blog">Блог</a></li>
+    <li><a href="index.html#faq">ЧПП</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">Примарна здравствена заштита</div>
+    <h1>Услуги на <em>Оаза Медика</em></h1>
+    <p>Сеопфатна лекарска грижа за секој пациент — од рутински прегледи до насочени скрининзи, административна поддршка и далечински консултации.</p>
+  </div>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-section" style="padding-top:3rem;">
+  <div class="slideshow-wrap" id="servicesSlideshow">
+    <img src="services/1.png" alt="Услуги Оаза Медика" class="active"/>
+    <img src="services/2.png" alt="Услуги Оаза Медика"/>
+    <img src="services/3.png" alt="Услуги Оаза Медика"/>
+    <img src="services/4.png" alt="Услуги Оаза Медика"/>
+    <button class="slideshow-arrow prev" id="slidePrev" aria-label="Претходна">&#8249;</button>
+    <button class="slideshow-arrow next" id="slideNext" aria-label="Следна">&#8250;</button>
+    <div class="slideshow-dots">
+      <span class="active"></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES CONTENT -->
+<div class="services-content">
+
+  <div class="section-header">
+    <p class="section-label">Детален преглед</p>
+    <h2 class="section-title">Што нудиме</h2>
+    <p class="section-sub">Сите услуги на ординацијата, организирани по категории.</p>
+  </div>
+
+  <!-- BLOCK 1: Дијагностика и терапија -->
+  <div class="service-block">
+    <div class="service-block-header">
+      <div class="service-block-num">1</div>
+      <div>
+        <div class="service-block-title">Основни и напредни дијагностички и терапевтски услуги</div>
+        <div class="service-block-sub">Прегледи, домашни посети, насочени скрининзи и терапевтски интервенции.</div>
+      </div>
+    </div>
+    <div class="service-block-body">
+
+      <div class="sub-section">
+        <div class="sub-section-title">Форми на лекарска грижа</div>
+        <div class="item-list">
+          <div class="item-row"><div class="item-dot"></div><span><strong>Прегледи во ординација</strong> — Општ преглед, консултации и следење на здравствената состојба.</span></div>
+          <div class="item-row"><div class="item-dot"></div><span><strong>Домашни посети</strong> — Посета на пациентот во неговиот дом кога неговата состојба не дозволува доаѓање во ординација (често по препорака на специјалист).</span></div>
+          <div class="item-row"><div class="item-dot"></div><span><strong>Терапевтски услуги</strong> — Апликација на инјекции (ампуларна терапија), преврзување на рани и мали хируршки интервенции.</span></div>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <div class="sub-section-title">Насочени прегледи (скрининзи)</div>
+        <div class="screening-grid">
+
+          <div class="screening-card">
+            <div class="screening-card-head">
+              <h4>Кардиоваскуларен скрининг</h4>
+            </div>
+            <p>Идеален за пациенти со висок притисок, стресна работа или фамилијарна историја на срцеви заболувања.</p>
+            <div class="screening-detail">
+              <strong>Вклучува</strong>
+              Мерење на тензија, 12-канално ЕКГ со толкување, аускултација на срце и бели дробови, проверка на заситеност со кислород и пресметка на индекс на телесна маса.
+            </div>
+          </div>
+
+          <div class="screening-card">
+            <div class="screening-card-head">
+              <h4>Дијабетолошка проверка</h4>
+            </div>
+            <p>Насочен преглед за рано откривање на дијабетес тип 2 или следење на постоечки пациенти.</p>
+            <div class="screening-detail">
+              <strong>Вклучува</strong>
+              Гликемија на гладно, мерење обем на струк и тежина, едукација за исхрана и навремено превенирање на компликации.
+            </div>
+          </div>
+
+          <div class="screening-card">
+            <div class="screening-card-head">
+              <h4>Невролошки основен преглед</h4>
+            </div>
+            <p>Насочен кон пациенти кои се жалат на вртоглавици, трнење на екстремитетите или болки во рбетот.</p>
+            <div class="screening-detail">
+              <strong>Вклучува</strong>
+              Тестирање на рефлекси, сензибилитет на кожата, рамнотежа и координација.
+            </div>
+          </div>
+
+          <div class="screening-card">
+            <div class="screening-card-head">
+              <h4>ОРЛ скрининг</h4>
+            </div>
+            <p>Фокусиран на пациенти со чести инфекции на увото или проблеми со слухот.</p>
+            <div class="screening-detail">
+              <strong>Вклучува</strong>
+              Директна отоскопија на ушниот канал и тапанчето, преглед на грлото под силно светло, терапевтско чистење на слушен канал и останати тестови.
+            </div>
+          </div>
+
+          <div class="screening-card">
+            <div class="screening-card-head">
+              <h4>Останати специјалистички прегледи</h4>
+            </div>
+            <p>Кога ќе постои доволен интерес, ќе организираме специјални термини во кои специјалисти од различни области ќе ординираат директно во нашата установа — без потреба пациентот да патува.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 2: Превентивни услуги -->
+  <div class="service-block">
+    <div class="service-block-header">
+      <div class="service-block-num">2</div>
+      <div>
+        <div class="service-block-title">Превентивни услуги</div>
+        <div class="service-block-sub">Програми за рано откривање на болести и систематски прегледи.</div>
+      </div>
+    </div>
+    <div class="service-block-body">
+      <div class="item-list">
+        <div class="item-row"><div class="item-dot"></div><span><strong>Рано откривање на кардиоваскуларни болести</strong> — Мерење на крвен притисок, ЕКГ и следење на ризик фактори.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Скрининг за дијабетес</strong> — Контрола на шеќер во крвта кај одредени возрасни групи.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Превенција на бубрежни заболувања</strong> — Анализа на урина и следење на функцијата на бубрезите.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Скрининг за ментално здравје</strong> — Евалуација и упатување при знаци на депресија, анксиозност и слично.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Скрининг за преканцерозни состојби</strong> — Рано откривање на промени кои може да прогредираат кон малигна болест.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Систематски прегледи</strong> — За деца, ученици и одредени категории возрасни лица.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 3: Административни и советодавни -->
+  <div class="service-block">
+    <div class="service-block-header">
+      <div class="service-block-num">3</div>
+      <div>
+        <div class="service-block-title">Административни и советодавни услуги</div>
+        <div class="service-block-sub">Рецепти, упати, боледувања, потврди и напреден систем за закажување.</div>
+      </div>
+    </div>
+    <div class="service-block-body">
+      <div class="item-list">
+        <div class="item-row"><div class="item-dot"></div><span><strong>Издавање рецепти</strong> — Препишување лекови од Листата на лекови кои паѓаат на товар на Фондот (е-рецепт).</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Упати</strong> — Издавање упати за лабораториски испитувања и специјалистичко-консултативни прегледи преку системот „Мој Термин".</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Ефикасна листа на чекање</strong> — Напреден компјутерски систем за брзо закажување на штотуку објавен слободен термин кај доктори или специјалистички ресурси каде тешко се наоѓа слободен термин.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Боледувања</strong> — Утврдување на привремена спреченост за работа до 15 дена и стручно упатување на комисија за продолжување над 15 дена.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Потврди и извештаи</strong> — Лекарски потврди за оправдување отсуство од училиште или градинка, како и извештаи за здравствената состојба.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOCK 4: Телемедицина -->
+  <div class="service-block">
+    <div class="service-block-header">
+      <div class="service-block-num">4</div>
+      <div>
+        <div class="service-block-title">Телемедицина и далечински консултации</div>
+        <div class="service-block-sub">Стручна медицинска поддршка без физичко присуство — идеална за хронични болни или пациенти во изолација.</div>
+      </div>
+    </div>
+    <div class="service-block-body">
+      <div class="item-list">
+        <div class="item-row"><div class="item-dot"></div><span><strong>Видео-консултации</strong> — Разговор за симптоми, следење на веќе пропишана терапија и толкување на лабораториски резултати.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Е-рецепти и е-упати</strong> — Продолжување на редовна терапија за хронични дијагнози по извршена онлајн консултација.</span></div>
+        <div class="item-row"><div class="item-dot"></div><span><strong>Мониторинг на витални параметри</strong> — Пациентот мери притисок или шеќер дома и ги соопштува податоците, кои се внесуваат во електронското досие.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICING TABLE -->
+  <div class="pricing-section">
+    <h2>Што е бесплатно, а што се плаќа?</h2>
+    <p>Преглед на статусот на најчестите услуги за осигурени лица.</p>
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Услуга</th>
+          <th>Статус</th>
+          <th>Забелешка</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Преглед во ординација</td>
+          <td><span class="pricing-badge badge-free">Бесплатно</span></td>
+          <td>Без партиципација за осигурени лица.</td>
+        </tr>
+        <tr>
+          <td>Препишување лекови / упати</td>
+          <td><span class="pricing-badge badge-free">Бесплатно</span></td>
+          <td>Стандардна услуга на матичниот лекар.</td>
+        </tr>
+        <tr>
+          <td>Ампуларна терапија</td>
+          <td><span class="pricing-badge badge-part">Партиципација</span></td>
+          <td>Се наплаќа само за материјалот (шприц, игла, ампула).</td>
+        </tr>
+        <tr>
+          <td>Домашна посета</td>
+          <td><span class="pricing-badge badge-part">Партиципација</span></td>
+          <td>Се наплаќа само за потрошените средства за километрите (доколку не е итна состојба).</td>
+        </tr>
+        <tr>
+          <td>Услуги по желба</td>
+          <td><span class="pricing-badge badge-paid">Се наплаќа</span></td>
+          <td>Сè што е надвор од основниот пакет на ФЗОМ.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h3>Имате прашање за некоја услуга?</h3>
+    <p>Јавете се или испратете е-маил — тимот на Оаза Медика е тука за вас секој работен ден.</p>
+    <div class="cta-strip-actions">
+      <a href="tel:+38970123123" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Повикај сега
+      </a>
+      <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        pacienti@oazamedika.mk
+      </a>
+    </div>
+  </div>
+
+</div><!-- /services-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
+        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
+      <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
+  </div>
+  <div>
+    <h4>Брзи линкови</h4>
+    <ul>
+      <li><a href="index.html#about">За нас</a></li>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="index.html#insurance">Фонд / ФЗОМ</a></li>
+      <li><a href="index.html#novosti">Новости</a></li>
+      <li><a href="index.html#blog">Едукативен блог</a></li>
+      <li><a href="index.html#faq">Прашања</a></li>
+      <li><a href="index.html#contact">Контакт</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
+      <li><a href="#">Илинден, Македонија</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<script>
+/* ── NAV HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ── SLIDESHOW ── */
+(function() {
+  var wrap = document.getElementById('servicesSlideshow');
+  var imgs = wrap.querySelectorAll('img');
+  var dots = wrap.querySelectorAll('.slideshow-dots span');
+  var total = imgs.length;
+  var cur = 0;
+
+  function goTo(n) {
+    imgs[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + total) % total;
+    imgs[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() {
+      clearInterval(timer);
+      goTo(i);
+      timer = setInterval(function() { goTo(cur + 1); }, 4000);
+    });
+  });
+
+  document.getElementById('slidePrev').addEventListener('click', function() {
+    clearInterval(timer);
+    goTo(cur - 1);
+    timer = setInterval(function() { goTo(cur + 1); }, 4000);
+  });
+
+  document.getElementById('slideNext').addEventListener('click', function() {
+    clearInterval(timer);
+    goTo(cur + 1);
+    timer = setInterval(function() { goTo(cur + 1); }, 4000);
+  });
+
+  var timer = setInterval(function() { goTo(cur + 1); }, 4000);
+})();
+</script>
+</body>
+</html>

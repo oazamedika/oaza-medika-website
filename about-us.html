@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>За нас – Оаза Медика | Ординација по општа медицина, Илинден</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
+      --green-light:#e8f5ec; --teal-light:#e4f2f2; --cream:#f9faf8;
+      --text:#1c2a22; --text-mid:#3d5046; --text-light:#6b8070;
+      --white:#ffffff; --shadow:0 4px 32px rgba(26,92,42,0.10); --radius:14px;
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
+
+    /* NAV */
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
+    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+    .nav-logo-img { height:64px; width:auto; display:block; }
+    .nav-logo-fallback { display:flex; align-items:center; gap:12px; }
+    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
+    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
+    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--teal); }
+    .nav-links a.active { color:var(--teal); }
+    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
+    .nav-cta:hover { background:var(--teal-dark) !important; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
+
+    /* BTN */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
+    .btn-primary { background:var(--teal); color:var(--white); box-shadow:0 4px 18px rgba(42,122,122,.3); }
+    .btn-primary:hover { background:var(--teal-dark); transform:translateY(-2px); }
+    .btn-secondary { background:transparent; color:var(--teal); border:2px solid var(--teal); }
+    .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
+
+    /* PAGE HERO */
+    .page-hero { background:linear-gradient(135deg, var(--teal-light) 0%, var(--green-light) 100%); padding:4.5rem 5% 3.5rem; text-align:center; position:relative; overflow:hidden; }
+    .page-hero::before { content:''; position:absolute; top:-40%; left:-10%; width:50vw; height:200%; background:radial-gradient(ellipse,rgba(42,122,122,.1) 0%,transparent 70%); pointer-events:none; }
+    .page-hero::after { content:''; position:absolute; bottom:-30%; right:-5%; width:40vw; height:160%; background:radial-gradient(ellipse,rgba(26,92,42,.08) 0%,transparent 70%); pointer-events:none; }
+    .page-hero-inner { position:relative; z-index:1; max-width:720px; margin:0 auto; }
+    .page-hero-badge { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--teal); padding:.35rem .9rem; border-radius:50px; font-size:.78rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1.4rem; box-shadow:0 2px 12px rgba(42,122,122,.12); }
+    .page-hero-badge::before { content:''; width:7px; height:7px; background:var(--teal); border-radius:50%; }
+    .page-hero h1 { font-size:clamp(2rem,4vw,3.2rem); color:var(--text); margin-bottom:1rem; }
+    .page-hero h1 em { font-style:normal; color:var(--teal); }
+    .page-hero p { font-size:1.05rem; color:var(--text-mid); font-weight:300; max-width:580px; margin:0 auto; }
+
+    /* SHARED */
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.6rem,2.5vw,2.2rem); color:var(--text); margin-bottom:.8rem; }
+    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; }
+
+    /* CONTENT WRAPPER */
+    .page-content { max-width:900px; margin:0 auto; padding:4rem 5%; }
+
+    /* ── DOCTOR SECTION ── */
+    .doctor-section { display:grid; grid-template-columns:340px 1fr; gap:3.5rem; align-items:start; margin-bottom:5rem; }
+    .doctor-photo-col { position:relative; }
+    /* Doctor slideshow */
+    .doctor-slideshow { position:relative; width:100%; border-radius:24px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; }
+    .doctor-slideshow .doctor-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; transition:opacity 1s ease; display:block; border-radius:0; box-shadow:none; aspect-ratio:unset; }
+    .doctor-slideshow .doctor-photo.active { opacity:1; }
+    .doctor-slideshow-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+    .doctor-slideshow-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; transition:background .3s; }
+    .doctor-slideshow-dots span.active { background:#fff; }
+    .doctor-photo { width:100%; border-radius:24px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; object-fit:cover; object-position:top; display:block; }
+    .doctor-photo-fallback { width:100%; aspect-ratio:3/4; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
+    .doctor-badge-float { position:absolute; bottom:-1.2rem; left:50%; transform:translateX(-50%); background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; }
+    .doctor-badge-float::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; flex-shrink:0; }
+    .doctor-info { padding-top:.5rem; }
+    .doctor-name-block { margin-bottom:1.8rem; }
+    .doctor-name-block h2 { font-size:clamp(1.5rem,2.5vw,2rem); color:var(--text); margin-bottom:.25rem; }
+    .doctor-name-block .doctor-title-text { font-size:.95rem; color:var(--text-mid); font-weight:300; }
+    .doctor-name-mobile { display:none; }
+    .doctor-text p { color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem; }
+
+    /* Timeline-style experience list */
+    .exp-list { display:flex; flex-direction:column; gap:0; margin-top:1.8rem; }
+    .exp-item { display:flex; gap:1.2rem; position:relative; padding-bottom:1.6rem; }
+    .exp-item:last-child { padding-bottom:0; }
+    .exp-line-col { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+    .exp-dot { width:12px; height:12px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:.45rem; z-index:1; }
+    .exp-connector { width:2px; background:rgba(42,122,122,.18); flex:1; margin-top:4px; }
+    .exp-item:last-child .exp-connector { display:none; }
+    .exp-body strong { display:block; font-size:.92rem; color:var(--text); margin-bottom:.15rem; }
+    .exp-body span { font-size:.83rem; color:var(--text-light); font-weight:300; line-height:1.6; display:block; }
+    .exp-tag { display:inline-block; background:var(--teal-light); color:var(--teal); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .6rem; border-radius:50px; margin-bottom:.35rem; }
+
+    /* DIVIDER */
+    .section-divider { height:1px; background:rgba(42,122,122,.12); margin:1rem 0 4rem; }
+
+    /* ── ABOUT OAZA ── */
+    .about-oaza { margin-bottom:4rem; }
+    .about-oaza p { color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem; }
+
+    /* DOM SPLIT LAYOUT */
+    .dom-layout { display:flex; flex-direction:column; gap:1.8rem; margin-top:2.5rem; }
+    .dom-image { width:100%; border-radius:20px; overflow:hidden; box-shadow:var(--shadow); }
+    .dom-image img { width:100%; height:340px; object-fit:cover; display:block; }
+    .dom-info { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+    .dom-stat { background:var(--white); border-radius:var(--radius); padding:1.2rem 1.4rem; border:1px solid rgba(42,122,122,.1); display:flex; align-items:flex-start; gap:12px; }
+    .dom-stat-icon { width:40px; height:40px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--teal); }
+    .dom-stat strong { display:block; font-size:.88rem; color:var(--text); margin-bottom:2px; }
+    .dom-stat span { font-size:.82rem; color:var(--text-light); font-weight:300; }
+
+    /* COLLABORATION CARD */
+    .collab-card { background:linear-gradient(135deg,var(--teal) 0%,var(--green) 100%); border-radius:20px; padding:2.5rem 2.8rem; color:var(--white); margin-top:3rem; }
+    .collab-card h3 { color:var(--white); font-size:1.3rem; margin-bottom:.8rem; }
+    .collab-card p { color:rgba(255,255,255,.82); font-weight:300; font-size:.95rem; margin-bottom:1rem; line-height:1.75; }
+    .collab-card p:last-child { margin-bottom:0; }
+
+    /* CTA STRIP */
+    .cta-strip { text-align:center; padding:3rem 2rem; background:var(--white); border-radius:20px; border:1px solid rgba(42,122,122,.1); box-shadow:var(--shadow); margin-top:3rem; }
+    .cta-strip h3 { font-size:1.4rem; color:var(--text); margin-bottom:.6rem; }
+    .cta-strip p { color:var(--text-mid); font-weight:300; font-size:.95rem; margin-bottom:1.8rem; max-width:480px; margin-left:auto; margin-right:auto; }
+    .cta-strip-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; margin-top:5rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* MOBILE */
+    @media(max-width:768px) {
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .page-hero { padding:3rem 4% 2.5rem; }
+      .page-content { padding:3rem 4%; }
+      .doctor-section { grid-template-columns:1fr; gap:2rem; }
+      .doctor-photo-col { display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+      .doctor-slideshow { width:300px; height:300px; aspect-ratio:1; border-radius:50%; flex-shrink:0; }
+      .doctor-slideshow .doctor-photo { border-radius:0; }
+      .doctor-photo-fallback { width:300px; height:300px; aspect-ratio:1; border-radius:50%; flex-shrink:0; font-size:2rem; }
+      .doctor-badge-float { position:static; transform:none; background:var(--green-light); box-shadow:none; color:var(--green); font-size:.78rem; padding:.4rem .9rem; }
+      .doctor-name-mobile { display:block; font-size:1.4rem; color:var(--text); text-align:center; margin-top:.2rem; }
+      .doctor-name-desktop { display:none; }
+      .dom-info { grid-template-columns:1fr; }
+      .collab-card { padding:2rem 1.5rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+      .cta-strip { padding:2rem 1.2rem; }
+    }
+    @media(max-width:480px) {
+      .page-hero h1 { font-size:1.85rem; }
+      .cta-strip-actions { flex-direction:column; align-items:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo_header.png" alt="Оаза Медика" class="nav-logo-img"
+      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
+    <div class="nav-logo-fallback" id="navLogoFallback" style="display:none;">
+      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
+        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
+        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
+        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
+        <ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span>Оаза Медика</span>
+        <span>Ординација – Илинден</span>
+      </div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about-us.html" class="active">За нас</a></li>
+    <li><a href="services.html">Услуги</a></li>
+    <li><a href="tools-module/tools.html">Алатки</a></li>
+    <li><a href="index.html#insurance">Фонд</a></li>
+    <li><a href="index.html#novosti">Новости</a></li>
+    <li><a href="index.html#blog">Блог</a></li>
+    <li><a href="index.html#faq">ЧПП</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Контакт</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Мени">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-badge">Нашата приказна</div>
+    <h1>За <em>Оаза Медика</em></h1>
+    <p>Запознајте го тимот на Оаза Медика и дознајте повеќе за ординацијата, нејзината мисија и средината во која работи.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="page-content">
+
+  <!-- DOCTOR SECTION -->
+  <div style="margin-bottom:1.8rem;">
+    <p class="section-label">Вашиот лекар</p>
+    <h2 class="section-title doctor-name-desktop">д-р Гордана Стевчева</h2>
+  </div>
+
+  <div class="doctor-section">
+
+    <div class="doctor-photo-col">
+      <div class="doctor-slideshow" id="doctorSlideshow">
+        <img src="doctor-photos/doctor-a-1.png" alt="д-р Гордана Стевчева" class="doctor-photo active" />
+        <img src="doctor-photos/doctor-a-2.png" alt="д-р Гордана Стевчева" class="doctor-photo" />
+        <img src="doctor-photos/doctor-a-3.png" alt="д-р Гордана Стевчева" class="doctor-photo" />
+        <div class="doctor-slideshow-dots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="doctor-photo-fallback" id="doctorPhotoFallback" style="display:none;">ГС</div>
+      <div class="doctor-badge-float">Матичен лекар · ФЗОМ</div>
+      <h2 class="doctor-name-mobile">д-р Гордана Стевчева</h2>
+    </div>
+
+    <div class="doctor-info">
+
+      <div class="doctor-text">
+        <p>д-р Гордана Стевчева е доктор по општа медицина која својата диплома ја стекнува во 2023 година. Својот професионален развој и градењето на богато и разновидно практично искуство го започнува уште во текот на студентските денови, активно ангажирајќи се во повеќе медицински области. Веднаш по дипломирањето, таа продолжува со посветена работа и надградување на своите вештини, со цел да обезбеди современа и квалитетна здравствена грижа за своите пациенти.</p>
+      </div>
+
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Работно искуство</div>
+            <strong>ЈЗУ Здравствен дом – Скопје</strong>
+            <span>Дежурна служба · Скопје, Северна Македонија</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Спортска медицина</div>
+            <strong>Доктор на женската репрезентација на ФФМ</strong>
+            <span>Медицинска поддршка на националниот фудбалски тим</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Пандемија COVID-19</div>
+            <strong>Доктор-администратор при масовната имунизација</strong>
+            <span>Координација и спроведување на вакцинацијата против КОВИД-19, волонтирање во болници за лекување на заболени пациенти.</span>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Континуирано усовршување</div>
+            <strong>Конгреси и симпозиуми</strong>
+            <span>Активно учество на голем број домашни и меѓународни стручни конгреси и симпозиуми, следејќи ги најновите достигнувања во медицината.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ABOUT OAZA MEDIKA -->
+  <div class="about-oaza" id="ordinacija">
+    <p class="section-label">Ординацијата</p>
+    <h2 class="section-title">За Оаза Медика</h2>
+
+    <div style="margin-top:1.2rem;">
+      <p>ПЗУ Ординација по општа медицина <strong>Оаза Медика</strong> е основана со цел да обезбеди топла, достапна и стручна примарна здравствена заштита за жителите на Општина Илинден и околните општини. Ординацијата работи во склоп на Домот за сместување и нега на стари лица ОАЗА — современ комплекс изграден според највисоките европски стандарди.</p>
+      <p>Со склучен договор со Фондот за здравствено осигурување на Македонија (ФЗОМ), ординацијата нуди целосна примарна здравствена заштита за сите здравствено осигурени лица, без доплата — а за пациенти без упат или странски државјани се нудат и приватни прегледи по достапни цени.</p>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- DOM ZA STARI -->
+  <div id="dom">
+    <p class="section-label">Нашата локација</p>
+    <h2 class="section-title">Дом за стари лица ОАЗА – Илинден</h2>
+
+    <div style="margin-top:1.2rem; margin-bottom:2rem;">
+      <p>Ординацијата Оаза Медика е сместена во склоп на Домот за сместување и нега на стари лица ОАЗА, проект на Адора Бизнис Груп — еден од најамбициозните проекти за грижа на возрасни лица во регионот. Комплексот е изграден на атрактивна локација од 30.000 m² во еколошки чиста и мирна средина во срцето на Општина Илинден, непосредно до Скопје.</p>
+    </div>
+
+    <div class="dom-layout">
+      <div class="dom-image">
+        <img src="https://adora.com.mk/wp-content/uploads/2025/01/main-1.jpg" alt="Дом за стари лица ОАЗА – Илинден" loading="lazy" />
+      </div>
+      <div class="dom-info">
+        <div class="dom-stat">
+          <div class="dom-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          </div>
+          <div><strong>Капацитет</strong><span>Над 200 лица, грижени од околу 60 стручни вработени</span></div>
+        </div>
+        <div class="dom-stat">
+          <div class="dom-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><strong>Локација</strong><span>ул. 2 бр. 105, лок. 10 — Општина Илинден, до Скопје</span></div>
+        </div>
+        <div class="dom-stat">
+          <div class="dom-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div><strong>Содржини</strong><span>Приземје и пет ката — домување, лекување, нега, рехабилитација, ресторан и рекреација</span></div>
+        </div>
+        <div class="dom-stat">
+          <div class="dom-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <div><strong>Стандарди</strong><span>Изграден по современи европски стандарди за квалитет на живот и нега</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLABORATION CARD -->
+    <div class="collab-card">
+      <h3>Непрекината соработка со Домот ОАЗА</h3>
+      <p>Ординацијата Оаза Медика и Домот за стари лица ОАЗА функционираат во тесна и континуирана соработка, со заедничка цел — грижа за здравјето и благосостојбата на резидентите и на пошироката заедница. Корисниците на домот имаат приоритетен пристап до матичниот лекар директно во рамките на комплексот, без потреба за патување или долго чекање.</p>
+      <p>Д-р Гордана Стевчева редовно ги следи хроничните состојби на резидентите, ги координира упатите кон специјалисти и учествува во мултидисциплинарниот тим на домот, кој вклучува и физиотерапевти, медицински сестри, психолози и социјални работници. Оваа интегрирана грижа обезбедува побрза реакција, помалку хоспитализации и повисок квалитет на живот за секој резидент.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h3>Станете наш матичен пациент</h3>
+    <p>Закажете посета или јавете се за повеќе информации — д-р Стевчева и нејзиниот тим ви стојат на располагање.</p>
+    <div class="cta-strip-actions">
+      <a href="CTA-module/cta.html" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Избери матичен лекар
+      </a>
+      <a href="index.html#contact" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Контактирај не
+      </a>
+    </div>
+  </div>
+
+</div><!-- /page-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">
+      <img src="logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
+        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
+      <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
+    </div>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
+  </div>
+  <div>
+    <h4>Брзи линкови</h4>
+    <ul>
+      <li><a href="about-us.html">За нас</a></li>
+      <li><a href="services.html">Услуги</a></li>
+      <li><a href="index.html#insurance">Фонд / ФЗОМ</a></li>
+      <li><a href="index.html#novosti">Новости</a></li>
+      <li><a href="index.html#blog">Едукативен блог</a></li>
+      <li><a href="index.html#faq">Прашања</a></li>
+      <li><a href="index.html#contact">Контакт</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Контакт</h4>
+    <ul>
+      <li><a href="tel:+38970123123">070 123 123</a></li>
+      <li><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></li>
+      <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
+      <li><a href="#">Илинден, Македонија</a></li>
+      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+/* ── DOCTOR PHOTO SLIDESHOW ── */
+(function() {
+  var imgs = document.querySelectorAll('#doctorSlideshow .doctor-photo');
+  var dots = document.querySelectorAll('.doctor-slideshow-dots span');
+  var cur = 0;
+
+  // If all images fail to load, show fallback
+  var failCount = 0;
+  imgs.forEach(function(img) {
+    img.addEventListener('error', function() {
+      failCount++;
+      if (failCount === imgs.length) {
+        document.getElementById('doctorSlideshow').style.display = 'none';
+        document.getElementById('doctorPhotoFallback').style.display = 'flex';
+      }
+    });
+  });
+
+  function goTo(n) {
+    imgs[cur].classList.remove('active');
+    dots[cur].classList.remove('active');
+    cur = (n + imgs.length) % imgs.length;
+    imgs[cur].classList.add('active');
+    dots[cur].classList.add('active');
+  }
+
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() {
+      clearInterval(timer);
+      goTo(i);
+      timer = setInterval(function() { goTo(cur + 1); }, 4000);
+    });
+  });
+
+  var timer = setInterval(function() { goTo(cur + 1); }, 4000);
+})();
+</script>
+</body>
+</html>
