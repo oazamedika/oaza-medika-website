@@ -61,7 +61,6 @@
     .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
     .btn-whatsapp { background:#25d366; color:var(--white); box-shadow:0 4px 18px rgba(37,211,102,.3); }
     .btn-whatsapp:hover { background:#1ebe5d; transform:translateY(-2px); }
-    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; z-index:1; }
     .hero-slideshow { position:relative; width:560px; height:315px; border-radius:28px; overflow:hidden; box-shadow:var(--shadow),0 0 0 1px rgba(42,122,122,.08); animation:floatCard 5s ease-in-out infinite; flex-shrink:0; }
     .hero-slideshow img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; }
     .hero-slideshow img.active { opacity:1; }
@@ -364,7 +363,6 @@
 <div class="trust-bar">
   <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>Склучен договор со ФЗОМ</div>
   <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>Работи Пон–Пет 07:30–15:00</div>
-  <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>Телемедицина за матични пациенти</div>
   <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Илинден, ул. 2 бр. 105</div>
 </div>
 
@@ -396,13 +394,15 @@
         <div class="feature-text"><strong>Матична пракса</strong><span>Упис на матични пациенти преку ФЗОМ и приватни прегледи</span></div>
       </div>
       <div class="about-feature">
-        <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <div class="feature-text"><strong>Телемедицина</strong><span>Онлајн консултации за матични пациенти — без чекање</span></div>
-      </div>
-      <div class="about-feature">
         <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
         <div class="feature-text"><strong>Лесно достапна локација</strong><span>Во склоп на Дом за стари лица ОАЗА, Илинден</span></div>
       </div>
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="about-us.html" class="btn btn-secondary" style="display:inline-flex;">
+        Прочитај повеќе
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+      </a>
     </div>
   </div>
 </section>
@@ -415,10 +415,15 @@
     <p class="section-sub">Сеопфатна примарна здравствена заштита за пациенти од сите возрасти.</p>
   </div>
   <div class="services-grid">
-    
-    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Упати и рецепти</h3><p>Издавање упати кон специјалисти, болнички рецепти и потврди.</p></div>
-    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Советување и едукација</h3><p>Здравствен совет, исхрана, стил на живот и превенција на болести.</p></div>
-    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Телемедицина</h3><p>Онлајн консултации за матични пациенти — брзо, лесно и од дома.</p></div>
+    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><h3>Основни и напредни дијагностички и терапевтски услуги</h3><p>Клиничка евалуација, поставување дијагноза и индивидуализиран план на лекување за акутни и хронични состојби.</p></div>
+    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Упати и рецепти</h3><p>Издавање упати кон специјалисти, болнички рецепти, потврди и друга медицинска документација.</p></div>
+    <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Советување и едукација</h3><p>Здравствен совет, исхрана, стил на живот и превенција на болести прилагодени за секој пациент.</p></div>
+  </div>
+  <div style="margin-top:2.2rem; text-align:center;">
+    <a href="services.html" class="btn btn-secondary" style="display:inline-flex;">
+      Прочитај повеќе
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+    </a>
   </div>
 </section>
 
@@ -542,7 +547,7 @@
   <div class="faq-list">
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="/cdn-cgi/l/email-protection#1d74737b725d727c677c70787974767c337076"><span class="__cf_email__" data-cfemail="026b6c646d426d6378636f67666b69632c6f69">[email&#160;protected]</span></a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
+      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">5</span>Што е телемедицина и кој може да ја користи?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
       <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">6</span>Дали нудите и приватни прегледи (без фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
@@ -559,13 +564,13 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#b7ded9d1d8f7d8d6cdd6dad2d3dedcd699dadc"><span class="__cf_email__" data-cfemail="741d1a121b341b150e151911101d1f155a191f">[email&#160;protected]</span></a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="/cdn-cgi/l/email-protection#1c75727a735c737d667d71797875777d327177" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
-        <a href="/cdn-cgi/l/email-protection#442d2a222b042b253e252921202d2f256a292f" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
+        <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="mailto:pacienti@oazamedika.mk" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
         
       </div>
@@ -602,7 +607,7 @@
     <h4>Контакт</h4>
     <ul>
       <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#365f5850597659574c575b53525f5d57185b5d"><span class="__cf_email__" data-cfemail="4a23242c250a252b302b272f2e23212b642721">[email&#160;protected]</span></a></li>
+      <li><a href="mailto:pacienti@oazamedika.mk">pacienti@oazamedika.mk</a></li>
       <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
       <li><a href="#">Илинден, Македонија</a></li>
       <li><a href="#">Пон–Пет 07:30–15:00</a></li>
@@ -840,7 +845,7 @@ function initSlideshow() {
 
 /* ── WEATHER WIDGET ─────────────────────────────── */
 function initWeather() {
-  var WX_ICONS = {
+  var WX_ICONS_DAY = {
     0:'☀️', 1:'🌤️', 2:'⛅', 3:'☁️',
     45:'🌫️', 48:'🌫️',
     51:'🌦️', 53:'🌦️', 55:'🌧️',
@@ -849,6 +854,15 @@ function initWeather() {
     80:'🌦️', 81:'🌧️', 82:'⛈️',
     85:'🌨️', 86:'🌨️',
     95:'⛈️', 96:'⛈️', 99:'⛈️'
+  };
+  // Night overrides: moon stacked with condition
+  var WX_ICONS_NIGHT = {
+    0:'🌙',        // clear night → moon
+    1:'🌙',        // mainly clear → moon
+    2:'🌙☁️',     // partly cloudy → moon + cloud
+    51:'🌙🌦️',   // light drizzle
+    53:'🌙🌦️',   // moderate drizzle
+    80:'🌙🌦️'    // light showers
   };
   var WX_DESC = {
     0:'Ведро', 1:'Претежно ведро', 2:'Делумно облачно', 3:'Облачно',
@@ -860,6 +874,10 @@ function initWeather() {
     85:'Слаби снежни врнежи', 86:'Силни снежни врнежи',
     95:'Грмотевична бура', 96:'Бура со град', 99:'Силна бура со град'
   };
+  function isNight() {
+    var h = new Date().getHours();
+    return h < 6 || h >= 21;
+  }
   // Координати на Општина Илинден, Македонија
   var lat = 41.9924, lon = 21.6225;
   var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
@@ -869,7 +887,14 @@ function initWeather() {
     .then(function(d) {
       var temp = Math.round(d.current.temperature_2m);
       var code = d.current.weathercode;
-      document.getElementById('weatherIcon').textContent = WX_ICONS[code] || '🌡️';
+      var night = isNight();
+      var icon;
+      if (night && WX_ICONS_NIGHT.hasOwnProperty(code)) {
+        icon = WX_ICONS_NIGHT[code];
+      } else {
+        icon = WX_ICONS_DAY[code] || '🌡️';
+      }
+      document.getElementById('weatherIcon').textContent = icon;
       document.getElementById('weatherTemp').textContent = temp + '°C';
       document.getElementById('weatherDesc').textContent = WX_DESC[code] || 'Непознато';
       document.getElementById('weatherLoc').textContent = 'Илинден, МК';
