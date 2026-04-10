@@ -32,9 +32,9 @@ var HERO_SLIDES = [
     headline : 'Наскоро отвораме\n<em>вратите за вас</em>',
     desc     : 'Вашето здравје заслужува стручно внимание. Наскоро во ПЗУ Оаза Медика, во општина Илинден, ќе можете да ги извршите вашите прегледи кај матичен лекар — со посветеност која ја заслужувате.',
     images   : [
-      'hero/hero1/1.png',
-      'hero/hero1/2.png',
-      'hero/hero1/3.png'
+      'hero/hero1/1.jpg',
+      'hero/hero1/2.jpg',
+      'hero/hero1/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html' },
     cta2: { text: 'Контактирај не',       href: '#contact' }
@@ -47,9 +47,9 @@ var HERO_SLIDES = [
     headline : 'Вашето здравје е\n<em>вашата оаза</em>',
     desc     : 'Топла, стручна и достапна лекарска грижа за секој пациент — со или без упат, во склопот на ОАЗА во Илинден.',
     images   : [
-      'hero/hero2/1.png',
-      'hero/hero2/2.png',
-      'hero/hero2/3.png'
+      'hero/hero2/1.jpg',
+      'hero/hero2/2.jpg',
+      'hero/hero2/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html' },
     cta2: { text: 'Контактирај не',       href: '#contact' }
@@ -62,9 +62,9 @@ var HERO_SLIDES = [
     headline : 'Здравствена заштита\n<em>достапна за секого</em>',
     desc     : 'Склучен договор со ФЗОМ — без доплата за осигурените. Нудиме и приватни прегледи по достапни цени, без упат, за сите граѓани.',
     images   : [
-      'hero/hero3/1.png',
-      'hero/hero3/2.png',
-      'hero/hero3/3.png'
+      'hero/hero3/1.jpg',
+      'hero/hero3/2.jpg',
+      'hero/hero3/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html' },
     cta2: { text: 'Контактирај не',       href: '#contact' }
