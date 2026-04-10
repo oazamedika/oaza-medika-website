@@ -52,7 +52,7 @@ var HERO_SLIDES = [
       'hero/hero2/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html' },
-    cta2: { text: 'Повеќе за домот',       href: 'https://www.dom-oaza.mk/' }
+    cta3: { text: 'Повеќе за домот',       href: 'https://www.dom-oaza.mk/' }
   },
 
   /* ── SLIDE 3 — ФЗОМ + приватни ──────────────────────── */
@@ -150,7 +150,8 @@ var HERO_SLIDES = [
 function buildHeroHTML() {
   var CTN_SVG_PERSON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>';
   var CTN_SVG_PHONE  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>';
-
+  var CTN_SVG_HOUSE = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>';
+   
   var bgHtml = '';
   var contentHtml = '';
   var navHtml = '';
@@ -178,6 +179,7 @@ function buildHeroHTML() {
         '<div class="hero-actions">' +
           '<a href="' + s.cta1.href + '" class="btn btn-primary">' + CTN_SVG_PERSON + ' ' + s.cta1.text + '</a>' +
           '<a href="' + s.cta2.href + '" class="btn btn-outline-white">' + CTN_SVG_PHONE + ' ' + s.cta2.text + '</a>' +
+          '<a href="' + s.cta3.href + '" class="btn btn-outline-white">' + CTN_SVG_HOUSE + ' ' + s.cta3.text + '</a>' +
         '</div>' +
       '</div>';
 
