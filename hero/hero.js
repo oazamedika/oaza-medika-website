@@ -79,7 +79,7 @@ var HERO_SLIDES = [
       'hero/hero3/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html', icon: 'person' },
-    cta2: { text: 'За Нас',              href: '#about',               icon: 'submit'   }
+    cta2: { text: 'За Нас',              href: '#about',               icon: 'none'   }
   }
 
 ];
