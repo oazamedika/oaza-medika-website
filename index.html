@@ -44,7 +44,225 @@
     .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
     .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
 
-    
+    /* BUTTONS */
+    .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
+    .btn-primary { background:var(--teal); color:var(--white); box-shadow:0 4px 18px rgba(42,122,122,.3); }
+    .btn-primary:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(42,122,122,.35); }
+    .btn-secondary { background:transparent; color:var(--teal); border:2px solid var(--teal); }
+    .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
+    .btn-whatsapp { background:#25d366; color:var(--white); box-shadow:0 4px 18px rgba(37,211,102,.3); }
+    .btn-whatsapp:hover { background:#1ebe5d; transform:translateY(-2px); }
+
+    /* TRUST BAR */
+    .trust-bar { background:var(--teal); color:var(--white); padding:1.1rem 5%; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
+    .trust-item { display:flex; align-items:center; gap:10px; font-size:.88rem; font-weight:600; letter-spacing:.03em; }
+
+    /* SECTIONS */
+    section { padding:5rem 5%; }
+    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
+    .section-title { font-size:clamp(1.8rem,3vw,2.5rem); color:var(--text); margin-bottom:1rem; }
+    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:560px; }
+    .section-header { margin-bottom:3rem; }
+
+    /* ABOUT */
+    .about { background:var(--white); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
+    .about-image-wrap { position:relative; }
+    .about-card { background:linear-gradient(135deg,var(--teal-light),var(--green-light)); border-radius:24px; padding:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center; }
+    .doctor-avatar { width:110px; height:110px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--white); font-weight:700; box-shadow:0 8px 24px rgba(42,122,122,.25); }
+    .doctor-name { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); }
+    .doctor-title { font-size:.85rem; color:var(--text-mid); font-weight:300; }
+    .about-logo-img { width:140px; border-radius:12px; opacity:.9; }
+    .about-float { position:absolute; bottom:-1.5rem; right:-1.5rem; background:var(--white); border-radius:var(--radius); padding:1rem 1.4rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:10px; font-size:.85rem; color:var(--green); font-weight:600; }
+    .about-text h2 { margin-bottom:1.2rem; }
+    .about-text p { color:var(--text-mid); font-weight:300; margin-bottom:1rem; font-size:1rem; }
+    .about-features { display:flex; flex-direction:column; gap:.85rem; margin-top:1.8rem; }
+    .about-feature { display:flex; align-items:flex-start; gap:12px; }
+    .feature-icon { width:36px; height:36px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .feature-text strong { display:block; font-size:.9rem; color:var(--text); margin-bottom:2px; }
+    .feature-text span { font-size:.83rem; color:var(--text-light); }
+
+    /* SERVICES */
+    .services { background:var(--cream); }
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.5rem; }
+    .service-card { background:var(--white); border-radius:var(--radius); padding:2rem; border:1px solid rgba(42,122,122,.1); transition:all .3s; position:relative; overflow:hidden; }
+    .service-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--teal); transform:scaleY(0); transition:transform .3s; transform-origin:bottom; }
+    .service-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
+    .service-card:hover::before { transform:scaleY(1); }
+    .service-icon { width:52px; height:52px; border-radius:14px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; }
+    .service-card h3 { font-size:1.05rem; margin-bottom:.5rem; color:var(--text); }
+    .service-card p { font-size:.88rem; color:var(--text-light); font-weight:300; }
+
+    /* INSURANCE */
+    .insurance-wrap { padding:0 5%; }
+    .insurance { background:linear-gradient(135deg,var(--teal) 0%,var(--green) 100%); color:var(--white); border-radius:24px; padding:4rem 5%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .insurance h2 { color:var(--white); margin-bottom:1rem; }
+    .insurance p { color:rgba(255,255,255,.82); font-weight:300; margin-bottom:1.5rem; }
+    .insurance-badges { display:flex; gap:1rem; flex-wrap:wrap; }
+    .ins-badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); border-radius:50px; padding:.5rem 1.2rem; font-size:.85rem; font-weight:600; backdrop-filter:blur(4px); }
+    .insurance-cards { display:flex; flex-direction:column; gap:1rem; }
+    .ins-card { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:1.3rem 1.5rem; display:flex; align-items:center; gap:14px; }
+    .ins-card-icon { width:42px; height:42px; background:rgba(255,255,255,.2); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .ins-card h4 { font-size:.95rem; color:var(--white); margin-bottom:2px; }
+    .ins-card p { font-size:.82rem; color:rgba(255,255,255,.75); margin:0; }
+
+    /* BLOG */
+    .blog { background:var(--cream); }
+    .blog-card { background:var(--white); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; transition:all .3s; text-decoration:none; color:inherit; }
+    .blog-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+
+    /* NOVOSTI */
+    .novosti { background:var(--white); }
+    .novosti-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.8rem; }
+    .novost-card { background:var(--cream); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; transition:all .3s; cursor:pointer; }
+    .novost-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+    .novost-img { height:160px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; }
+    .novost-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; gap:.6rem; }
+    .novost-meta { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
+    .novost-kat { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--teal-light); color:var(--teal); padding:.25rem .7rem; border-radius:50px; }
+    .novost-datum { font-size:.78rem; color:var(--text-light); }
+    .novost-naslov { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); line-height:1.3; }
+    .novost-kratko { font-size:.875rem; color:var(--text-mid); font-weight:300; line-height:1.65; flex:1; }
+    .novost-link { display:inline-flex; align-items:center; gap:6px; font-size:.82rem; font-weight:600; color:var(--teal); margin-top:.4rem; transition:gap .2s; }
+    .novost-link:hover { gap:10px; }
+
+    /* NOVOST MODAL */
+    .modal-overlay { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,.55); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:1.5rem; }
+    .modal-overlay.active { display:flex; }
+    .modal { background:var(--white); border-radius:20px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; box-shadow:0 24px 80px rgba(0,0,0,.25); animation:modalIn .3s ease; }
+    @keyframes modalIn { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+    .modal-header { padding:2rem 2rem 1rem; border-bottom:1px solid rgba(42,122,122,.1); position:sticky; top:0; background:var(--white); display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
+    .modal-close { background:var(--teal-light); border:none; cursor:pointer; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--teal); font-size:1.1rem; flex-shrink:0; transition:background .2s; }
+    .modal-close:hover { background:var(--teal); color:white; }
+    .modal-meta { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:.6rem; }
+    .modal-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); }
+    .modal-body { padding:1.5rem 2rem 2rem; font-size:.95rem; color:var(--text-mid); font-weight:300; line-height:1.8; }
+    .modal-body p { margin-bottom:1rem; }
+    .modal-body h4 { color:var(--text); font-size:1rem; margin-bottom:.4rem; }
+    .modal-body ul { margin:.5rem 0 .8rem 1.2rem; }
+    .modal-body li { margin-bottom:.3rem; }
+
+    /* REGISTRATION POPUP */
+    .reg-overlay { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.6); backdrop-filter:blur(5px); align-items:center; justify-content:center; padding:1.5rem; }
+    .reg-overlay.active { display:flex; }
+    .reg-modal { background:var(--white); border-radius:24px; max-width:520px; width:100%; box-shadow:0 32px 100px rgba(0,0,0,.3); animation:modalIn .3s ease; overflow:hidden; }
+    .reg-header { background:linear-gradient(135deg,var(--teal),var(--green)); padding:2rem 2rem 1.5rem; position:relative; }
+    .reg-header h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--white); margin-bottom:.4rem; }
+    .reg-header p { font-size:.88rem; color:rgba(255,255,255,.82); font-weight:300; }
+    .reg-close-btn { position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,.2); border:none; cursor:pointer; width:32px; height:32px; border-radius:50%; color:var(--white); font-size:1rem; display:flex; align-items:center; justify-content:center; transition:background .2s; }
+    .reg-close-btn:hover { background:rgba(255,255,255,.35); }
+    .reg-body { padding:2rem; }
+    .reg-field { margin-bottom:1.2rem; }
+    .reg-field label { display:block; font-size:.82rem; font-weight:600; color:var(--text-mid); margin-bottom:.4rem; }
+    .reg-field input, .reg-field textarea { width:100%; padding:.8rem 1rem; border:2px solid rgba(42,122,122,.2); border-radius:10px; font-family:'Lato',sans-serif; font-size:.9rem; color:var(--text); background:var(--cream); transition:border-color .2s; outline:none; }
+    .reg-field input:focus, .reg-field textarea:focus { border-color:var(--teal); background:var(--white); }
+    .reg-field textarea { resize:vertical; min-height:80px; }
+    .reg-note { background:var(--green-light); border-left:3px solid var(--green); border-radius:0 8px 8px 0; padding:.8rem 1rem; font-size:.82rem; color:var(--green); margin-bottom:1.2rem; line-height:1.6; }
+    .reg-submit { width:100%; padding:1rem; background:var(--teal); color:var(--white); border:none; border-radius:50px; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:8px; }
+    .reg-submit:hover { background:var(--teal-dark); transform:translateY(-2px); }
+    .reg-submit:disabled { background:#aaa; cursor:not-allowed; transform:none; }
+    .reg-success { display:none; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; gap:1rem; }
+    .reg-success.show { display:flex; }
+    .reg-success-icon { width:70px; height:70px; border-radius:50%; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:2rem; }
+    .reg-success h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--text); }
+    .reg-success p { font-size:.9rem; color:var(--text-mid); font-weight:300; max-width:360px; }
+
+    /* FAQ */
+    .faq { background:var(--white); }
+    .faq-list { display:flex; flex-direction:column; gap:.75rem; max-width:760px; margin:0 auto; }
+    .faq-item { background:var(--white); border-radius:16px; border:1.5px solid rgba(42,122,122,.12); overflow:hidden; transition:border-color .2s, box-shadow .2s; }
+    .faq-item:hover { border-color:rgba(42,122,122,.35); box-shadow:0 4px 16px rgba(42,122,122,.08); }
+    .faq-item.open { border-color:var(--teal); box-shadow:0 4px 20px rgba(42,122,122,.12); }
+    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.2rem 1.5rem; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:600; color:var(--text); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+    .faq-question:hover { color:var(--teal); }
+    .faq-num { font-size:.72rem; font-weight:700; color:var(--teal); background:var(--teal-light); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-right:.75rem; }
+    .faq-question-inner { display:flex; align-items:center; flex:1; }
+    .faq-arrow { width:28px; height:28px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s, background .2s; color:var(--teal); font-size:.85rem; }
+    .faq-item.open .faq-arrow { transform:rotate(180deg); background:var(--teal); color:white; }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; font-size:.9rem; color:var(--text-mid); font-weight:300; line-height:1.8; padding:0 1.5rem 0 3.75rem; }
+    .faq-item.open .faq-answer { max-height:300px; padding:.25rem 1.5rem 1.3rem 3.75rem; }
+
+    /* CONTACT */
+    .contact { background:var(--cream); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:start; }
+    .contact-info { display:flex; flex-direction:column; gap:1.5rem; }
+    .contact-item { display:flex; gap:14px; align-items:flex-start; }
+    .contact-icon { width:44px; height:44px; border-radius:12px; background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--teal); box-shadow:0 2px 8px rgba(42,122,122,.12); }
+    .contact-item-label { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--text-light); margin-bottom:3px; }
+    .contact-item-value { font-size:.95rem; color:var(--text); }
+    .contact-item-value a { color:var(--teal); text-decoration:none; }
+    .contact-item-value a:hover { text-decoration:underline; }
+    .contact-actions { display:flex; flex-direction:column; gap:.8rem; margin-top:.5rem; }
+    .map-wrap { border-radius:20px; overflow:hidden; box-shadow:var(--shadow); height:380px; background:var(--teal-light); border:1px solid rgba(42,122,122,.15); }
+    .map-wrap iframe { width:100%; height:100%; border:none; }
+
+    /* FOOTER */
+    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
+    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
+    .footer-logo { display:flex; align-items:center; gap:10px; }
+    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
+    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
+    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
+    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
+    footer ul a:hover { color:var(--white); }
+    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+
+    /* FLOATING WEATHER WIDGET — DESKTOP */
+    .weather-float {
+      position:fixed; bottom:2rem; right:2rem; z-index:200;
+      background:rgba(26,92,42,0.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.18); border-radius:16px;
+      padding:.7rem 1.1rem; display:flex; align-items:center; gap:.65rem;
+      box-shadow:0 8px 32px rgba(0,0,0,.22); pointer-events:none;
+    }
+    .wf-icon { width:32px; height:32px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .wf-icon svg { width:100%; height:100%; }
+    .wf-temp { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1; white-space:nowrap; }
+    .wf-details { display:flex; flex-direction:column; gap:1px; }
+    .wf-desc { font-size:.72rem; color:rgba(255,255,255,.85); line-height:1.2; }
+    .wf-loc { font-size:.62rem; color:rgba(255,255,255,.6); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+
+    /* MOBILE WEATHER PILL */
+    .weather-mobile {
+      display:none; position:fixed; top:80px; right:.75rem; z-index:200;
+      background:rgba(26,92,42,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.18); border-radius:50px;
+      padding:.45rem .8rem; align-items:center; gap:.45rem;
+      box-shadow:0 4px 16px rgba(0,0,0,.22); cursor:pointer;
+      transition:border-radius .3s, padding .3s;
+    }
+    .wm-icon { width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .wm-icon svg { width:100%; height:100%; }
+    .wm-temp { font-family:'Playfair Display',serif; font-size:.9rem; font-weight:700; color:#fff; white-space:nowrap; }
+    .wm-extra { display:none; flex-direction:column; gap:1px; }
+    .wm-desc { font-size:.68rem; color:rgba(255,255,255,.85); }
+    .wm-loc { font-size:.6rem; color:rgba(255,255,255,.6); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
+    .weather-mobile.expanded { border-radius:14px; padding:.55rem .9rem; }
+    .weather-mobile.expanded .wm-extra { display:flex; }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .ticker-item { padding:0 1.5rem; font-size:.75rem; }
+      nav { padding:0 4%; }
+      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .trust-bar { gap:1rem; padding:1rem 4%; }
+      .trust-item { font-size:.8rem; }
+      section { padding:3.5rem 4%; }
+      .about { grid-template-columns:1fr; gap:2.5rem; }
+      .about-float { right:0; bottom:-1rem; }
+      .insurance { grid-template-columns:1fr; gap:2rem; }
+      .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
+      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
+      .modal, .reg-modal { border-radius:16px; }
+      .modal-header, .modal-body, .reg-body { padding-left:1.2rem; padding-right:1.2rem; }
+      .weather-float { display:none; }
+      .weather-mobile { display:flex; }
+    }
+    @media(max-width:480px){
+      .hero-actions .btn { font-size:.82rem; padding:.65rem 1.2rem; }
+    }
   </style>
 </head>
 <body>
@@ -305,12 +523,12 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#a2cbccc4cde2cdc3d8c3cfc7c6cbc9c38ccfc9"><span class="__cf_email__" data-cfemail="bad3d4dcd5fad5dbc0dbd7dfded3d1db94d7d1">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="mailto:info@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="/cdn-cgi/l/email-protection#ec85828a83ac838d968d81898885878dc28187" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
       </div>
     </div>
@@ -347,7 +565,7 @@
     <h4>Контакт</h4>
     <ul>
       <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbf4fae1faf6fefff2f0fab5f6f0"><span class="__cf_email__" data-cfemail="4a23242c250a252b302b272f2e23212b642721">[email&#160;protected]</span></a></li>
       <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
       <li><a href="#">Илинден, Македонија</a></li>
       <li><a href="#">Пон–Пет 07:30–15:00</a></li>
@@ -359,7 +577,7 @@
 <!-- ═══════════════════════════════════════════════════════
      SCRIPTS
 ════════════════════════════════════════════════════════ -->
-<script src="hero/hero.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="hero/hero.js"></script>
 <script src="novosti.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════
@@ -661,14 +879,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('regSuccessCloseBtn') && document.getElementById('regSuccessCloseBtn').addEventListener('click', closeReg);
   document.getElementById('regSubmitBtn') && document.getElementById('regSubmitBtn').addEventListener('click', submitRegistration);
   document.getElementById('modalCloseBtn') && document.getElementById('modalCloseBtn').addEventListener('click', closeNovostModal);
-  document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeNovostModal(); });
-
+  document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if(e.target===this) closeNovostModal(); });
   initFaq();
-  initHero();
   initScrollReveal();
-  initWeather();
-  renderNovosti();
   buildTicker();
+  renderNovosti();
+  initHero();
+  initWeather();
 });
 </script>
 </body>
