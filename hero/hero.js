@@ -64,7 +64,7 @@ var HERO_SLIDES = [
       'hero/hero2/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html',      icon: 'person' },
-    cta3: { text: 'Повеќе за домот',      href: 'https://www.dom-oaza.mk/', icon: 'house'  target: '_blank',  rel: 'noopener noreferrer'}
+    cta3: { text: 'Повеќе за домот',      href: 'https://www.dom-oaza.mk/', icon: 'house',  target: '_blank',  rel: 'noopener noreferrer'}
   },
 
   /* ── SLIDE 3 — ФЗОМ + приватни ──────────────────────── */
