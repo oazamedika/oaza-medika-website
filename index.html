@@ -44,239 +44,7 @@
     .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
     .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
 
-    /* HERO */
-    .hero { min-height:90vh; display:grid; grid-template-columns:1fr 1fr; align-items:center; padding:0 5%; gap:4rem; position:relative; overflow:hidden; }
-    .hero::before { content:''; position:absolute; right:-10%; top:-20%; width:60vw; height:120%; background:radial-gradient(ellipse at center,var(--teal-light) 0%,transparent 70%); pointer-events:none; }
-    .hero-content { position:relative; z-index:1; }
-    .hero h1 { font-size:clamp(2.2rem,4vw,3.4rem); color:var(--text); margin-bottom:1rem; }
-    .hero h1 em { font-style:normal; color:var(--teal); }
-    .hero p { font-size:1.05rem; color:var(--text-mid); max-width:500px; margin-bottom:2rem; font-weight:300; }
-    .hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
-    .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
-    .btn-primary { background:var(--teal); color:var(--white); box-shadow:0 4px 18px rgba(42,122,122,.3); }
-    .btn-primary:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 8px 24px rgba(42,122,122,.35); }
-    .btn-secondary { background:transparent; color:var(--teal); border:2px solid var(--teal); }
-    .btn-secondary:hover { background:var(--teal-light); transform:translateY(-2px); }
-    .btn-whatsapp { background:#25d366; color:var(--white); box-shadow:0 4px 18px rgba(37,211,102,.3); }
-    .btn-whatsapp:hover { background:#1ebe5d; transform:translateY(-2px); }
-    .hero-visual { position:relative; display:flex; align-items:center; justify-content:center; }
-    .hero-slideshow { position:relative; width:100%; max-width:540px; aspect-ratio:16/10; border-radius:24px; overflow:hidden; box-shadow:var(--shadow),0 0 0 1px rgba(42,122,122,.08); animation:floatCard 5s ease-in-out infinite; }
-    .hero-slideshow img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1s ease; }
-    .hero-slideshow img.active { opacity:1; }
-    .slideshow-controls { position:absolute; bottom:0; left:0; right:0; z-index:3; display:flex; align-items:center; justify-content:center; gap:8px; padding:.8rem 1rem; background:linear-gradient(to top, rgba(0,0,0,.45) 0%, transparent 100%); }
-    .slideshow-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.45); border:none; cursor:pointer; transition:all .3s; padding:0; flex-shrink:0; }
-    .slideshow-dot.active { background:#fff; width:22px; border-radius:4px; }
-    .slideshow-prev, .slideshow-next { background:rgba(255,255,255,.18); border:none; cursor:pointer; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:.85rem; transition:background .2s; position:absolute; top:50%; transform:translateY(-50%); z-index:3; }
-    .slideshow-prev { left:10px; }
-    .slideshow-next { right:10px; }
-    .slideshow-prev:hover, .slideshow-next:hover { background:rgba(255,255,255,.35); }
-    @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
     
-
-    /* TRUST BAR */
-    .trust-bar { background:var(--teal); color:var(--white); padding:1.1rem 5%; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap; }
-    .trust-item { display:flex; align-items:center; gap:10px; font-size:.88rem; font-weight:600; letter-spacing:.03em; }
-
-    /* SECTIONS */
-    section { padding:5rem 5%; }
-    .section-label { font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
-    .section-title { font-size:clamp(1.8rem,3vw,2.5rem); color:var(--text); margin-bottom:1rem; }
-    .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:560px; }
-    .section-header { margin-bottom:3rem; }
-
-    /* ABOUT */
-    .about { background:var(--white); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .about-image-wrap { position:relative; }
-    .about-card { background:linear-gradient(135deg,var(--teal-light),var(--green-light)); border-radius:24px; padding:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center; }
-    .doctor-avatar { width:110px; height:110px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--white); font-weight:700; box-shadow:0 8px 24px rgba(42,122,122,.25); }
-    .doctor-name { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); }
-    .doctor-title { font-size:.85rem; color:var(--text-mid); font-weight:300; }
-    .about-logo-img { width:140px; border-radius:12px; opacity:.9; }
-    .about-float { position:absolute; bottom:-1.5rem; right:-1.5rem; background:var(--white); border-radius:var(--radius); padding:1rem 1.4rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:10px; font-size:.85rem; color:var(--green); font-weight:600; }
-    .about-text h2 { margin-bottom:1.2rem; }
-    .about-text p { color:var(--text-mid); font-weight:300; margin-bottom:1rem; font-size:1rem; }
-    .about-features { display:flex; flex-direction:column; gap:.85rem; margin-top:1.8rem; }
-    .about-feature { display:flex; align-items:flex-start; gap:12px; }
-    .feature-icon { width:36px; height:36px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .feature-text strong { display:block; font-size:.9rem; color:var(--text); margin-bottom:2px; }
-    .feature-text span { font-size:.83rem; color:var(--text-light); }
-
-    /* SERVICES */
-    .services { background:var(--cream); }
-    .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:1.5rem; }
-    .service-card { background:var(--white); border-radius:var(--radius); padding:2rem; border:1px solid rgba(42,122,122,.1); transition:all .3s; position:relative; overflow:hidden; }
-    .service-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background:var(--teal); transform:scaleY(0); transition:transform .3s; transform-origin:bottom; }
-    .service-card:hover { transform:translateY(-4px); box-shadow:var(--shadow); }
-    .service-card:hover::before { transform:scaleY(1); }
-    .service-icon { width:52px; height:52px; border-radius:14px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; }
-    .service-card h3 { font-size:1.05rem; margin-bottom:.5rem; color:var(--text); }
-    .service-card p { font-size:.88rem; color:var(--text-light); font-weight:300; }
-
-    /* INSURANCE */
-    .insurance-wrap { padding:0 5%; }
-    .insurance { background:linear-gradient(135deg,var(--teal) 0%,var(--green) 100%); color:var(--white); border-radius:24px; padding:4rem 5%; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
-    .insurance h2 { color:var(--white); margin-bottom:1rem; }
-    .insurance p { color:rgba(255,255,255,.82); font-weight:300; margin-bottom:1.5rem; }
-    .insurance-badges { display:flex; gap:1rem; flex-wrap:wrap; }
-    .ins-badge { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); border-radius:50px; padding:.5rem 1.2rem; font-size:.85rem; font-weight:600; backdrop-filter:blur(4px); }
-    .insurance-cards { display:flex; flex-direction:column; gap:1rem; }
-    .ins-card { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); border-radius:var(--radius); padding:1.3rem 1.5rem; display:flex; align-items:center; gap:14px; }
-    .ins-card-icon { width:42px; height:42px; background:rgba(255,255,255,.2); border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .ins-card h4 { font-size:.95rem; color:var(--white); margin-bottom:2px; }
-    .ins-card p { font-size:.82rem; color:rgba(255,255,255,.75); margin:0; }
-
-    /* BLOG */
-    .blog { background:var(--cream); }
-    .blog-card { background:var(--white); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; transition:all .3s; text-decoration:none; color:inherit; }
-    .blog-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
-
-        /* NOVOSTI */
-    .novosti { background:var(--white); }
-    .novosti-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.8rem; }
-    .novost-card { background:var(--cream); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(42,122,122,.1); display:flex; flex-direction:column; transition:all .3s; cursor:pointer; }
-    .novost-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
-    .novost-img { height:160px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; }
-    .novost-body { padding:1.5rem; flex:1; display:flex; flex-direction:column; gap:.6rem; }
-    .novost-meta { display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; }
-    .novost-kat { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--teal-light); color:var(--teal); padding:.25rem .7rem; border-radius:50px; }
-    .novost-datum { font-size:.78rem; color:var(--text-light); }
-    .novost-naslov { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--text); line-height:1.3; }
-    .novost-kratko { font-size:.875rem; color:var(--text-mid); font-weight:300; line-height:1.65; flex:1; }
-    .novost-link { display:inline-flex; align-items:center; gap:6px; font-size:.82rem; font-weight:600; color:var(--teal); margin-top:.4rem; transition:gap .2s; }
-    .novost-link:hover { gap:10px; }
-
-    /* NOVOST MODAL */
-    .modal-overlay { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,.55); backdrop-filter:blur(4px); align-items:center; justify-content:center; padding:1.5rem; }
-    .modal-overlay.active { display:flex; }
-    .modal { background:var(--white); border-radius:20px; max-width:680px; width:100%; max-height:85vh; overflow-y:auto; box-shadow:0 24px 80px rgba(0,0,0,.25); animation:modalIn .3s ease; }
-    @keyframes modalIn { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
-    .modal-header { padding:2rem 2rem 1rem; border-bottom:1px solid rgba(42,122,122,.1); position:sticky; top:0; background:var(--white); display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; }
-    .modal-close { background:var(--teal-light); border:none; cursor:pointer; width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--teal); font-size:1.1rem; flex-shrink:0; transition:background .2s; }
-    .modal-close:hover { background:var(--teal); color:white; }
-    .modal-meta { display:flex; gap:.6rem; flex-wrap:wrap; margin-bottom:.6rem; }
-    .modal-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); }
-    .modal-body { padding:1.5rem 2rem 2rem; font-size:.95rem; color:var(--text-mid); font-weight:300; line-height:1.8; }
-    .modal-body p { margin-bottom:1rem; }
-    .modal-body h4 { color:var(--text); font-size:1rem; margin-bottom:.4rem; }
-    .modal-body ul { margin:.5rem 0 .8rem 1.2rem; }
-    .modal-body li { margin-bottom:.3rem; }
-
-    /* REGISTRATION POPUP */
-    .reg-overlay { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.6); backdrop-filter:blur(5px); align-items:center; justify-content:center; padding:1.5rem; }
-    .reg-overlay.active { display:flex; }
-    .reg-modal { background:var(--white); border-radius:24px; max-width:520px; width:100%; box-shadow:0 32px 100px rgba(0,0,0,.3); animation:modalIn .3s ease; overflow:hidden; }
-    .reg-header { background:linear-gradient(135deg,var(--teal),var(--green)); padding:2rem 2rem 1.5rem; position:relative; }
-    .reg-header h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--white); margin-bottom:.4rem; }
-    .reg-header p { font-size:.88rem; color:rgba(255,255,255,.82); font-weight:300; }
-    .reg-close-btn { position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,.2); border:none; cursor:pointer; width:32px; height:32px; border-radius:50%; color:var(--white); font-size:1rem; display:flex; align-items:center; justify-content:center; transition:background .2s; }
-    .reg-close-btn:hover { background:rgba(255,255,255,.35); }
-    .reg-body { padding:2rem; }
-    .reg-field { margin-bottom:1.2rem; }
-    .reg-field label { display:block; font-size:.82rem; font-weight:600; color:var(--text-mid); margin-bottom:.4rem; }
-    .reg-field input, .reg-field textarea { width:100%; padding:.8rem 1rem; border:2px solid rgba(42,122,122,.2); border-radius:10px; font-family:'Lato',sans-serif; font-size:.9rem; color:var(--text); background:var(--cream); transition:border-color .2s; outline:none; }
-    .reg-field input:focus, .reg-field textarea:focus { border-color:var(--teal); background:var(--white); }
-    .reg-field textarea { resize:vertical; min-height:80px; }
-    .reg-note { background:var(--green-light); border-left:3px solid var(--green); border-radius:0 8px 8px 0; padding:.8rem 1rem; font-size:.82rem; color:var(--green); margin-bottom:1.2rem; line-height:1.6; }
-    .reg-submit { width:100%; padding:1rem; background:var(--teal); color:var(--white); border:none; border-radius:50px; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:8px; }
-    .reg-submit:hover { background:var(--teal-dark); transform:translateY(-2px); }
-    .reg-submit:disabled { background:#aaa; cursor:not-allowed; transform:none; }
-    .reg-success { display:none; flex-direction:column; align-items:center; text-align:center; padding:2.5rem 2rem; gap:1rem; }
-    .reg-success.show { display:flex; }
-    .reg-success-icon { width:70px; height:70px; border-radius:50%; background:var(--green-light); display:flex; align-items:center; justify-content:center; font-size:2rem; }
-    .reg-success h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--text); }
-    .reg-success p { font-size:.9rem; color:var(--text-mid); font-weight:300; max-width:360px; }
-
-    /* TESTIMONIALS */
-    .testimonials { background:var(--cream); }
-    .testimonials-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
-    .testimonial-card { background:var(--white); border-radius:var(--radius); padding:2rem; border:1px solid rgba(42,122,122,.08); }
-    .quote-mark { font-family:'Playfair Display',serif; font-size:4rem; color:var(--teal); opacity:.2; line-height:1; margin-bottom:.5rem; }
-    .testimonial-text { font-size:.95rem; color:var(--text-mid); font-weight:300; font-style:italic; margin-bottom:1.2rem; line-height:1.7; }
-    .testimonial-author { display:flex; align-items:center; gap:10px; }
-    .author-avatar { width:38px; height:38px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; color:var(--white); font-size:.85rem; font-weight:700; }
-    .author-name { font-weight:600; font-size:.88rem; color:var(--text); }
-    .author-type { font-size:.78rem; color:var(--text-light); }
-    .stars { color:#f59e0b; font-size:.85rem; margin-bottom:.6rem; }
-
-    /* FAQ */
-    .faq { background:var(--white); }
-    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:900px; }
-    /* FAQ REDESIGN */
-    .faq-list { display:flex; flex-direction:column; gap:.75rem; max-width:760px; margin:0 auto; }
-    .faq-item { background:var(--white); border-radius:16px; border:1.5px solid rgba(42,122,122,.12); overflow:hidden; transition:border-color .2s, box-shadow .2s; }
-    .faq-item:hover { border-color:rgba(42,122,122,.35); box-shadow:0 4px 16px rgba(42,122,122,.08); }
-    .faq-item.open { border-color:var(--teal); box-shadow:0 4px 20px rgba(42,122,122,.12); }
-    .faq-question { width:100%; text-align:left; background:none; border:none; padding:1.2rem 1.5rem; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:600; color:var(--text); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
-    .faq-question:hover { color:var(--teal); }
-    .faq-num { font-size:.72rem; font-weight:700; color:var(--teal); background:var(--teal-light); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-right:.75rem; }
-    .faq-question-inner { display:flex; align-items:center; flex:1; }
-    .faq-arrow { width:28px; height:28px; border-radius:50%; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s, background .2s; color:var(--teal); font-size:.85rem; }
-    .faq-item.open .faq-arrow { transform:rotate(180deg); background:var(--teal); color:white; }
-    .faq-answer { max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; font-size:.9rem; color:var(--text-mid); font-weight:300; line-height:1.8; padding:0 1.5rem 0 3.75rem; }
-    .faq-item.open .faq-answer { max-height:300px; padding:.25rem 1.5rem 1.3rem 3.75rem; }
-
-    /* CONTACT */
-    .contact { background:var(--cream); }
-    .contact-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:4rem; align-items:start; }
-    .contact-info { display:flex; flex-direction:column; gap:1.5rem; }
-    .contact-item { display:flex; gap:14px; align-items:flex-start; }
-    .contact-icon { width:44px; height:44px; border-radius:12px; background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--teal); box-shadow:0 2px 8px rgba(42,122,122,.12); }
-    .contact-item-label { font-size:.75rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--text-light); margin-bottom:3px; }
-    .contact-item-value { font-size:.95rem; color:var(--text); }
-    .contact-item-value a { color:var(--teal); text-decoration:none; }
-    .contact-item-value a:hover { text-decoration:underline; }
-    .contact-actions { display:flex; flex-direction:column; gap:.8rem; margin-top:.5rem; }
-    .map-wrap { border-radius:20px; overflow:hidden; box-shadow:var(--shadow); height:380px; background:var(--teal-light); border:1px solid rgba(42,122,122,.15); }
-    .map-wrap iframe { width:100%; height:100%; border:none; }
-
-    /* FOOTER */
-    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
-    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
-    .footer-logo { display:flex; align-items:center; gap:10px; }
-    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
-    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
-    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
-    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
-    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
-    footer ul a:hover { color:var(--white); }
-    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
-
-    /* MOBILE */
-    @media(max-width:768px){
-      .ticker-item { padding:0 1.5rem; font-size:.75rem; }
-      nav { padding:0 4%; }
-      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
-      .hero { grid-template-columns:1fr; min-height:auto; padding:3rem 4% 2rem; gap:2rem; }
-      .hero::before { display:none; }
-      .hero-visual { order:-1; width:100%; }
-      .hero-slideshow { width:100%; max-width:100%; aspect-ratio:16/10; border-radius:16px; }
-      .trust-bar { gap:1rem; padding:1rem 4%; }
-      .trust-item { font-size:.8rem; }
-      section { padding:3.5rem 4%; }
-      .about { grid-template-columns:1fr; gap:2.5rem; }
-      .about-float { right:0; bottom:-1rem; }
-      .insurance { grid-template-columns:1fr; gap:2rem; }
-      .faq-grid { grid-template-columns:1fr; }
-      .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
-      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
-      .modal, .reg-modal { border-radius:16px; }
-      .modal-header, .modal-body, .reg-body { padding-left:1.2rem; padding-right:1.2rem; }
-    }
-    @media(max-width:480px){
-      .hero h1 { font-size:1.9rem; }
-      .hero-actions { flex-direction:column; }
-    }
-    /* WEATHER WIDGET */
-    .weather-widget { position:absolute; top:14px; right:14px; z-index:10; background:rgba(0,0,0,0.28); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); border-radius:12px; padding:.55rem .9rem; display:flex; align-items:center; gap:.55rem; pointer-events:none; }
-    .weather-icon { width:32px; height:32px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-    .weather-icon svg { width:28px; height:28px; }
-    .weather-info { display:flex; flex-direction:column; gap:1px; }
-    .weather-temp { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:#fff; line-height:1.1; }
-    .weather-desc { font-size:.68rem; color:rgba(255,255,255,.82); text-transform:capitalize; line-height:1.2; }
-    .weather-loc { font-size:.62rem; color:rgba(255,255,255,.6); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
-    @keyframes spin { to { transform:rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -322,47 +90,30 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Вашето здравје е<br/><em>вашата оаза</em></h1>
-    <p>Топла, стручна и достапна лекарска грижа за секој пациент — со или без упат, во склопот на ОАЗА во Илинден.</p>
-    <div class="hero-actions">
-      <a href="CTA-module/cta.html" class="btn btn-primary">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-  Избери матичен лекар во ПЗУ Оаза Медика
-</a>
-      <a href="#contact" class="btn btn-secondary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-        Контактирај не
-      </a>
-    </div>
+
+<div id="hero-mount"></div>
+
+<!-- ═══════════════════════════════════════
+     FLOATING WEATHER WIDGET — DESKTOP
+═══════════════════════════════════════ -->
+<div class="weather-float" id="weatherFloat" title="Времето во Општина Илинден">
+  <div class="wf-icon" id="wfIcon"></div>
+  <div class="wf-temp" id="wfTemp">…</div>
+  <div class="wf-details">
+    <div class="wf-desc" id="wfDesc">Се вчитува</div>
+    <div class="wf-loc">Илинден, МК</div>
   </div>
-  <div class="hero-visual">
-    <div class="hero-slideshow" id="heroSlideshow">
-      <img src="1.jpg" alt="Оаза Медика" class="active"/>
-      <img src="2.jpg" alt="Оаза Медика"/>
-      <img src="3.jpg" alt="Оаза Медика"/>
-      <img src="4.jpg" alt="Оаза Медика"/>
-      <button class="slideshow-prev" id="slidePrev" aria-label="Претходна">&#8249;</button>
-      <button class="slideshow-next" id="slideNext" aria-label="Следна">&#8250;</button>
-      <!-- WEATHER WIDGET overlaid on slideshow -->
-      <div class="weather-widget" id="weatherWidget" title="Времето во Општина Илинден">
-        <div class="weather-icon" id="weatherIcon"></div>
-        <div class="weather-info">
-          <div class="weather-temp" id="weatherTemp">…</div>
-          <div class="weather-desc" id="weatherDesc">Се вчитува</div>
-          <div class="weather-loc" id="weatherLoc">Илинден, МК</div>
-        </div>
-      </div>
-      <div class="slideshow-controls">
-        <span class="slideshow-dot active" data-idx="0"></span>
-        <span class="slideshow-dot" data-idx="1"></span>
-        <span class="slideshow-dot" data-idx="2"></span>
-        <span class="slideshow-dot" data-idx="3"></span>
-      </div>
-    </div>
+</div>
+
+<!-- MOBILE WEATHER PILL -->
+<div class="weather-mobile" id="weatherMobile" title="Времето во Општина Илинден">
+  <div class="wm-icon" id="wmIcon"></div>
+  <div class="wm-temp" id="wmTemp">…</div>
+  <div class="wm-extra">
+    <div class="wm-desc" id="wmDesc">Се вчитува</div>
+    <div class="wm-loc">Илинден, МК</div>
   </div>
-</section>
+</div>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
@@ -473,17 +224,15 @@
     <p class="section-sub">Корисни текстови за превенција, здрав живот и чести прашања.</p>
   </div>
   <div class="novosti-grid">
-
     <a href="blog/dijarea.html" class="novost-card blog-card">
       <div class="novost-img" style="background:#e4f2f2;">🍏</div>
       <div class="novost-body">
         <div class="novost-meta"><span class="novost-kat">Примарно Здравје</span><span class="novost-datum">📅 Март 2026</span></div>
         <h3 class="novost-naslov">Дијареа: Рехидратација, исхрана и пробиотици</h3>
-        <p class="novost-kratko">Главниот фокус при домашното лекување треба да биде на надоместување на течностите, смирување на дигестивниот систем преку соодветна исхрана и обновување на цревната флора..</p>
+        <p class="novost-kratko">Главниот фокус при домашното лекување треба да биде на надоместување на течностите, смирување на дигестивниот систем преку соодветна исхрана и обновување на цревната флора.</p>
         <span class="novost-link">Прочитај повеќе →</span>
       </div>
-    </a
-
+    </a>
   </div>
 </section>
 
@@ -529,7 +278,6 @@
   </div>
 </div>
 
-
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="section-header">
@@ -538,13 +286,13 @@
     <p class="section-sub">Имате прашање? Можеби веќе го имаме одговорот.</p>
   </div>
   <div class="faq-list">
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил на <a href="/cdn-cgi/l/email-protection#b0c0d1d3d9d5dec4d9f0dfd1cad1ddd5d4d9dbd19edddb"><span class="__cf_email__" data-cfemail="9aeafbf9f3fff4eef3daf5fbe0fbf7fffef3f1fbb4f7f1">[email&#160;protected]</span></a>. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">5</span>Што е телемедицина и кој може да ја користи?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
-      <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">6</span>Дали нудите и приватни прегледи (без фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
-    </div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">5</span>Што е телемедицина и кој може да ја користи?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Телемедицината е онлајн лекарска консултација преку видео или е-маил — без физичка посета. Достапна е само за запишани матични пациенти на Оаза Медика.</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">6</span>Дали нудите и приватни прегледи (без фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, нудиме приватни прегледи по договорена цена за пациенти без здравствено осигурување или доаѓаат без упат. Контактирајте не за повеќе информации.</div></div>
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -557,15 +305,13 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#463627252f2328322f0629273c272b23222f2d27682b2d"><span class="__cf_email__" data-cfemail="cdbdacaea4a8a3b9a48da2acb7aca0a8a9a4a6ace3a0a6">[email&#160;protected]</span></a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="/cdn-cgi/l/email-protection#265647454f4348524f6649475c474b43424f4d47084b4d" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
-        <a href="/cdn-cgi/l/email-protection#d5a5b4b6bcb0bba1bc95bab4afb4b8b0b1bcbeb4fbb8be" class="btn btn-secondary" style="border-color:var(--green);color:var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Телемедицина (матични)</a>
+        <a href="mailto:info@oazamedika.mk" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
-        
       </div>
     </div>
     <div class="map-wrap">
@@ -582,7 +328,7 @@
         onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
       <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
     </div>
-    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи и телемедицина за матични пациенти.</p>
+    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи за сите граѓани.</p>
   </div>
   <div>
     <h4>Брзи линкови</h4>
@@ -601,7 +347,7 @@
     <h4>Контакт</h4>
     <ul>
       <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#532332303a363d273a133c3229323e36373a38327d3e38"><span class="__cf_email__" data-cfemail="bacadbd9d3dfd4ced3fad5dbc0dbd7dfded3d1db94d7d1">[email&#160;protected]</span></a></li>
+      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
       <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
       <li><a href="#">Илинден, Македонија</a></li>
       <li><a href="#">Пон–Пет 07:30–15:00</a></li>
@@ -612,12 +358,9 @@
 
 <!-- ═══════════════════════════════════════════════════════
      SCRIPTS
-     novosti.js must be in the same folder as index.html
 ════════════════════════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════════════════════
-     SCRIPTS
-════════════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="novosti.js"></script>
+<script src="hero/hero.js"></script>
+<script src="novosti.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════
    OAZA MEDIKA — MAIN SCRIPT
@@ -631,6 +374,11 @@ var EJS_REPLY   = 'REPLACE_ME_REPLY_TEMPLATE_ID';
 if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
   emailjs.init({ publicKey: EJS_KEY });
 }
+
+/* ── HAMBURGER ───────────────────────────────────── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
 
 /* ── TICKER ─────────────────────────────────────── */
 function buildTicker() {
@@ -780,9 +528,7 @@ function initFaq() {
     btn.addEventListener('click', function() {
       var item = this.closest('.faq-item');
       var isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function(el) {
-        el.classList.remove('open');
-      });
+      document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); });
       if (!isOpen) item.classList.add('open');
     });
   });
@@ -798,7 +544,7 @@ function initScrollReveal() {
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('.service-card,.testimonial-card,.ins-card,.novost-card').forEach(function(el) {
+  document.querySelectorAll('.service-card,.ins-card,.novost-card').forEach(function(el) {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity .5s ease, transform .5s ease';
@@ -806,84 +552,44 @@ function initScrollReveal() {
   });
 }
 
-/* ── HERO SLIDESHOW ─────────────────────────────── */
-function initSlideshow() {
-  var imgs = document.querySelectorAll('#heroSlideshow img');
-  var dots = document.querySelectorAll('#heroSlideshow .slideshow-dot');
-  var total = imgs.length;
-  if (!total) return;
-  var cur = 0;
-  for (var j = 0; j < total; j++) {
-    imgs[j].classList.toggle('active', j === 0);
-    if (dots[j]) dots[j].classList.toggle('active', j === 0);
-  }
-  function goTo(n) {
-    imgs[cur].classList.remove('active');
-    if (dots[cur]) dots[cur].classList.remove('active');
-    cur = (n + total) % total;
-    imgs[cur].classList.add('active');
-    if (dots[cur]) dots[cur].classList.add('active');
-  }
-  for (var i = 0; i < dots.length; i++) {
-    (function(idx) {
-      dots[idx].addEventListener('click', function() {
-        goTo(idx);
-        clearInterval(timer);
-        timer = setInterval(function() { goTo(cur + 1); }, 4000);
-      });
-    })(i);
-  }
-  var prevBtn = document.getElementById('slidePrev');
-  var nextBtn = document.getElementById('slideNext');
-  if (prevBtn) prevBtn.addEventListener('click', function() {
-    goTo(cur - 1);
-    clearInterval(timer);
-    timer = setInterval(function() { goTo(cur + 1); }, 4000);
-  });
-  if (nextBtn) nextBtn.addEventListener('click', function() {
-    goTo(cur + 1);
-    clearInterval(timer);
-    timer = setInterval(function() { goTo(cur + 1); }, 4000);
-  });
-  var timer = setInterval(function() { goTo(cur + 1); }, 4000);
-}
+
 
 /* ── WEATHER WIDGET ─────────────────────────────── */
 function initWeather() {
-  // SVG icon builders
-  var SVG = {
-    sun: '<svg viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#FFD700" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="7.05" y2="7.05"/><line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="7.05" y2="16.95"/><line x1="16.95" y1="7.05" x2="19.07" y2="4.93"/></svg>',
-    moon: '<svg viewBox="0 0 24 24" fill="#c8d8f0" stroke="#c8d8f0" stroke-width="1.5" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
-    cloud: '<svg viewBox="0 0 24 24" fill="#b0c4d8" stroke="#8fa8c0" stroke-width="1.5"><path d="M17.5 19H9a7 7 0 110-14 7 7 0 016.71 5H17.5a4.5 4.5 0 010 9z" fill="#d0dce8" stroke="#8fa8c0"/></svg>',
-    sunCloud: '<svg viewBox="0 0 26 22" fill="none" stroke-linecap="round" stroke-width="1.5"><circle cx="8" cy="8" r="4" fill="#FFD700" stroke="#FFD700" stroke-width="0"/><line x1="8" y1="1" x2="8" y2="3.5" stroke="#FFD700"/><line x1="1" y1="8" x2="3.5" y2="8" stroke="#FFD700"/><line x1="3.5" y1="3.5" x2="5.5" y2="5.5" stroke="#FFD700"/><line x1="10.5" y1="5.5" x2="12.5" y2="3.5" stroke="#FFD700"/><path d="M18 19H11a5 5 0 110-10 5 5 0 014.8 3.6H18a3.4 3.4 0 010 6.8z" fill="#d0dce8" stroke="#8fa8c0"/></svg>',
-    moonCloud: '<svg viewBox="0 0 26 22" fill="none" stroke-linecap="round" stroke-width="1.5"><path d="M10 10.5A5 5 0 0115.5 4 4 4 0 1110 10.5z" fill="#c8d8f0" stroke="#c8d8f0"/><path d="M19 19H12a5 5 0 110-10 5 5 0 014.8 3.6H19a3.4 3.4 0 010 6.8z" fill="#d0dce8" stroke="#8fa8c0"/></svg>',
-    fog: '<svg viewBox="0 0 24 20" fill="none" stroke="#a0b4c8" stroke-width="1.8" stroke-linecap="round"><line x1="2" y1="5" x2="22" y2="5"/><line x1="4" y1="10" x2="20" y2="10"/><line x1="2" y1="15" x2="22" y2="15"/></svg>',
-    rain: '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="1.8"><path d="M17 18H9a7 7 0 110-14 7 7 0 016.71 5H17a4.5 4.5 0 010 9z" fill="#d0dce8" stroke="#8fa8c0"/><line x1="8" y1="21" x2="7" y2="23" stroke="#5b9bd5"/><line x1="12" y1="21" x2="11" y2="23" stroke="#5b9bd5"/><line x1="16" y1="21" x2="15" y2="23" stroke="#5b9bd5"/></svg>',
-    drizzle: '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="1.8"><path d="M17 18H9a7 7 0 110-14 7 7 0 016.71 5H17a4.5 4.5 0 010 9z" fill="#d0dce8" stroke="#8fa8c0"/><line x1="9" y1="21" x2="8.5" y2="23" stroke="#5b9bd5" stroke-width="1.4"/><line x1="13" y1="21" x2="12.5" y2="23" stroke="#5b9bd5" stroke-width="1.4"/></svg>',
-    snow: '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="1.8"><path d="M17 17H9a7 7 0 110-14 7 7 0 016.71 5H17a4.5 4.5 0 010 9z" fill="#dce9f5" stroke="#8fa8c0"/><line x1="8" y1="21" x2="8" y2="23" stroke="#a0c8e8"/><line x1="12" y1="21" x2="12" y2="23" stroke="#a0c8e8"/><line x1="16" y1="21" x2="16" y2="23" stroke="#a0c8e8"/><line x1="7" y1="22" x2="9" y2="22" stroke="#a0c8e8"/><line x1="11" y1="22" x2="13" y2="22" stroke="#a0c8e8"/><line x1="15" y1="22" x2="17" y2="22" stroke="#a0c8e8"/></svg>',
-    thunder: '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-width="1.8"><path d="M17 17H9a7 7 0 110-14 7 7 0 016.71 5H17a4.5 4.5 0 010 9z" fill="#c8ccd8" stroke="#7080a0"/><polyline points="13,19 10,24 14,24 11,29" stroke="#FFD700" stroke-width="2" fill="none"/></svg>',
-    unknown: '<svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>'
+  // All icons are white/light mono — suitable for dark overlay placement
+  var WX = {
+    sun:      '<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.92)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="rgba(255,255,255,0.92)" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="7.05" y2="7.05"/><line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/><line x1="4.93" y1="19.07" x2="7.05" y2="16.95"/><line x1="16.95" y1="7.05" x2="19.07" y2="4.93"/></svg>',
+    moon:     '<svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.85)" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
+    cloud:    '<svg viewBox="0 0 24 18" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 17H7A6 6 0 117 5a6 6 0 015.74 4.26H18a3.74 3.74 0 010 7.48z" fill="rgba(255,255,255,0.18)"/></svg>',
+    sunCloud: '<svg viewBox="0 0 26 20" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"><circle cx="8" cy="7" r="3.5" fill="rgba(255,255,255,0.9)" stroke="none"/><line x1="8" y1="1" x2="8" y2="3" stroke="rgba(255,255,255,0.9)"/><line x1="2" y1="7" x2="4" y2="7" stroke="rgba(255,255,255,0.9)"/><line x1="3.5" y1="3.5" x2="5.1" y2="5.1" stroke="rgba(255,255,255,0.9)"/><line x1="10.9" y1="5.1" x2="12.5" y2="3.5" stroke="rgba(255,255,255,0.9)"/><path d="M20 18H13a5 5 0 110-10 5 5 0 014.8 3.64H20a3.36 3.36 0 010 6.72z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.8)"/></svg>',
+    moonCloud:'<svg viewBox="0 0 26 20" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6"><path d="M9 11A5 5 0 0114.5 4.5 4.2 4.2 0 119 11z" fill="rgba(255,255,255,0.8)" stroke="rgba(255,255,255,0.8)"/><path d="M20 18H13a5 5 0 110-10 5 5 0 014.8 3.64H20a3.36 3.36 0 010 6.72z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.75)"/></svg>',
+    fog:      '<svg viewBox="0 0 24 16" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.8" stroke-linecap="round"><line x1="1" y1="4" x2="23" y2="4"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="1" y1="14" x2="23" y2="14"/></svg>',
+    drizzle:  '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M17 17H9a6 6 0 110-12 6 6 0 015.74 4.26H17a3.74 3.74 0 010 7.48z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)"/><line x1="9.5" y1="21" x2="9" y2="23" stroke="rgba(255,255,255,0.7)" stroke-width="1.4"/><line x1="13.5" y1="21" x2="13" y2="23" stroke="rgba(255,255,255,0.7)" stroke-width="1.4"/></svg>',
+    rain:     '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M17 17H9a6 6 0 110-12 6 6 0 015.74 4.26H17a3.74 3.74 0 010 7.48z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)"/><line x1="8" y1="21" x2="7" y2="23" stroke="rgba(255,255,255,0.75)"/><line x1="12" y1="21" x2="11" y2="23" stroke="rgba(255,255,255,0.75)"/><line x1="16" y1="21" x2="15" y2="23" stroke="rgba(255,255,255,0.75)"/></svg>',
+    snow:     '<svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M17 16H9a6 6 0 110-12 6 6 0 015.74 4.26H17a3.74 3.74 0 010 7.48z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.8)"/><line x1="8" y1="21" x2="8" y2="23" stroke="rgba(255,255,255,0.7)"/><line x1="12" y1="21" x2="12" y2="23" stroke="rgba(255,255,255,0.7)"/><line x1="16" y1="21" x2="16" y2="23" stroke="rgba(255,255,255,0.7)"/><line x1="7" y1="22" x2="9" y2="22" stroke="rgba(255,255,255,0.7)"/><line x1="11" y1="22" x2="13" y2="22" stroke="rgba(255,255,255,0.7)"/><line x1="15" y1="22" x2="17" y2="22" stroke="rgba(255,255,255,0.7)"/></svg>',
+    thunder:  '<svg viewBox="0 0 24 26" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M17 15H9a6 6 0 110-12 6 6 0 015.74 4.26H17a3.74 3.74 0 010 7.48z" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.75)"/><polyline points="13,18 10,23 14,23 11,28" stroke="rgba(255,255,255,0.9)" stroke-width="2" fill="none"/></svg>',
+    unknown:  '<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><circle cx="12" cy="16" r="0.5" fill="rgba(255,255,255,0.6)"/></svg>'
   };
 
   function getIcon(code, night) {
     if (night) {
-      if (code === 0 || code === 1) return SVG.moon;
-      if (code === 2 || code === 3) return SVG.moonCloud;
-      if (code === 45 || code === 48) return SVG.fog;
-      if (code >= 51 && code <= 55) return SVG.drizzle;
-      if (code === 80 || code === 81) return SVG.rain;
+      if (code <= 1) return WX.moon;
+      if (code <= 3) return WX.moonCloud;
+      if (code === 45 || code === 48) return WX.fog;
+      if (code >= 51 && code <= 55) return WX.drizzle;
+      if (code >= 80 && code <= 82) return WX.rain;
     }
-    if (code === 0) return SVG.sun;
-    if (code === 1 || code === 2) return SVG.sunCloud;
-    if (code === 3) return SVG.cloud;
-    if (code === 45 || code === 48) return SVG.fog;
-    if (code >= 51 && code <= 55) return SVG.drizzle;
-    if (code >= 61 && code <= 65) return SVG.rain;
-    if (code >= 71 && code <= 77) return SVG.snow;
-    if (code >= 80 && code <= 82) return SVG.rain;
-    if (code === 85 || code === 86) return SVG.snow;
-    if (code >= 95) return SVG.thunder;
-    return SVG.unknown;
+    if (code === 0) return WX.sun;
+    if (code <= 2) return WX.sunCloud;
+    if (code === 3) return WX.cloud;
+    if (code === 45 || code === 48) return WX.fog;
+    if (code >= 51 && code <= 55) return WX.drizzle;
+    if (code >= 61 && code <= 65) return WX.rain;
+    if (code >= 71 && code <= 77) return WX.snow;
+    if (code >= 80 && code <= 82) return WX.rain;
+    if (code === 85 || code === 86) return WX.snow;
+    if (code >= 95) return WX.thunder;
+    return WX.unknown;
   }
 
   var WX_DESC = {
@@ -896,35 +602,59 @@ function initWeather() {
     85:'Слаби снежни врнежи', 86:'Силни снежни врнежи',
     95:'Грмотевична бура', 96:'Бура со град', 99:'Силна бура со град'
   };
-  function isNight() {
-    var h = new Date().getHours();
-    return h < 6 || h >= 19;
-  }
+
+  function isNight() { var h = new Date().getHours(); return h < 6 || h >= 19; }
+
   var lat = 41.9924, lon = 21.6225;
   var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
             '&current=temperature_2m,weathercode&wind_speed_unit=kmh&timezone=Europe%2FSkopje';
+
   fetch(url)
     .then(function(r) { return r.json(); })
     .then(function(d) {
       var temp = Math.round(d.current.temperature_2m);
       var code = d.current.weathercode;
       var night = isNight();
-      document.getElementById('weatherIcon').innerHTML = getIcon(code, night);
-      document.getElementById('weatherTemp').textContent = temp + '°C';
-      document.getElementById('weatherDesc').textContent = WX_DESC[code] || 'Непознато';
-      document.getElementById('weatherLoc').textContent = 'Илинден, МК';
+      var iconHtml = getIcon(code, night);
+      var desc = WX_DESC[code] || 'Непознато';
+      var tempStr = temp + '°C';
+      // Desktop
+      document.getElementById('wfIcon').innerHTML = iconHtml;
+      document.getElementById('wfTemp').textContent = tempStr;
+      document.getElementById('wfDesc').textContent = desc;
+      // Mobile
+      document.getElementById('wmIcon').innerHTML = iconHtml;
+      document.getElementById('wmTemp').textContent = tempStr;
+      document.getElementById('wmDesc').textContent = desc;
     })
     .catch(function() {
-      document.getElementById('weatherIcon').innerHTML = SVG.unknown;
-      document.getElementById('weatherTemp').textContent = '–°C';
-      document.getElementById('weatherDesc').textContent = 'Нема податоци';
-      document.getElementById('weatherLoc').textContent = 'Илинден, МК';
+      var u = WX.unknown;
+      document.getElementById('wfIcon').innerHTML = u;
+      document.getElementById('wfTemp').textContent = '–°C';
+      document.getElementById('wfDesc').textContent = 'Нема податоци';
+      document.getElementById('wmIcon').innerHTML = u;
+      document.getElementById('wmTemp').textContent = '–°C';
+      document.getElementById('wmDesc').textContent = 'Нема податоци';
     });
+
+  // Mobile pill tap-to-expand, auto-collapse after 5s
+  var mobileWidget = document.getElementById('weatherMobile');
+  var collapseTimer = null;
+  mobileWidget.addEventListener('click', function() {
+    this.classList.toggle('expanded');
+    if (this.classList.contains('expanded')) {
+      clearTimeout(collapseTimer);
+      collapseTimer = setTimeout(function() {
+        mobileWidget.classList.remove('expanded');
+      }, 5000);
+    } else {
+      clearTimeout(collapseTimer);
+    }
+  });
 }
 
 /* ── WIRE EVERYTHING ON DOM READY ───────────────── */
 document.addEventListener('DOMContentLoaded', function() {
-
   document.getElementById('ctaRegBtn') && document.getElementById('ctaRegBtn').addEventListener('click', openReg);
   document.getElementById('regCloseBtn') && document.getElementById('regCloseBtn').addEventListener('click', closeReg);
   document.getElementById('regOverlay') && document.getElementById('regOverlay').addEventListener('click', function(e) { if (e.target === this) closeReg(); });
@@ -934,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if (e.target === this) closeNovostModal(); });
 
   initFaq();
-  initSlideshow();
+  initHero();
   initScrollReveal();
   initWeather();
   renderNovosti();
