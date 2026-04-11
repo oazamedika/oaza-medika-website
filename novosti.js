@@ -29,3 +29,4 @@ const NOVOSTI = [
     `                                              
 }
 ];
+if (typeof window._omBuildTicker === 'function') window._omBuildTicker(NOVOSTI);
