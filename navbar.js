@@ -39,8 +39,13 @@
     '.om-ticker-sep{color:rgba(255,255,255,.25);display:inline-flex;align-items:center;',
     'flex-shrink:0;font-size:.6rem;}',
 
+    /* ── Fixed wrapper (ticker + nav together) ── */
+    '.om-topbar{position:fixed;top:0;left:0;right:0;z-index:500;}',
+    /* spacer pushes page content below the fixed bar */
+    '.om-topbar-spacer{height:108px;}',
+
     /* ── Nav shell ── */
-    '.om-nav{position:sticky;top:0;z-index:500;background:rgba(255,255,255,0.97);position:relative;',
+    '.om-nav{position:relative;background:rgba(255,255,255,0.97);',
     'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);',
     'border-bottom:1px solid rgba(42,122,122,.12);',
     'padding:0 5%;display:flex;align-items:center;justify-content:space-between;',
@@ -119,8 +124,7 @@
     /* ── Mobile ── */
     '@media(max-width:900px){',
 
-    /* nav stays 72px, links drop below it */
-    '.om-nav{position:sticky;}',
+    '.om-topbar-spacer{height:108px;}',
 
     '.om-nav-links{',
     'display:none;',
@@ -311,7 +315,7 @@
   /* ── Inject ───────────────────────────────────────── */
   var frag = document.createDocumentFragment();
   var tmp  = document.createElement('div');
-  tmp.innerHTML = tickerHTML + navHTML;
+  tmp.innerHTML = '<div class="om-topbar">' + tickerHTML + navHTML + '</div><div class="om-topbar-spacer"></div>';
   while (tmp.firstChild) frag.appendChild(tmp.firstChild);
 
   var body = document.body;
