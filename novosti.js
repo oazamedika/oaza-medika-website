@@ -105,7 +105,4 @@ var NOVOSTI = [
    If navbar.js loaded first, _omBuildTicker already exists → call it.
    If novosti.js loaded first, navbar.js will auto-read NOVOSTI on
    DOMContentLoaded via its own tryAutoTicker fallback.
-─────────────────────────────────────────────────────────────── */
-if (typeof window._omBuildTicker === 'function') {
-  window._omBuildTicker(NOVOSTI);
-}
+
