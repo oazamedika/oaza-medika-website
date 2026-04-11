@@ -23,7 +23,7 @@
 
     '.om-footer-brand{display:flex;flex-direction:column;gap:1rem;}',
     '.om-footer-logo-wrap{display:flex;align-items:center;gap:10px;}',
-    '.om-footer-logo-img{height:52px;width:auto;filter:brightness(0) invert(1);opacity:.88;}',
+    '.om-footer-logo-img{height:104px;width:auto;filter:brightness(0) invert(1);opacity:.88;}',
     '.om-footer-logo-fallback{font-family:"Playfair Display",serif;font-size:1.1rem;color:#fff;',
     'display:none;align-items:center;gap:8px;}',
     '.om-footer-slogan-main{font-family:"Playfair Display",serif;font-size:1rem;',
@@ -43,6 +43,7 @@
 
     '@media(max-width:768px){',
     '.om-footer{grid-template-columns:1fr;gap:2rem;padding:2.5rem 4% 1.5rem;}',
+    '.om-footer-logo-img{height:69px;}',
     '}'
   ].join('');
   document.head.appendChild(style);
@@ -70,7 +71,7 @@
     '<li><a href="https://oazamedika.github.io/oaza-medika-website/about-us.html">За нас</a></li>' +
     '<li><a href="https://oazamedika.github.io/oaza-medika-website/services.html">Услуги</a></li>' +
     '<li><a href="https://oazamedika.github.io/oaza-medika-website/tools-module/tools.html">Алатки</a></li>' +
-    '<li><a href="' + indexHref + '#fond">Фонд / ФЗОМ</a></li>' +
+    '<li><a href="' + indexHref + '#fond">Фонд</a></li>' +
     '<li><a href="' + indexHref + '#novosti">Новости</a></li>' +
     '<li><a href="' + indexHref + '#blog">Едукативен блог</a></li>' +
     '<li><a href="' + indexHref + '#faq">Прашања</a></li>' +
@@ -86,7 +87,7 @@
     '<li><a href="tel:+38970123123">070 123 123</a></li>' +
     '<li><a href="mailto:pacienti@oazamedika.com">pacienti@oazamedika.com</a></li>' +
     '<li><a href="' + indexHref + '#contact">ул. 2 бр. 105, лок. 10</a></li>' +
-    '<li><a href="' + indexHref + '#contact">Илинден, Македонија</a></li>' +
+    '<li><a href="' + indexHref + '#contact">Општина Илинден</a></li>' +
     '<li><a href="#">Пон–Пет 07:30–15:00</a></li>' +
     '</ul>' +
     '</div>' +
