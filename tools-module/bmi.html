@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BMI Калкулатор – ПЗУ Оаза Медика, Илинден</title>
+  <title>BMI Калкулатор – Оаза Медика</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
+  <script src="../navbar.js" data-root="../"></script>
   <style>
     :root {
       --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
@@ -16,22 +17,6 @@
     html { scroll-behavior:smooth; }
     body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
     h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
-
-    /* NAV */
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
-    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
-    .nav-logo-img { height:64px; width:auto; display:block; }
-    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
-    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
-    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
-    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
-    .nav-links a:hover { color:var(--teal); }
-    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
-    .nav-cta:hover { background:var(--teal-dark) !important; }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
 
     /* HERO */
     .page-hero { position:relative; height:380px; overflow:hidden; display:flex; align-items:flex-end; }
@@ -50,64 +35,26 @@
 
     /* CALCULATOR CARD */
     .calc-section { background:var(--white); }
-    .calc-card {
-      background:var(--cream);
-      border-radius:20px;
-      padding:2.5rem 2rem;
-      border:1px solid rgba(42,122,122,.12);
-      margin-top:2rem;
-    }
+    .calc-card { background:var(--cream); border-radius:20px; padding:2.5rem 2rem; border:1px solid rgba(42,122,122,.12); margin-top:2rem; }
     .input-row { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:1.4rem; }
     .input-group { display:flex; flex-direction:column; gap:.4rem; }
     .input-group label { font-size:.82rem; font-weight:600; color:var(--text-mid); letter-spacing:.03em; }
-    .input-group input, .input-group select {
-      padding:.8rem 1rem;
-      border:1.5px solid rgba(42,122,122,.2);
-      border-radius:10px;
-      font-family:'Lato',sans-serif; font-size:.95rem; color:var(--text);
-      background:var(--white); outline:none; transition:border-color .2s;
-    }
+    .input-group input, .input-group select { padding:.8rem 1rem; border:1.5px solid rgba(42,122,122,.2); border-radius:10px; font-family:'Lato',sans-serif; font-size:.95rem; color:var(--text); background:var(--white); outline:none; transition:border-color .2s; }
     .input-group input:focus, .input-group select:focus { border-color:var(--teal); }
     .input-hint { font-size:.76rem; color:var(--text-light); }
-
-    .calc-btn {
-      width:100%; padding:1rem;
-      background:var(--teal); color:var(--white);
-      border:none; border-radius:50px;
-      font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700;
-      cursor:pointer; transition:all .25s;
-      display:flex; align-items:center; justify-content:center; gap:8px;
-      margin-top:.5rem;
-    }
+    .calc-btn { width:100%; padding:1rem; background:var(--teal); color:var(--white); border:none; border-radius:50px; font-family:'Lato',sans-serif; font-size:.95rem; font-weight:700; cursor:pointer; transition:all .25s; display:flex; align-items:center; justify-content:center; gap:8px; margin-top:.5rem; }
     .calc-btn:hover { background:var(--teal-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(42,122,122,.3); }
 
     /* RESULT */
-    .result-box {
-      display:none;
-      margin-top:2rem;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(42,122,122,.15);
-      animation:fadeUp .4s ease;
-    }
+    .result-box { display:none; margin-top:2rem; border-radius:16px; overflow:hidden; border:1px solid rgba(42,122,122,.15); animation:fadeUp .4s ease; }
     .result-box.show { display:block; }
     @keyframes fadeUp { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
-
-    .result-header {
-      padding:1.6rem 2rem;
-      display:flex; align-items:center; gap:1.4rem;
-    }
-    .result-score-circle {
-      width:80px; height:80px; border-radius:50%;
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      flex-shrink:0;
-      font-family:'Playfair Display',serif;
-    }
+    .result-header { padding:1.6rem 2rem; display:flex; align-items:center; gap:1.4rem; }
+    .result-score-circle { width:80px; height:80px; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; font-family:'Playfair Display',serif; }
     .result-score-circle .score-num { font-size:1.6rem; font-weight:700; line-height:1; }
     .result-score-circle .score-unit { font-size:.65rem; font-weight:600; letter-spacing:.04em; opacity:.8; }
     .result-label { font-family:'Playfair Display',serif; font-size:1.3rem; }
     .result-sub { font-size:.88rem; font-weight:300; margin-top:.2rem; }
-
     .result-body { padding:1.6rem 2rem; background:var(--white); }
     .result-body h4 { font-size:.95rem; color:var(--text); margin-bottom:.8rem; }
     .suggestion-list { list-style:none; display:flex; flex-direction:column; gap:.6rem; }
@@ -120,92 +67,33 @@
     .bmi-gauge-needle { position:absolute; top:-5px; width:4px; height:20px; background:var(--text); border-radius:2px; transform:translateX(-50%); transition:left .6s ease; }
     .bmi-gauge-labels { display:flex; justify-content:space-between; font-size:.7rem; color:var(--text-light); margin-top:.4rem; }
 
-    /* COLOUR THEMES PER CATEGORY */
+    /* CATEGORY COLOURS */
     .cat-underweight .result-header { background:#e3f2fd; }
     .cat-underweight .result-score-circle { background:#1565c0; color:#fff; }
     .cat-underweight .result-label { color:#1565c0; }
-
     .cat-normal .result-header { background:var(--green-light); }
     .cat-normal .result-score-circle { background:var(--teal); color:#fff; }
     .cat-normal .result-label { color:var(--teal-dark); }
-
     .cat-overweight .result-header { background:#fff8e1; }
     .cat-overweight .result-score-circle { background:#f9a825; color:#fff; }
     .cat-overweight .result-label { color:#e65100; }
-
     .cat-obese .result-header { background:#fbe9e7; }
     .cat-obese .result-score-circle { background:#c62828; color:#fff; }
     .cat-obese .result-label { color:#b71c1c; }
 
     /* CITATION */
-    .citation-box {
-      background:var(--cream);
-      border:1px solid rgba(42,122,122,.1);
-      border-radius:12px;
-      padding:1.4rem 1.6rem;
-      margin-top:2rem;
-      font-size:.78rem; color:var(--text-light); line-height:1.7;
-    }
+    .citation-box { background:var(--cream); border:1px solid rgba(42,122,122,.1); border-radius:12px; padding:1.4rem 1.6rem; margin-top:2rem; font-size:.78rem; color:var(--text-light); line-height:1.7; }
     .citation-box strong { color:var(--text-mid); font-weight:600; }
-    .disclaimer {
-      margin-top:.8rem; padding:.9rem 1.1rem;
-      background:#fff8e1; border-left:3px solid #f9a825;
-      border-radius:0 8px 8px 0;
-      font-size:.78rem; color:#6d4c00; line-height:1.65;
-    }
-
-    /* FOOTER */
-    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
-    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
-    .footer-logo { display:flex; align-items:center; gap:10px; }
-    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
-    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
-    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
-    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
-    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
-    footer ul a:hover { color:var(--white); }
-    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
+    .disclaimer { margin-top:.8rem; padding:.9rem 1.1rem; background:#fff8e1; border-left:3px solid #f9a825; border-radius:0 8px 8px 0; font-size:.78rem; color:#6d4c00; line-height:1.65; }
 
     @media(max-width:768px) {
-      nav { padding:0 4%; }
-      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
       .page-hero { height:300px; }
       .input-row { grid-template-columns:1fr; }
       .calc-card { padding:1.8rem 1.4rem; }
-      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
     }
   </style>
 </head>
 <body>
-
-<nav>
-  <a href="../index.html" class="nav-logo">
-    <img src="../logo_header.png" alt="Оаза Медика" class="nav-logo-img"
-      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
-    <div style="display:none;" id="navLogoFallback">
-      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
-        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
-        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
-        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
-      </svg>
-      <div class="nav-logo-text"><span>Оаза Медика</span><span>Ординација – Илинден</span></div>
-    </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#about">За нас</a></li>
-    <li><a href="../index.html#services">Услуги</a></li>
-    <li><a href="tools.html">Алатки</a></li>
-    <li><a href="../index.html#insurance">Фонд</a></li>
-    <li><a href="../index.html#novosti">Новости</a></li>
-    <li><a href="../index.html#blog">Блог</a></li>
-    <li><a href="../index.html#faq">ЧПП</a></li>
-    <li><a href="../index.html#contact" class="nav-cta">Контакт</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Мени"><span></span><span></span><span></span></button>
-</nav>
 
 <div class="page-hero">
   <img src="bmi.png" alt="BMI Калкулатор" onerror="this.style.display='none';" />
@@ -301,40 +189,8 @@
   </div>
 </section>
 
-<footer>
-  <div class="footer-brand">
-    <div class="footer-logo">
-      <img src="../logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;" onerror="this.style.display='none';" />
-      <span>Оаза Медика</span>
-    </div>
-    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ.</p>
-  </div>
-  <div>
-    <h4>Алатки</h4>
-    <ul>
-      <li><a href="tools.html">Сите алатки</a></li>
-      <li><a href="bmi.html">BMI Калкулатор</a></li>
-      <li><a href="cardiac-dis.html">Кардиоваскуларен ризик</a></li>
-      <li><a href="diabetes-risk.html">Ризик од дијабетес</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Контакт</h4>
-    <ul>
-      <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="mailto:info@oazamedika.mk">info@oazamedika.mk</a></li>
-      <li><a href="#">ул. 2 бр. 105, лок. 10, Илинден</a></li>
-      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
-
+<script src="../footer.js" data-root="../"></script>
 <script>
-document.getElementById('hamburger').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
 var DATA = {
   underweight: {
     cat: 'cat-underweight', label: 'Поднормална тежина', range: 'BMI под 18.5',
@@ -381,7 +237,6 @@ var DATA = {
 function calcBMI() {
   var h = parseFloat(document.getElementById('height').value);
   var w = parseFloat(document.getElementById('weight').value);
-  var a = parseFloat(document.getElementById('age').value);
 
   if (!h || !w || h < 100 || h > 250 || w < 20 || w > 300) {
     alert('Ве молиме внесете валидна висина (100–250 cm) и тежина (20–300 kg).'); return;
@@ -397,17 +252,16 @@ function calcBMI() {
   else                 key = 'obese';
 
   var d = DATA[key];
-  var box      = document.getElementById('bmiResult');
-  var header   = document.getElementById('bmiHeader');
-  var circle   = document.getElementById('bmiCircle');
-  var valEl    = document.getElementById('bmiValue');
-  var catEl    = document.getElementById('bmiCategory');
-  var rangeEl  = document.getElementById('bmiRange');
-  var suggs    = document.getElementById('bmiSuggestions');
-  var needle   = document.getElementById('bmiNeedle');
+  var box    = document.getElementById('bmiResult');
+  var header = document.getElementById('bmiHeader');
+  var circle = document.getElementById('bmiCircle');
+  var valEl  = document.getElementById('bmiValue');
+  var catEl  = document.getElementById('bmiCategory');
+  var rangeEl= document.getElementById('bmiRange');
+  var suggs  = document.getElementById('bmiSuggestions');
+  var needle = document.getElementById('bmiNeedle');
 
-  // Remove old category classes
-  box.className = 'result-box show';
+  box.className    = 'result-box show';
   header.className = 'result-header ' + d.cat;
   circle.className = 'result-score-circle ' + d.cat;
 
@@ -415,7 +269,6 @@ function calcBMI() {
   catEl.textContent   = d.label;
   rangeEl.textContent = d.range;
 
-  // Needle position: map BMI 16–40 to 0–100%
   var pct = Math.min(100, Math.max(0, ((bmi - 16) / 24) * 100));
   needle.style.left = pct + '%';
 
@@ -423,12 +276,8 @@ function calcBMI() {
     return '<li>' + s + '</li>';
   }).join('');
 
-  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') calcBMI();
-});
 </script>
 </body>
 </html>
