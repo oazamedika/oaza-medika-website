@@ -24,7 +24,7 @@
     '--green:#1a5c2a;--green-light:#e8f5ec;--cream:#f9faf8;--white:#ffffff;',
     '--text:#1c2a22;--text-mid:#3d5046;--text-light:#6b8070;}',
 
-    /* ── Ticker — normal flow, scrolls with page ── */
+    /* ── Ticker ── */
     '.om-ticker-wrap{background:var(--green);color:var(--white);height:36px;',
     'overflow:hidden;display:flex;align-items:center;}',
     '.om-ticker-label{background:var(--teal-dark);color:var(--white);padding:0 1rem;',
@@ -38,7 +38,7 @@
     '.om-ticker-item:hover{color:#b2f0b2;}',
     '.om-ticker-sep{color:rgba(255,255,255,.25);display:inline-flex;align-items:center;flex-shrink:0;}',
 
-    /* ── Nav — fixed, top:36px until ticker scrolls away, then top:0 ── */
+    /* ── Nav ── */
     '.om-nav{position:fixed;top:36px;left:0;right:0;z-index:500;',
     'background:rgba(255,255,255,0.97);',
     'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);',
@@ -46,8 +46,6 @@
     'padding:0 5%;display:flex;align-items:center;justify-content:space-between;',
     'height:64px;transition:box-shadow .3s;box-sizing:border-box;}',
     '.om-nav.scrolled{top:0;box-shadow:0 4px 24px rgba(26,92,42,.12);}',
-
-    /* spacer = nav height only; ticker already occupies 36px in normal flow above */
     '.om-nav-spacer{height:64px;}',
 
     /* ── Logo ── */
@@ -82,16 +80,15 @@
     '.om-tools-wrap{position:relative;display:flex;align-items:center;}',
     '.om-tools-arrow{display:inline-flex;align-items:center;margin-left:2px;transition:transform .22s;flex-shrink:0;}',
     '.om-tools-wrap::after{content:"";position:absolute;top:100%;left:0;right:0;height:14px;}',
+
+    /* Desktop dropdown — hidden by default, shown on hover (desktop only) */
     '.om-dropdown{position:absolute;top:calc(100% + 6px);left:50%;',
     'transform:translateX(-50%) translateY(4px);',
     'background:var(--white);border:1px solid rgba(42,122,122,.13);border-radius:14px;',
     'box-shadow:0 12px 40px rgba(26,92,42,.14);min-width:210px;padding:.4rem;',
     'opacity:0;visibility:hidden;pointer-events:none;',
     'transition:opacity .18s,transform .18s,visibility .18s;}',
-    /* desktop-only hover — overridden entirely inside @media mobile */
-    '.om-tools-wrap:hover .om-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}',
-    '.om-tools-wrap:hover .om-tools-btn{color:var(--teal);}',
-    '.om-tools-wrap:hover .om-tools-arrow{transform:rotate(180deg);}',
+
     '.om-dropdown a{display:flex;align-items:center;gap:8px;padding:.45rem .65rem;',
     'border-radius:9px;text-decoration:none;color:var(--text-mid);font-size:.82rem;',
     'font-weight:600;font-family:Lato,sans-serif;letter-spacing:0;text-transform:none;',
@@ -114,6 +111,13 @@
     '.om-hamburger.open span:nth-child(2){opacity:0;}',
     '.om-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}',
 
+    /* ════════ DESKTOP only: hover opens dropdown ════════ */
+    '@media(min-width:901px){',
+    '.om-tools-wrap:hover .om-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}',
+    '.om-tools-wrap:hover .om-tools-btn{color:var(--teal);}',
+    '.om-tools-wrap:hover .om-tools-arrow{transform:rotate(180deg);}',
+    '}',
+
     /* ════════ MOBILE ≤ 900px ════════ */
     '@media(max-width:900px){',
 
@@ -128,7 +132,6 @@
     'box-shadow:0 8px 24px rgba(26,92,42,.10);',
     'padding:.25rem 0 .5rem;z-index:499;}',
     '.om-nav-links.open{display:flex;}',
-
     '.om-nav-links > li{width:100%;display:block;}',
 
     /* every row */
@@ -152,34 +155,26 @@
     'padding:.7rem 5%!important;margin-top:.25rem;}',
     '.om-nav-cta:hover{background:var(--teal-dark)!important;color:var(--white)!important;}',
 
-    /* tools wrap — reset to block column, no desktop hover at all */
+    /* tools wrap — block, no hover behaviour */
     '.om-tools-wrap{width:100%;flex-direction:column;align-items:stretch;position:static;}',
     '.om-tools-wrap::after{display:none;}',
 
-    /* COMPLETELY neutralise every desktop hover rule for .om-dropdown */
-    '.om-tools-wrap:hover .om-dropdown,',
-    '.om-tools-wrap:focus-within .om-dropdown{',
-    'opacity:0!important;visibility:hidden!important;',
-    'pointer-events:none!important;display:none!important;',
-    'transform:none!important;}',
-    '.om-tools-wrap:hover .om-tools-btn{color:var(--text-mid)!important;}',
-    '.om-tools-wrap:hover .om-tools-arrow{transform:none!important;}',
-
-    /* active tools btn */
-    '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
-    '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
-
-    /* dropdown hidden by default on mobile */
+    /* dropdown — completely hidden on mobile until JS adds .mobile-visible */
     '.om-dropdown{',
-    'display:none!important;',
+    'display:none;',
     'position:static!important;transform:none!important;',
     'opacity:1!important;visibility:visible!important;pointer-events:auto!important;',
     'box-shadow:none!important;border:none!important;border-radius:0!important;',
     'background:var(--cream)!important;padding:.1rem 0!important;min-width:unset!important;}',
 
-    /* shown when JS adds .mobile-visible — this selector is more specific than hover rules */
-    '.om-tools-wrap .om-dropdown.mobile-visible{display:block!important;}',
+    /* JS-toggled open state */
+    '.om-dropdown.mobile-visible{display:block!important;}',
 
+    /* active tools button */
+    '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
+    '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
+
+    /* dropdown links on mobile */
     '.om-dropdown.mobile-visible a,.om-dropdown.mobile-visible .om-dd-main{',
     'display:flex!important;align-items:center;gap:8px;',
     'font-size:.85rem!important;font-weight:600;letter-spacing:.01em;text-transform:none!important;',
@@ -291,7 +286,7 @@
     }
   }, { passive: true });
 
-  /* ── Hamburger — page scroll NOT locked ── */
+  /* ── Hamburger ── */
   var hamburger = document.getElementById('omHamburger');
   var navLinks  = document.getElementById('omNavLinks');
   if (hamburger && navLinks) {
@@ -312,20 +307,16 @@
         e.stopPropagation();
         var open = toolsWrap.classList.toggle('mobile-open');
         toolsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        if (open) {
-          dropdown.classList.add('mobile-visible');
-        } else {
-          dropdown.classList.remove('mobile-visible');
-        }
+        dropdown.classList.toggle('mobile-visible', open);
       }
     });
   }
 
   /* ── Ticker builder ───────────────────────────────────
-     Called by novosti.js (or any page) after NOVOSTI data
-     is available. Safe to call multiple times.
+     Reads the global NOVOSTI array. Called automatically
+     after DOM ready — no call needed from novosti.js.
   ─────────────────────────────────────────────────────── */
-  window._omBuildTicker = function (NOVOSTI) {
+  function buildTicker(NOVOSTI) {
     var wrap  = document.getElementById('omTickerWrap');
     var track = document.getElementById('omTickerTrack');
     if (!wrap || !track || !NOVOSTI || !NOVOSTI.length) {
@@ -366,6 +357,33 @@
       requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-  };
+  }
+
+  /* ── Auto-init ticker once page is fully loaded ───────
+     novosti.js must be loaded before or alongside navbar.js.
+     We wait for DOMContentLoaded + a small defer so that
+     any <script src="novosti.js"> in the <body> has run.
+  ─────────────────────────────────────────────────────── */
+  function tryBuildTicker() {
+    if (typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
+      buildTicker(NOVOSTI);
+    } else {
+      /* NOVOSTI not ready yet — retry once after a frame */
+      setTimeout(function () {
+        if (typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
+          buildTicker(NOVOSTI);
+        } else {
+          var wrap = document.getElementById('omTickerWrap');
+          if (wrap) wrap.style.display = 'none';
+        }
+      }, 200);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryBuildTicker);
+  } else {
+    tryBuildTicker();
+  }
 
 })();
