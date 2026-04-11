@@ -38,40 +38,22 @@
     .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:560px; }
     .section-header { margin-bottom:3rem; }
 
-    /* ══ ABOUT — redesigned to mirror about-us.html ══ */
+    /* ══ ABOUT — Ordinacija section ══ */
     .about { background:var(--white); padding:5rem 5%; }
-    .about-inner { display:grid; grid-template-columns:320px 1fr; gap:4rem; align-items:start; max-width:1100px; margin:0 auto; }
+    .about-inner { display:flex; flex-direction:column; gap:2.8rem; max-width:1100px; margin:0 auto; }
 
-    /* Left: photo column */
+    /* Top: photo block */
     .about-photo-col { position:relative; }
-    .about-slideshow { position:relative; width:100%; border-radius:24px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; }
-    .about-slideshow .about-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; transition:opacity 1s ease; }
-    .about-slideshow .about-photo.active { opacity:1; }
-    .about-slideshow-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
-    .about-slideshow-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; transition:background .3s; }
-    .about-slideshow-dots span.active { background:#fff; }
-    .about-photo-fallback { width:100%; aspect-ratio:3/4; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
-    .about-badge-float { position:absolute; bottom:-1.2rem; left:50%; transform:translateX(-50%); background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; z-index:2; }
+    .about-ord-img { width:100%; aspect-ratio:3/2; border-radius:24px; object-fit:cover; object-position:center; box-shadow:var(--shadow); display:block; }
+    .about-photo-fallback { width:100%; aspect-ratio:3/2; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
+    .about-badge-float { position:absolute; bottom:-1.2rem; right:2rem; background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; z-index:2; }
     .about-badge-float::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; flex-shrink:0; }
 
-    /* Right: text column */
-    .about-text-col { padding-top:.5rem; }
-    .about-doctor-name { font-size:clamp(1.4rem,2.5vw,1.9rem); color:var(--text); margin-bottom:.25rem; }
-    .about-doctor-title { font-size:.95rem; color:var(--text-mid); font-weight:300; margin-bottom:1.6rem; }
-    .about-text-col p { color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem; line-height:1.75; }
-    .about-text-col h2 { margin-bottom:.5rem; }
-
-    /* Timeline experience list */
-    .exp-list { display:flex; flex-direction:column; gap:0; margin-top:1.8rem; margin-bottom:2rem; }
-    .exp-item { display:flex; gap:1.2rem; position:relative; padding-bottom:1.5rem; }
-    .exp-item:last-child { padding-bottom:0; }
-    .exp-line-col { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
-    .exp-dot { width:12px; height:12px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:.45rem; z-index:1; }
-    .exp-connector { width:2px; background:rgba(42,122,122,.18); flex:1; margin-top:4px; }
-    .exp-item:last-child .exp-connector { display:none; }
-    .exp-body strong { display:block; font-size:.92rem; color:var(--text); margin-bottom:.15rem; }
-    .exp-body span { font-size:.83rem; color:var(--text-light); font-weight:300; line-height:1.6; display:block; }
-    .exp-tag { display:inline-block; background:var(--teal-light); color:var(--teal); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .6rem; border-radius:50px; margin-bottom:.35rem; }
+    /* Bottom: text block — two-column prose layout on wide screens */
+    .about-text-col { padding-top:.8rem; }
+    .about-text-col .about-prose { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 3rem; margin-bottom:1.6rem; }
+    .about-text-col p { color:var(--text-mid); font-weight:300; font-size:.97rem; line-height:1.75; margin:0; }
+    .about-text-col h2 { margin-bottom:1rem; }
 
     /* SERVICES */
     .services { background:var(--cream); }
@@ -213,11 +195,9 @@
       .trust-item { font-size:.8rem; }
       section { padding:3.5rem 4%; }
       .about { padding:3.5rem 4%; }
-      .about-inner { grid-template-columns:1fr; gap:2rem; }
-      .about-photo-col { display:flex; flex-direction:column; align-items:center; gap:.9rem; }
-      .about-slideshow { width:240px; height:300px; aspect-ratio:unset; flex-shrink:0; }
-      .about-photo-fallback { width:240px; height:300px; aspect-ratio:unset; flex-shrink:0; font-size:2rem; }
-      .about-badge-float { position:static; transform:none; background:var(--green-light); box-shadow:none; color:var(--green); font-size:.78rem; padding:.4rem .9rem; }
+      .about-inner { gap:2rem; }
+      .about-badge-float { right:1rem; font-size:.75rem; padding:.45rem 1rem; }
+      .about-text-col .about-prose { grid-template-columns:1fr; gap:1rem; }
       .insurance { grid-template-columns:1fr; gap:2rem; }
       .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
       .modal, .reg-modal { border-radius:16px; }
@@ -263,72 +243,30 @@
   <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Илинден, ул. 2 бр. 105</div>
 </div>
 
-<!-- ══ ABOUT — redesigned ══ -->
+<!-- ══ ABOUT — Ординацијата section ══ -->
 <section class="about" id="about">
   <div class="about-inner">
 
-    <!-- Photo column -->
+    <!-- Photo — full width, 3:2 landscape -->
     <div class="about-photo-col">
-      <div class="about-slideshow" id="aboutSlideshow">
-        <img src="doctor-photos/doctor-a-1.png" alt="д-р Гордана Стевчева" class="about-photo active"
-          onerror="this.style.display='none';document.getElementById('aboutPhotoFallback').style.display='flex';" />
-        <img src="doctor-photos/doctor-a-2.png" alt="д-р Гордана Стевчева" class="about-photo"
-          onerror="this.style.display='none';" />
-        <img src="doctor-photos/doctor-a-3.png" alt="д-р Гордана Стевчева" class="about-photo"
-          onerror="this.style.display='none';" />
-        <div class="about-slideshow-dots" id="aboutDots">
-          <span class="active"></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div class="about-photo-fallback" id="aboutPhotoFallback" style="display:none;">ГС</div>
-      <div class="about-badge-float">Матичен лекар · ФЗОМ</div>
+      <img
+        src="2.jpg"
+        alt="ПЗУ Оаза Медика — ординација во Илинден"
+        class="about-ord-img"
+        onerror="this.style.display='none';document.getElementById('aboutPhotoFallback').style.display='flex';"
+      />
+      <div class="about-photo-fallback" id="aboutPhotoFallback" style="display:none;">ОМ</div>
+      <div class="about-badge-float">ПЗУ Оаза Медика · Илинден</div>
     </div>
 
-    <!-- Text column -->
+    <!-- Text — heading + two-column prose -->
     <div class="about-text-col">
-      <p class="section-label">За нас</p>
-      <h2 class="about-doctor-name">д-р Гордана Стевчева</h2>
-      <p class="about-doctor-title">Доктор по општа медицина · Оаза Медика, Илинден</p>
+      <p class="section-label">Ординацијата</p>
+      <h2 class="section-title">Современа нега достапна за сите</h2>
 
-      <p>д-р Гордана Стевчева е доктор по општа медицина која својата диплома ја стекнува во 2023 година. Уште во текот на студентските денови, таа активно се ангажира во повеќе медицински области, градејќи богато и разновидно практично искуство.</p>
-      <p><strong>ПЗУ Ординација по општа медицина Оаза Медика</strong> се наоѓа во склоп на Домот за стари лица ОАЗА во Илинден. Нашата мисија е да обезбедиме топла, достапна и стручна здравствена заштита за секој пациент — со посебна грижа за секој поединечно.</p>
-
-      <!-- Timeline experience -->
-      <div class="exp-list">
-        <div class="exp-item">
-          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
-          <div class="exp-body">
-            <div class="exp-tag">Работно искуство</div>
-            <strong>ЈЗУ Здравствен дом – Скопје</strong>
-            <span>Дежурна служба · Скопје, Северна Македонија</span>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
-          <div class="exp-body">
-            <div class="exp-tag">Спортска медицина</div>
-            <strong>Доктор на женската репрезентација на ФФМ</strong>
-            <span>Медицинска поддршка на националниот фудбалски тим</span>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
-          <div class="exp-body">
-            <div class="exp-tag">Пандемија COVID-19</div>
-            <strong>Доктор-администратор при масовната имунизација</strong>
-            <span>Координација и спроведување на вакцинацијата против КОВИД-19.</span>
-          </div>
-        </div>
-        <div class="exp-item">
-          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
-          <div class="exp-body">
-            <div class="exp-tag">Континуирано усовршување</div>
-            <strong>Конгреси и симпозиуми</strong>
-            <span>Активно учество на домашни и меѓународни стручни конгреси и симпозиуми.</span>
-          </div>
-        </div>
+      <div class="about-prose">
+        <p>ПЗУ Оаза Медика не е само медицинска установа — таа е замислена како место каде здравјето се третира со внимание, трпение и професионализам. Во срцето на нашата визија е создавање на „оаза" за пациентите — простор каде секој граѓанин на општина Илинден и околината може да добие врвна примарна здравствена заштита.</p>
+        <p>Веруваме дека матичниот лекар е првиот и најважен сојузник во зачувувањето на здравјето, па затоа нашата мисија е да обезбедиме грижа која е достапна, персонализирана и заснована на најновите медицински стандарди. Сместени во склоп на Домот за стари лица ОАЗА, нудиме уникатен спој на искуство во грижата и модерна медицинска пракса — опремена за широк спектар на примарни услуги, од превентивни прегледи и лабораториски упати, до менаџирање на хронични состојби.</p>
       </div>
 
       <a href="https://oazamedika.github.io/oaza-medika-website/about-us.html" class="btn btn-secondary" style="display:inline-flex;">
@@ -514,25 +452,6 @@ if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
   emailjs.init({ publicKey: EJS_KEY });
 }
 
-/* ── ABOUT SLIDESHOW ─────────────────────────────── */
-function initAboutSlideshow() {
-  var photos = document.querySelectorAll('#aboutSlideshow .about-photo');
-  var dots   = document.querySelectorAll('#aboutDots span');
-  if (!photos.length) return;
-  var current = 0;
-  function goTo(n) {
-    photos[current].classList.remove('active');
-    dots[current] && dots[current].classList.remove('active');
-    current = n % photos.length;
-    photos[current].classList.add('active');
-    dots[current] && dots[current].classList.add('active');
-  }
-  dots.forEach(function(dot, i) {
-    dot.addEventListener('click', function() { goTo(i); });
-  });
-  setInterval(function() { goTo(current + 1); }, 4000);
-}
-
 /* ── NOVOSTI ────────────────────────────────────── */
 var IKONI = {
   'Соопштение': { e: '📢', b: '#e4f2f2' },
@@ -547,11 +466,23 @@ function renderNovosti() {
     g.innerHTML = '<p style="color:var(--text-light);font-size:.9rem;">Нема новости засега.</p>';
     return;
   }
+
+  /* ── Sort by id descending, then take max 6 ── */
+  var sorted = NOVOSTI.slice().sort(function(a, b) {
+    /* Extract numeric part from id strings like "id001", "id007" etc. */
+    var na = parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
+    var nb = parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
+    return nb - na; /* descending — newest first */
+  });
+  var display = sorted.slice(0, 6);
+
   var html = '';
-  for (var i = 0; i < NOVOSTI.length; i++) {
-    var n = NOVOSTI[i];
+  for (var i = 0; i < display.length; i++) {
+    var n = display[i];
     var ik = IKONI[n.kategorija] || { e: '📄', b: '#f0f0f0' };
-    html += '<div class="novost-card" data-novost="' + i + '">' +
+    /* Store the original index in NOVOSTI for the modal */
+    var origIdx = NOVOSTI.indexOf(n);
+    html += '<div class="novost-card" data-novost="' + origIdx + '">' +
       '<div class="novost-img" style="background:' + (n.slika ? 'none' : ik.b) + '">' +
         (n.slika ? '<img src="' + n.slika + '" style="width:100%;height:100%;object-fit:cover"/>' : '<span style="font-size:2.8rem">' + ik.e + '</span>') +
       '</div>' +
@@ -666,11 +597,18 @@ function initScrollReveal() {
 /* ── WEATHER WIDGET ─────────────────────────────── */
 function initWeather() {
   var W = 'rgba(255,255,255,';
+
+  /* ── Crescent moon — properly shaped using arc subtraction ── */
+  var moonSvg = '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">'
+    + '<path d="M22 17.5A9 9 0 0 1 11 7a9 9 0 0 1 1.5-5A9.5 9.5 0 1 0 22 17.5z"'
+    + ' fill="' + W + '0.90)" stroke="' + W + '0.6)" stroke-width="0.8"/>'
+    + '</svg>';
+
   var WX = {
     clearDay:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="6" fill="'+W+'0.95)"/><g stroke="'+W+'0.9)" stroke-width="2" stroke-linecap="round"><line x1="16" y1="2" x2="16" y2="6"/><line x1="16" y1="26" x2="16" y2="30"/><line x1="2" y1="16" x2="6" y2="16"/><line x1="26" y1="16" x2="30" y2="16"/><line x1="5.86" y1="5.86" x2="8.69" y2="8.69"/><line x1="23.31" y1="23.31" x2="26.14" y2="26.14"/><line x1="5.86" y1="26.14" x2="8.69" y2="23.31"/><line x1="23.31" y1="8.69" x2="26.14" y2="5.86"/></g></svg>',
-    clearNight:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 5a11 11 0 100 22 9 9 0 010-22z" fill="'+W+'0.88)" stroke="'+W+'0.7)" stroke-width="1"/></svg>',
+    clearNight: moonSvg,
     partlyCloudyDay:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="5" fill="'+W+'0.88)"/><path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
-    partlyCloudyNight:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4a8 8 0 100 15 7 7 0 010-15z" fill="'+W+'0.75)"/><path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.82)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    partlyCloudyNight:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 3a7 7 0 0 1 1 13.9A7 7 0 0 0 10 3z" fill="'+W+'0.80)"/><path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.82)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     overcast:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 24h16a6 6 0 000-12h-.34A7 7 0 008 17a6 6 0 000 7z" fill="'+W+'0.25)" stroke="'+W+'0.82)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     fog:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 11h16a5 5 0 000-10H23A6 6 0 008 6a5 5 0 000 5z" fill="'+W+'0.2)" stroke="'+W+'0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="16" x2="28" y2="16"/><line x1="6" y1="21" x2="26" y2="21"/><line x1="4" y1="26" x2="28" y2="26"/></g></svg>',
     drizzle:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round"><line x1="11" y1="23" x2="10" y2="27"/><line x1="17" y1="23" x2="16" y2="27"/><line x1="23" y1="23" x2="22" y2="27"/></g></svg>',
@@ -753,7 +691,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if(e.target===this) closeNovostModal(); });
   initFaq();
   initScrollReveal();
-  initAboutSlideshow();
   renderNovosti();
   if (typeof _omBuildTicker === 'function' && typeof NOVOSTI !== 'undefined') _omBuildTicker(NOVOSTI);
   if (typeof initHero === 'function') initHero();
