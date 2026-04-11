@@ -24,7 +24,7 @@
     '--green:#1a5c2a;--green-light:#e8f5ec;--cream:#f9faf8;--white:#ffffff;',
     '--text:#1c2a22;--text-mid:#3d5046;--text-light:#6b8070;}',
 
-    /* ── Ticker — in normal document flow, scrolls with page ── */
+    /* ── Ticker — normal flow, scrolls with page ── */
     '.om-ticker-wrap{background:var(--green);color:var(--white);height:36px;',
     'overflow:hidden;display:flex;align-items:center;}',
     '.om-ticker-label{background:var(--teal-dark);color:var(--white);padding:0 1rem;',
@@ -47,8 +47,12 @@
     'height:64px;transition:box-shadow .3s;box-sizing:border-box;}',
     '.om-nav.scrolled{top:0;box-shadow:0 4px 24px rgba(26,92,42,.12);}',
 
-    /* spacer = ticker (36px) + nav (64px) */
-    '.om-nav-spacer{height:100px;}',
+    /*
+      Spacer = nav height only (64px).
+      The ticker (36px) is already in normal flow above the spacer,
+      so total reserved space at top = 36 (ticker) + 64 (spacer) = 100px. Correct.
+    */
+    '.om-nav-spacer{height:64px;}',
 
     /* ── Logo ── */
     '.om-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}',
@@ -88,6 +92,7 @@
     'box-shadow:0 12px 40px rgba(26,92,42,.14);min-width:210px;padding:.4rem;',
     'opacity:0;visibility:hidden;pointer-events:none;',
     'transition:opacity .18s,transform .18s,visibility .18s;}',
+    /* desktop hover — only applies when NOT on mobile (guarded in @media below) */
     '.om-tools-wrap:hover .om-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--teal);}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:rotate(180deg);}',
@@ -151,18 +156,23 @@
     'padding:.7rem 5%!important;margin-top:.25rem;}',
     '.om-nav-cta:hover{background:var(--teal-dark)!important;color:var(--white)!important;}',
 
-    /* tools wrap reset */
+    /* tools wrap reset — disable ALL desktop hover behaviour */
     '.om-tools-wrap{width:100%;flex-direction:column;align-items:stretch;position:static;}',
     '.om-tools-wrap::after{display:none;}',
-    /* kill desktop hover on mobile */
-    '.om-tools-wrap:hover .om-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}',
+    '.om-tools-wrap:hover .om-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;display:none!important;}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--text-mid)!important;}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:none!important;}',
-    /* active tools btn */
+
+    /* active tools btn styling */
     '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
     '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
 
-    /* mobile dropdown — hidden by default via display:none, shown by JS */
+    /*
+      Mobile dropdown: hidden by default (display:none).
+      JS adds .mobile-visible to show it.
+      The !important on display:block overrides the hover-kill rule above.
+    */
+    '.om-dropdown{display:none;}',
     '.om-dropdown.mobile-visible{',
     'display:block!important;position:static!important;transform:none!important;',
     'opacity:1!important;visibility:visible!important;pointer-events:auto!important;',
@@ -170,19 +180,19 @@
     'background:var(--cream)!important;padding:.1rem 0!important;min-width:unset!important;}',
 
     '.om-dropdown.mobile-visible a,.om-dropdown.mobile-visible .om-dd-main{',
-    'display:flex!important;align-items:center;',
+    'display:flex!important;align-items:center;gap:8px;',
     'font-size:.85rem!important;font-weight:600;letter-spacing:.01em;text-transform:none!important;',
     'color:var(--text-mid)!important;',
     'padding:.55rem 5% .55rem calc(5% + 20px)!important;',
     'border-radius:0!important;border-bottom:1px solid rgba(42,122,122,.06)!important;',
-    'white-space:normal;justify-content:flex-start;}',
+    'white-space:normal!important;justify-content:flex-start!important;}',
     '.om-dropdown.mobile-visible a:last-child{border-bottom:none!important;}',
-    '.om-dropdown.mobile-visible .om-dd-main{color:var(--teal)!important;}',
+    '.om-dropdown.mobile-visible .om-dd-main{color:var(--teal)!important;background:none!important;}',
     '.om-dropdown.mobile-visible a:hover,.om-dropdown.mobile-visible .om-dd-main:hover{background:rgba(42,122,122,.06)!important;color:var(--teal)!important;}',
     '.om-dropdown.mobile-visible .om-dropdown-divider{display:none!important;}',
     '.om-dropdown.mobile-visible .om-dd-icon{display:none!important;}',
 
-    '}', /* end mobile */
+    '}', /* end @media mobile */
 
     '@media(max-width:600px){',
     '.om-ticker-label{display:none;}',
@@ -280,7 +290,7 @@
     }
   }, { passive: true });
 
-  /* ── Hamburger — page scroll intentionally NOT locked ── */
+  /* ── Hamburger — page scroll NOT locked ── */
   var hamburger = document.getElementById('omHamburger');
   var navLinks  = document.getElementById('omNavLinks');
   if (hamburger && navLinks) {
@@ -298,9 +308,9 @@
     toolsBtn.addEventListener('click', function (e) {
       if (window.innerWidth <= 900) {
         e.preventDefault();
+        e.stopPropagation();
         var open = toolsWrap.classList.toggle('mobile-open');
         toolsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        /* toggle visibility via class — JS-controlled, no CSS height tricks */
         if (open) {
           dropdown.classList.add('mobile-visible');
         } else {
