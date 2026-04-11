@@ -437,7 +437,7 @@
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="navbar.js" data-root=""></script>
 <script src="footer.js" data-root=""></script>
 <script src="hero/hero.js"></script>
-<script src="novosti.js"></script>
+<script src="novosti.js" onload="if(typeof renderNovosti==='function')renderNovosti();"></script>
 <script>
 /* ═══════════════════════════════════════════════════
    OAZA MEDIKA — MAIN SCRIPT
@@ -462,6 +462,7 @@ var IKONI = {
 
 function renderNovosti() {
   var g = document.getElementById('novostiGrid');
+  if (!g) return; /* DOM not ready yet */
   if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
     g.innerHTML = '<p style="color:var(--text-light);font-size:.9rem;">Нема новости засега.</p>';
     return;
@@ -694,6 +695,21 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof _omBuildTicker === 'function' && typeof NOVOSTI !== 'undefined') _omBuildTicker(NOVOSTI);
   if (typeof initHero === 'function') initHero();
   initWeather();
+
+  /* Fallback: if novosti.js loaded late (e.g. Cloudflare script rewriting),
+     poll briefly until NOVOSTI is defined and re-render if grid is still empty */
+  var _novostiRetries = 0;
+  var _novostiPoll = setInterval(function() {
+    var g = document.getElementById('novostiGrid');
+    var alreadyFilled = g && g.querySelector('.novost-card');
+    if (alreadyFilled || _novostiRetries > 20) { clearInterval(_novostiPoll); return; }
+    if (typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
+      renderNovosti();
+      if (typeof _omBuildTicker === 'function') _omBuildTicker(NOVOSTI);
+      clearInterval(_novostiPoll);
+    }
+    _novostiRetries++;
+  }, 100);
 });
 </script>
 </body>
