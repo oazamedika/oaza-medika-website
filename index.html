@@ -6,6 +6,7 @@
   <title>Оаза Медика – Ординација по општа медицина, Илинден</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="navbar.js" data-root=""></script>
   <style>
     :root {
       --teal:#2a7a7a; --teal-dark:#1d5e5e; --green:#1a5c2a; --green-mid:#2e7d42;
@@ -17,32 +18,6 @@
     html { scroll-behavior:smooth; }
     body { font-family:'Lato',sans-serif; background:var(--cream); color:var(--text); line-height:1.7; overflow-x:hidden; }
     h1,h2,h3,h4 { font-family:'Playfair Display',serif; line-height:1.2; }
-
-    /* TICKER */
-    .ticker-wrap { background:var(--green); color:var(--white); height:36px; overflow:hidden; display:flex; align-items:center; }
-    .ticker-label { background:var(--teal-dark); color:var(--white); padding:0 1rem; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; height:100%; display:flex; align-items:center; white-space:nowrap; flex-shrink:0; }
-    .ticker-track-wrap { flex:1; overflow:hidden; }
-    .ticker-track { display:flex; white-space:nowrap; will-change:transform; }
-    .ticker-item { display:inline-flex; align-items:center; gap:10px; padding:0 3rem; font-size:.8rem; font-weight:600; cursor:pointer; flex-shrink:0; transition:color .2s; }
-    .ticker-item:hover { color:#b2f0b2; }
-    .ticker-sep { color:rgba(255,255,255,.3); display:inline-flex; align-items:center; flex-shrink:0; }
-
-    /* NAV */
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.97); backdrop-filter:blur(10px); border-bottom:1px solid rgba(42,122,122,0.12); padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:72px; }
-    .nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
-    .nav-logo-img { height:64px; width:auto; display:block; }
-    .nav-logo-fallback { display:flex; align-items:center; gap:12px; }
-    .nav-logo-symbol { width:44px; height:44px; flex-shrink:0; }
-    .nav-logo-text { display:flex; flex-direction:column; line-height:1.1; }
-    .nav-logo-text span:first-child { font-family:'Playfair Display',serif; font-size:1.18rem; font-weight:700; color:var(--teal); }
-    .nav-logo-text span:last-child { font-size:.72rem; color:var(--text-light); letter-spacing:.08em; text-transform:uppercase; }
-    .nav-links { display:flex; gap:2rem; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--text-mid); font-size:.88rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; transition:color .2s; }
-    .nav-links a:hover { color:var(--teal); }
-    .nav-cta { background:var(--teal); color:var(--white) !important; padding:.45rem 1.1rem; border-radius:50px; transition:background .2s !important; }
-    .nav-cta:hover { background:var(--teal-dark) !important; }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
-    .hamburger span { display:block; width:24px; height:2px; background:var(--teal); border-radius:2px; transition:.3s; }
 
     /* BUTTONS */
     .btn { display:inline-flex; align-items:center; gap:8px; padding:.75rem 1.6rem; border-radius:50px; font-family:'Lato',sans-serif; font-size:.9rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all .25s; }
@@ -64,22 +39,40 @@
     .section-sub { font-size:1rem; color:var(--text-mid); font-weight:300; max-width:560px; }
     .section-header { margin-bottom:3rem; }
 
-    /* ABOUT */
-    .about { background:var(--white); display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; }
-    .about-image-wrap { position:relative; }
-    .about-card { background:linear-gradient(135deg,var(--teal-light),var(--green-light)); border-radius:24px; padding:3rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem; text-align:center; }
-    .doctor-avatar { width:110px; height:110px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:2.2rem; color:var(--white); font-weight:700; box-shadow:0 8px 24px rgba(42,122,122,.25); }
-    .doctor-name { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); }
-    .doctor-title { font-size:.85rem; color:var(--text-mid); font-weight:300; }
-    .about-logo-img { width:140px; border-radius:12px; opacity:.9; }
-    .about-float { position:absolute; bottom:-1.5rem; right:-1.5rem; background:var(--white); border-radius:var(--radius); padding:1rem 1.4rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:10px; font-size:.85rem; color:var(--green); font-weight:600; }
-    .about-text h2 { margin-bottom:1.2rem; }
-    .about-text p { color:var(--text-mid); font-weight:300; margin-bottom:1rem; font-size:1rem; }
-    .about-features { display:flex; flex-direction:column; gap:.85rem; margin-top:1.8rem; }
-    .about-feature { display:flex; align-items:flex-start; gap:12px; }
-    .feature-icon { width:36px; height:36px; border-radius:10px; background:var(--teal-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .feature-text strong { display:block; font-size:.9rem; color:var(--text); margin-bottom:2px; }
-    .feature-text span { font-size:.83rem; color:var(--text-light); }
+    /* ══ ABOUT — redesigned to mirror about-us.html ══ */
+    .about { background:var(--white); padding:5rem 5%; }
+    .about-inner { display:grid; grid-template-columns:320px 1fr; gap:4rem; align-items:start; max-width:1100px; margin:0 auto; }
+
+    /* Left: photo column */
+    .about-photo-col { position:relative; }
+    .about-slideshow { position:relative; width:100%; border-radius:24px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; }
+    .about-slideshow .about-photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; opacity:0; transition:opacity 1s ease; }
+    .about-slideshow .about-photo.active { opacity:1; }
+    .about-slideshow-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
+    .about-slideshow-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.5); cursor:pointer; transition:background .3s; }
+    .about-slideshow-dots span.active { background:#fff; }
+    .about-photo-fallback { width:100%; aspect-ratio:3/4; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
+    .about-badge-float { position:absolute; bottom:-1.2rem; left:50%; transform:translateX(-50%); background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; z-index:2; }
+    .about-badge-float::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; flex-shrink:0; }
+
+    /* Right: text column */
+    .about-text-col { padding-top:.5rem; }
+    .about-doctor-name { font-size:clamp(1.4rem,2.5vw,1.9rem); color:var(--text); margin-bottom:.25rem; }
+    .about-doctor-title { font-size:.95rem; color:var(--text-mid); font-weight:300; margin-bottom:1.6rem; }
+    .about-text-col p { color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem; line-height:1.75; }
+    .about-text-col h2 { margin-bottom:.5rem; }
+
+    /* Timeline experience list */
+    .exp-list { display:flex; flex-direction:column; gap:0; margin-top:1.8rem; margin-bottom:2rem; }
+    .exp-item { display:flex; gap:1.2rem; position:relative; padding-bottom:1.5rem; }
+    .exp-item:last-child { padding-bottom:0; }
+    .exp-line-col { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+    .exp-dot { width:12px; height:12px; border-radius:50%; background:var(--teal); flex-shrink:0; margin-top:.45rem; z-index:1; }
+    .exp-connector { width:2px; background:rgba(42,122,122,.18); flex:1; margin-top:4px; }
+    .exp-item:last-child .exp-connector { display:none; }
+    .exp-body strong { display:block; font-size:.92rem; color:var(--text); margin-bottom:.15rem; }
+    .exp-body span { font-size:.83rem; color:var(--text-light); font-weight:300; line-height:1.6; display:block; }
+    .exp-tag { display:inline-block; background:var(--teal-light); color:var(--teal); font-size:.7rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; padding:.2rem .6rem; border-radius:50px; margin-bottom:.35rem; }
 
     /* SERVICES */
     .services { background:var(--cream); }
@@ -195,26 +188,8 @@
     .map-wrap { border-radius:20px; overflow:hidden; box-shadow:var(--shadow); height:380px; background:var(--teal-light); border:1px solid rgba(42,122,122,.15); }
     .map-wrap iframe { width:100%; height:100%; border:none; }
 
-    /* FOOTER */
-    footer { background:var(--text); color:rgba(255,255,255,.7); padding:3rem 5% 2rem; display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:3rem; }
-    .footer-brand { display:flex; flex-direction:column; gap:1rem; }
-    .footer-logo { display:flex; align-items:center; gap:10px; }
-    .footer-logo span { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); }
-    .footer-brand p { font-size:.85rem; line-height:1.7; font-weight:300; }
-    footer h4 { color:var(--white); font-family:'Playfair Display',serif; font-size:.95rem; margin-bottom:1rem; }
-    footer ul { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
-    footer ul a { color:rgba(255,255,255,.65); text-decoration:none; font-size:.85rem; transition:color .2s; }
-    footer ul a:hover { color:var(--white); }
-    .footer-bottom { background:rgba(0,0,0,.2); text-align:center; padding:1.2rem 5%; font-size:.78rem; color:rgba(255,255,255,.4); }
-
-    /* FLOATING WEATHER WIDGET — DESKTOP */
-    .weather-float {
-      position:fixed; bottom:2rem; right:2rem; z-index:200;
-      background:rgba(26,92,42,0.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.18); border-radius:16px;
-      padding:.7rem 1.1rem; display:flex; align-items:center; gap:.65rem;
-      box-shadow:0 8px 32px rgba(0,0,0,.22); pointer-events:none;
-    }
+    /* FLOATING WEATHER WIDGET */
+    .weather-float { position:fixed; bottom:2rem; right:2rem; z-index:200; background:rgba(26,92,42,0.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,.18); border-radius:16px; padding:.7rem 1.1rem; display:flex; align-items:center; gap:.65rem; box-shadow:0 8px 32px rgba(0,0,0,.22); pointer-events:none; }
     .wf-icon { width:32px; height:32px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
     .wf-icon svg { width:100%; height:100%; }
     .wf-temp { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:#fff; line-height:1; white-space:nowrap; }
@@ -223,14 +198,7 @@
     .wf-loc { font-size:.62rem; color:rgba(255,255,255,.6); font-weight:600; letter-spacing:.05em; text-transform:uppercase; }
 
     /* MOBILE WEATHER PILL */
-    .weather-mobile {
-      display:none; position:fixed; bottom:2rem; right:.75rem; z-index:200;
-      background:rgba(26,92,42,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.18); border-radius:50px;
-      padding:.45rem .8rem; align-items:center; gap:.45rem;
-      box-shadow:0 4px 16px rgba(0,0,0,.22); cursor:pointer;
-      transition:border-radius .3s, padding .3s;
-    }
+    .weather-mobile { display:none; position:fixed; bottom:2rem; right:.75rem; z-index:200; background:rgba(26,92,42,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.18); border-radius:50px; padding:.45rem .8rem; align-items:center; gap:.45rem; box-shadow:0 4px 16px rgba(0,0,0,.22); cursor:pointer; transition:border-radius .3s, padding .3s; }
     .wm-icon { width:22px; height:22px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
     .wm-icon svg { width:100%; height:100%; }
     .wm-temp { font-family:'Playfair Display',serif; font-size:.9rem; font-weight:700; color:#fff; white-space:nowrap; }
@@ -242,19 +210,17 @@
 
     /* MOBILE */
     @media(max-width:768px){
-      .ticker-item { padding:0 1.5rem; font-size:.75rem; }
-      nav { padding:0 4%; }
-      .nav-links { display:none; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:var(--white); padding:1.5rem 4%; border-bottom:1px solid rgba(42,122,122,.1); gap:1rem; }
-      .nav-links.open { display:flex; }
-      .hamburger { display:flex; }
       .trust-bar { gap:1rem; padding:1rem 4%; }
       .trust-item { font-size:.8rem; }
       section { padding:3.5rem 4%; }
-      .about { grid-template-columns:1fr; gap:2.5rem; }
-      .about-float { right:0; bottom:-1rem; }
+      .about { padding:3.5rem 4%; }
+      .about-inner { grid-template-columns:1fr; gap:2rem; }
+      .about-photo-col { display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+      .about-slideshow { width:240px; height:300px; aspect-ratio:unset; flex-shrink:0; }
+      .about-photo-fallback { width:240px; height:300px; aspect-ratio:unset; flex-shrink:0; font-size:2rem; }
+      .about-badge-float { position:static; transform:none; background:var(--green-light); box-shadow:none; color:var(--green); font-size:.78rem; padding:.4rem .9rem; }
       .insurance { grid-template-columns:1fr; gap:2rem; }
       .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
-      footer { grid-template-columns:1fr; gap:2rem; padding:2.5rem 4% 1.5rem; }
       .modal, .reg-modal { border-radius:16px; }
       .modal-header, .modal-body, .reg-body { padding-left:1.2rem; padding-right:1.2rem; }
       .weather-float { display:none; }
@@ -266,48 +232,6 @@
   </style>
 </head>
 <body>
-
-<!-- TICKER -->
-<div class="ticker-wrap" id="tickerWrap">
-  <div class="ticker-label">📰 Новости</div>
-  <div class="ticker-track-wrap">
-    <div class="ticker-track" id="tickerTrack"></div>
-  </div>
-</div>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">
-    <img src="logo_header.png" alt="Оаза Медика" class="nav-logo-img"
-      onerror="this.style.display='none'; document.getElementById('navLogoFallback').style.display='flex';" />
-    <div class="nav-logo-fallback" id="navLogoFallback" style="display:none;">
-      <svg class="nav-logo-symbol" viewBox="0 0 44 44" fill="none">
-        <rect x="20" y="4" width="4" height="36" rx="2" fill="#2a7a7a"/>
-        <path d="M22 8 C14 12 14 20 22 22 C30 24 30 32 22 36" stroke="#1a5c2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="15" cy="16" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(-30 15 16)"/>
-        <ellipse cx="29" cy="22" rx="5" ry="2.5" fill="#2e7d42" transform="rotate(30 29 22)"/>
-        <ellipse cx="14" cy="28" rx="4.5" ry="2" fill="#2e7d42" transform="rotate(-25 14 28)"/>
-      </svg>
-      <div class="nav-logo-text">
-        <span>Оаза Медика</span>
-        <span>Ординација – Илинден</span>
-      </div>
-    </div>
-  </a>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#about">За нас</a></li>
-    <li><a href="#services">Услуги</a></li>
-    <li><a href="tools-module/tools.html">Алатки</a></li>
-    <li><a href="#insurance">Фонд</a></li>
-    <li><a href="#novosti">Новости</a></li>
-    <li><a href="#blog">Блог</a></li>
-    <li><a href="#faq">ЧПП</a></li>
-    <li><a href="#contact" class="nav-cta">Контакт</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="Мени">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
 <div id="hero-mount"></div>
 
@@ -340,40 +264,75 @@
   <div class="trust-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Илинден, ул. 2 бр. 105</div>
 </div>
 
-<!-- ABOUT -->
+<!-- ══ ABOUT — redesigned ══ -->
 <section class="about" id="about">
-  <div class="about-image-wrap">
-    <div class="about-card">
-      <div class="doctor-avatar">ГС</div>
-      <div>
-        <div class="doctor-name">д-р Гордана Стевчева</div>
-        <div class="doctor-title">Доктор по општа медицина</div>
+  <div class="about-inner">
+
+    <!-- Photo column -->
+    <div class="about-photo-col">
+      <div class="about-slideshow" id="aboutSlideshow">
+        <img src="doctor-photos/doctor-a-1.png" alt="д-р Гордана Стевчева" class="about-photo active"
+          onerror="this.style.display='none';document.getElementById('aboutPhotoFallback').style.display='flex';" />
+        <img src="doctor-photos/doctor-a-2.png" alt="д-р Гордана Стевчева" class="about-photo"
+          onerror="this.style.display='none';" />
+        <img src="doctor-photos/doctor-a-3.png" alt="д-р Гордана Стевчева" class="about-photo"
+          onerror="this.style.display='none';" />
+        <div class="about-slideshow-dots" id="aboutDots">
+          <span class="active"></span>
+          <span></span>
+          <span></span>
+        </div>
       </div>
-      <img src="logo_header.png" alt="Оаза Медика" class="about-logo-img"
-        onerror="this.src='logo.jpg'; this.onerror=null;" />
+      <div class="about-photo-fallback" id="aboutPhotoFallback" style="display:none;">ГС</div>
+      <div class="about-badge-float">Матичен лекар · ФЗОМ</div>
     </div>
-    <div class="about-float">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-      Матичен лекар · ФЗОМ
-    </div>
-  </div>
-  <div class="about-text">
-    <p class="section-label">За нас</p>
-    <h2 class="section-title">Здравствена грижа со срце, во срцето на Илинден</h2>
-    <p>ПЗУ Ординација по општа медицина <strong>Оаза Медика</strong> се наоѓа во склоп на Домот за стари лица ОАЗА во Илинден. Нашата мисија е да обезбедиме топла, достапна и стручна здравствена заштита за секој пациент.</p>
-    <p>Д-р Гордана Стевчева и нејзиниот тим нудат примарна здравствена заштита во пријатна и современа средина — со посебна грижа за секој пациент поединечно.</p>
-    <div class="about-features">
-      <div class="about-feature">
-        <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="feature-text"><strong>Матична пракса</strong><span>Упис на матични пациенти преку ФЗОМ и приватни прегледи</span></div>
+
+    <!-- Text column -->
+    <div class="about-text-col">
+      <p class="section-label">За нас</p>
+      <h2 class="about-doctor-name">д-р Гордана Стевчева</h2>
+      <p class="about-doctor-title">Доктор по општа медицина · Оаза Медика, Илинден</p>
+
+      <p>д-р Гордана Стевчева е доктор по општа медицина која својата диплома ја стекнува во 2023 година. Уште во текот на студентските денови, таа активно се ангажира во повеќе медицински области, градејќи богато и разновидно практично искуство.</p>
+      <p><strong>ПЗУ Ординација по општа медицина Оаза Медика</strong> се наоѓа во склоп на Домот за стари лица ОАЗА во Илинден. Нашата мисија е да обезбедиме топла, достапна и стручна здравствена заштита за секој пациент — со посебна грижа за секој поединечно.</p>
+
+      <!-- Timeline experience -->
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Работно искуство</div>
+            <strong>ЈЗУ Здравствен дом – Скопје</strong>
+            <span>Дежурна служба · Скопје, Северна Македонија</span>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Спортска медицина</div>
+            <strong>Доктор на женската репрезентација на ФФМ</strong>
+            <span>Медицинска поддршка на националниот фудбалски тим</span>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Пандемија COVID-19</div>
+            <strong>Доктор-администратор при масовната имунизација</strong>
+            <span>Координација и спроведување на вакцинацијата против КОВИД-19.</span>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-line-col"><div class="exp-dot"></div><div class="exp-connector"></div></div>
+          <div class="exp-body">
+            <div class="exp-tag">Континуирано усовршување</div>
+            <strong>Конгреси и симпозиуми</strong>
+            <span>Активно учество на домашни и меѓународни стручни конгреси и симпозиуми.</span>
+          </div>
+        </div>
       </div>
-      <div class="about-feature">
-        <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div class="feature-text"><strong>Лесно достапна локација</strong><span>Во склоп на Дом за стари лица ОАЗА, Илинден</span></div>
-      </div>
-    </div>
-    <div style="margin-top:2rem;">
-      <a href="about-us.html" class="btn btn-secondary" style="display:inline-flex;">
+
+      <a href="https://oazamedika.github.io/oaza-medika-website/about-us.html" class="btn btn-secondary" style="display:inline-flex;">
         Прочитај повеќе
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </a>
@@ -394,7 +353,7 @@
     <div class="service-card"><div class="service-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a7a7a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Советување и едукација</h3><p>Здравствен совет, исхрана, стил на живот и превенција на болести прилагодени за секој пациент.</p></div>
   </div>
   <div style="margin-top:2.2rem; text-align:center;">
-    <a href="services.html" class="btn btn-secondary" style="display:inline-flex;">
+    <a href="https://oazamedika.github.io/oaza-medika-website/services.html" class="btn btn-secondary" style="display:inline-flex;">
       Прочитај повеќе
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
     </a>
@@ -402,7 +361,7 @@
 </section>
 
 <!-- INSURANCE -->
-<div class="insurance-wrap" id="insurance" style="padding-top:0;padding-bottom:0;margin:0 0 5rem;">
+<div class="insurance-wrap" id="fond" style="padding-top:0;padding-bottom:0;margin:0 0 5rem;">
   <div class="insurance">
     <div>
       <h2>Работиме со ФЗОМ и приватни пациенти</h2>
@@ -504,7 +463,7 @@
     <p class="section-sub">Имате прашање? Можеби веќе го имаме одговорот.</p>
   </div>
   <div class="faq-list">
-    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Како да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
+    <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">1</span>Kako да се запишам како матичен пациент?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">За упис потребно е да дојдете лично со здравствена картичка и лична карта. Постапката е брза — во рок од 24 часа сте запишани во системот на ФЗОМ.</div></div>
     <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">2</span>Дали работите со ФЗОМ (здравствен фонд)?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да, ординацијата Оаза Медика има склучено договор со ФЗОМ. Сите здравствено осигурени лица можат да добијат услуги без доплата со здравствена картичка.</div></div>
     <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">3</span>Можам ли да закажам преглед онлајн или телефонски?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Да! Можете да закажете преглед преку телефон на 070 123 123 или преку е-маил. Матичните пациенти можат да побараат и телемедицинска консултација.</div></div>
     <div class="faq-item"><button class="faq-question"><span class="faq-question-inner"><span class="faq-num">4</span>Кои се работните часови на ординацијата?</span><span class="faq-arrow">▾</span></button><div class="faq-answer">Работиме секој работен ден (понеделник – петок) од 07:30 до 15:00 часот. Во итни случаи надвор од работно време, јавете се на 194 (итна помош).</div></div>
@@ -523,12 +482,12 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#a2cbccc4cde2cdc3d8c3cfc7c6cbc9c38ccfc9"><span class="__cf_email__" data-cfemail="bad3d4dcd5fad5dbc0dbd7dfded3d1db94d7d1">[email&#160;protected]</span></a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:pacienti@oazamedika.com">pacienti@oazamedika.com</a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="/cdn-cgi/l/email-protection#ec85828a83ac838d968d81898885878dc28187" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="mailto:pacienti@oazamedika.com" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
       </div>
     </div>
@@ -538,46 +497,8 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-brand">
-    <div class="footer-logo">
-      <img src="logo_header.png" alt="Оаза Медика" style="height:48px;width:auto;filter:brightness(0) invert(1);opacity:.9;"
-        onerror="this.style.display='none';document.getElementById('footerLogoFallback').style.display='flex';" />
-      <span id="footerLogoFallback" style="display:none;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);">Оаза Медика</span>
-    </div>
-    <p>ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Склучен договор со ФЗОМ. Приватни прегледи за сите граѓани.</p>
-  </div>
-  <div>
-    <h4>Брзи линкови</h4>
-    <ul>
-      <li><a href="#about">За нас</a></li>
-      <li><a href="#services">Услуги</a></li>
-      <li><a href="#insurance">Фонд / ФЗОМ</a></li>
-      <li><a href="#novosti">Новости</a></li>
-      <li><a href="#blog">Едукативен блог</a></li>
-      <li><a href="#faq">Прашања</a></li>
-      <li><a href="#contact">Контакт</a></li>
-      <li><a href="https://oazamedika.github.io/internal-portal/">Портал за вработени</a></li>
-    </ul>
-  </div>
-  <div>
-    <h4>Контакт</h4>
-    <ul>
-      <li><a href="tel:+38970123123">070 123 123</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#9bf2f5fdf4dbf4fae1faf6fefff2f0fab5f6f0"><span class="__cf_email__" data-cfemail="4a23242c250a252b302b272f2e23212b642721">[email&#160;protected]</span></a></li>
-      <li><a href="#">ул. 2 бр. 105, лок. 10</a></li>
-      <li><a href="#">Илинден, Македонија</a></li>
-      <li><a href="#">Пон–Пет 07:30–15:00</a></li>
-    </ul>
-  </div>
-</footer>
-<div class="footer-bottom">© 2025 ПЗУ Ординација по општа медицина Оаза Медика – Илинден. Сите права задржани.</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     SCRIPTS
-════════════════════════════════════════════════════════ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="hero/hero.js"></script>
+<script src="footer.js" data-root=""></script>
+<script src="hero/hero.js"></script>
 <script src="novosti.js"></script>
 <script>
 /* ═══════════════════════════════════════════════════
@@ -593,44 +514,23 @@ if (EJS_KEY !== 'REPLACE_ME_PUBLIC_KEY') {
   emailjs.init({ publicKey: EJS_KEY });
 }
 
-/* ── HAMBURGER ───────────────────────────────────── */
-document.getElementById('hamburger').addEventListener('click', function() {
-  document.getElementById('navLinks').classList.toggle('open');
-});
-
-/* ── TICKER ─────────────────────────────────────── */
-function buildTicker() {
-  var wrap = document.getElementById('tickerWrap');
-  var track = document.getElementById('tickerTrack');
-  if (typeof NOVOSTI === 'undefined' || !NOVOSTI.length) {
-    wrap.style.display = 'none'; return;
+/* ── ABOUT SLIDESHOW ─────────────────────────────── */
+function initAboutSlideshow() {
+  var photos = document.querySelectorAll('#aboutSlideshow .about-photo');
+  var dots   = document.querySelectorAll('#aboutDots span');
+  if (!photos.length) return;
+  var current = 0;
+  function goTo(n) {
+    photos[current].classList.remove('active');
+    dots[current] && dots[current].classList.remove('active');
+    current = n % photos.length;
+    photos[current].classList.add('active');
+    dots[current] && dots[current].classList.add('active');
   }
-  var items = NOVOSTI.concat(NOVOSTI);
-  var html = '';
-  for (var i = 0; i < items.length; i++) {
-    var idx = i % NOVOSTI.length;
-    html += '<span class="ticker-item" data-idx="' + idx + '">' +
-            '<span style="opacity:.6">📰</span> ' + items[i].naslov +
-            '<span style="opacity:.4;font-size:.7rem"> ' + items[i].datum + '</span>' +
-            '</span><span class="ticker-sep">·</span>';
-  }
-  track.innerHTML = html;
-  track.querySelectorAll('.ticker-item').forEach(function(el) {
-    el.addEventListener('click', function() {
-      var i = parseInt(this.getAttribute('data-idx'));
-      var top = document.getElementById('novosti').getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-      setTimeout(function() { openNovostModal(i); }, 400);
-    });
+  dots.forEach(function(dot, i) {
+    dot.addEventListener('click', function() { goTo(i); });
   });
-  var pos = 0;
-  function tick() {
-    pos += 0.5;
-    if (pos >= track.scrollWidth / 2) pos = 0;
-    track.style.transform = 'translateX(-' + pos + 'px)';
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
+  setInterval(function() { goTo(current + 1); }, 4000);
 }
 
 /* ── NOVOSTI ────────────────────────────────────── */
@@ -714,13 +614,7 @@ function submitRegistration() {
   var btn = document.getElementById('regSubmitBtn');
   btn.disabled = true;
   btn.textContent = 'Се испраќа…';
-  var params = {
-    from_name:  name,
-    from_email: email,
-    phone:      phone || '(не е наведен)',
-    note:       note  || '(без напомена)',
-    date:       new Date().toLocaleString('mk-MK')
-  };
+  var params = { from_name: name, from_email: email, phone: phone || '(не е наведен)', note: note || '(без напомена)', date: new Date().toLocaleString('mk-MK') };
   function onSuccess() {
     document.getElementById('regFormWrap').style.display = 'none';
     document.getElementById('regSuccess').classList.add('show');
@@ -735,8 +629,7 @@ function submitRegistration() {
   } else {
     emailjs.send(EJS_SERVICE, EJS_NOTIFY, params)
       .then(function() { return emailjs.send(EJS_SERVICE, EJS_REPLY, params); })
-      .then(onSuccess)
-      .catch(onError);
+      .then(onSuccess).catch(onError);
   }
 }
 
@@ -770,183 +663,46 @@ function initScrollReveal() {
   });
 }
 
-
-
 /* ── WEATHER WIDGET ─────────────────────────────── */
 function initWeather() {
-  // ── Complete WMO weather code icon set ──────────────
-  // All icons rendered as clean white mono SVG for dark backgrounds.
-  // Covers every code Open-Meteo reports (day & night variants).
   var W = 'rgba(255,255,255,';
   var WX = {
-    // ── Clear ────────────────────────────────────────
-    clearDay:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<circle cx="16" cy="16" r="6" fill="'+W+'0.95)"/>' +
-        '<g stroke="'+W+'0.9)" stroke-width="2" stroke-linecap="round">' +
-          '<line x1="16" y1="2" x2="16" y2="6"/>' +
-          '<line x1="16" y1="26" x2="16" y2="30"/>' +
-          '<line x1="2" y1="16" x2="6" y2="16"/>' +
-          '<line x1="26" y1="16" x2="30" y2="16"/>' +
-          '<line x1="5.86" y1="5.86" x2="8.69" y2="8.69"/>' +
-          '<line x1="23.31" y1="23.31" x2="26.14" y2="26.14"/>' +
-          '<line x1="5.86" y1="26.14" x2="8.69" y2="23.31"/>' +
-          '<line x1="23.31" y1="8.69" x2="26.14" y2="5.86"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Clear night ──────────────────────────────────
-    clearNight:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M13 5a11 11 0 100 22 9 9 0 010-22z" fill="'+W+'0.88)" stroke="'+W+'0.7)" stroke-width="1"/>' +
-        '<circle cx="24" cy="7" r="1.2" fill="'+W+'0.7)"/>' +
-        '<circle cx="27" cy="12" r="0.8" fill="'+W+'0.5)"/>' +
-        '<circle cx="21" cy="4" r="0.9" fill="'+W+'0.6)"/>' +
-      '</svg>',
-    // ── Partly cloudy day ────────────────────────────
-    partlyCloudyDay:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<circle cx="11" cy="11" r="5" fill="'+W+'0.88)"/>' +
-        '<g stroke="'+W+'0.8)" stroke-width="1.6" stroke-linecap="round">' +
-          '<line x1="11" y1="3" x2="11" y2="5.5"/>' +
-          '<line x1="3" y1="11" x2="5.5" y2="11"/>' +
-          '<line x1="5.2" y1="5.2" x2="7" y2="7"/>' +
-          '<line x1="15" y1="7" x2="16.8" y2="5.2"/>' +
-        '</g>' +
-        '<path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '</svg>',
-    // ── Partly cloudy night ──────────────────────────
-    partlyCloudyNight:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M10 4a8 8 0 100 15 7 7 0 010-15z" fill="'+W+'0.75)" stroke="'+W+'0.55)" stroke-width="1"/>' +
-        '<path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.82)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '</svg>',
-    // ── Overcast ─────────────────────────────────────
-    overcast:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 24h16a6 6 0 000-12h-.34A7 7 0 008 17a6 6 0 000 7z" fill="'+W+'0.25)" stroke="'+W+'0.82)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<path d="M5 20h2M25 20h2" stroke="'+W+'0.4)" stroke-width="1.2" stroke-linecap="round"/>' +
-      '</svg>',
-    // ── Fog ──────────────────────────────────────────
-    fog:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 11h16a5 5 0 000-10H23A6 6 0 008 6a5 5 0 000 5z" fill="'+W+'0.2)" stroke="'+W+'0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round">' +
-          '<line x1="4" y1="16" x2="28" y2="16"/>' +
-          '<line x1="6" y1="21" x2="26" y2="21"/>' +
-          '<line x1="4" y1="26" x2="28" y2="26"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Drizzle ──────────────────────────────────────
-    drizzle:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round">' +
-          '<line x1="11" y1="23" x2="10" y2="27"/>' +
-          '<line x1="17" y1="23" x2="16" y2="27"/>' +
-          '<line x1="23" y1="23" x2="22" y2="27"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Rain ─────────────────────────────────────────
-    rain:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke="'+W+'0.75)" stroke-width="2" stroke-linecap="round">' +
-          '<line x1="10" y1="23" x2="8" y2="29"/>' +
-          '<line x1="16" y1="23" x2="14" y2="29"/>' +
-          '<line x1="22" y1="23" x2="20" y2="29"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Heavy rain ───────────────────────────────────
-    heavyRain:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.22)" stroke="'+W+'0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke="'+W+'0.8)" stroke-width="2.2" stroke-linecap="round">' +
-          '<line x1="9" y1="22" x2="7" y2="29"/>' +
-          '<line x1="15" y1="22" x2="13" y2="29"/>' +
-          '<line x1="21" y1="22" x2="19" y2="29"/>' +
-          '<line x1="25" y1="22" x2="23" y2="29"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Snow ─────────────────────────────────────────
-    snow:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke="'+W+'0.75)" stroke-width="1.8" stroke-linecap="round">' +
-          '<line x1="11" y1="22" x2="11" y2="30"/><line x1="8" y1="24" x2="14" y2="24"/><line x1="8" y1="28" x2="14" y2="28"/>' +
-          '<line x1="21" y1="22" x2="21" y2="30"/><line x1="18" y1="24" x2="24" y2="24"/><line x1="18" y1="28" x2="24" y2="28"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Sleet / freezing rain ────────────────────────
-    sleet:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.78)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<g stroke-width="1.8" stroke-linecap="round">' +
-          '<line x1="10" y1="23" x2="9" y2="27" stroke="'+W+'0.72)"/>' +
-          '<line x1="16" y1="23" x2="15" y2="27" stroke="'+W+'0.72)"/>' +
-          '<line x1="14" y1="27" x2="20" y2="27" stroke="'+W+'0.65)"/>' +
-          '<line x1="20" y1="23" x2="20" y2="27" stroke="'+W+'0.65)"/>' +
-          '<line x1="17" y1="27" x2="17" y2="30" stroke="'+W+'0.55)"/>' +
-        '</g>' +
-      '</svg>',
-    // ── Thunderstorm ─────────────────────────────────
-    thunder:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.18)" stroke="'+W+'0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<polyline points="18,20 14,27 18,27 14,34" stroke="'+W+'0.95)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-      '</svg>',
-    // ── Thunderstorm + hail ──────────────────────────
-    thunderHail:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.18)" stroke="'+W+'0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<polyline points="17,20 13,27 17,27 13,33" stroke="'+W+'0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>' +
-        '<circle cx="23" cy="26" r="2" fill="'+W+'0.7)" stroke="'+W+'0.5)" stroke-width="1"/>' +
-        '<circle cx="23" cy="32" r="2" fill="'+W+'0.7)" stroke="'+W+'0.5)" stroke-width="1"/>' +
-      '</svg>',
-    // ── Unknown ──────────────────────────────────────
-    unknown:
-      '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<circle cx="16" cy="16" r="12" stroke="'+W+'0.5)" stroke-width="1.5"/>' +
-        '<path d="M13 12a3 3 0 016 0c0 3-3 3-3 6" stroke="'+W+'0.7)" stroke-width="1.8" stroke-linecap="round"/>' +
-        '<circle cx="16" cy="22" r="1.2" fill="'+W+'0.6)"/>' +
-      '</svg>'
+    clearDay:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="6" fill="'+W+'0.95)"/><g stroke="'+W+'0.9)" stroke-width="2" stroke-linecap="round"><line x1="16" y1="2" x2="16" y2="6"/><line x1="16" y1="26" x2="16" y2="30"/><line x1="2" y1="16" x2="6" y2="16"/><line x1="26" y1="16" x2="30" y2="16"/><line x1="5.86" y1="5.86" x2="8.69" y2="8.69"/><line x1="23.31" y1="23.31" x2="26.14" y2="26.14"/><line x1="5.86" y1="26.14" x2="8.69" y2="23.31"/><line x1="23.31" y1="8.69" x2="26.14" y2="5.86"/></g></svg>',
+    clearNight:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 5a11 11 0 100 22 9 9 0 010-22z" fill="'+W+'0.88)" stroke="'+W+'0.7)" stroke-width="1"/></svg>',
+    partlyCloudyDay:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="5" fill="'+W+'0.88)"/><path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    partlyCloudyNight:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 4a8 8 0 100 15 7 7 0 010-15z" fill="'+W+'0.75)"/><path d="M26 28H14a7 7 0 010-14c.34 0 .67.02 1 .06A7 7 0 0126 21a5 5 0 010 7z" fill="'+W+'0.22)" stroke="'+W+'0.82)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    overcast:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 24h16a6 6 0 000-12h-.34A7 7 0 008 17a6 6 0 000 7z" fill="'+W+'0.25)" stroke="'+W+'0.82)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    fog:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 11h16a5 5 0 000-10H23A6 6 0 008 6a5 5 0 000 5z" fill="'+W+'0.2)" stroke="'+W+'0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="16" x2="28" y2="16"/><line x1="6" y1="21" x2="26" y2="21"/><line x1="4" y1="26" x2="28" y2="26"/></g></svg>',
+    drizzle:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.65)" stroke-width="1.8" stroke-linecap="round"><line x1="11" y1="23" x2="10" y2="27"/><line x1="17" y1="23" x2="16" y2="27"/><line x1="23" y1="23" x2="22" y2="27"/></g></svg>',
+    rain:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.75)" stroke-width="2" stroke-linecap="round"><line x1="10" y1="23" x2="8" y2="29"/><line x1="16" y1="23" x2="14" y2="29"/><line x1="22" y1="23" x2="20" y2="29"/></g></svg>',
+    heavyRain:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.22)" stroke="'+W+'0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.8)" stroke-width="2.2" stroke-linecap="round"><line x1="9" y1="22" x2="7" y2="29"/><line x1="15" y1="22" x2="13" y2="29"/><line x1="21" y1="22" x2="19" y2="29"/><line x1="25" y1="22" x2="23" y2="29"/></g></svg>',
+    snow:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.2)" stroke="'+W+'0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><g stroke="'+W+'0.75)" stroke-width="1.8" stroke-linecap="round"><line x1="11" y1="22" x2="11" y2="30"/><line x1="8" y1="24" x2="14" y2="24"/><line x1="8" y1="28" x2="14" y2="28"/><line x1="21" y1="22" x2="21" y2="30"/><line x1="18" y1="24" x2="24" y2="24"/><line x1="18" y1="28" x2="24" y2="28"/></g></svg>',
+    thunder:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 18h16a6 6 0 000-12h-.34A7 7 0 008 11a6 6 0 000 7z" fill="'+W+'0.18)" stroke="'+W+'0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="18,20 14,27 18,27 14,34" stroke="'+W+'0.95)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>',
+    unknown:'<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="12" stroke="'+W+'0.5)" stroke-width="1.5"/><path d="M13 12a3 3 0 016 0c0 3-3 3-3 6" stroke="'+W+'0.7)" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="22" r="1.2" fill="'+W+'0.6)"/></svg>'
   };
 
-  // Map every WMO code to an icon key (day and night)
   function getIcon(code, night) {
-    if (code === 0)                          return night ? WX.clearNight       : WX.clearDay;
-    if (code === 1)                          return night ? WX.clearNight       : WX.clearDay;
-    if (code === 2)                          return night ? WX.partlyCloudyNight: WX.partlyCloudyDay;
-    if (code === 3)                          return WX.overcast;
-    if (code === 45 || code === 48)          return WX.fog;
-    if (code >= 51 && code <= 57)            return WX.drizzle;
-    if (code >= 61 && code <= 63)            return WX.rain;
-    if (code === 65)                         return WX.heavyRain;
-    if (code >= 66 && code <= 67)            return WX.sleet;
-    if (code >= 71 && code <= 77)            return WX.snow;
-    if (code >= 80 && code <= 81)            return WX.rain;
-    if (code === 82)                         return WX.heavyRain;
-    if (code === 85 || code === 86)          return WX.snow;
-    if (code === 95)                         return WX.thunder;
-    if (code === 96 || code === 99)          return WX.thunderHail;
+    if (code === 0 || code === 1) return night ? WX.clearNight : WX.clearDay;
+    if (code === 2) return night ? WX.partlyCloudyNight : WX.partlyCloudyDay;
+    if (code === 3) return WX.overcast;
+    if (code === 45 || code === 48) return WX.fog;
+    if (code >= 51 && code <= 57) return WX.drizzle;
+    if (code >= 61 && code <= 63) return WX.rain;
+    if (code === 65) return WX.heavyRain;
+    if (code >= 71 && code <= 77) return WX.snow;
+    if (code >= 80 && code <= 81) return WX.rain;
+    if (code === 82) return WX.heavyRain;
+    if (code === 85 || code === 86) return WX.snow;
+    if (code === 95 || code === 96 || code === 99) return WX.thunder;
     return WX.unknown;
   }
 
-  var WX_DESC = {
-    0:'Ведро', 1:'Претежно ведро', 2:'Делумно облачно', 3:'Облачно',
-    45:'Магла', 48:'Слана магла',
-    51:'Слаба ситна киша', 53:'Умерена ситна киша', 55:'Густа ситна киша',
-    61:'Слаб дожд', 63:'Умерен дожд', 65:'Силен дожд',
-    71:'Слаб снег', 73:'Умерен снег', 75:'Силен снег', 77:'Снежни зрнца',
-    80:'Слаби врнежи', 81:'Умерени врнежи', 82:'Силни врнежи',
-    85:'Слаби снежни врнежи', 86:'Силни снежни врнежи',
-    95:'Грмотевична бура', 96:'Бура со град', 99:'Силна бура со град'
-  };
+  var WX_DESC = {0:'Ведро',1:'Претежно ведро',2:'Делумно облачно',3:'Облачно',45:'Магла',48:'Слана магла',51:'Слаба ситна киша',53:'Умерена ситна киша',55:'Густа ситна киша',61:'Слаб дожд',63:'Умерен дожд',65:'Силен дожд',71:'Слаб снег',73:'Умерен снег',75:'Силен снег',77:'Снежни зрнца',80:'Слаби врнежи',81:'Умерени врнежи',82:'Силни врнежи',85:'Слаби снежни врнежи',86:'Силни снежни врнежи',95:'Грмотевична бура',96:'Бура со град',99:'Силна бура со град'};
 
   function isNight() { var h = new Date().getHours(); return h < 6 || h >= 19; }
 
   var lat = 41.9924, lon = 21.6225;
-  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
-            '&current=temperature_2m,weathercode&wind_speed_unit=kmh&timezone=Europe%2FSkopje';
+  var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon + '&current=temperature_2m,weathercode&wind_speed_unit=kmh&timezone=Europe%2FSkopje';
 
   fetch(url)
     .then(function(r) { return r.json(); })
@@ -957,39 +713,33 @@ function initWeather() {
       var iconHtml = getIcon(code, night);
       var desc = WX_DESC[code] || 'Непознато';
       var tempStr = temp + '°C';
-      // Desktop
       document.getElementById('wfIcon').innerHTML = iconHtml;
       document.getElementById('wfTemp').textContent = tempStr;
       document.getElementById('wfDesc').textContent = desc;
-      // Mobile
       document.getElementById('wmIcon').innerHTML = iconHtml;
       document.getElementById('wmTemp').textContent = tempStr;
       document.getElementById('wmDesc').textContent = desc;
     })
     .catch(function() {
-      var u = WX.unknown;
-      document.getElementById('wfIcon').innerHTML = u;
       document.getElementById('wfTemp').textContent = '–°C';
       document.getElementById('wfDesc').textContent = 'Нема податоци';
-      document.getElementById('wmIcon').innerHTML = u;
       document.getElementById('wmTemp').textContent = '–°C';
       document.getElementById('wmDesc').textContent = 'Нема податоци';
     });
 
-  // Mobile pill tap-to-expand, auto-collapse after 5s
   var mobileWidget = document.getElementById('weatherMobile');
   var collapseTimer = null;
-  mobileWidget.addEventListener('click', function() {
-    this.classList.toggle('expanded');
-    if (this.classList.contains('expanded')) {
-      clearTimeout(collapseTimer);
-      collapseTimer = setTimeout(function() {
-        mobileWidget.classList.remove('expanded');
-      }, 5000);
-    } else {
-      clearTimeout(collapseTimer);
-    }
-  });
+  if (mobileWidget) {
+    mobileWidget.addEventListener('click', function() {
+      this.classList.toggle('expanded');
+      if (this.classList.contains('expanded')) {
+        clearTimeout(collapseTimer);
+        collapseTimer = setTimeout(function() { mobileWidget.classList.remove('expanded'); }, 5000);
+      } else {
+        clearTimeout(collapseTimer);
+      }
+    });
+  }
 }
 
 /* ── WIRE EVERYTHING ON DOM READY ───────────────── */
@@ -1003,9 +753,10 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('modalOverlay') && document.getElementById('modalOverlay').addEventListener('click', function(e) { if(e.target===this) closeNovostModal(); });
   initFaq();
   initScrollReveal();
-  buildTicker();
+  initAboutSlideshow();
   renderNovosti();
-  initHero();
+  if (typeof _omBuildTicker === 'function' && typeof NOVOSTI !== 'undefined') _omBuildTicker(NOVOSTI);
+  if (typeof initHero === 'function') initHero();
   initWeather();
 });
 </script>
