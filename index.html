@@ -40,20 +40,19 @@
 
     /* ══ ABOUT — Ordinacija section ══ */
     .about { background:var(--white); padding:5rem 5%; }
-    .about-inner { display:flex; flex-direction:column; gap:2.8rem; max-width:1100px; margin:0 auto; }
+    .about-inner { display:grid; grid-template-columns:420px 1fr; gap:4rem; align-items:center; max-width:1100px; margin:0 auto; }
 
-    /* Top: photo block */
+    /* Left: photo column */
     .about-photo-col { position:relative; }
-    .about-ord-img { width:100%; aspect-ratio:3/2; border-radius:24px; object-fit:cover; object-position:center; box-shadow:var(--shadow); display:block; }
-    .about-photo-fallback { width:100%; aspect-ratio:3/2; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
-    .about-badge-float { position:absolute; bottom:-1.2rem; right:2rem; background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; z-index:2; }
+    .about-ord-img { width:100%; aspect-ratio:4/3; border-radius:24px; object-fit:cover; object-position:center; box-shadow:var(--shadow); display:block; }
+    .about-photo-fallback { width:100%; aspect-ratio:4/3; border-radius:24px; background:linear-gradient(135deg,var(--teal-light),var(--green-light)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:5rem; color:var(--teal); box-shadow:var(--shadow); }
+    .about-badge-float { position:absolute; bottom:-1.2rem; left:50%; transform:translateX(-50%); background:var(--white); border-radius:50px; padding:.6rem 1.3rem; box-shadow:var(--shadow); display:flex; align-items:center; gap:8px; font-size:.82rem; font-weight:600; color:var(--green); white-space:nowrap; z-index:2; }
     .about-badge-float::before { content:''; width:8px; height:8px; background:var(--green); border-radius:50%; flex-shrink:0; }
 
-    /* Bottom: text block — two-column prose layout on wide screens */
-    .about-text-col { padding-top:.8rem; }
-    .about-text-col .about-prose { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 3rem; margin-bottom:1.6rem; }
-    .about-text-col p { color:var(--text-mid); font-weight:300; font-size:.97rem; line-height:1.75; margin:0; }
-    .about-text-col h2 { margin-bottom:1rem; }
+    /* Right: text column */
+    .about-text-col { padding-top:.5rem; }
+    .about-text-col p { color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem; line-height:1.75; }
+    .about-text-col h2 { margin-bottom:.5rem; }
 
     /* SERVICES */
     .services { background:var(--cream); }
@@ -195,9 +194,9 @@
       .trust-item { font-size:.8rem; }
       section { padding:3.5rem 4%; }
       .about { padding:3.5rem 4%; }
-      .about-inner { gap:2rem; }
-      .about-badge-float { right:1rem; font-size:.75rem; padding:.45rem 1rem; }
-      .about-text-col .about-prose { grid-template-columns:1fr; gap:1rem; }
+      .about-inner { grid-template-columns:1fr; gap:2rem; }
+      .about-photo-col { display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+      .about-badge-float { position:static; transform:none; background:var(--green-light); box-shadow:none; color:var(--green); font-size:.78rem; padding:.4rem .9rem; }
       .insurance { grid-template-columns:1fr; gap:2rem; }
       .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
       .modal, .reg-modal { border-radius:16px; }
@@ -247,7 +246,7 @@
 <section class="about" id="about">
   <div class="about-inner">
 
-    <!-- Photo — full width, 3:2 landscape -->
+    <!-- Photo column — 4:3 landscape -->
     <div class="about-photo-col">
       <img
         src="2.jpg"
@@ -259,17 +258,18 @@
       <div class="about-badge-float">ПЗУ Оаза Медика · Илинден</div>
     </div>
 
-    <!-- Text — heading + two-column prose -->
+    <!-- Text column -->
     <div class="about-text-col">
       <p class="section-label">Ординацијата</p>
-      <h2 class="section-title">Современа нега достапна за сите</h2>
+      <h2 class="section-title" style="margin-bottom:.6rem;">Современа нега достапна за сите</h2>
 
-      <div class="about-prose">
-        <p>ПЗУ Оаза Медика не е само медицинска установа — таа е замислена како место каде здравјето се третира со внимание, трпение и професионализам. Во срцето на нашата визија е создавање на „оаза" за пациентите — простор каде секој граѓанин на општина Илинден и околината може да добие врвна примарна здравствена заштита.</p>
-        <p>Веруваме дека матичниот лекар е првиот и најважен сојузник во зачувувањето на здравјето, па затоа нашата мисија е да обезбедиме грижа која е достапна, персонализирана и заснована на најновите медицински стандарди. Сместени во склоп на Домот за стари лица ОАЗА, нудиме уникатен спој на искуство во грижата и модерна медицинска пракса — опремена за широк спектар на примарни услуги, од превентивни прегледи и лабораториски упати, до менаџирање на хронични состојби.</p>
-      </div>
+      <p>ПЗУ Оаза Медика не е само медицинска установа — таа е замислена како место каде здравјето се третира со внимание, трпение и професионализам. Во срцето на нашата визија е создавање на „оаза" за пациентите — простор каде секој граѓанин на општина Илинден и околината може да добие врвна примарна здравствена заштита.</p>
 
-      <a href="https://oazamedika.github.io/oaza-medika-website/about-us.html" class="btn btn-secondary" style="display:inline-flex;">
+      <p>Веруваме дека матичниот лекар е првиот и најважен сојузник во зачувувањето на здравјето, па затоа нашата мисија е да обезбедиме грижа која е достапна, персонализирана и заснована на најновите медицински стандарди.</p>
+
+      <p>Сместени во склоп на Домот за стари лица ОАЗА, нудиме уникатен спој на искуство во грижата и модерна медицинска пракса — опремена за широк спектар на примарни услуги, од превентивни прегледи и лабораториски упати, до менаџирање на хронични состојби.</p>
+
+      <a href="https://oazamedika.github.io/oaza-medika-website/about-us.html" class="btn btn-secondary" style="display:inline-flex; margin-top:.4rem;">
         Прочитај повеќе
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
       </a>
@@ -419,12 +419,12 @@
   <div class="contact-grid">
     <div class="contact-info">
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><div class="contact-item-label">Телефон</div><div class="contact-item-value"><a href="tel:+38970123123">070 123 123</a></div></div></div>
-      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="mailto:pacienti@oazamedika.com">pacienti@oazamedika.com</a></div></div></div>
+      <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-item-label">Е-маил</div><div class="contact-item-value"><a href="/cdn-cgi/l/email-protection#84f4e5e7ede1eaf0edc4ebe5fee5e9e1e0edefe5aae7ebe9"><span class="__cf_email__" data-cfemail="0979686a606c677d604966687368646c6d606268276a6664">[email&#160;protected]</span></a></div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="contact-item-label">Адреса</div><div class="contact-item-value">Во склоп на Дом за стари лица ОАЗА<br/>ул. 2 бр. 105, лок. 10 — Илинден</div></div></div>
       <div class="contact-item"><div class="contact-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg></div><div><div class="contact-item-label">Работно време</div><div class="contact-item-value">Понеделник – Петок<br/>07:30 – 15:00</div></div></div>
       <div class="contact-actions">
         <a href="tel:+38970123123" class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>Повикај сега</a>
-        <a href="mailto:pacienti@oazamedika.com" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
+        <a href="/cdn-cgi/l/email-protection#9aeafbf9f3fff4eef3daf5fbe0fbf7fffef3f1fbb4f9f5f7" class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Испрати е-маил</a>
         <a href="https://wa.me/38970123123" target="_blank" class="btn btn-whatsapp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.554 4.122 1.523 5.851L0 24l6.324-1.497A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 01-5.012-1.376l-.36-.213-3.75.888.938-3.645-.234-.375A9.785 9.785 0 012.182 12C2.182 6.578 6.578 2.182 12 2.182S21.818 6.578 21.818 12 17.422 21.818 12 21.818z"/></svg>WhatsApp порака</a>
       </div>
     </div>
@@ -434,7 +434,7 @@
   </div>
 </section>
 
-<script src="navbar.js" data-root=""></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="navbar.js" data-root=""></script>
 <script src="footer.js" data-root=""></script>
 <script src="hero/hero.js"></script>
 <script src="novosti.js"></script>
@@ -467,21 +467,20 @@ function renderNovosti() {
     return;
   }
 
-  /* ── Sort by id descending, then take max 6 ── */
-  var sorted = NOVOSTI.slice().sort(function(a, b) {
-    /* Extract numeric part from id strings like "id001", "id007" etc. */
-    var na = parseInt((a.id || '').replace(/\D/g, ''), 10) || 0;
-    var nb = parseInt((b.id || '').replace(/\D/g, ''), 10) || 0;
-    return nb - na; /* descending — newest first */
+  /* Build index-tagged copy, sort by numeric part of id descending, take max 6 */
+  var indexed = NOVOSTI.map(function(n, i) { return { n: n, i: i }; });
+  indexed.sort(function(a, b) {
+    var na = parseInt((a.n.id || '').replace(/\D/g, ''), 10) || 0;
+    var nb = parseInt((b.n.id || '').replace(/\D/g, ''), 10) || 0;
+    return nb - na;
   });
-  var display = sorted.slice(0, 6);
+  var display = indexed.slice(0, 6);
 
   var html = '';
-  for (var i = 0; i < display.length; i++) {
-    var n = display[i];
+  for (var x = 0; x < display.length; x++) {
+    var n = display[x].n;
+    var origIdx = display[x].i;
     var ik = IKONI[n.kategorija] || { e: '📄', b: '#f0f0f0' };
-    /* Store the original index in NOVOSTI for the modal */
-    var origIdx = NOVOSTI.indexOf(n);
     html += '<div class="novost-card" data-novost="' + origIdx + '">' +
       '<div class="novost-img" style="background:' + (n.slika ? 'none' : ik.b) + '">' +
         (n.slika ? '<img src="' + n.slika + '" style="width:100%;height:100%;object-fit:cover"/>' : '<span style="font-size:2.8rem">' + ik.e + '</span>') +
@@ -598,10 +597,10 @@ function initScrollReveal() {
 function initWeather() {
   var W = 'rgba(255,255,255,';
 
-  /* ── Crescent moon — properly shaped using arc subtraction ── */
+  /* ── Crescent moon — centred at (16,16) in 32×32 viewBox ── */
   var moonSvg = '<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">'
-    + '<path d="M22 17.5A9 9 0 0 1 11 7a9 9 0 0 1 1.5-5A9.5 9.5 0 1 0 22 17.5z"'
-    + ' fill="' + W + '0.90)" stroke="' + W + '0.6)" stroke-width="0.8"/>'
+    + '<path d="M20 8a10 10 0 1 1-10.5 13.5A7 7 0 0 0 20 8z"'
+    + ' fill="' + W + '0.92)" stroke="' + W + '0.55)" stroke-width="0.75" stroke-linejoin="round"/>'
     + '</svg>';
 
   var WX = {
