@@ -38,7 +38,7 @@
     '.om-ticker-item:hover{color:#b2f0b2;}',
     '.om-ticker-sep{color:rgba(255,255,255,.25);display:inline-flex;align-items:center;flex-shrink:0;}',
 
-    /* ── Nav — fixed, sits at top:36px until ticker scrolls past, then snaps to top:0 ── */
+    /* ── Nav — fixed, top:36px until ticker scrolls away, then top:0 ── */
     '.om-nav{position:fixed;top:36px;left:0;right:0;z-index:500;',
     'background:rgba(255,255,255,0.97);',
     'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);',
@@ -61,7 +61,7 @@
     '.om-nav-logo-text .om-sub{font-size:.65rem;color:var(--text-light);',
     'letter-spacing:.07em;text-transform:uppercase;}',
 
-    /* ── Desktop nav — shared style for links AND tools button ── */
+    /* ── Desktop nav links ── */
     '.om-nav-links{display:flex;gap:0;list-style:none;align-items:center;margin:0;padding:0;}',
     '.om-nav-links > li{display:flex;align-items:center;}',
     '.om-nav-links > li > a,.om-tools-btn{',
@@ -118,7 +118,7 @@
 
     '.om-hamburger{display:flex;}',
 
-    /* mobile menu panel — NO overflow:hidden on body, page stays scrollable */
+    /* mobile menu panel */
     '.om-nav-links{',
     'display:none;position:absolute;top:64px;left:0;right:0;',
     'flex-direction:column;align-items:stretch;',
@@ -130,7 +130,7 @@
 
     '.om-nav-links > li{width:100%;display:block;}',
 
-    /* every row — links AND tools button — same style */
+    /* every row */
     '.om-nav-links > li > a,.om-tools-btn{',
     'display:flex!important;align-items:center;justify-content:space-between;',
     'width:100%;box-sizing:border-box;',
@@ -144,47 +144,43 @@
     '.om-nav-links > li > a:hover,.om-tools-btn:hover{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
     '.om-nav-links > li:last-child > a{border-bottom:none;}',
 
-    /* CTA full-width teal row */
+    /* CTA row */
     '.om-nav-cta{',
     'background:var(--teal)!important;color:var(--white)!important;',
     'justify-content:center;border-bottom:none!important;',
-    'padding:.7rem 5%!important;margin-top:.25rem;',
-    '}',
+    'padding:.7rem 5%!important;margin-top:.25rem;}',
     '.om-nav-cta:hover{background:var(--teal-dark)!important;color:var(--white)!important;}',
 
-    /* tools wrap reset for mobile */
+    /* tools wrap reset */
     '.om-tools-wrap{width:100%;flex-direction:column;align-items:stretch;position:static;}',
     '.om-tools-wrap::after{display:none;}',
-    /* kill desktop hover behaviour on mobile */
+    /* kill desktop hover on mobile */
     '.om-tools-wrap:hover .om-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--text-mid)!important;}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:none!important;}',
-    /* active state */
+    /* active tools btn */
     '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
     '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
 
-    /* inline submenu — toggled via max-height so items are always in the DOM and visible */
-    '.om-dropdown{',
+    /* mobile dropdown — hidden by default via display:none, shown by JS */
+    '.om-dropdown.mobile-visible{',
     'display:block!important;position:static!important;transform:none!important;',
     'opacity:1!important;visibility:visible!important;pointer-events:auto!important;',
     'box-shadow:none!important;border:none!important;border-radius:0!important;',
-    'background:var(--cream);padding:0;min-width:unset;',
-    'max-height:0;overflow:hidden;',
-    'transition:max-height .28s ease;}',
-    '.om-tools-wrap.mobile-open .om-dropdown{max-height:400px;}',
+    'background:var(--cream)!important;padding:.1rem 0!important;min-width:unset!important;}',
 
-    '.om-dropdown a,.om-dropdown .om-dd-main{',
+    '.om-dropdown.mobile-visible a,.om-dropdown.mobile-visible .om-dd-main{',
     'display:flex!important;align-items:center;',
     'font-size:.85rem!important;font-weight:600;letter-spacing:.01em;text-transform:none!important;',
     'color:var(--text-mid)!important;',
     'padding:.55rem 5% .55rem calc(5% + 20px)!important;',
-    'border-radius:0!important;border-bottom:1px solid rgba(42,122,122,.06);',
-    'background:none!important;white-space:normal;justify-content:flex-start;}',
-    '.om-dropdown a:last-child{border-bottom:none;}',
-    '.om-dropdown .om-dd-main{color:var(--teal)!important;}',
-    '.om-dropdown a:hover,.om-dropdown .om-dd-main:hover{background:rgba(42,122,122,.06)!important;color:var(--teal)!important;}',
-    '.om-dropdown-divider{display:none;}',
-    '.om-dd-icon{display:none;}',
+    'border-radius:0!important;border-bottom:1px solid rgba(42,122,122,.06)!important;',
+    'white-space:normal;justify-content:flex-start;}',
+    '.om-dropdown.mobile-visible a:last-child{border-bottom:none!important;}',
+    '.om-dropdown.mobile-visible .om-dd-main{color:var(--teal)!important;}',
+    '.om-dropdown.mobile-visible a:hover,.om-dropdown.mobile-visible .om-dd-main:hover{background:rgba(42,122,122,.06)!important;color:var(--teal)!important;}',
+    '.om-dropdown.mobile-visible .om-dropdown-divider{display:none!important;}',
+    '.om-dropdown.mobile-visible .om-dd-icon{display:none!important;}',
 
     '}', /* end mobile */
 
@@ -273,14 +269,14 @@
   var body = document.body;
   if (body.firstChild) { body.insertBefore(frag, body.firstChild); } else { body.appendChild(frag); }
 
-  /* ── Scroll: snap nav to top:0 once ticker is scrolled past ── */
+  /* ── Scroll: snap nav to top:0 once ticker scrolls past ── */
   window.addEventListener('scroll', function () {
     var nav = document.getElementById('omNav');
     if (!nav) return;
     if (window.scrollY >= 36) {
-      nav.classList.add('scrolled');   /* top:0 + shadow */
+      nav.classList.add('scrolled');
     } else {
-      nav.classList.remove('scrolled'); /* top:36px, no shadow */
+      nav.classList.remove('scrolled');
     }
   }, { passive: true });
 
@@ -297,12 +293,19 @@
   /* ── Tools mobile tap ─────────────────────────────── */
   var toolsWrap = document.getElementById('omToolsWrap');
   var toolsBtn  = document.getElementById('omToolsBtn');
-  if (toolsBtn && toolsWrap) {
+  var dropdown  = document.getElementById('omDropdown');
+  if (toolsBtn && toolsWrap && dropdown) {
     toolsBtn.addEventListener('click', function (e) {
       if (window.innerWidth <= 900) {
         e.preventDefault();
         var open = toolsWrap.classList.toggle('mobile-open');
         toolsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        /* toggle visibility via class — JS-controlled, no CSS height tricks */
+        if (open) {
+          dropdown.classList.add('mobile-visible');
+        } else {
+          dropdown.classList.remove('mobile-visible');
+        }
       }
     });
   }
