@@ -313,21 +313,26 @@
   }
 
   /* ── Ticker builder ───────────────────────────────────
-     Reads the global NOVOSTI array. Called automatically
-     after DOM ready — no call needed from novosti.js.
+     Called by novosti.js via window._omBuildTicker(NOVOSTI).
+     Also auto-fires on DOMContentLoaded if NOVOSTI global
+     already exists (covers any script load order).
   ─────────────────────────────────────────────────────── */
-  function buildTicker(NOVOSTI) {
+  var tickerBuilt = false;
+
+  function buildTicker(data) {
+    if (tickerBuilt) return;          /* only ever run once */
     var wrap  = document.getElementById('omTickerWrap');
     var track = document.getElementById('omTickerTrack');
-    if (!wrap || !track || !NOVOSTI || !NOVOSTI.length) {
+    if (!wrap || !track || !data || !data.length) {
       if (wrap) wrap.style.display = 'none';
       return;
     }
+    tickerBuilt = true;
     /* double the items for seamless loop */
-    var items = NOVOSTI.concat(NOVOSTI);
+    var items = data.concat(data);
     var html  = '';
     for (var i = 0; i < items.length; i++) {
-      var idx = i % NOVOSTI.length;
+      var idx = i % data.length;
       html += '<span class="om-ticker-item" data-idx="' + idx + '">' +
         items[i].naslov +
         '<span style="opacity:.4;font-size:.7rem;margin-left:6px">' + items[i].datum + '</span>' +
@@ -350,40 +355,27 @@
       });
     });
     var pos = 0;
-    function tick() {
+    (function tick() {
       pos += 0.45;
       if (pos >= track.scrollWidth / 2) pos = 0;
       track.style.transform = 'translateX(-' + pos + 'px)';
       requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    })();
   }
 
-  /* ── Auto-init ticker once page is fully loaded ───────
-     novosti.js must be loaded before or alongside navbar.js.
-     We wait for DOMContentLoaded + a small defer so that
-     any <script src="novosti.js"> in the <body> has run.
-  ─────────────────────────────────────────────────────── */
-  function tryBuildTicker() {
-    if (typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
+  /* Public API — novosti.js calls this after declaring NOVOSTI */
+  window._omBuildTicker = buildTicker;
+
+  /* Auto-fallback: if NOVOSTI was already declared before navbar.js ran */
+  function tryAutoTicker() {
+    if (!tickerBuilt && typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
       buildTicker(NOVOSTI);
-    } else {
-      /* NOVOSTI not ready yet — retry once after a frame */
-      setTimeout(function () {
-        if (typeof NOVOSTI !== 'undefined' && NOVOSTI.length) {
-          buildTicker(NOVOSTI);
-        } else {
-          var wrap = document.getElementById('omTickerWrap');
-          if (wrap) wrap.style.display = 'none';
-        }
-      }, 200);
     }
   }
-
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', tryBuildTicker);
+    document.addEventListener('DOMContentLoaded', tryAutoTicker);
   } else {
-    tryBuildTicker();
+    setTimeout(tryAutoTicker, 0);
   }
 
 })();
