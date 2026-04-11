@@ -24,7 +24,7 @@
     '--green:#1a5c2a;--green-light:#e8f5ec;--cream:#f9faf8;--white:#ffffff;',
     '--text:#1c2a22;--text-mid:#3d5046;--text-light:#6b8070;}',
 
-    /* ── Ticker — scrolls with page, NOT fixed ── */
+    /* ── Ticker — in normal document flow, scrolls with page ── */
     '.om-ticker-wrap{background:var(--green);color:var(--white);height:36px;',
     'overflow:hidden;display:flex;align-items:center;}',
     '.om-ticker-label{background:var(--teal-dark);color:var(--white);padding:0 1rem;',
@@ -38,17 +38,17 @@
     '.om-ticker-item:hover{color:#b2f0b2;}',
     '.om-ticker-sep{color:rgba(255,255,255,.25);display:inline-flex;align-items:center;flex-shrink:0;}',
 
-    /* ── Nav — fixed ── */
-    '.om-nav{position:fixed;top:0;left:0;right:0;z-index:500;',
+    /* ── Nav — fixed, sits at top:36px until ticker scrolls past, then snaps to top:0 ── */
+    '.om-nav{position:fixed;top:36px;left:0;right:0;z-index:500;',
     'background:rgba(255,255,255,0.97);',
     'backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);',
     'border-bottom:1px solid rgba(42,122,122,.12);',
     'padding:0 5%;display:flex;align-items:center;justify-content:space-between;',
     'height:64px;transition:box-shadow .3s;box-sizing:border-box;}',
-    '.om-nav.scrolled{box-shadow:0 4px 24px rgba(26,92,42,.12);}',
+    '.om-nav.scrolled{top:0;box-shadow:0 4px 24px rgba(26,92,42,.12);}',
 
-    /* spacer = nav height only (ticker scrolls away) */
-    '.om-nav-spacer{height:64px;}',
+    /* spacer = ticker (36px) + nav (64px) */
+    '.om-nav-spacer{height:100px;}',
 
     /* ── Logo ── */
     '.om-nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}',
@@ -118,7 +118,7 @@
 
     '.om-hamburger{display:flex;}',
 
-    /* dropdown panel below fixed nav */
+    /* mobile menu panel — NO overflow:hidden on body, page stays scrollable */
     '.om-nav-links{',
     'display:none;position:absolute;top:64px;left:0;right:0;',
     'flex-direction:column;align-items:stretch;',
@@ -152,10 +152,10 @@
     '}',
     '.om-nav-cta:hover{background:var(--teal-dark)!important;color:var(--white)!important;}',
 
-    /* tools wrap reset */
+    /* tools wrap reset for mobile */
     '.om-tools-wrap{width:100%;flex-direction:column;align-items:stretch;position:static;}',
     '.om-tools-wrap::after{display:none;}',
-    /* kill desktop hover on mobile */
+    /* kill desktop hover behaviour on mobile */
     '.om-tools-wrap:hover .om-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--text-mid)!important;}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:none!important;}',
@@ -163,15 +163,18 @@
     '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
     '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
 
-    /* inline submenu — flat rows, indented */
+    /* inline submenu — toggled via max-height so items are always in the DOM and visible */
     '.om-dropdown{',
-    'display:none;position:static!important;transform:none!important;',
+    'display:block!important;position:static!important;transform:none!important;',
     'opacity:1!important;visibility:visible!important;pointer-events:auto!important;',
     'box-shadow:none!important;border:none!important;border-radius:0!important;',
-    'background:var(--cream);padding:.1rem 0;min-width:unset;}',
-    '.om-tools-wrap.mobile-open .om-dropdown{display:block;}',
+    'background:var(--cream);padding:0;min-width:unset;',
+    'max-height:0;overflow:hidden;',
+    'transition:max-height .28s ease;}',
+    '.om-tools-wrap.mobile-open .om-dropdown{max-height:400px;}',
 
     '.om-dropdown a,.om-dropdown .om-dd-main{',
+    'display:flex!important;align-items:center;',
     'font-size:.85rem!important;font-weight:600;letter-spacing:.01em;text-transform:none!important;',
     'color:var(--text-mid)!important;',
     'padding:.55rem 5% .55rem calc(5% + 20px)!important;',
@@ -270,20 +273,24 @@
   var body = document.body;
   if (body.firstChild) { body.insertBefore(frag, body.firstChild); } else { body.appendChild(frag); }
 
-  /* ── Scroll shadow ────────────────────────────────── */
+  /* ── Scroll: snap nav to top:0 once ticker is scrolled past ── */
   window.addEventListener('scroll', function () {
     var nav = document.getElementById('omNav');
-    if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+    if (!nav) return;
+    if (window.scrollY >= 36) {
+      nav.classList.add('scrolled');   /* top:0 + shadow */
+    } else {
+      nav.classList.remove('scrolled'); /* top:36px, no shadow */
+    }
   }, { passive: true });
 
-  /* ── Hamburger ────────────────────────────────────── */
+  /* ── Hamburger — page scroll intentionally NOT locked ── */
   var hamburger = document.getElementById('omHamburger');
   var navLinks  = document.getElementById('omNavLinks');
   if (hamburger && navLinks) {
     hamburger.addEventListener('click', function () {
       var open = navLinks.classList.toggle('open');
       hamburger.classList.toggle('open', open);
-      document.body.style.overflow = open ? 'hidden' : '';
     });
   }
 
@@ -326,7 +333,6 @@
         }
         if (navLinks) navLinks.classList.remove('open');
         if (hamburger) hamburger.classList.remove('open');
-        document.body.style.overflow = '';
       });
     });
     var pos = 0;
