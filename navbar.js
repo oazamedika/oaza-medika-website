@@ -47,11 +47,7 @@
     'height:64px;transition:box-shadow .3s;box-sizing:border-box;}',
     '.om-nav.scrolled{top:0;box-shadow:0 4px 24px rgba(26,92,42,.12);}',
 
-    /*
-      Spacer = nav height only (64px).
-      The ticker (36px) is already in normal flow above the spacer,
-      so total reserved space at top = 36 (ticker) + 64 (spacer) = 100px. Correct.
-    */
+    /* spacer = nav height only; ticker already occupies 36px in normal flow above */
     '.om-nav-spacer{height:64px;}',
 
     /* ── Logo ── */
@@ -92,7 +88,7 @@
     'box-shadow:0 12px 40px rgba(26,92,42,.14);min-width:210px;padding:.4rem;',
     'opacity:0;visibility:hidden;pointer-events:none;',
     'transition:opacity .18s,transform .18s,visibility .18s;}',
-    /* desktop hover — only applies when NOT on mobile (guarded in @media below) */
+    /* desktop-only hover — overridden entirely inside @media mobile */
     '.om-tools-wrap:hover .om-dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0);}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--teal);}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:rotate(180deg);}',
@@ -156,28 +152,33 @@
     'padding:.7rem 5%!important;margin-top:.25rem;}',
     '.om-nav-cta:hover{background:var(--teal-dark)!important;color:var(--white)!important;}',
 
-    /* tools wrap reset — disable ALL desktop hover behaviour */
+    /* tools wrap — reset to block column, no desktop hover at all */
     '.om-tools-wrap{width:100%;flex-direction:column;align-items:stretch;position:static;}',
     '.om-tools-wrap::after{display:none;}',
-    '.om-tools-wrap:hover .om-dropdown{opacity:0!important;visibility:hidden!important;pointer-events:none!important;display:none!important;}',
+
+    /* COMPLETELY neutralise every desktop hover rule for .om-dropdown */
+    '.om-tools-wrap:hover .om-dropdown,',
+    '.om-tools-wrap:focus-within .om-dropdown{',
+    'opacity:0!important;visibility:hidden!important;',
+    'pointer-events:none!important;display:none!important;',
+    'transform:none!important;}',
     '.om-tools-wrap:hover .om-tools-btn{color:var(--text-mid)!important;}',
     '.om-tools-wrap:hover .om-tools-arrow{transform:none!important;}',
 
-    /* active tools btn styling */
+    /* active tools btn */
     '.om-tools-wrap.mobile-open .om-tools-btn{color:var(--teal)!important;background:rgba(42,122,122,.04)!important;}',
     '.om-tools-wrap.mobile-open .om-tools-arrow svg{transform:rotate(180deg);}',
 
-    /*
-      Mobile dropdown: hidden by default (display:none).
-      JS adds .mobile-visible to show it.
-      The !important on display:block overrides the hover-kill rule above.
-    */
-    '.om-dropdown{display:none;}',
-    '.om-dropdown.mobile-visible{',
-    'display:block!important;position:static!important;transform:none!important;',
+    /* dropdown hidden by default on mobile */
+    '.om-dropdown{',
+    'display:none!important;',
+    'position:static!important;transform:none!important;',
     'opacity:1!important;visibility:visible!important;pointer-events:auto!important;',
     'box-shadow:none!important;border:none!important;border-radius:0!important;',
     'background:var(--cream)!important;padding:.1rem 0!important;min-width:unset!important;}',
+
+    /* shown when JS adds .mobile-visible — this selector is more specific than hover rules */
+    '.om-tools-wrap .om-dropdown.mobile-visible{display:block!important;}',
 
     '.om-dropdown.mobile-visible a,.om-dropdown.mobile-visible .om-dd-main{',
     'display:flex!important;align-items:center;gap:8px;',
@@ -320,11 +321,18 @@
     });
   }
 
-  /* ── Ticker builder ───────────────────────────────── */
+  /* ── Ticker builder ───────────────────────────────────
+     Called by novosti.js (or any page) after NOVOSTI data
+     is available. Safe to call multiple times.
+  ─────────────────────────────────────────────────────── */
   window._omBuildTicker = function (NOVOSTI) {
     var wrap  = document.getElementById('omTickerWrap');
     var track = document.getElementById('omTickerTrack');
-    if (!wrap || !track || !NOVOSTI || !NOVOSTI.length) { if (wrap) wrap.style.display = 'none'; return; }
+    if (!wrap || !track || !NOVOSTI || !NOVOSTI.length) {
+      if (wrap) wrap.style.display = 'none';
+      return;
+    }
+    /* double the items for seamless loop */
     var items = NOVOSTI.concat(NOVOSTI);
     var html  = '';
     for (var i = 0; i < items.length; i++) {
@@ -342,7 +350,9 @@
         if (section) {
           var top = section.getBoundingClientRect().top + window.pageYOffset - 72;
           window.scrollTo({ top: top, behavior: 'smooth' });
-          if (typeof openNovostModal === 'function') setTimeout(function () { openNovostModal(idx); }, 400);
+          if (typeof openNovostModal === 'function') {
+            setTimeout(function () { openNovostModal(idx); }, 400);
+          }
         }
         if (navLinks) navLinks.classList.remove('open');
         if (hamburger) hamburger.classList.remove('open');
