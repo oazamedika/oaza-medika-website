@@ -39,7 +39,6 @@ body {
   --white:         #ffffff;
   --rule:          #c8e0d6;
 
-  /* A4 landscape: 297x210mm → 1123x794px @96dpi */
   --sheet-w: 1123px;
   --sheet-h: 794px;
   --panel-w: 561px;
@@ -102,7 +101,7 @@ body {
 /* green header band */
 .front-band {
   background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
-  padding: 20px 26px 17px;
+  padding: 14px 22px;
   display: flex; align-items: center; justify-content: space-between;
   flex-shrink: 0; position: relative; overflow: hidden;
 }
@@ -113,13 +112,22 @@ body {
   background:rgba(255,255,255,.07);
 }
 
-.logo-wrap img  { height: 44px; width: auto; display: block; }
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 700;
-  color: #fff; line-height: 1.1; letter-spacing: -.02em;
+/* decorative header element — cross/plus medical symbol */
+.header-emblem {
+  display: flex; align-items: center; gap: 10px;
 }
-.logo-text span { font-style: italic; font-weight: 400; opacity: .8; }
+.header-tagline {
+  font-size: 9px; font-weight: 400;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(255,255,255,.65);
+  line-height: 1.4;
+}
+.header-tagline strong {
+  display: block;
+  font-size: 11px; font-weight: 600;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .04em;
+}
 
 .badge {
   font-size: 8.5px; font-weight: 500;
@@ -129,40 +137,67 @@ body {
   border-radius: 20px; padding: 4px 10px; flex-shrink: 0;
 }
 
-/* hero */
+/* hero — split: top half logo, bottom half text */
 .front-hero {
   flex: 1; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  text-align: center; padding: 20px 32px; gap: 13px;
+  padding: 18px 32px 14px; gap: 0;
   position: relative;
 }
 .front-hero::before {
   content:''; position:absolute;
-  width:280px; height:280px; border-radius:50%;
+  width:300px; height:300px; border-radius:50%;
   background:radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
   z-index:0;
 }
-.hero-eyebrow {
-  font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
-  color: var(--green-light); font-weight: 600;
+
+/* logo block — top half of hero */
+.hero-logo-wrap {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  width: 100%;
+  position: relative; z-index: 1;
+}
+.hero-logo-wrap img {
+  max-height: 160px;
+  max-width: 80%;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* divider */
+.hero-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green-border), transparent);
+  margin: 6px 0;
+  position: relative; z-index: 1;
+  flex-shrink: 0;
+}
+
+/* text block — bottom half of hero */
+.hero-text-block {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; gap: 10px;
   position: relative; z-index: 1;
 }
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: 56px; font-weight: 700;
+  font-size: 50px; font-weight: 700;
   color: var(--text-dark); line-height: .95; letter-spacing: -.03em;
-  position: relative; z-index: 1;
 }
 .hero-title em { font-style:italic; color:var(--green); font-weight:400; display:block; }
 .hero-rule {
   width:44px; height:3px;
   background:linear-gradient(90deg, var(--green), var(--green-light));
-  border-radius:2px; position:relative; z-index:1;
+  border-radius:2px;
 }
 .hero-sub {
-  font-size: 11.5px; color: var(--text-mid); line-height: 1.75;
+  font-size: 11px; color: var(--text-mid); line-height: 1.75;
   font-weight: 300; max-width: 255px;
-  position: relative; z-index: 1;
 }
 
 /* contact pills 2×2 grid */
@@ -328,25 +363,35 @@ body {
     <div class="inner">
 
       <div class="front-band">
-        <!-- ╔═══════════════════════════════════════════════╗
-             ║  LOGO — откоментирај го <img> редот подолу  ║
-             ║  и постави URL до твојата слика во src=""    ║
-             ╚═══════════════════════════════════════════════╝ -->
-        <div class="logo-wrap">
-          <img src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png" alt="Оаза Медика">
-          <div class="logo-text">Оаза <span>Медика</span></div>
+        <div class="header-emblem">
+          <div class="header-tagline">
+            <strong>Примарна здравствена заштита</strong>
+            Општа медицина · Превентива · Скрининг
+          </div>
         </div>
         <div class="badge">Општина Илинден, МК</div>
       </div>
 
       <div class="front-hero">
-        <div class="hero-eyebrow">Примарна здравствена заштита</div>
-        <div class="hero-title">Отвораме<em>наскоро</em></div>
-        <div class="hero-rule"></div>
-        <p class="hero-sub">
-          Вашето здравје заслужува стручно внимание.<br>
-          ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
-        </p>
+
+        <!-- TOP HALF — Logo -->
+        <div class="hero-logo-wrap">
+          <!-- Replace src with your logo URL -->
+          <img src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv_krug.png" alt="Оаза Медика">
+        </div>
+
+        <div class="hero-divider"></div>
+
+        <!-- BOTTOM HALF — Text -->
+        <div class="hero-text-block">
+          <div class="hero-title">Отвораме<em>наскоро</em></div>
+          <div class="hero-rule"></div>
+          <p class="hero-sub">
+            Вашето здравје заслужува стручно внимание.<br>
+            ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
+          </p>
+        </div>
+
       </div>
 
       <div class="front-contacts">
