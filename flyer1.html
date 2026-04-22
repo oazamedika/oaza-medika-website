@@ -78,11 +78,10 @@ body {
 /* Logo col — 14:9 */
 .hero-logo-col {
   flex: 0 0 auto;
-  /* force 14:9 width from the available height */
   width: calc(var(--panel-h) * (14/9));
   max-width: 56%;
   display: flex; align-items: center; justify-content: center;
-  padding: 20px 18px;
+  padding: 10px 12px;
   position: relative; z-index: 1; overflow: hidden;
 }
 .hero-logo-col img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
@@ -91,31 +90,42 @@ body {
 .hero-vdivider {
   flex-shrink: 0; width: 1px;
   background: linear-gradient(180deg, transparent, var(--green-border) 20%, var(--green-border) 80%, transparent);
-  margin: 24px 0; position: relative; z-index: 1;
+  margin: 16px 0; position: relative; z-index: 1;
 }
 
 /* Title col */
 .hero-title-col {
   flex: 1; display: flex; flex-direction: column;
   align-items: flex-start; justify-content: center;
-  padding: 20px 24px 20px 22px;
-  position: relative; z-index: 1; gap: 12px;
+  padding: 12px 18px 12px 16px;
+  position: relative; z-index: 1; gap: 8px;
 }
 .hero-title {
   font-family: 'Playfair Display', serif;
-  font-size: 40px; font-weight: 700;
+  font-size: 36px; font-weight: 700;
   color: var(--text-dark); line-height: .95; letter-spacing: -.03em;
 }
-.hero-title em { font-style:italic; color:var(--green); font-weight:400; display:block; margin-top:6px; }
+.hero-title em { font-style:italic; color:var(--green); font-weight:400; display:block; margin-top:4px; }
 .hero-rule { width:44px; height:3px; background:linear-gradient(90deg, var(--green), var(--green-light)); border-radius:2px; }
 
-/* Sub-text */
+/* Sub-text — no border lines */
 .front-sub {
-  padding: 13px 22px 15px;
-  border-top: 1.5px solid var(--green-border);
+  padding: 10px 22px 12px;
   background: #fff; flex-shrink: 0;
 }
-.front-sub p { font-size: 13px; color: var(--text-mid); line-height: 1.75; font-weight: 300; }
+.front-sub p { font-size: 13px; color: var(--text-mid); line-height: 1.75; font-weight: 300; text-align: center; }
+
+/* Image pills strip */
+.front-image-pills {
+  padding: 0 14px 12px;
+  background: #fff;
+  display: flex; gap: 8px; flex-shrink: 0;
+}
+.front-image-pills img {
+  flex: 1; width: 0; aspect-ratio: 1 / 1; height: auto; object-fit: cover;
+  border-radius: 10px; display: block;
+  border: 1px solid var(--green-border);
+}
 
 /* Vo sklop na */
 .front-sklop {
@@ -155,7 +165,7 @@ body {
 
 .back-body { flex:1; padding:14px 20px 12px; display:flex; flex-direction:column; gap:10px; overflow:hidden; }
 
-/* Intro blurb — 2 steps bigger: 10→12px */
+/* Intro blurb */
 .intro-blurb { background:var(--green-pale); border-left:3px solid var(--green); border-radius:0 6px 6px 0; padding:9px 13px; font-size:12px; color:var(--text-mid); line-height:1.65; font-weight:300; }
 .intro-blurb strong { color:var(--green); font-weight:600; }
 
@@ -171,14 +181,13 @@ body {
 .feat-row.c-sky   .feat-icon { background:var(--sky);   }
 .feat-row.c-rose  .feat-icon { background:var(--rose);  }
 .feat-icon svg { width:15px; height:15px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-/* Pill text — 2 steps bigger: h4 11→13px, p 9.5→11.5px */
 .feat-text h4 { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:2px; }
 .feat-text p  { font-size:11.5px; color:var(--text-mid); line-height:1.5; font-weight:300; }
 
 .back-image-wrap { flex:1; min-height:0; border-radius:7px; overflow:hidden; border:1px solid var(--green-border); position:relative; }
 .back-image-wrap img.main-photo { width:100%; height:100%; object-fit:cover; display:block; }
 
-/* Location chip — ЛОКАЦИЈА above QR */
+/* Location chip */
 .location-chip {
   position: absolute; bottom: 12px; left: 12px;
   display: flex; flex-direction: column; align-items: center; gap: 6px;
@@ -242,12 +251,19 @@ body {
 
       </div>
 
-      <!-- Sub-text -->
+      <!-- Sub-text — no border lines above or below -->
       <div class="front-sub">
         <p>
           Вашето здравје заслужува стручно внимание.<br>
           ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
         </p>
+      </div>
+
+      <!-- Image pills strip -->
+      <div class="front-image-pills">
+        <img src="flyer2.jpg" alt="">
+        <img src="flyer3.jpg" alt="">
+        <img src="flyer4.jpg" alt="">
       </div>
 
       <!-- Во склоп на -->
@@ -330,8 +346,8 @@ body {
               <svg viewBox="0 0 24 24"><path d="M12 12v3m0 0h3m-3 0H9m3-3V9m0 0a9 9 0 110 9"/><circle cx="12" cy="12" r="10"/></svg>
             </div>
             <div class="feat-text">
-              <h4>Прегледи и консултации</h4>
-              <p>Општ преглед, мерење витални знаци, аускултација — во ординација или домашна посета при потреба.</p>
+              <h4>Прегледи и дијагностика</h4>
+              <p>Општ преглед, модерно 12 канално ЕКГ, мерење витални знаци, аускултација, отоскопија — во ординација или домашна посета при потреба.</p>
             </div>
           </div>
 
