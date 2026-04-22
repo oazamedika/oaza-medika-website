@@ -95,6 +95,7 @@ body {
 /* front panel uses default absolute .inner — no override needed */
 .panel-front .inner {
   justify-content: space-between;
+  overflow: visible;
 }
 
 /* contact pills 2×2 grid — inside the border */
@@ -108,11 +109,12 @@ body {
 
 /* ВО СКЛОП НА strip — inside border, below contacts */
 .front-sklop {
-  padding: 9px 16px 11px;
+  padding: 10px 16px 14px;
   border-top: 1.5px solid var(--green-border);
-  background: #f0faf5;
+  background: #ffffff;
   display: flex; align-items: center; justify-content: center;
   gap: 12px; flex-shrink: 0;
+  min-height: 76px;
 }
 .front-band {
   background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
@@ -221,7 +223,7 @@ body {
   white-space: nowrap;
 }
 .front-sklop img {
-  height: 52px; width: auto; object-fit: contain; display: block;
+  height: 60px; width: auto; object-fit: contain; display: block;
 }
 .c-pill {
   display: flex; align-items: center; gap: 9px;
