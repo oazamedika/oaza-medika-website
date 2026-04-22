@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оаза Медика – Флаер (Задна страна)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #d0d0d0;
+  font-family: 'DM Sans', sans-serif;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 32px;
+}
+
+:root {
+  --green:        #236b52;
+  --green-mid:    #2f8a6a;
+  --green-light:  #3dab83;
+  --green-pale:   #e4f4ee;
+  --green-border: #b4d9ca;
+  --teal-dark:    #1a4d3a;
+  --amber:        #d4931a;
+  --amber-pale:   #fdf3dc;
+  --sky:          #3278af;
+  --sky-pale:     #deedf8;
+  --rose:         #b84f4f;
+  --rose-pale:    #fceaea;
+  --text-dark:    #162820;
+  --text-mid:     #345044;
+  --text-light:   #6a8c7e;
+  --sheet-w: 1123px;
+  --sheet-h: 794px;
+  --panel-w: 561px;
+  --panel-h: 794px;
+  --mg: 24px;
+}
+
+.sheet-label { font-size: 11px; color: #777; letter-spacing: .07em; text-transform: uppercase; align-self: flex-start; }
+.sheet {
+  width: var(--sheet-w); height: var(--sheet-h);
+  background: #fff; display: flex; flex-direction: row;
+  outline: 1px solid #999; position: relative;
+}
+.cut-line { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-.5px); border-left: 1.5px dashed #9fc8b8; z-index: 20; pointer-events: none; }
+.cut-icon { position: absolute; top: 8px; left: 50%; transform: translateX(-50%) rotate(90deg); font-size: 13px; color: #9fc8b8; background: #fff; padding: 2px 0; z-index: 21; }
+
+.panel { width: var(--panel-w); height: var(--panel-h); position: relative; overflow: hidden; flex-shrink: 0; }
+.inner { position: absolute; inset: var(--mg); border: 1.5px solid var(--green-border); border-radius: 6px; display: flex; flex-direction: column; overflow: hidden; background: #fff; }
+
+/* ════ BACK ════ */
+.panel-back .inner { padding:0; }
+
+.back-top { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green) 100%); padding: 18px 24px 15px; flex-shrink: 0; position: relative; overflow: hidden; }
+.back-top::before { content:''; position:absolute; top:-28px; right:-28px; width:110px; height:110px; border-radius:50%; background:rgba(255,255,255,.06); }
+.back-top::after  { content:''; position:absolute; bottom:-18px; left:70px; width:70px; height:70px; border-radius:50%; background:rgba(255,255,255,.04); }
+.back-top-label { font-size:8px; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.55); font-weight:600; margin-bottom:4px; position:relative; }
+.back-top h2 { font-family:'Playfair Display',serif; font-size:22px; font-weight:700; color:#fff; letter-spacing:-.01em; line-height:1.1; position:relative; }
+.back-top h2 em { font-style:italic; font-weight:400; color:#9dd9be; }
+.back-top-sub { font-size:9.5px; color:rgba(255,255,255,.6); font-weight:300; margin-top:5px; position:relative; }
+
+.back-body { flex:1; padding:14px 20px 12px; display:flex; flex-direction:column; gap:10px; overflow:hidden; }
+
+.intro-blurb { background:var(--green-pale); border-left:3px solid var(--green); border-radius:0 6px 6px 0; padding:9px 13px; font-size:12px; color:var(--text-mid); line-height:1.65; font-weight:300; }
+.intro-blurb strong { color:var(--green); font-weight:600; }
+
+.features { display:flex; flex-direction:column; gap:7px; }
+.feat-row { display:flex; align-items:flex-start; gap:10px; padding:9px 11px; border-radius:7px; border:1px solid transparent; }
+.feat-row.c-green { background:var(--green-pale);  border-color:var(--green-border); }
+.feat-row.c-amber { background:var(--amber-pale);  border-color:#dfc070; }
+.feat-row.c-sky   { background:var(--sky-pale);    border-color:#96c2e0; }
+.feat-row.c-rose  { background:var(--rose-pale);   border-color:#dca8a8; }
+.feat-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.feat-row.c-green .feat-icon { background:var(--green); }
+.feat-row.c-amber .feat-icon { background:var(--amber); }
+.feat-row.c-sky   .feat-icon { background:var(--sky);   }
+.feat-row.c-rose  .feat-icon { background:var(--rose);  }
+.feat-icon svg { width:15px; height:15px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+.feat-text h4 { font-size:13px; font-weight:600; color:var(--text-dark); margin-bottom:2px; }
+.feat-text p  { font-size:11.5px; color:var(--text-mid); line-height:1.5; font-weight:300; }
+
+.back-image-wrap { flex:1; min-height:0; border-radius:7px; overflow:hidden; border:1px solid var(--green-border); position:relative; }
+.back-image-wrap img.main-photo { width:100%; height:100%; object-fit:cover; display:block; }
+
+.location-chip {
+  position: absolute; bottom: 12px; left: 12px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.18);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 12px; padding: 10px 12px; z-index: 5;
+}
+.location-chip-text {
+  font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,.45); white-space: nowrap;
+}
+.location-chip-qr { width:72px; height:72px; flex-shrink:0; background:#fff; border-radius:7px; padding:4px; display:flex; align-items:center; justify-content:center; }
+.location-chip-qr svg { width:64px; height:64px; }
+
+.back-footer { flex-shrink:0; background:var(--teal-dark); padding:11px 20px; display:flex; align-items:center; justify-content:center; gap:10px; }
+.bf-contacts { display:flex; gap:7px; flex-wrap:nowrap; justify-content:center; }
+.bf-chip { display:flex; align-items:center; gap:5px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:4px 10px; font-size:9px; color:#fff; font-weight:500; }
+
+@media print {
+  body { background:none; padding:0; gap:0; }
+  .sheet-label { display:none; }
+  .sheet { outline:none; }
+  .cut-icon { display:none; }
+}
+</style>
+</head>
+<body>
+
+<p class="sheet-label">А4 флаер (пејзаж) — задна страна × 2</p>
+
+<div class="sheet">
+  <div class="cut-line"></div>
+  <div class="cut-icon">✂</div>
+
+  <!-- ═══════════ BACK (копија 1) ═══════════ -->
+  <div class="panel panel-back">
+    <div class="inner">
+
+      <div class="back-top">
+        <div class="back-top-label">ПЗУ Оаза Медика општина Илинден</div>
+        <h2>Вашиот <em>матичен лекар</em></h2>
+        <div class="back-top-sub">Сè на едно место — преглед, рецепт, упат, советување.</div>
+      </div>
+
+      <div class="back-body">
+
+        <div class="intro-blurb">
+          Со избор на <strong>матичен лекар во ПЗУ Оаза Медика</strong> добивате посветен тим кој ги следи вашите здравствени потреби — брзо, ефикасно и без непотребно чекање.
+        </div>
+
+        <div class="features">
+
+          <div class="feat-row c-green">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 12v3m0 0h3m-3 0H9m3-3V9m0 0a9 9 0 110 9"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Прегледи и дијагностика</h4>
+              <p>Општ преглед, модерно 12 канално ЕКГ, мерење витални знаци, аускултација, отоскопија — во ординација или домашна посета при потреба.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-amber">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Е-рецепти и упати</h4>
+              <p>Препишување лекови (е-рецепт) и упати за специјалисти и лабораторија преку „Мој Термин".</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-sky">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Административна поддршка</h4>
+              <p>Боледувања, потврди за отсуство, извештаи и ефикасна дигитална листа на чекање.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-rose">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Превентивни скрининзи</h4>
+              <p>Кардиоваскуларен, дијабетолошки, ОРЛ и невролошки скрининг. Рано откривање — помал ризик.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="back-image-wrap">
+          <img class="main-photo" src="flyer1.jpg" alt="">
+
+          <div class="location-chip">
+            <span class="location-chip-text">ЛОКАЦИЈА</span>
+            <div class="location-chip-qr">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64" height="64" viewBox="0 0 29 29"><rect x="0" y="0" width="29" height="29" fill="#ffffff"/><g transform="scale(0.93548)" transform-origin="0 0"><g transform="translate(1,1)"><g><g transform="translate(3.5,3.5)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g><g><g transform="translate(25.5,3.5)"><g transform="rotate(90)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g></g><g><g transform="translate(3.5,25.5)"><g transform="rotate(-90)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g></g><path fill-rule="evenodd" d="M8 0L8 1L9 1L9 3L8 3L8 8L6 8L6 9L5 9L5 8L4 8L4 9L5 9L5 11L4 11L4 12L3 12L3 10L1 10L1 8L0 8L0 11L2 11L2 13L4 13L4 15L5 15L5 16L0 16L0 18L4 18L4 17L5 17L5 18L6 18L6 19L2 19L2 20L0 20L0 21L2 21L2 20L5 20L5 21L7 21L7 20L6 20L6 19L8 19L8 18L10 18L10 21L17 21L17 20L19 20L19 23L16 23L16 22L13 22L13 24L12 24L12 23L11 23L11 22L9 22L9 20L8 20L8 23L9 23L9 24L8 24L8 25L10 25L10 26L9 26L9 28L8 28L8 29L9 29L9 28L12 28L12 29L13 29L13 28L15 28L15 29L16 29L16 28L15 28L15 27L14 27L14 26L15 26L15 25L14 25L14 23L15 23L15 24L17 24L17 25L16 25L16 27L17 27L17 28L18 28L18 29L19 29L19 28L18 28L18 26L17 26L17 25L19 25L19 26L20 26L20 25L21 25L21 26L22 26L22 29L23 29L23 28L24 28L24 29L25 29L25 28L27 28L27 29L28 29L28 28L27 28L27 27L29 27L29 26L28 26L28 25L29 25L29 24L28 24L28 23L29 23L29 22L28 22L28 23L27 23L27 21L25 21L25 20L22 20L22 19L23 19L23 17L24 17L24 19L28 19L28 20L29 20L29 19L28 19L28 18L29 18L29 17L28 17L28 14L27 14L27 13L28 13L28 12L26 12L26 11L27 11L27 9L26 9L26 8L21 8L21 5L20 5L20 4L21 4L21 3L20 3L20 2L21 2L21 1L20 1L20 2L18 2L18 1L17 1L17 0L16 0L16 1L15 1L15 0L13 0L13 1L12 1L12 2L11 2L11 3L10 3L10 1L11 1L11 0ZM16 1L16 2L15 2L15 3L14 3L14 2L12 2L12 3L13 3L13 4L12 4L12 5L11 5L11 4L10 4L10 3L9 3L9 4L10 4L10 6L9 6L9 7L10 7L10 6L11 6L11 7L12 7L12 5L13 5L13 7L14 7L14 9L15 9L15 10L13 10L13 8L12 8L12 10L11 10L11 9L10 9L10 8L9 8L9 11L8 11L8 9L6 9L6 10L7 10L7 11L6 11L6 12L7 12L7 13L6 13L6 14L5 14L5 15L6 15L6 16L7 16L7 15L6 15L6 14L8 14L8 12L9 12L9 15L8 15L8 17L6 17L6 18L8 18L8 17L10 17L10 18L11 18L11 20L14 20L14 19L15 19L15 20L17 20L17 19L20 19L20 18L18 18L18 16L19 16L19 15L22 15L22 16L24 16L24 17L25 17L25 18L26 18L26 17L25 17L25 16L27 16L27 15L22 15L22 13L21 13L21 12L20 12L20 13L21 13L21 14L19 14L19 15L17 15L17 14L18 14L18 13L13 13L13 14L12 14L12 12L14 12L14 11L15 11L15 12L17 12L17 11L16 11L16 9L17 9L17 10L19 10L19 11L18 11L18 12L19 12L19 11L22 11L22 12L24 12L24 13L23 13L23 14L24 14L24 13L25 13L25 14L26 14L26 13L25 13L25 11L22 11L22 10L24 10L24 9L22 9L22 10L21 10L21 8L20 8L20 9L19 9L19 7L20 7L20 6L19 6L19 4L20 4L20 3L18 3L18 2L17 2L17 1ZM17 3L17 4L18 4L18 3ZM16 5L16 7L15 7L15 6L14 6L14 7L15 7L15 8L18 8L18 7L19 7L19 6L18 6L18 7L17 7L17 5ZM28 8L28 9L29 9L29 8ZM25 9L25 10L26 10L26 9ZM12 10L12 11L11 11L11 12L12 12L12 11L13 11L13 10ZM28 10L28 11L29 11L29 10ZM7 11L7 12L8 12L8 11ZM9 11L9 12L10 12L10 11ZM0 12L0 13L1 13L1 12ZM10 13L10 15L9 15L9 16L10 16L10 17L11 17L11 18L15 18L15 17L14 17L14 15L15 15L15 16L17 16L17 15L16 15L16 14L13 14L13 16L12 16L12 14L11 14L11 13ZM0 14L0 15L1 15L1 14ZM2 14L2 15L3 15L3 14ZM10 15L10 16L11 16L11 15ZM16 17L16 19L17 19L17 17ZM21 17L21 19L22 19L22 17ZM21 21L21 24L24 24L24 21ZM22 22L22 23L23 23L23 22ZM25 23L25 24L26 24L26 25L28 25L28 24L26 24L26 23ZM10 24L10 25L11 25L11 24ZM19 24L19 25L20 25L20 24ZM12 25L12 27L13 27L13 25ZM22 25L22 26L23 26L23 27L24 27L24 26L25 26L25 27L26 27L26 26L25 26L25 25L24 25L24 26L23 26L23 25ZM20 28L20 29L21 29L21 28Z" fill="#236b52"/></g></g></svg>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="back-footer">
+        <div class="bf-contacts">
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            073 860 480
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span style="font-size:8.5px;">pacienti@oazamedika.com</span>
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <span style="font-size:8.5px;">www.oazamedika.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════ BACK (копија 2) ═══════════ -->
+  <div class="panel panel-back">
+    <div class="inner">
+
+      <div class="back-top">
+        <div class="back-top-label">ПЗУ Оаза Медика општина Илинден</div>
+        <h2>Вашиот <em>матичен лекар</em></h2>
+        <div class="back-top-sub">Сè на едно место — преглед, рецепт, упат, советување.</div>
+      </div>
+
+      <div class="back-body">
+
+        <div class="intro-blurb">
+          Со избор на <strong>матичен лекар во ПЗУ Оаза Медика</strong> добивате посветен тим кој ги следи вашите здравствени потреби — брзо, ефикасно и без непотребно чекање.
+        </div>
+
+        <div class="features">
+
+          <div class="feat-row c-green">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 12v3m0 0h3m-3 0H9m3-3V9m0 0a9 9 0 110 9"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Прегледи и дијагностика</h4>
+              <p>Општ преглед, модерно 12 канално ЕКГ, мерење витални знаци, аускултација, отоскопија — во ординација или домашна посета при потреба.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-amber">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Е-рецепти и упати</h4>
+              <p>Препишување лекови (е-рецепт) и упати за специјалисти и лабораторија преку „Мој Термин".</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-sky">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Административна поддршка</h4>
+              <p>Боледувања, потврди за отсуство, извештаи и ефикасна дигитална листа на чекање.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-rose">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Превентивни скрининзи</h4>
+              <p>Кардиоваскуларен, дијабетолошки, ОРЛ и невролошки скрининг. Рано откривање — помал ризик.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="back-image-wrap">
+          <img class="main-photo" src="flyer1.jpg" alt="">
+
+          <div class="location-chip">
+            <span class="location-chip-text">ЛОКАЦИЈА</span>
+            <div class="location-chip-qr">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="64" height="64" viewBox="0 0 29 29"><rect x="0" y="0" width="29" height="29" fill="#ffffff"/><g transform="scale(0.93548)" transform-origin="0 0"><g transform="translate(1,1)"><g><g transform="translate(3.5,3.5)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g><g><g transform="translate(25.5,3.5)"><g transform="rotate(90)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g></g><g><g transform="translate(3.5,25.5)"><g transform="rotate(-90)"><path fill-rule="evenodd" d="M-3.5 -3.5L3.5 -3.5L3.5 3.5L-3.5 3.5ZM-2.5 -2.5L-2.5 2.5L2.5 2.5L2.5 -2.5Z" fill="#236b52"/><path fill-rule="evenodd" d="M-1.5 -1.5L1.5 -1.5L1.5 1.5L-1.5 1.5Z" fill="#236b52"/></g></g></g><path fill-rule="evenodd" d="M8 0L8 1L9 1L9 3L8 3L8 8L6 8L6 9L5 9L5 8L4 8L4 9L5 9L5 11L4 11L4 12L3 12L3 10L1 10L1 8L0 8L0 11L2 11L2 13L4 13L4 15L5 15L5 16L0 16L0 18L4 18L4 17L5 17L5 18L6 18L6 19L2 19L2 20L0 20L0 21L2 21L2 20L5 20L5 21L7 21L7 20L6 20L6 19L8 19L8 18L10 18L10 21L17 21L17 20L19 20L19 23L16 23L16 22L13 22L13 24L12 24L12 23L11 23L11 22L9 22L9 20L8 20L8 23L9 23L9 24L8 24L8 25L10 25L10 26L9 26L9 28L8 28L8 29L9 29L9 28L12 28L12 29L13 29L13 28L15 28L15 29L16 29L16 28L15 28L15 27L14 27L14 26L15 26L15 25L14 25L14 23L15 23L15 24L17 24L17 25L16 25L16 27L17 27L17 28L18 28L18 29L19 29L19 28L18 28L18 26L17 26L17 25L19 25L19 26L20 26L20 25L21 25L21 26L22 26L22 29L23 29L23 28L24 28L24 29L25 29L25 28L27 28L27 29L28 29L28 28L27 28L27 27L29 27L29 26L28 26L28 25L29 25L29 24L28 24L28 23L29 23L29 22L28 22L28 23L27 23L27 21L25 21L25 20L22 20L22 19L23 19L23 17L24 17L24 19L28 19L28 20L29 20L29 19L28 19L28 18L29 18L29 17L28 17L28 14L27 14L27 13L28 13L28 12L26 12L26 11L27 11L27 9L26 9L26 8L21 8L21 5L20 5L20 4L21 4L21 3L20 3L20 2L21 2L21 1L20 1L20 2L18 2L18 1L17 1L17 0L16 0L16 1L15 1L15 0L13 0L13 1L12 1L12 2L11 2L11 3L10 3L10 1L11 1L11 0ZM16 1L16 2L15 2L15 3L14 3L14 2L12 2L12 3L13 3L13 4L12 4L12 5L11 5L11 4L10 4L10 3L9 3L9 4L10 4L10 6L9 6L9 7L10 7L10 6L11 6L11 7L12 7L12 5L13 5L13 7L14 7L14 9L15 9L15 10L13 10L13 8L12 8L12 10L11 10L11 9L10 9L10 8L9 8L9 11L8 11L8 9L6 9L6 10L7 10L7 11L6 11L6 12L7 12L7 13L6 13L6 14L5 14L5 15L6 15L6 16L7 16L7 15L6 15L6 14L8 14L8 12L9 12L9 15L8 15L8 17L6 17L6 18L8 18L8 17L10 17L10 18L11 18L11 20L14 20L14 19L15 19L15 20L17 20L17 19L20 19L20 18L18 18L18 16L19 16L19 15L22 15L22 16L24 16L24 17L25 17L25 18L26 18L26 17L25 17L25 16L27 16L27 15L22 15L22 13L21 13L21 12L20 12L20 13L21 13L21 14L19 14L19 15L17 15L17 14L18 14L18 13L13 13L13 14L12 14L12 12L14 12L14 11L15 11L15 12L17 12L17 11L16 11L16 9L17 9L17 10L19 10L19 11L18 11L18 12L19 12L19 11L22 11L22 12L24 12L24 13L23 13L23 14L24 14L24 13L25 13L25 14L26 14L26 13L25 13L25 11L22 11L22 10L24 10L24 9L22 9L22 10L21 10L21 8L20 8L20 9L19 9L19 7L20 7L20 6L19 6L19 4L20 4L20 3L18 3L18 2L17 2L17 1ZM17 3L17 4L18 4L18 3ZM16 5L16 7L15 7L15 6L14 6L14 7L15 7L15 8L18 8L18 7L19 7L19 6L18 6L18 7L17 7L17 5ZM28 8L28 9L29 9L29 8ZM25 9L25 10L26 10L26 9ZM12 10L12 11L11 11L11 12L12 12L12 11L13 11L13 10ZM28 10L28 11L29 11L29 10ZM7 11L7 12L8 12L8 11ZM9 11L9 12L10 12L10 11ZM0 12L0 13L1 13L1 12ZM10 13L10 15L9 15L9 16L10 16L10 17L11 17L11 18L15 18L15 17L14 17L14 15L15 15L15 16L17 16L17 15L16 15L16 14L13 14L13 16L12 16L12 14L11 14L11 13ZM0 14L0 15L1 15L1 14ZM2 14L2 15L3 15L3 14ZM10 15L10 16L11 16L11 15ZM16 17L16 19L17 19L17 17ZM21 17L21 19L22 19L22 17ZM21 21L21 24L24 24L24 21ZM22 22L22 23L23 23L23 22ZM25 23L25 24L26 24L26 25L28 25L28 24L26 24L26 23ZM10 24L10 25L11 25L11 24ZM19 24L19 25L20 25L20 24ZM12 25L12 27L13 27L13 25ZM22 25L22 26L23 26L23 27L24 27L24 26L25 26L25 27L26 27L26 26L25 26L25 25L24 25L24 26L23 26L23 25ZM20 28L20 29L21 29L21 28Z" fill="#236b52"/></g></g></svg>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="back-footer">
+        <div class="bf-contacts">
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            073 860 480
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span style="font-size:8.5px;">pacienti@oazamedika.com</span>
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <span style="font-size:8.5px;">www.oazamedika.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

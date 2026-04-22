@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оаза Медика – Флаер (Предна страна)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #d0d0d0;
+  font-family: 'DM Sans', sans-serif;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 24px; padding: 32px;
+}
+
+:root {
+  --green:        #236b52;
+  --green-mid:    #2f8a6a;
+  --green-light:  #3dab83;
+  --green-pale:   #e4f4ee;
+  --green-border: #b4d9ca;
+  --teal-dark:    #1a4d3a;
+  --amber:        #d4931a;
+  --amber-pale:   #fdf3dc;
+  --sky:          #3278af;
+  --sky-pale:     #deedf8;
+  --rose:         #b84f4f;
+  --rose-pale:    #fceaea;
+  --text-dark:    #162820;
+  --text-mid:     #345044;
+  --text-light:   #6a8c7e;
+  --sheet-w: 1123px;
+  --sheet-h: 794px;
+  --panel-w: 561px;
+  --panel-h: 794px;
+  --mg: 24px;
+}
+
+.sheet-label { font-size: 11px; color: #777; letter-spacing: .07em; text-transform: uppercase; align-self: flex-start; }
+.sheet {
+  width: var(--sheet-w); height: var(--sheet-h);
+  background: #fff; display: flex; flex-direction: row;
+  outline: 1px solid #999; position: relative;
+}
+.cut-line { position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-.5px); border-left: 1.5px dashed #9fc8b8; z-index: 20; pointer-events: none; }
+.cut-icon { position: absolute; top: 8px; left: 50%; transform: translateX(-50%) rotate(90deg); font-size: 13px; color: #9fc8b8; background: #fff; padding: 2px 0; z-index: 21; }
+
+.panel { width: var(--panel-w); height: var(--panel-h); position: relative; overflow: hidden; flex-shrink: 0; }
+.inner { position: absolute; inset: var(--mg); border: 1.5px solid var(--green-border); border-radius: 6px; display: flex; flex-direction: column; overflow: hidden; background: #fff; }
+
+/* ════ FRONT ════ */
+
+.front-band {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
+  padding: 14px 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; position: relative; overflow: hidden;
+}
+.front-band::after { content:''; position:absolute; bottom:-44px; right:-44px; width:120px; height:120px; border-radius:50%; background:rgba(255,255,255,.07); }
+.header-tagline { font-size: 9px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); line-height: 1.4; }
+.header-tagline strong { display: block; font-size: 11px; font-weight: 600; color: rgba(255,255,255,.9); letter-spacing: .04em; }
+.badge { font-size: 8.5px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.28); border-radius: 20px; padding: 4px 10px; flex-shrink: 0; }
+
+/* Hero row */
+.front-hero {
+  flex: 1; display: flex; flex-direction: row;
+  align-items: stretch; overflow: hidden; position: relative;
+}
+.front-hero::before {
+  content:''; position:absolute; top:50%; left:35%; transform: translate(-50%,-50%);
+  width:320px; height:320px; border-radius:50%;
+  background:radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
+  z-index:0; pointer-events:none;
+}
+
+/* Logo col — 14:9 */
+.hero-logo-col {
+  flex: 0 0 auto;
+  width: calc(var(--panel-h) * (14/9));
+  max-width: 56%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 10px 12px;
+  position: relative; z-index: 1; overflow: hidden;
+}
+.hero-logo-col img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+
+/* Vertical divider */
+.hero-vdivider {
+  flex-shrink: 0; width: 1px;
+  background: linear-gradient(180deg, transparent, var(--green-border) 20%, var(--green-border) 80%, transparent);
+  margin: 16px 0; position: relative; z-index: 1;
+}
+
+/* Title col */
+.hero-title-col {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding: 12px 18px 12px 16px;
+  position: relative; z-index: 1; gap: 8px;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700;
+  color: var(--text-dark); line-height: .95; letter-spacing: -.03em;
+}
+.hero-title em { font-style:italic; color:var(--green); font-weight:400; display:block; margin-top:4px; }
+.hero-rule { width:44px; height:3px; background:linear-gradient(90deg, var(--green), var(--green-light)); border-radius:2px; }
+
+/* Sub-text — no border lines */
+.front-sub {
+  padding: 10px 22px 12px;
+  background: #fff; flex-shrink: 0;
+}
+.front-sub p { font-size: 13px; color: var(--text-mid); line-height: 1.75; font-weight: 300; text-align: center; }
+
+/* Image pills strip */
+.front-image-pills {
+  padding: 0 14px 12px;
+  background: #fff;
+  display: flex; gap: 8px; flex-shrink: 0;
+}
+.front-image-pills img {
+  flex: 1; width: 0; aspect-ratio: 1 / 1; height: auto; object-fit: cover;
+  border-radius: 10px; display: block;
+  border: 1px solid var(--green-border);
+}
+
+/* Vo sklop na */
+.front-sklop {
+  padding: 8px 16px 10px;
+  border-top: 1.5px solid var(--green-border);
+  background: #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-shrink: 0; min-height: 68px;
+}
+.front-sklop-label { font-size: 8px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
+.front-sklop img { height: 55px; width: auto; object-fit: contain; display: block; }
+
+/* Contact pills footer */
+.front-contacts {
+  padding: 10px 16px;
+  border-top: 1.5px solid var(--green-border);
+  background: var(--green-pale);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+  flex-shrink: 0;
+}
+.c-pill { display: flex; align-items: center; gap: 9px; background: #fff; border: 1px solid var(--green-border); border-radius: 8px; padding: 7px 11px; }
+.c-pill .c-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #fff; font-size: 12px; font-weight: 700; }
+.c-pill .c-icon svg { width:13px; height:13px; fill:none; stroke:#fff; stroke-width:2; }
+.c-label { font-size:8.5px; color:var(--text-light); font-weight:500; letter-spacing:.04em; text-transform:uppercase; display:block; }
+.c-value { font-size:11px; color:var(--text-dark); font-weight:600; display:block; line-height:1.2; }
+
+@media print {
+  body { background:none; padding:0; gap:0; }
+  .sheet-label { display:none; }
+  .sheet { outline:none; }
+  .cut-icon { display:none; }
+}
+</style>
+</head>
+<body>
+
+<p class="sheet-label">А4 флаер (пејзаж) — предна страна × 2</p>
+
+<div class="sheet">
+  <div class="cut-line"></div>
+  <div class="cut-icon">✂</div>
+
+  <!-- ═══════════ FRONT (копија 1) ═══════════ -->
+  <div class="panel panel-front">
+    <div class="inner">
+
+      <div class="front-band">
+        <div class="header-tagline">
+          <strong>Примарна здравствена заштита</strong>
+          Општа медицина · Скрининг · Насочени прегледи
+        </div>
+        <div class="badge">Општина Илинден</div>
+      </div>
+
+      <div class="front-hero">
+        <div class="hero-logo-col">
+          <img src="logo_firma_kratoknaziv.png" alt="Оаза Медика">
+        </div>
+        <div class="hero-vdivider"></div>
+        <div class="hero-title-col">
+          <div class="hero-title">Отвораме<em>наскоро</em></div>
+          <div class="hero-rule"></div>
+        </div>
+      </div>
+
+      <div class="front-sub">
+        <p>
+          Вашето здравје заслужува стручно внимание.<br>
+          ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
+        </p>
+      </div>
+
+      <div class="front-image-pills">
+        <img src="flyer2.jpg" alt="">
+        <img src="flyer3.jpg" alt="">
+        <img src="flyer4.jpg" alt="">
+      </div>
+
+      <div class="front-sklop">
+        <span class="front-sklop-label">Во склоп на</span>
+        <img src="oazadom.png" alt="Оаза Дом">
+      </div>
+
+      <div class="front-contacts">
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Телефон</span>
+            <span class="c-value">073 860 480</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Е-маил</span>
+            <span class="c-value" style="font-size:9.5px;">pacienti@oazamedika.com</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <span class="c-label">Instagram</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon" style="font-size:14px;">f</div>
+          <div>
+            <span class="c-label">Facebook</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════ FRONT (копија 2) ═══════════ -->
+  <div class="panel panel-front">
+    <div class="inner">
+
+      <div class="front-band">
+        <div class="header-tagline">
+          <strong>Примарна здравствена заштита</strong>
+          Општа медицина · Скрининг · Насочени прегледи
+        </div>
+        <div class="badge">Општина Илинден</div>
+      </div>
+
+      <div class="front-hero">
+        <div class="hero-logo-col">
+          <img src="logo_firma_kratoknaziv.png" alt="Оаза Медика">
+        </div>
+        <div class="hero-vdivider"></div>
+        <div class="hero-title-col">
+          <div class="hero-title">Отвораме<em>наскоро</em></div>
+          <div class="hero-rule"></div>
+        </div>
+      </div>
+
+      <div class="front-sub">
+        <p>
+          Вашето здравје заслужува стручно внимание.<br>
+          ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
+        </p>
+      </div>
+
+      <div class="front-image-pills">
+        <img src="flyer2.jpg" alt="">
+        <img src="flyer3.jpg" alt="">
+        <img src="flyer4.jpg" alt="">
+      </div>
+
+      <div class="front-sklop">
+        <span class="front-sklop-label">Во склоп на</span>
+        <img src="oazadom.png" alt="Оаза Дом">
+      </div>
+
+      <div class="front-contacts">
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Телефон</span>
+            <span class="c-value">073 860 480</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Е-маил</span>
+            <span class="c-value" style="font-size:9.5px;">pacienti@oazamedika.com</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <span class="c-label">Instagram</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon" style="font-size:14px;">f</div>
+          <div>
+            <span class="c-label">Facebook</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
