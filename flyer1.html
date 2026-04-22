@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оаза Медика – Флаер</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #d0d0d0;
+  font-family: 'DM Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 32px;
+}
+
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --green:         #236b52;
+  --green-mid:     #2f8a6a;
+  --green-light:   #3dab83;
+  --green-pale:    #e4f4ee;
+  --green-border:  #b4d9ca;
+  --teal-dark:     #1a4d3a;
+  --amber:         #d4931a;
+  --amber-pale:    #fdf3dc;
+  --sky:           #3278af;
+  --sky-pale:      #deedf8;
+  --rose:          #b84f4f;
+  --rose-pale:     #fceaea;
+  --text-dark:     #162820;
+  --text-mid:      #345044;
+  --text-light:    #6a8c7e;
+  --white:         #ffffff;
+  --rule:          #c8e0d6;
+
+  /* A4 landscape: 297x210mm → 1123x794px @96dpi */
+  --sheet-w: 1123px;
+  --sheet-h: 794px;
+  --panel-w: 561px;
+  --panel-h: 794px;
+  --mg: 24px;
+}
+
+/* ── SHEET ──────────────────────────────────────────── */
+.sheet-label {
+  font-size: 11px; color: #777;
+  letter-spacing: .07em; text-transform: uppercase;
+  align-self: flex-start;
+}
+.sheet {
+  width: var(--sheet-w);
+  height: var(--sheet-h);
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  outline: 1px solid #999;
+  position: relative;
+}
+
+/* ── CUT LINE ───────────────────────────────────────── */
+.cut-line {
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  transform: translateX(-.5px);
+  border-left: 1.5px dashed #9fc8b8;
+  z-index: 20; pointer-events: none;
+}
+.cut-icon {
+  position: absolute; top: 8px; left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  font-size: 13px; color: #9fc8b8;
+  background: #fff; padding: 2px 0; z-index: 21;
+}
+
+/* ── PANELS ─────────────────────────────────────────── */
+.panel {
+  width: var(--panel-w);
+  height: var(--panel-h);
+  position: relative; overflow: hidden; flex-shrink: 0;
+}
+.inner {
+  position: absolute;
+  inset: var(--mg);
+  border: 1.5px solid var(--green-border);
+  border-radius: 6px;
+  display: flex; flex-direction: column;
+  overflow: hidden; background: #fff;
+}
+
+
+/* ═══════════════════════════════════════════
+   FRONT — "Отвораме наскоро"
+═══════════════════════════════════════════ */
+.panel-front .inner { justify-content: space-between; }
+
+/* green header band */
+.front-band {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
+  padding: 20px 26px 17px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; position: relative; overflow: hidden;
+}
+.front-band::after {
+  content:''; position:absolute;
+  bottom:-44px; right:-44px;
+  width:120px; height:120px; border-radius:50%;
+  background:rgba(255,255,255,.07);
+}
+
+.logo-wrap img  { height: 44px; width: auto; display: block; }
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-weight: 700;
+  color: #fff; line-height: 1.1; letter-spacing: -.02em;
+}
+.logo-text span { font-style: italic; font-weight: 400; opacity: .8; }
+
+.badge {
+  font-size: 8.5px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 20px; padding: 4px 10px; flex-shrink: 0;
+}
+
+/* hero */
+.front-hero {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 20px 32px; gap: 13px;
+  position: relative;
+}
+.front-hero::before {
+  content:''; position:absolute;
+  width:280px; height:280px; border-radius:50%;
+  background:radial-gradient(circle, var(--green-pale) 0%, transparent 70%);
+  z-index:0;
+}
+.hero-eyebrow {
+  font-size: 9px; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--green-light); font-weight: 600;
+  position: relative; z-index: 1;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px; font-weight: 700;
+  color: var(--text-dark); line-height: .95; letter-spacing: -.03em;
+  position: relative; z-index: 1;
+}
+.hero-title em { font-style:italic; color:var(--green); font-weight:400; display:block; }
+.hero-rule {
+  width:44px; height:3px;
+  background:linear-gradient(90deg, var(--green), var(--green-light));
+  border-radius:2px; position:relative; z-index:1;
+}
+.hero-sub {
+  font-size: 11.5px; color: var(--text-mid); line-height: 1.75;
+  font-weight: 300; max-width: 255px;
+  position: relative; z-index: 1;
+}
+
+/* contact pills 2×2 grid */
+.front-contacts {
+  padding: 14px 20px;
+  border-top: 2px solid var(--green-pale);
+  background: var(--green-pale);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 9px;
+  flex-shrink: 0;
+}
+.c-pill {
+  display: flex; align-items: center; gap: 9px;
+  background: #fff; border: 1px solid var(--green-border);
+  border-radius: 8px; padding: 8px 11px;
+}
+.c-pill .c-icon {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: #fff; font-size: 12px; font-weight: 700;
+}
+.c-pill .c-icon svg { width:13px; height:13px; fill:none; stroke:#fff; stroke-width:2; }
+.c-label { font-size:8.5px; color:var(--text-light); font-weight:500; letter-spacing:.04em; text-transform:uppercase; display:block; }
+.c-value { font-size:11px; color:var(--text-dark); font-weight:600; display:block; line-height:1.2; }
+
+
+/* ═══════════════════════════════════════════
+   BACK — Матичен лекар
+═══════════════════════════════════════════ */
+.panel-back .inner { padding:0; }
+
+/* dark top strip */
+.back-top {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green) 100%);
+  padding: 18px 24px 15px;
+  flex-shrink: 0; position: relative; overflow: hidden;
+}
+.back-top::before {
+  content:''; position:absolute; top:-28px; right:-28px;
+  width:110px; height:110px; border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.back-top::after {
+  content:''; position:absolute; bottom:-18px; left:70px;
+  width:70px; height:70px; border-radius:50%;
+  background:rgba(255,255,255,.04);
+}
+.back-top-label {
+  font-size:8px; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(255,255,255,.55); font-weight:600;
+  margin-bottom:4px; position:relative;
+}
+.back-top h2 {
+  font-family:'Playfair Display',serif;
+  font-size:22px; font-weight:700; color:#fff;
+  letter-spacing:-.01em; line-height:1.1; position:relative;
+}
+.back-top h2 em { font-style:italic; font-weight:400; color:#9dd9be; }
+.back-top-sub {
+  font-size:9.5px; color:rgba(255,255,255,.6);
+  font-weight:300; margin-top:5px; position:relative;
+}
+
+/* body */
+.back-body {
+  flex:1; padding:14px 20px 12px;
+  display:flex; flex-direction:column; gap:10px; overflow:hidden;
+}
+
+/* intro */
+.intro-blurb {
+  background:var(--green-pale);
+  border-left:3px solid var(--green);
+  border-radius:0 6px 6px 0;
+  padding:9px 13px;
+  font-size:10px; color:var(--text-mid); line-height:1.65; font-weight:300;
+}
+.intro-blurb strong { color:var(--green); font-weight:600; }
+
+/* feature rows */
+.features { display:flex; flex-direction:column; gap:7px; }
+
+.feat-row {
+  display:flex; align-items:flex-start; gap:10px;
+  padding:9px 11px; border-radius:7px; border:1px solid transparent;
+}
+.feat-row.c-green { background:var(--green-pale);  border-color:var(--green-border); }
+.feat-row.c-amber { background:var(--amber-pale);  border-color:#dfc070; }
+.feat-row.c-sky   { background:var(--sky-pale);    border-color:#96c2e0; }
+.feat-row.c-rose  { background:var(--rose-pale);   border-color:#dca8a8; }
+
+.feat-icon {
+  width:32px; height:32px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.feat-row.c-green .feat-icon { background:var(--green); }
+.feat-row.c-amber .feat-icon { background:var(--amber); }
+.feat-row.c-sky   .feat-icon { background:var(--sky);   }
+.feat-row.c-rose  .feat-icon { background:var(--rose);  }
+.feat-icon svg { width:15px; height:15px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+.feat-text h4 { font-size:11px; font-weight:600; color:var(--text-dark); margin-bottom:2px; }
+.feat-text p  { font-size:9.5px; color:var(--text-mid); line-height:1.5; font-weight:300; }
+
+/* why section */
+.why-section { display:flex; flex-direction:column; gap:8px; }
+.why-label {
+  font-size:8.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--text-light); font-weight:600;
+}
+.why-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.why-item {
+  display:flex; align-items:center; gap:8px;
+  background:#f8fdfb; border:1px solid var(--green-border);
+  border-radius:7px; padding:8px 10px;
+}
+.why-dot {
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.why-item span { font-size:9.5px; color:var(--text-dark); font-weight:400; line-height:1.4; }
+
+/* back footer */
+.back-footer {
+  flex-shrink:0;
+  background:var(--teal-dark);
+  padding:11px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.bf-left { font-size:9.5px; color:rgba(255,255,255,.6); line-height:1.5; font-weight:300; }
+.bf-left strong { display:block; color:#fff; font-size:10.5px; font-weight:600; margin-bottom:1px; }
+.bf-contacts { display:flex; gap:7px; flex-wrap:wrap; justify-content:flex-end; }
+.bf-chip {
+  display:flex; align-items:center; gap:5px;
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:20px; padding:4px 10px;
+  font-size:9px; color:#fff; font-weight:500;
+}
+
+/* ── PRINT ───────────────────────────────────────── */
+@media print {
+  body { background:none; padding:0; gap:0; }
+  .sheet-label { display:none; }
+  .sheet { outline:none; }
+  .cut-icon { display:none; }
+}
+</style>
+</head>
+<body>
+
+<p class="sheet-label">А4 флаер (пејзаж) — лево: страна 1 &nbsp;|&nbsp; десно: страна 2</p>
+
+<div class="sheet">
+
+  <div class="cut-line"></div>
+  <div class="cut-icon">✂</div>
+
+  <!-- ═══════════════════════════════
+       ЛЕВО — FRONT "Отвораме наскоро"
+  ═══════════════════════════════ -->
+  <div class="panel panel-front">
+    <div class="inner">
+
+      <div class="front-band">
+        <!-- ╔═══════════════════════════════════════════════╗
+             ║  LOGO — откоментирај го <img> редот подолу  ║
+             ║  и постави URL до твојата слика во src=""    ║
+             ╚═══════════════════════════════════════════════╝ -->
+        <div class="logo-wrap">
+          <!-- <img src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png" alt="Оаза Медика"> -->
+          <div class="logo-text">Оаза <span>Медика</span></div>
+        </div>
+        <div class="badge">Општина Илинден, МК</div>
+      </div>
+
+      <div class="front-hero">
+        <div class="hero-eyebrow">Примарна здравствена заштита</div>
+        <div class="hero-title">Отвораме<em>наскоро</em></div>
+        <div class="hero-rule"></div>
+        <p class="hero-sub">
+          Вашето здравје заслужува стручно внимание.<br>
+          ПЗУ Оаза Медика — матичен лекар со посветеност која ја заслужувате.
+        </p>
+      </div>
+
+      <div class="front-contacts">
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Телефон</span>
+            <span class="c-value">070 123 123</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <span class="c-label">Е-маил</span>
+            <span class="c-value" style="font-size:9.5px;">pacienti@oazamedika.com</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon" style="font-size:13px;font-style:italic;">in</div>
+          <div>
+            <span class="c-label">Instagram</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+        <div class="c-pill">
+          <div class="c-icon" style="font-size:14px;">f</div>
+          <div>
+            <span class="c-label">Facebook</span>
+            <span class="c-value">@oazamedika</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════
+       ДЕСНО — BACK Матичен лекар
+  ═══════════════════════════════ -->
+  <div class="panel panel-back">
+    <div class="inner">
+
+      <div class="back-top">
+        <div class="back-top-label">Оаза Медика — ПЗУ, Општина Илинден</div>
+        <h2>Вашиот <em>матичен лекар</em></h2>
+        <div class="back-top-sub">Сè на едно место — преглед, рецепт, упат, советување.</div>
+      </div>
+
+      <div class="back-body">
+
+        <div class="intro-blurb">
+          Со избор на <strong>матичен лекар во Оаза Медика</strong> добивате посветен тим кој ги следи вашите здравствени потреби — брзо, ефикасно и без непотребно чекање.
+        </div>
+
+        <div class="features">
+
+          <div class="feat-row c-green">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 12v3m0 0h3m-3 0H9m3-3V9m0 0a9 9 0 110 9"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Прегледи и консултации</h4>
+              <p>Општ преглед, мерење витални знаци, аускултација — во ординација или домашна посета при потреба.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-amber">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Е-рецепти и упати</h4>
+              <p>Препишување лекови (е-рецепт) и упати за специјалисти и лабораторија преку „Мој Термин".</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-sky">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Административна поддршка</h4>
+              <p>Боледувања, потврди за отсуство, извештаи и ефикасна дигитална листа на чекање.</p>
+            </div>
+          </div>
+
+          <div class="feat-row c-rose">
+            <div class="feat-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="feat-text">
+              <h4>Превентивни скрининзи</h4>
+              <p>Кардиоваскуларен, дијабетолошки, ОРЛ и невролошки скрининг. Рано откривање — помал ризик.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="why-section">
+          <div class="why-label">Зошто да изберете Оаза Медика?</div>
+          <div class="why-grid">
+            <div class="why-item">
+              <div class="why-dot" style="background:var(--green);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Брзо закажување без долго чекање</span>
+            </div>
+            <div class="why-item">
+              <div class="why-dot" style="background:var(--amber);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Посветен лекар кој го познава пациентот</span>
+            </div>
+            <div class="why-item">
+              <div class="why-dot" style="background:var(--sky);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Модерна опрема и дигитален систем</span>
+            </div>
+            <div class="why-item">
+              <div class="why-dot" style="background:var(--rose);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Пријатна и безбедна средина за пациентот</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="back-footer">
+        <div class="bf-left">
+          <strong>Закажете термин</strong>
+          Работни денови — јавете се или пишете ни.
+        </div>
+        <div class="bf-contacts">
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            070 123 123
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+            <span style="font-size:8.5px;">pacienti@oazamedika.com</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
