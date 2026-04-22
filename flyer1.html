@@ -92,13 +92,28 @@ body {
   overflow: hidden; background: #fff;
 }
 
+/* front panel uses default absolute .inner — no override needed */
+.panel-front .inner {
+  justify-content: space-between;
+}
 
-/* ═══════════════════════════════════════════
-   FRONT — "Отвораме наскоро"
-═══════════════════════════════════════════ */
-.panel-front .inner { justify-content: space-between; }
+/* contact pills 2×2 grid — inside the border */
+.front-contacts {
+  padding: 12px 16px;
+  border-top: 1.5px solid var(--green-border);
+  background: var(--green-pale);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7px;
+  flex-shrink: 0;
+}
 
-/* green header band */
+/* ВО СКЛОП НА strip — inside border, below contacts */
+.front-sklop {
+  padding: 9px 16px 11px;
+  border-top: 1.5px solid var(--green-border);
+  background: #f0faf5;
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-shrink: 0;
+}
 .front-band {
   background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
   padding: 14px 22px;
@@ -200,13 +215,13 @@ body {
   font-weight: 300; max-width: 255px;
 }
 
-/* contact pills 2×2 grid */
-.front-contacts {
-  padding: 14px 20px;
-  border-top: 2px solid var(--green-pale);
-  background: var(--green-pale);
-  display: grid; grid-template-columns: 1fr 1fr; gap: 9px;
-  flex-shrink: 0;
+.front-sklop-label {
+  font-size: 8px; font-weight: 700; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--text-light);
+  white-space: nowrap;
+}
+.front-sklop img {
+  height: 52px; width: auto; object-fit: contain; display: block;
 }
 .c-pill {
   display: flex; align-items: center; gap: 9px;
@@ -325,17 +340,27 @@ body {
   flex-shrink:0;
   background:var(--teal-dark);
   padding:11px 20px;
-  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
 }
-.bf-left { font-size:9.5px; color:rgba(255,255,255,.6); line-height:1.5; font-weight:300; }
-.bf-left strong { display:block; color:#fff; font-size:10.5px; font-weight:600; margin-bottom:1px; }
-.bf-contacts { display:flex; gap:7px; flex-wrap:wrap; justify-content:flex-end; }
+.bf-contacts { display:flex; gap:7px; flex-wrap:nowrap; justify-content:center; }
 .bf-chip {
   display:flex; align-items:center; gap:5px;
   background:rgba(255,255,255,.1);
   border:1px solid rgba(255,255,255,.18);
   border-radius:20px; padding:4px 10px;
   font-size:9px; color:#fff; font-weight:500;
+}
+
+/* back landscape image — fills remaining space */
+.back-image-wrap {
+  flex: 1; min-height: 0;
+  border-radius: 7px;
+  overflow: hidden;
+  border: 1px solid var(--green-border);
+}
+.back-image-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
 }
 
 /* ── PRINT ───────────────────────────────────────── */
@@ -394,6 +419,7 @@ body {
 
       </div>
 
+      <!-- Contact pills — inside border -->
       <div class="front-contacts">
 
         <div class="c-pill">
@@ -418,12 +444,12 @@ body {
 
         <div class="c-pill">
           <div class="c-icon">
-           <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
-           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-           <circle cx="12" cy="12" r="4"/>
-           <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/>
-           </svg>
-        </div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/>
+            </svg>
+          </div>
           <div>
             <span class="c-label">Instagram</span>
             <span class="c-value">@oazamedika</span>
@@ -439,8 +465,15 @@ body {
         </div>
 
       </div>
-    </div>
-  </div>
+
+      <!-- ВО СКЛОП НА — inside border, below contacts -->
+      <div class="front-sklop">
+        <span class="front-sklop-label">Во склоп на</span>
+        <img src="oazadom.png" alt="Оаза Дом">
+      </div>
+
+    </div><!-- /.inner -->
+  </div><!-- /.panel-front -->
 
 
   <!-- ═══════════════════════════════
@@ -503,53 +536,28 @@ body {
             </div>
           </div>
 
+        </div><!-- /.features -->
+
+        <!-- Full landscape image filling remaining space -->
+        <div class="back-image-wrap">
+          <img src="flyer1.jpg" alt="">
         </div>
 
-        <div class="why-section">
-          <div class="why-label">Зошто да ја изберете ПЗУ Оаза Медика?</div>
-          <div class="why-grid">
-            <div class="why-item">
-              <div class="why-dot" style="background:var(--green);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Брзо закажување без долго чекање</span>
-            </div>
-            <div class="why-item">
-              <div class="why-dot" style="background:var(--amber);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Посветен лекар кој го познава пациентот</span>
-            </div>
-            <div class="why-item">
-              <div class="why-dot" style="background:var(--sky);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Модерна опрема и дигитален систем</span>
-            </div>
-            <div class="why-item">
-              <div class="why-dot" style="background:var(--rose);">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span>Пријатна и безбедна средина за пациентот</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      </div><!-- /.back-body -->
 
       <div class="back-footer">
-        <div class="bf-left">
-          <strong>Контактирајте нѐ</strong>
-          Јавете се или пишете ни.
-        </div>
         <div class="bf-contacts">
           <div class="bf-chip">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            070 123 123
+            073 860 480
           </div>
           <div class="bf-chip">
             <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
             <span style="font-size:8.5px;">pacienti@oazamedika.com</span>
+          </div>
+          <div class="bf-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" width="11" height="11"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <span style="font-size:8.5px;">www.oazamedika.com</span>
           </div>
         </div>
       </div>
