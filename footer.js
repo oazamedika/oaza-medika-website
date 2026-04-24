@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   OAZA MEDIKA — SHARED FOOTER
+   OAZA MEDIKA - SHARED FOOTER
    Usage:
      <script src="footer.js" data-root=""></script>        (root)
      <script src="../footer.js" data-root="../"></script>  (sub-folder)
@@ -84,11 +84,11 @@
     '<div>' +
     '<h4>Контакт</h4>' +
     '<ul>' +
-    '<li><a href="tel:+38970123123">070 123 123</a></li>' +
+    '<li><a href="tel:+38973860480">073 860 480</a></li>' +
     '<li><a href="mailto:pacienti@oazamedika.com">pacienti@oazamedika.com</a></li>' +
     '<li><a href="' + indexHref + '#contact">ул. 2 бр. 105, лок. 10</a></li>' +
     '<li><a href="' + indexHref + '#contact">Општина Илинден</a></li>' +
-    '<li><a href="#">Пон–Пет 07:30–15:00</a></li>' +
+    '<li><a href="#">Пон–Пет 07:30–15:30</a></li>' +
     '</ul>' +
     '</div>' +
 
