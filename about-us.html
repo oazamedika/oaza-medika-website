@@ -26,15 +26,14 @@
     .btn-outline-white:hover { background:rgba(255,255,255,.12); border-color:#fff; transform:translateY(-2px); }
 
     /* ═══════════════════════════════
-       SECTION 1 — HERO (hero.js style)
+       HERO — centered, height fits content
     ═══════════════════════════════ */
     .hero {
       position:relative;
-      height:88vh;
-      min-height:560px;
       overflow:hidden;
       display:flex;
-      align-items:flex-end;
+      align-items:center;
+      justify-content:center;
     }
     .hero-bg {
       position:absolute; inset:0; z-index:0;
@@ -44,28 +43,29 @@
     }
     .hero-overlay {
       position:absolute; inset:0; z-index:1;
-      background:linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.42) 55%, rgba(0,0,0,0.12) 100%);
-    }
-    .hero-overlay::after {
-      content:""; position:absolute; bottom:0; left:0; right:0; height:45%;
-      background:linear-gradient(to top, rgba(0,0,0,0.45), transparent);
+      background:linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.65) 100%);
     }
     .hero-body {
       position:relative; z-index:2; width:100%;
-      padding:0 6% 5rem;
-      display:flex; flex-direction:column;
+      padding:6rem 6% 5rem;
+      display:flex; flex-direction:column; align-items:center;
       animation:heroFadeUp .7s ease both;
     }
     .hero-slide-content {
-      display:flex; flex-direction:column; gap:1.2rem; max-width:640px;
+      display:flex; flex-direction:column; gap:1.2rem;
+      max-width:720px; text-align:center; align-items:center;
     }
     @keyframes heroFadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
     .hero-eyebrow {
       display:inline-flex; align-items:center; gap:8px;
       font-size:.75rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-      color:rgba(255,255,255,.75);
+      color:rgba(255,255,255,.75); justify-content:center;
     }
     .hero-eyebrow::before {
+      content:""; display:block; width:28px; height:2px;
+      background:var(--teal); border-radius:2px;
+    }
+    .hero-eyebrow::after {
       content:""; display:block; width:28px; height:2px;
       background:var(--teal); border-radius:2px;
     }
@@ -75,7 +75,7 @@
     .hero h1 em { font-style:normal; color:#7dd8c8; }
     .hero-desc {
       font-size:clamp(.95rem,1.4vw,1.1rem); color:rgba(255,255,255,.82);
-      font-weight:300; max-width:520px; line-height:1.75;
+      font-weight:300; max-width:580px; line-height:1.75; text-align:center;
     }
     .hero-progress { position:absolute; bottom:0; left:0; right:0; z-index:3; height:3px; background:rgba(255,255,255,.15); }
     .hero-progress-bar { height:100%; background:var(--teal); width:100%; }
@@ -127,6 +127,66 @@
       margin-top:1.2rem; box-shadow:0 4px 14px rgba(42,122,122,.25);
     }
     .fzom-badge::before { content:''; width:7px; height:7px; background:rgba(255,255,255,.7); border-radius:50%; }
+
+    /* ═══════════════════════════════
+       DOM OAZA SECTION
+    ═══════════════════════════════ */
+    .dom-oaza-section {
+      margin-bottom:5rem;
+    }
+    .dom-oaza-inner {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:3rem;
+      align-items:center;
+      background:var(--white);
+      border-radius:20px;
+      border:1px solid rgba(42,122,122,.1);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .dom-oaza-image-col {
+      position:relative;
+      height:100%;
+      min-height:420px;
+    }
+    .dom-oaza-image-col img {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:cover; object-position:center;
+      display:block;
+    }
+    .dom-oaza-image-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to right, transparent 70%, rgba(255,255,255,0.05) 100%);
+    }
+    .dom-oaza-text-col {
+      padding:2.5rem 2.5rem 2.5rem 1.5rem;
+    }
+    .dom-oaza-logo {
+      height:52px; width:auto; display:block; margin-bottom:1.6rem;
+      filter:drop-shadow(0 2px 6px rgba(26,92,42,.12));
+    }
+    .dom-oaza-text-col p {
+      color:var(--text-mid); font-weight:300; font-size:.97rem; margin-bottom:1rem;
+      line-height:1.75;
+    }
+    .dom-oaza-pillars {
+      display:flex; flex-direction:column; gap:.7rem; margin:1.4rem 0 1.8rem;
+    }
+    .dom-oaza-pillar {
+      display:flex; align-items:flex-start; gap:10px;
+    }
+    .dom-oaza-pillar-dot {
+      width:7px; height:7px; border-radius:50%; background:var(--teal);
+      flex-shrink:0; margin-top:.55rem;
+    }
+    .dom-oaza-pillar span {
+      font-size:.88rem; color:var(--text-mid); font-weight:300; line-height:1.6;
+    }
+    .dom-oaza-pillar strong {
+      color:var(--text); font-weight:600;
+    }
 
     /* ═══════════════════════════════
        SECTION 3 — DOCTOR
@@ -220,7 +280,7 @@
     .value-card p { font-size:.88rem; color:var(--text-mid); font-weight:300; line-height:1.65; }
 
     /* ═══════════════════════════════
-       SECTION 5 — CTA (unchanged)
+       SECTION 5 — CTA
     ═══════════════════════════════ */
     .cta-strip {
       text-align:center; padding:3rem 2rem;
@@ -239,17 +299,18 @@
        RESPONSIVE
     ═══════════════════════════════ */
     @media(max-width:768px) {
-      .hero { height:88vh; min-height:500px; }
-      .hero-overlay { background:linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 55%, rgba(0,0,0,0.1) 100%); }
-      .hero-body { padding:0 5% 4.5rem; }
+      .hero-body { padding:5rem 5% 4rem; }
       .hero h1 { font-size:clamp(1.8rem,7vw,2.6rem); }
       .hero-desc { font-size:.9rem; }
-      .hero-actions { flex-direction:column; align-items:flex-start; }
 
       .page-content { padding:3rem 4%; }
 
       .practice-section { grid-template-columns:1fr; gap:2rem; }
       .values-grid { grid-template-columns:1fr; }
+
+      .dom-oaza-inner { grid-template-columns:1fr; }
+      .dom-oaza-image-col { min-height:260px; height:260px; position:relative; }
+      .dom-oaza-text-col { padding:2rem 1.8rem; }
 
       .doctor-section { grid-template-columns:1fr; gap:2rem; }
       .doctor-photo-col { display:flex; flex-direction:column; align-items:center; gap:.9rem; }
@@ -268,7 +329,7 @@
 <body>
 
 <!-- ═══════════════════════════════════════════════
-     SECTION 1 — HERO (hero.js style, static)
+     SECTION 1 — HERO (centered, height = content)
 ════════════════════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-bg">
@@ -279,8 +340,8 @@
     <div class="hero-slide-content">
       <span class="hero-eyebrow">Оаза Медика · Општина Илинден</span>
       <h1>Вашата здравствена<br/><em>оаза во општина Илинден</em></h1>
-      <p class="hero-desc">ПЗУ Оаза Медика не е само медицинска установа — таа е замислена како место каде здравјето се третира со внимание, трпение и професионализам. Простор каде секој граѓанин на општина Илинден и околината може да добие врвна примарна здравствена заштита во современи и достоинствени услови.</p>
-      <p class="hero-desc" style="margin-top:-.2rem; font-size:clamp(.88rem,1.2vw,1rem);">Веруваме дека матичниот лекар е првиот и најважен сојузник во зачувувањето на здравјето — грижа која е достапна, персонализирана и заснована на најновите медицински стандарди.</p>
+      <p class="hero-desc">ПЗУ Оаза Медика е замислена како место каде здравјето се третира со внимание, трпение и професионализам — простор каде секој граѓанин на општина Илинден и околината може да добие врвна примарна здравствена заштита во современи и достоинствени услови.</p>
+      <p class="hero-desc" style="font-size:clamp(.88rem,1.2vw,1rem);">Матичниот лекар е првиот и најважен сојузник во зачувувањето на здравјето — грижа која е достапна, персонализирана и заснована на најновите медицински стандарди.</p>
     </div>
   </div>
   <div class="hero-progress"><div class="hero-progress-bar"></div></div>
@@ -344,6 +405,54 @@
           <strong>Приватни прегледи</strong>
           <span>За пациенти без осигурување, оние кои не сакаат да менуваат матичен лекар, како и за странски државјани — приватни прегледи по достапни цени.</span>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       DOM OAZA SECTION
+  ════════════════════════════════════════════════ -->
+  <div class="dom-oaza-section">
+    <div style="margin-bottom:1.8rem;">
+      <p class="section-label">Нашиот дом</p>
+      <h2 class="section-title">Домот за стари лица Оаза</h2>
+    </div>
+
+    <div class="dom-oaza-inner">
+      <div class="dom-oaza-image-col">
+        <img src="https://www.dom-oaza.mk/images/oaza/nadvoresnost/oaza-nadvoreshnost_1.webp" alt="Надворешен поглед на Домот Оаза" />
+        <div class="dom-oaza-image-overlay"></div>
+      </div>
+      <div class="dom-oaza-text-col">
+        <img src="oazadom.png" alt="Дом Оаза лого" class="dom-oaza-logo" />
+        <p>ПЗУ Оаза Медика е сместена во склоп на Домот за стари лица „Оаза" — установа која не функционира само како место за сместување, туку како вистинска заедница и сигурна средина за постарите лица и нивните семејства.</p>
+        <p>Домот „Оаза" е изграден на принципот дека индивидуалноста на секој корисник е срцето на секоја одлука — балансирајќи ја приватноста со колективниот живот, нудејќи персонализирана нега и уникатно искуство за секоја личност.</p>
+
+        <div class="dom-oaza-pillars">
+          <div class="dom-oaza-pillar">
+            <div class="dom-oaza-pillar-dot"></div>
+            <span><strong>Индивидуална грижа</strong> — нега прилагодена на физичките, емоционалните и когнитивните потреби на секој корисник.</span>
+          </div>
+          <div class="dom-oaza-pillar">
+            <div class="dom-oaza-pillar-dot"></div>
+            <span><strong>Медицинска поддршка</strong> — квалификуван тим за континуиран здравствен мониторинг и специјализирани услуги.</span>
+          </div>
+          <div class="dom-oaza-pillar">
+            <div class="dom-oaza-pillar-dot"></div>
+            <span><strong>Активно стареење</strong> — програми за физичка и ментална виталност, дружење и креативни активности.</span>
+          </div>
+          <div class="dom-oaza-pillar">
+            <div class="dom-oaza-pillar-dot"></div>
+            <span><strong>Поддршка за семејствата</strong> — психосоцијална поддршка и отворена комуникација со блиските на корисниците.</span>
+          </div>
+        </div>
+
+        <a href="https://www.dom-oaza.mk/" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top:.4rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5L12 3l9 8.5"/><path d="M5 10V20a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1V10"/></svg>
+          Повеќе за домот Оаза
+        </a>
       </div>
     </div>
   </div>
@@ -462,7 +571,7 @@
   <div class="section-divider"></div>
 
   <!-- ═══════════════════════════════════════════════
-       SECTION 5 — CTA (unchanged from original)
+       SECTION 5 — CTA
   ════════════════════════════════════════════════ -->
   <div class="cta-strip">
     <h3>Станете наш матичен пациент</h3>
