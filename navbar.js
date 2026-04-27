@@ -192,8 +192,8 @@
 
   /* ── Active page detection ────────────────────────── */
   var pathname   = window.location.pathname;
-  var isAbout    = /about-us\.html/.test(pathname);
-  var isServices = /services\.html/.test(pathname);
+  var isAbout    = /about-us/.test(pathname);
+  var isServices = /services/.test(pathname);
   var isIndex    = !isAbout && !isServices;
   function ac(cond) { return cond ? ' class="active"' : ''; }
   var indexHref  = ROOT + 'index.html';
