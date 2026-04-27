@@ -54,17 +54,17 @@ var HERO_SLIDES = [
 
   /* ── SLIDE 2 — Вашата оаза ───────────────────────────── */
   {
-    navLabel : 'За нас',
+    navLabel : 'ПУСЗ Оаза',
     eyebrow  : 'Општа медицина · Матичен Лекар',
     headline : 'Вашето здравје е\n<em>вашата оаза</em>',
-    desc     : 'Топла, стручна и достапна лекарска грижа за секој пациент, во склоп на Домот Оаза во општина Илинден.',
+    desc     : 'Топла, стручна и достапна лекарска грижа за секој пациент, во склоп на ПУСЗ Оаза во општина Илинден.',
     images   : [
       'hero/hero2/1.jpg',
       'hero/hero2/2.jpg',
       'hero/hero2/3.jpg'
     ],
     cta1: { text: 'Избери матичен лекар', href: 'CTA-module/cta.html',      icon: 'person' },
-    cta3: { text: 'Повеќе за домот',      href: 'https://www.dom-oaza.mk/', icon: 'house'  }
+    cta3: { text: 'Повеќе за ПУСЗ Оаза',      href: 'https://www.dom-oaza.mk/', icon: 'house'  }
   },
 
   /* ── SLIDE 3 — ФЗОМ + приватни ──────────────────────── */
@@ -135,7 +135,8 @@ var HERO_ICONS = {
     .btn-outline-white { background:transparent; color:#fff; border:2px solid rgba(255,255,255,.6); }\
     .btn-outline-white:hover { background:rgba(255,255,255,.12); border-color:#fff; transform:translateY(-2px); }\
     .hero-nav {\
-      position:absolute; bottom:2rem; right:6%; z-index:3;\
+      position:absolute; top:50%; right:6%; z-index:3;\
+      transform:translateY(-50%);\
       display:flex; flex-direction:column; gap:.6rem; align-items:flex-end;\
     }\
     .hero-nav-item { display:flex; align-items:center; gap:10px; cursor:pointer; padding:.4rem .7rem; border-radius:50px; background:transparent; border:none; transition:background .25s; }\
