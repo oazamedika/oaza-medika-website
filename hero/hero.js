@@ -9,8 +9,8 @@
    BG_DURATION    : ms each background photo stays before cycling
 ─────────────────────────────────────────────────────────── */
 var HERO_CONFIG = {
-  SLIDE_DURATION: 7020,
-  BG_DURATION:    2340
+  SLIDE_DURATION: 15000,
+  BG_DURATION:    5000
 };
 
 /* ── CTA BUTTON ICON TYPES ──────────────────────────────────
