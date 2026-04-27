@@ -90,7 +90,7 @@
     .pricing-section { max-width:860px; margin:0 auto; background:linear-gradient(135deg,var(--teal) 0%,var(--green) 100%); border-radius:20px; padding:2.5rem 2.5rem; color:var(--white); box-shadow:var(--shadow); }
     .pricing-section h2 { color:var(--white); font-size:1.4rem; margin-bottom:.4rem; }
     .pricing-section > p { color:rgba(255,255,255,.8); font-size:.9rem; font-weight:300; margin-bottom:1.8rem; }
-    .pricing-table { width:100%; border-collapse:collapse; }
+    .pricing-table { width:100%; border-collapse:collapse; min-width:480px; }
     .pricing-table th { text-align:left; font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.6); padding:.5rem 1rem .8rem; border-bottom:1px solid rgba(255,255,255,.15); }
     .pricing-table td { padding:.85rem 1rem; font-size:.9rem; color:rgba(255,255,255,.88); font-weight:300; border-bottom:1px solid rgba(255,255,255,.08); vertical-align:top; }
     .pricing-table tr:last-child td { border-bottom:none; }
@@ -276,23 +276,24 @@
   <div class="pricing-section">
     <h2>Покриеност на услуги за осигурени лица</h2>
     <p>Преглед на тоа што го опфаќа вашето здравствено осигурување со ФЗОМ, доколку изберете матичен лекар во ПЗУ Оаза Медика.</p>
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>Услуга</th>
-          <th>Покриеност</th>
-          <th>Опфат</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Преглед во ординација</td><td><span class="pricing-badge badge-free">Бесплатно</span></td><td>Без партиципација за осигурени лица.</td></tr>
-        <tr><td>Препишување лекови / упати</td><td><span class="pricing-badge badge-free">Бесплатно</span></td><td>Стандардна услуга и исто така е без партиципација.</td></tr>
-        <tr><td>Ампуларна терапија</td><td><span class="pricing-badge badge-part">Партиципација</span></td><td>Фондот го покрива поголемиот дел, согласно нивните <a href="https://fzo.org.mk/referentni-ceni" target="_blank" style="color:inherit;text-decoration:underline;">референтни цени</a>.</td></tr>
-        <tr><td>Домашна посета</td><td><span class="pricing-badge badge-part">Партиципација</span></td><td>Во зависност од медицинската индикација, Фондот покрива одреден дел од трошокот за поминатото растојание.</td></tr>
-        <tr><td>Услуги кои не ги покрива ФЗОМ</td><td><span class="pricing-badge badge-paid">Не е покриено</span></td><td>Сè што е надвор од основниот пакет на ФЗОМ, како дополнители услуги, според однапред утврден ценовник.</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+     <table class="pricing-table">
+       <thead>
+         <tr>
+           <th>Услуга</th>
+           <th>Покриеност</th>
+           <th>Опфат</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr><td>Преглед во ординација</td><td><span class="pricing-badge badge-free">Бесплатно</span></td><td>Без партиципација за осигурени лица.</td></tr>
+         <tr><td>Препишување лекови / упати</td><td><span class="pricing-badge badge-free">Бесплатно</span></td><td>Стандардна услуга и исто така е без партиципација.</td></tr>
+         <tr><td>Ампуларна терапија</td><td><span class="pricing-badge badge-part">Партиципација</span></td><td>Фондот го покрива поголемиот дел, согласно нивните <a href="https://fzo.org.mk/referentni-ceni" target="_blank" style="color:inherit;text-decoration:underline;">референтни цени</a>.</td></tr>
+         <tr><td>Домашна посета</td><td><span class="pricing-badge badge-part">Партиципација</span></td><td>Во зависност од медицинската индикација, Фондот покрива одреден дел од трошокот за поминатото растојание.</td></tr>
+         <tr><td>Услуги кои не ги покрива ФЗОМ</td><td><span class="pricing-badge badge-paid">Не е покриено</span></td><td>Сè што е надвор од основниот пакет на ФЗОМ, како дополнители услуги, според однапред утврден ценовник.</td></tr>
+       </tbody>
+     </table>
+   </div>
 
   <!-- CTA -->
   <div class="cta-strip">
