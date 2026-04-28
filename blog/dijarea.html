@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Дијареа: Рехидратација, исхрана и пробиотици – Оаза Медика</title>
+  <title>Дијареа: Рехидратација, исхрана и пробиотици - ПЗУ Оаза Медика</title>
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://oazamedika.mk/blog/dijarea.html" />
-  <meta property="og:title" content="Дијареа: Рехидратација, исхрана и пробиотици – Оаза Медика" />
+  <meta property="og:title" content="Дијареа: Рехидратација, исхрана и пробиотици - Оаза Медика" />
   <meta property="og:description" content="Правилен домашен третман при дијареа: рехидратација, БРАТ диета и пробиотици за брзо закрепнување." />
   <meta property="og:image" content="https://oazamedika.mk/blog/pictures-blog/dieta.jpg" />
   <meta property="og:site_name" content="Оаза Медика" />
@@ -26,7 +26,27 @@
 
     .blog-label { font-size:.75rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.6rem; }
     h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,4vw,2.8rem); color:var(--text); margin-bottom:1rem; line-height:1.2; }
-    .meta { display:flex; gap:1rem; flex-wrap:wrap; font-size:.82rem; color:var(--text-light); margin-bottom:2.5rem; padding-bottom:2rem; border-bottom:1px solid rgba(42,122,122,.1); }
+
+    .meta {
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      align-items:center;
+      font-size:.82rem;
+      color:var(--text-light);
+      margin-bottom:2.5rem;
+      padding-bottom:2rem;
+      border-bottom:1px solid rgba(42,122,122,.1);
+    }
+    .meta span {
+      display:inline-flex;
+      align-items:center;
+      gap:5px;
+    }
+    .meta svg {
+      flex-shrink:0;
+      opacity:.7;
+    }
 
     .content p { margin-bottom:1.3rem; color:var(--text-mid); font-weight:300; font-size:1rem; }
     .content h2 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--text); margin:2.5rem 0 .8rem; }
@@ -35,15 +55,79 @@
     .content li { margin-bottom:.4rem; }
     .content strong { color:var(--text); font-weight:600; }
 
-    .tip-box { background:var(--green-light); border-left:4px solid var(--green); border-radius:0 12px 12px 0; padding:1.2rem 1.5rem; margin:2rem 0; font-size:.93rem; color:var(--green); line-height:1.7; }
+    .tip-box {
+      background:var(--green-light);
+      border-left:4px solid var(--green);
+      border-radius:0 12px 12px 0;
+      padding:1.2rem 1.5rem;
+      margin:2rem 0;
+      font-size:.93rem;
+      color:var(--green);
+      line-height:1.7;
+    }
     .tip-box strong { color:var(--green); }
+    .tip-box-inner { display:inline-flex; align-items:flex-start; gap:10px; }
+    .tip-box-inner svg { flex-shrink:0; margin-top:3px; }
 
-    .cta-strip { background:linear-gradient(135deg,var(--teal),var(--green)); border-radius:16px; padding:2rem 2.5rem; text-align:center; margin-top:3rem; }
+    .cta-strip {
+      background:linear-gradient(135deg,var(--teal),var(--green));
+      border-radius:16px;
+      padding:2rem 2.5rem;
+      text-align:center;
+      margin-top:3rem;
+    }
     .cta-strip p { color:rgba(255,255,255,.85); font-weight:300; margin-bottom:1rem; }
-    .cta-strip a { display:inline-flex; align-items:center; gap:8px; background:var(--white); color:var(--teal); padding:.7rem 1.6rem; border-radius:50px; font-weight:700; font-size:.9rem; text-decoration:none; transition:transform .2s; }
-    .cta-strip a:hover { transform:translateY(-2px); }
+    .cta-strip .cta-primary {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:var(--white);
+      color:var(--teal);
+      padding:.7rem 1.6rem;
+      border-radius:50px;
+      font-weight:700;
+      font-size:.9rem;
+      text-decoration:none;
+      transition:transform .2s;
+      margin-bottom:.5rem;
+    }
+    .cta-strip .cta-primary:hover { transform:translateY(-2px); }
+    .cta-divider {
+      margin:1.5rem auto .8rem;
+      font-size:.85rem;
+      color:rgba(255,255,255,.75);
+    }
+    .social-links { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
+    .social-links a {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:.6rem 1.4rem;
+      border-radius:50px;
+      font-weight:700;
+      font-size:.88rem;
+      text-decoration:none;
+      transition:transform .2s, opacity .2s;
+      color:#fff;
+    }
+    .social-links a:hover { transform:translateY(-2px); opacity:.9; }
+    .social-links .fb  { background:#1877F2; }
+    .social-links .ig  { background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%); }
 
-    .back-link { display:inline-flex; align-items:center; gap:6px; margin-top:3rem; color:var(--teal); text-decoration:none; font-weight:600; font-size:.88rem; border:2px solid var(--teal); border-radius:50px; padding:.5rem 1.2rem; transition:all .2s; }
+    .back-link {
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:3rem;
+      color:var(--teal);
+      text-decoration:none;
+      font-weight:600;
+      font-size:.88rem;
+      border:2px solid var(--teal);
+      border-radius:50px;
+      padding:.5rem 1.2rem;
+      transition:all .2s;
+    }
     .back-link:hover { background:var(--teal); color:var(--white); }
 
     @media(max-width:600px) { .container { padding:2rem 4% 4rem; } }
@@ -52,66 +136,99 @@
 <body>
 
   <div id="fb-root"></div>
-   <script async defer crossorigin="anonymous"
+  <script async defer crossorigin="anonymous"
     src="https://connect.facebook.net/mk_MK/sdk.js#xfbml=1&version=v19.0&appId=YOUR_APP_ID">
   </script>
+
   <div class="container">
 
-  <p class="blog-label">ДИГЕСТИВНО ЗДРАВЈЕ</p>
-  <h1>Како кога имаме дијареа: Рехидратација, исхрана и пробиотици</h1>
-  <div class="meta">
-    <span>📅 Март 2026</span>
-    <span>✍️ Д-р Гордана Стевчева</span>
-    <fb:share-button href="https://oazamedika.mk/blog/dijarea.html" type="button">
-    </fb:share-button>
-  </div>
+    <p class="blog-label">ДИГЕСТИВНО ЗДРАВЈЕ</p>
+    <h1>Како кога имаме дијареа: Рехидратација, исхрана и пробиотици</h1>
 
-  <div class="content">
-    <p>Дијареата е чест и непријатен здравствен проблем кој најчесто поминува сам од себе по неколку дена. Сепак, правилниот домашен третман е клучен за да се спречат компликации, пред сè дехидратација. Главниот фокус при домашното лекување треба да биде на надоместување на течностите, смирување на дигестивниот систем преку соодветна исхрана и обновување на цревната флора.</p>
-
-    <h2>1. Рехидратација: Најважниот чекор</h2>
-    <p>Губењето на течности и електролити е најопасната последица од дијареата. Затоа, првиот и најважен чекор е континуирана рехидратација.</p>
-    <ul>
-      <li><strong>Орални рехидратациски соли (ОРС):</strong> Ова е најефикасниот начин за враќање на изгубените електролити како натриум и калиум.</li>
-      <li><strong>Бистри течности:</strong> Пијте многу вода, бистри супи и благи чаеви (како камилица или нане).</li>
-      <li><strong>Што да избегнувате:</strong> Кафе, алкохол, многу слатки сокови и газирани пијалоци, бидејќи тие можат дополнително да ги иритираат цревата.</li>
-    </ul>
-
-    <h2>2. Исхрана: БРАТ диета и лесна храна</h2>
-    <p>Кога стомакот е вознемирен, потребна му е храна која лесно се вари и која помага во зацврстување на столицата. Најпознатиот пристап е таканаречената БРАТ диета (Банани, Ориз, Пире од јаболка, Тост).</p>
-
-    <img src="pictures-blog/dieta.jpg" alt="БРАТ Диета и лесна храна" style="width:100%; border-radius:12px; margin: 1.5rem 0; display:block;">
-
-    <ul>
-      <li><strong>Банани:</strong> Лесни за варење и богати со калиум кој се губи при дијареа.</li>
-      <li><strong>Бел ориз и тост:</strong> Обезбедуваат енергија без да го оптоваруваат дигестивниот тракт.</li>
-      <li><strong>Храна која треба да се избегнува:</strong> Млечни производи, мрсна, пржена и силно зачинета храна, како и храна богата со нерастворливи растителни влакна која предизвикува гасови.</li>
-    </ul>
-
-    <div class="tip-box">
-      💡 <strong>Важно:</strong> Доколку дијареата трае подолго од 2 дена (кај возрасни) или 24 часа (кај деца), или е проследена со висока температура, силни болки во стомакот или крв во столицата, веднаш побарајте лекарска помош!
+    <div class="meta">
+      <span>
+        <!-- Calendar icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Март 2026
+      </span>
+      <span>
+        <!-- Author icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        д-р Гордана Стевчева
+      </span>
+      <fb:share-button href="https://oazamedika.mk/blog/dijarea.html" type="button">
+      </fb:share-button>
     </div>
 
-    <h2>3. Пробиотици: Обновување на цревната флора</h2>
-    <p>Пробиотиците се „добри" бактерии кои помагаат во одржувањето на здрава цревна средина. За време на дијареа, голем дел од овие бактерии се исфрлаат од организмот, па нивното надоместување е од големо значење за брзо закрепнување.</p>
-    <ul>
-      <li><strong>Пробиотски суплементи:</strong> Тие се најбрзиот и најбезбедниот начин да се внесат концентрирани дози на корисни бактерии (како <em>Lactobacillus</em> или <em>Saccharomyces boulardii</em>) за време на акутна дијареа.</li>
-      <li>Навремената употреба на пробиотици може значително да го скрати времетраењето на симптомите и да го врати балансот во дигестивниот тракт.</li>
-    </ul>
+    <div class="content">
+      <p>Дијареата е чест и непријатен здравствен проблем кој најчесто поминува сам од себе по неколку дена. Сепак, правилниот домашен третман е клучен за да се спречат компликации, пред сè дехидратација. Главниот фокус при домашното лекување треба да биде на надоместување на течностите, смирување на дигестивниот систем преку соодветна исхрана и обновување на цревната флора.</p>
 
-    <p><strong>Заклучок:</strong> Со правилна рехидратација, внимателна исхрана и употреба на пробиотици, повеќето случаи на дијареа успешно се менаџираат во домашни услови. Слушајте го вашето тело и не брзајте со враќање кон вообичаената исхрана додека симптомите целосно не се повлечат.</p>
+      <h2>1. Рехидратација: Најважниот чекор</h2>
+      <p>Губењето на течности и електролити е најопасната последица од дијареата. Затоа, првиот и најважен чекор е континуирана рехидратација.</p>
+      <ul>
+        <li><strong>Орални рехидратациски соли (ОРС):</strong> Ова е најефикасниот начин за враќање на изгубените електролити како натриум и калиум.</li>
+        <li><strong>Бистри течности:</strong> Пијте многу вода, бистри супи и благи чаеви (како камилица или нане).</li>
+        <li><strong>Што да избегнувате:</strong> Кафе, алкохол, многу слатки сокови и газирани пијалоци, бидејќи тие можат дополнително да ги иритираат цревата.</li>
+      </ul>
+
+      <h2>2. Исхрана: БРАТ диета и лесна храна</h2>
+      <p>Кога стомакот е вознемирен, потребна му е храна која лесно се вари и која помага во зацврстување на столицата. Најпознатиот пристап е таканаречената БРАТ диета (Банани, Ориз, Пире од јаболка, Тост).</p>
+
+      <img src="pictures-blog/dieta.jpg" alt="БРАТ Диета и лесна храна" style="width:100%; border-radius:12px; margin: 1.5rem 0; display:block;">
+
+      <ul>
+        <li><strong>Банани:</strong> Лесни за варење и богати со калиум кој се губи при дијареа.</li>
+        <li><strong>Бел ориз и тост:</strong> Обезбедуваат енергија без да го оптоваруваат дигестивниот тракт.</li>
+        <li><strong>Храна која треба да се избегнува:</strong> Млечни производи, мрсна, пржена и силно зачинета храна, како и храна богата со нерастворливи растителни влакна која предизвикува гасови.</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tip-box-inner">
+          <!-- Info icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span><strong>Важно:</strong> Доколку дијареата трае подолго од 2 дена (кај возрасни) или 24 часа (кај деца), или е проследена со висока температура, силни болки во стомакот или крв во столицата, веднаш побарајте лекарска помош!</span>
+        </div>
+      </div>
+
+      <h2>3. Пробиотици: Обновување на цревната флора</h2>
+      <p>Пробиотиците се „добри" бактерии кои помагаат во одржувањето на здрава цревна средина. За време на дијареа, голем дел од овие бактерии се исфрлаат од организмот, па нивното надоместување е од големо значење за брзо закрепнување.</p>
+      <ul>
+        <li><strong>Пробиотски суплементи:</strong> Тие се најбрзиот и најбезбедниот начин да се внесат концентрирани дози на корисни бактерии (како <em>Lactobacillus</em> или <em>Saccharomyces boulardii</em>) за време на акутна дијареа.</li>
+        <li>Навремената употреба на пробиотици може значително да го скрати времетраењето на симптомите и да го врати балансот во дигестивниот тракт.</li>
+      </ul>
+
+      <p><strong>Заклучок:</strong> Со правилна рехидратација, внимателна исхрана и употреба на пробиотици, повеќето случаи на дијареа успешно се менаџираат во домашни услови. Слушајте го вашето тело и не брзајте со враќање кон вообичаената исхрана додека симптомите целосно не се повлечат.</p>
+    </div>
+
+    <div class="cta-strip">
+      <p>Имате прашање или сакате да закажете преглед?</p>
+      <a href="../index.html#contact" class="cta-primary">
+        <!-- Phone icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+        Контактирајте нѐ
+      </a>
+      <p class="cta-divider">Ви се допадна овој напис? Следете не за повеќе здравствени совети!</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/oazamedika" target="_blank" rel="noopener" class="fb">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          Следете нѐ на Facebook
+        </a>
+        <a href="https://www.instagram.com/oazamedika" target="_blank" rel="noopener" class="ig">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Следете нѐ на Instagram
+        </a>
+      </div>
+    </div>
+
+    <a class="back-link" href="../index.html#blog">
+      <!-- Arrow left icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Назад кон блогот
+    </a>
+
   </div>
 
-  <div class="cta-strip">
-    <p>Имате прашање или сакате да закажете преглед?</p>
-    <a href="../index.html#contact">📞 Контактирајте не</a>
-  </div>
-
-  <a class="back-link" href="../index.html#blog">← Назад кон блогот</a>
-
-</div>
-
-<script src="../navbar.js" data-root="../"></script>
-<script src="../footer.js" data-root="../"></script>
+  <script src="../navbar.js" data-root="../"></script>
+  <script src="../footer.js" data-root="../"></script>
 </body>
 </html>
