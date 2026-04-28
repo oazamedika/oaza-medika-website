@@ -195,7 +195,6 @@
   var isAbout    = /about-us/.test(pathname);
   var isServices = /services/.test(pathname);
   var isTools    = /tools-module/.test(pathname);
-  var isIndex    = !isAbout && !isServices && !isTools;
   function ac(cond) { return cond ? ' class="active"' : ''; }
   var indexHref  = ROOT + 'index.html';
 
@@ -235,11 +234,11 @@
             '</a>' +
           '</div>' +
         '</li>' +
-        '<li><a href="' + (isIndex ? '#fond'    : indexHref + '#fond')    + '">Фонд</a></li>' +
-        '<li><a href="' + (isIndex ? '#novosti' : indexHref + '#novosti') + '">Новости</a></li>' +
-        '<li><a href="' + (isIndex ? '#blog'    : indexHref + '#blog')    + '">Блог</a></li>' +
-        '<li><a href="' + (isIndex ? '#faq'     : indexHref + '#faq')     + '">ЧПП</a></li>' +
-        '<li><a href="' + (isIndex ? '#contact' : indexHref + '#contact') + '" class="om-nav-cta">Контакт</a></li>' +
+        '<li><a href="' + indexHref + '#fond">Фонд</a></li>' +
+        '<li><a href="' + indexHref + '#novosti">Новости</a></li>' +
+        '<li><a href="' + indexHref + '#blog">Блог</a></li>' +
+        '<li><a href="' + indexHref + '#faq">ЧПП</a></li>' +
+        '<li><a href="' + indexHref + '#contact" class="om-nav-cta">Контакт</a></li>' +
       '</ul>' +
       '<button class="om-hamburger" id="omHamburger" aria-label="Мени"><span></span><span></span><span></span></button>' +
     '</nav>' +
