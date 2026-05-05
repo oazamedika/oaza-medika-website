@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Оаза Медика – Социјални графики</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --teal: #2a7a7a;
+      --teal-dark: #1d5e5e;
+      --green: #1a5c2a;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: #111;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 16px;
+    }
+
+    body::before {
+      content: 'Направете скриншот на секоја графика одделно | 1440 × 1080 px | 4:3';
+      display: block;
+      color: #888;
+      font-size: 13px;
+      font-family: monospace;
+      text-align: center;
+      margin-bottom: 8px;
+      letter-spacing: .05em;
+    }
+
+    /* ─── SLIDE FRAME ─────────────────────────────────────────── */
+    .slide {
+      position: relative;
+      width: 1440px;
+      height: 1080px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .slide-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px) brightness(0.38) saturate(1.3);
+      transform: scale(1.08);
+    }
+
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(26,92,42,0.55) 0%,
+        rgba(42,122,122,0.45) 50%,
+        rgba(26,92,42,0.60) 100%);
+    }
+
+    .slide-inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 100px;
+    }
+
+    /* frosted glass card */
+    .card {
+      background: rgba(255,255,255,0.10);
+      backdrop-filter: blur(28px) saturate(1.6);
+      -webkit-backdrop-filter: blur(28px) saturate(1.6);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 32px;
+      padding: 60px 72px;
+      width: 100%;
+      max-width: 1100px;
+      box-shadow:
+        0 40px 100px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.22);
+    }
+
+    /* ─── SECTION HEADER ROW ──────────────────────────────────── */
+    .section-header-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      margin-bottom: 36px;
+    }
+    .section-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #5dd9b0, #2a7a7a);
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(42,122,122,0.4);
+    }
+    .section-header-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.58);
+    }
+
+    /* ─── ITEMS ─────────────────────────────────────────────────── */
+    .items { display: flex; flex-direction: column; gap: 18px; }
+    .item { display: flex; align-items: flex-start; gap: 16px; }
+    .item-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: rgba(93,217,176,0.15);
+      border: 1px solid rgba(93,217,176,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .item-icon svg { width: 16px; height: 16px; stroke: #5dd9b0; }
+    .item-text { flex: 1; }
+    .item-label { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
+    .item-desc { font-size: 13.5px; font-weight: 300; color: rgba(255,255,255,0.62); line-height: 1.55; }
+
+    /* ─── TWO COL + MINI CARDS ──────────────────────────────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .mini-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+    .mini-card-title { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 5px; }
+    .mini-card-desc { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.58); line-height: 1.55; }
+    .mini-cards-col { display: flex; flex-direction: column; gap: 10px; }
+    .mini-col-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.38);
+      margin-bottom: 12px;
+    }
+
+    /* ─── COVER ─────────────────────────────────────────────────── */
+    .cover-org {
+      font-size: 13px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: #5dd9b0; margin-bottom: 20px;
+    }
+    .cover-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 82px; font-weight: 700; line-height: 1.05;
+      color: #ffffff; margin-bottom: 28px;
+    }
+    .cover-desc {
+      font-size: 22px; font-weight: 300; color: rgba(255,255,255,0.72);
+      line-height: 1.65; max-width: 780px; margin-bottom: 48px;
+    }
+    .cover-pills { display: flex; gap: 14px; flex-wrap: wrap; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 22px; border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.85); letter-spacing: .04em;
+    }
+    .pill-dot { width: 7px; height: 7px; border-radius: 50%; background: #5dd9b0; }
+    .cover-deco {
+      position: absolute; right: 90px; bottom: 60px;
+      font-family: 'Playfair Display', serif;
+      font-size: 260px; font-weight: 700;
+      color: rgba(255,255,255,0.03); line-height: 1;
+      pointer-events: none; user-select: none; z-index: 1;
+    }
+
+    /* page watermark */
+    .slide-pg {
+      position: absolute; bottom: 44px; right: 72px; z-index: 3;
+      font-size: 12px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,0.28);
+    }
+
+    .slide-label {
+      color: #555; font-size: 11px; font-family: monospace;
+      letter-spacing: .08em; text-transform: uppercase;
+      align-self: flex-start; margin-bottom: -16px;
+    }
+
+    /* ─── SLIDE 4 TELEMEDICINE ──────────────────────────────────── */
+    .tele-items { display: flex; flex-direction: column; gap: 28px; }
+    .tele-item {
+      display: flex; align-items: flex-start; gap: 24px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 18px; padding: 26px 30px;
+    }
+    .tele-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
+      border-radius: 14px;
+      background: rgba(93,217,176,0.15);
+      border: 1px solid rgba(93,217,176,0.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tele-icon svg { width: 24px; height: 24px; stroke: #5dd9b0; }
+    .tele-label { font-size: 19px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .tele-desc { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.62); line-height: 1.6; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 0 — COVER
+════════════════════════════════════════════════════════════ -->
+<div class="slide-label">▶ Слика 0 — Насловна</div>
+<div class="slide" id="slide-cover">
+  <div class="slide-bg" style="background-image:url('services/4.png')"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-inner">
+    <div class="card">
+      <div class="cover-org">ПЗУ Оаза Медика · Илинден</div>
+      <div class="cover-title">Услуги на<br>Оаза Медика</div>
+      <div class="cover-desc">Сеопфатна лекарска грижа — рутински прегледи, скрининзи, административна поддршка и далечински консултации. Сè под еден покрив.</div>
+      <div class="cover-pills">
+        <div class="pill"><div class="pill-dot"></div>Дијагностика</div>
+        <div class="pill"><div class="pill-dot"></div>Превенција</div>
+        <div class="pill"><div class="pill-dot"></div>Административни услуги</div>
+        <div class="pill"><div class="pill-dot"></div>Телемедицина</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-deco">04</div>
+  <div class="slide-pg">oazamedika.com</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 1 — ДИЈАГНОСТИКА
+════════════════════════════════════════════════════════════ -->
+<div class="slide-label">▶ Слика 1 — Дијагностика и терапија</div>
+<div class="slide" id="slide-1">
+  <div class="slide-bg" style="background-image:url('services/1.png')"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header-row">
+        <div class="section-num">1</div>
+        <div class="section-header-text">
+          <div class="section-title">Дијагностика и терапија</div>
+          <div class="section-sub">Прегледи, домашни посети и насочени скрининзи</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="items">
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="item-text">
+              <div class="item-label">Прегледи во ординација</div>
+              <div class="item-desc">Општ преглед, консултации и следење на здравствената состојба.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="item-text">
+              <div class="item-label">Домашни посети</div>
+              <div class="item-desc">Посета кога состојбата не дозволува доаѓање во ординација.</div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <div class="item-text">
+              <div class="item-label">Терапевтски услуги</div>
+              <div class="item-desc">Ампуларна терапија, преврзување рани, мали хируршки интервенции.</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mini-col-label">Насочени скрининзи</div>
+          <div class="mini-cards-col">
+            <div class="mini-card">
+              <div class="mini-card-title">Кардиоваскуларен</div>
+              <div class="mini-card-desc">ЕКГ, мерење тензија, аускултација, заситеност со О₂, BMI.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">Дијабетолошки</div>
+              <div class="mini-card-desc">Гликемија на гладно, обем на струк, едукација за исхрана.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">Невролошки и ОРЛ</div>
+              <div class="mini-card-desc">Рефлекси, сензибилитет, рамнотежа; отоскопија, преглед на грло.</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-card-title">Останати специјалистички</div>
+              <div class="mini-card-desc">Специјалисти кои ординираат директно во нашата установа.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-pg">oazamedika.com</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 2 — ПРЕВЕНЦИЈА
+════════════════════════════════════════════════════════════ -->
+<div class="slide-label">▶ Слика 2 — Превентивни услуги</div>
+<div class="slide" id="slide-2">
+  <div class="slide-bg" style="background-image:url('services/2.png')"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header-row">
+        <div class="section-num">2</div>
+        <div class="section-header-text">
+          <div class="section-title">Превентивни услуги</div>
+          <div class="section-sub">Рано откривање болести и систематски прегледи</div>
+        </div>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Рано откривање на кардиоваскуларни болести</div>
+            <div class="item-desc">Мерење на крвен притисок, ЕКГ и следење на ризик фактори.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Скрининг за дијабетес</div>
+            <div class="item-desc">Контрола на шеќер во крвта кај одредени возрасни групи.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Превенција на бубрежни заболувања</div>
+            <div class="item-desc">Анализа на урина и следење на функцијата на бубрезите.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Скрининг за преканцерозни состојби</div>
+            <div class="item-desc">Рано откривање на промени кои може да прогредираат кон малигна болест.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Систематски прегледи</div>
+            <div class="item-desc">За деца, ученици и одредени категории возрасни лица.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-pg">oazamedika.com</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 3 — АДМИНИСТРАТИВНИ
+════════════════════════════════════════════════════════════ -->
+<div class="slide-label">▶ Слика 3 — Административни услуги</div>
+<div class="slide" id="slide-3">
+  <div class="slide-bg" style="background-image:url('services/3.png')"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header-row">
+        <div class="section-num">3</div>
+        <div class="section-header-text">
+          <div class="section-title">Административни услуги</div>
+          <div class="section-sub">Рецепти, упати, боледувања, потврди и напредно закажување</div>
+        </div>
+      </div>
+      <div class="items">
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Е-рецепти</div>
+            <div class="item-desc">Препишување лекови од Листата на ФЗОМ — електронски рецепт.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Упати за специјалисти и лаборатории</div>
+            <div class="item-desc">Електронски упати преку системот „Мој Термин" за брзо закажување.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Напредна листа на чекање</div>
+            <div class="item-desc">Компјутерски систем за брзо фаќање на штотуку ослободени термини.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Боледувања</div>
+            <div class="item-desc">Привремена спреченост за работа до 15 дена; упатување на комисија за продолжување.</div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div class="item-text">
+            <div class="item-label">Потврди и извештаи</div>
+            <div class="item-desc">Лекарски потврди за отсуство од училиште/градинка и здравствени извештаи.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-pg">oazamedika.com</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SLIDE 4 — ТЕЛЕМЕДИЦИНА
+════════════════════════════════════════════════════════════ -->
+<div class="slide-label">▶ Слика 4 — Телемедицина</div>
+<div class="slide" id="slide-4">
+  <div class="slide-bg" style="background-image:url('services/4.png')"></div>
+  <div class="slide-overlay"></div>
+  <div class="slide-inner">
+    <div class="card">
+      <div class="section-header-row">
+        <div class="section-num">4</div>
+        <div class="section-header-text">
+          <div class="section-title">Телемедицина</div>
+          <div class="section-sub">Стручна медицинска поддршка без физичко присуство</div>
+        </div>
+      </div>
+      <div class="tele-items">
+        <div class="tele-item">
+          <div class="tele-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <div>
+            <div class="tele-label">Видео-консултации</div>
+            <div class="tele-desc">Разговор за симптоми, следење на веќе пропишана терапија и толкување на лабораториски резултати — без потреба да доаѓате во ординација.</div>
+          </div>
+        </div>
+        <div class="tele-item">
+          <div class="tele-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="tele-label">Е-рецепти и е-упати</div>
+            <div class="tele-desc">Продолжување на редовна терапија за хронични дијагнози по извршена онлајн консултација.</div>
+          </div>
+        </div>
+        <div class="tele-item">
+          <div class="tele-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div>
+            <div class="tele-label">Мониторинг на витални параметри</div>
+            <div class="tele-desc">Пациентот мери притисок или шеќер дома и ги соопштува податоците, кои се внесуваат во електронското досие.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-pg">oazamedika.com</div>
+</div>
+
+</body>
+</html>
