@@ -20,10 +20,13 @@
       background: #111;
       color: var(--white);
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
+      overflow-x: auto;
+      overflow-y: hidden;
+      min-height: 100vh;
+      padding: 32px;
       gap: 32px;
-      padding: 32px 16px;
     }
 
     body::before {
@@ -39,10 +42,8 @@
 
     /* ─── SLIDE FRAME: 1080×1920 (9:16 portrait, rotate 90° in post → 16:9) ── */
     .slide {
-      position: relative;
-      width: 1080px;
-      height: 1920px;
-      overflow: hidden;
+      width: 1920px;   /* was: 1080px */
+      height: 1080px;  /* was: 1920px */
       flex-shrink: 0;
     }
 
