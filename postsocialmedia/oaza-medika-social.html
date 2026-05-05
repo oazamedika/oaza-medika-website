@@ -15,37 +15,35 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Lato', sans-serif;
-      background: #111;
-      color: var(--white);
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      overflow-x: auto;
-      overflow-y: hidden;
-      min-height: 100vh;
-      padding: 32px;
-      gap: 32px;
-    }
-
-    body::before {
-      content: 'Направете скриншот на секоја графика одделно | 1080 × 1920 px | 9:16 (ротирајте во пост за 16:9)';
-      display: block;
-      color: #888;
-      font-size: 13px;
-      font-family: monospace;
-      text-align: center;
-      margin-bottom: 8px;
-      letter-spacing: .05em;
-    }
-
-    /* ─── SLIDE FRAME: 1080×1920 (9:16 portrait, rotate 90° in post → 16:9) ── */
-    .slide {
-      width: 1920px;   /* was: 1080px */
-      height: 1080px;  /* was: 1920px */
-      flex-shrink: 0;
-    }
+body {
+  font-family: 'Lato', sans-serif;
+  background: #111;
+  color: var(--white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-height: 100vh;
+  padding: 32px;
+  gap: 32px;
+}
+body::before {
+  content: 'Направете скриншот на секоја графика одделно | 1080 × 1920 px | 9:16 (ротирајте во пост за 16:9)';
+  display: block;
+  color: #888;
+  font-size: 13px;
+  font-family: monospace;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: .05em;
+}
+/* ─── SLIDE FRAME: 1080×1920 (9:16 portrait, rotate 90° in post → 16:9) ── */
+.slide {
+  width: 1080px;
+  height: 1920px;
+  flex-shrink: 0;
+}
 
     .slide-bg {
       position: absolute;
