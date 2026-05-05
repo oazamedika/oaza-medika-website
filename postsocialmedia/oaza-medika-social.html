@@ -23,7 +23,7 @@ body {
   flex-direction: row;
   align-items: center;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   height: 1920px;
   padding: 200px 452px;
   gap: 650px;
@@ -44,6 +44,7 @@ body::before {
   width: 1080px;
   height: 1920px;
   flex-shrink: 0;
+  overflow: visible;
   transform: rotate(-90deg);
   transform-origin: center center;
 }
