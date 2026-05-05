@@ -24,8 +24,8 @@ body {
   align-items: center;
   overflow-x: auto;
   overflow-y: hidden;
-  min-height: 100vh;
-  padding: 32px;
+  height: 1080px;
+  padding: 0 32px;
   gap: 32px;
 }
 body::before {
@@ -44,6 +44,9 @@ body::before {
   width: 1080px;
   height: 1920px;
   flex-shrink: 0;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+  margin: 420px 0;  /* compensate for the rotated overflow */
 }
 
     .slide-bg {
