@@ -88,7 +88,7 @@
 
     /* Social media */
     '<div class="om-footer-social">' +
-    '<span class="om-footer-social-label">Следете не</span>' +
+    '<span class="om-footer-social-label">Следете нÉ</span>' +
     '<div class="om-footer-social-buttons">' +
     '<a href="https://www.facebook.com/oazamedika" target="_blank" rel="noopener noreferrer" class="om-footer-social-btn fb" aria-label="Facebook">' +
     fbIcon + 'Facebook' +
