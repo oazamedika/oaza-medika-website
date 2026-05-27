@@ -1,103 +1,201 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Оаза Медика — ID Картички</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;600;700&display=swap" rel="stylesheet" />
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;600;700&display=swap');
-* { box-sizing: border-box; margin: 0; padding: 0; }
-.a4 {
-  width: 210mm; min-height: 297mm; background: white;
-  margin: 0 auto; padding: 20mm;
-  display: flex; flex-direction: column; gap: 10mm;
-}
-.card {
-  width: 90mm; height: 55mm;
-  border: 0.2px solid #d4d4d4;
-  border-radius: 0;
-  display: flex; overflow: hidden;
-  background: white; flex-shrink: 0;
-}
-.card-photo {
-  width: 36mm; height: 55mm; flex-shrink: 0;
-  background: #e4f2f2;
-  display: flex; align-items: center; justify-content: center;
-}
-.photo-placeholder {
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 5px; width: 100%; height: 100%;
-}
-.photo-placeholder svg { opacity: 0.3; }
-.photo-placeholder span {
-  font-family: 'Lato', sans-serif;
-  font-size: 5px; color: #1d5e5e; opacity: 0.55;
-  letter-spacing: 0.06em; text-align: center; padding: 0 5px;
-  font-weight: 600;
-}
-.card-divider { width: 0.2px; background: #d4d4d4; flex-shrink: 0; }
-.card-info {
-  flex: 1; padding: 4mm 4.5mm 3.5mm 4mm;
-  display: flex; flex-direction: column;
-  justify-content: space-between;
-}
-.card-logo-area {
-  height: 11mm;
-  border-bottom: 0.2px solid #e0e0e0;
-  padding-bottom: 2mm;
-  display: flex; align-items: center;
-}
-.logo-placeholder-box {
-  height: 8mm; width: 28mm;
-  border: 0.5px dashed #2a7a7a;
-  display: flex; align-items: center; justify-content: center;
-}
-.logo-placeholder-box span {
-  font-family: 'Lato', sans-serif;
-  font-size: 4.8px; color: #2a7a7a; opacity: 0.55;
-  letter-spacing: 0.05em; text-align: center;
-  font-weight: 600;
-}
-.card-body {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: flex-start; justify-content: center;
-  gap: 2.5mm; padding-top: 2mm;
-}
-.card-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 11.5px; font-weight: 700;
-  color: #1c2a22; line-height: 1.2;
-}
-.card-role {
-  font-family: 'Lato', sans-serif;
-  font-size: 6px; font-weight: 700;
-  color: #2a7a7a; letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-.print-hint {
-  font-family: 'Lato', sans-serif;
-  font-size: 11px; color: #bbb; text-align: center;
-  margin-top: 6mm; padding-top: 5mm;
-  border-top: 0.2px solid #efefef;
-}
-@media print {
-  body { background: white; }
-  .a4 { margin: 0; padding: 20mm; width: 210mm; min-height: 297mm; }
-  .print-hint { display: none; }
-}
-</style>
+  /* ═══════════════════════════════════════
+     EDIT THESE URLS — then open in browser
+     and Ctrl+P / ⌘P to print
+  ═══════════════════════════════════════ */
 
+  /* ── Card 1 ── */
+  #photo-1  { content: url('REPLACE_PHOTO_1'); }  /* д-р Гордана Стевчева    */
+  #photo-2  { content: url('REPLACE_PHOTO_2'); }  /* м.с. Елеонора Пешовска  */
+  #photo-3  { content: url('REPLACE_PHOTO_3'); }  /* д-р Димитар Стевчев     */
+
+  /* ═══════════════════════════════════════ */
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f0f0f0;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  .a4 {
+    width: 210mm;
+    min-height: 297mm;
+    background: white;
+    padding: 20mm;
+    display: flex;
+    flex-direction: column;
+    gap: 10mm;
+  }
+
+  /* ── Single card ── */
+  .card {
+    width: 90mm;
+    height: 55mm;
+    border: 0.2px solid #d8d8d8;
+    display: flex;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ── Photo column ── */
+  .card-photo {
+    width: 36mm;
+    height: 55mm;
+    flex-shrink: 0;
+    background: #e4f2f2;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  /* Fallback when image fails / placeholder */
+  .card-photo .placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .card-photo .placeholder span {
+    font-size: 5px;
+    color: #1d5e5e;
+    opacity: 0.5;
+    letter-spacing: 0.06em;
+    text-align: center;
+    font-weight: 600;
+    padding: 0 4px;
+  }
+
+  /* ── Divider ── */
+  .card-divider {
+    width: 0.2px;
+    background: #d8d8d8;
+    flex-shrink: 0;
+  }
+
+  /* ── Info column ── */
+  .card-info {
+    flex: 1;
+    padding: 4mm 4.5mm 3.5mm 4mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Logo strip */
+  .card-logo {
+    height: 11mm;
+    border-bottom: 0.2px solid #e4e4e4;
+    padding-bottom: 2mm;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .card-logo img {
+    height: 8mm;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Name + role */
+  .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2mm;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1c2a22;
+    line-height: 1.2;
+  }
+
+  .card-role {
+    font-family: 'Lato', sans-serif;
+    font-size: 6px;
+    font-weight: 700;
+    color: #2a7a7a;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── Print hint (hidden on print) ── */
+  .print-hint {
+    font-size: 11px;
+    color: #bbb;
+    text-align: center;
+    margin-top: 6mm;
+    padding-top: 5mm;
+    border-top: 0.2px solid #efefef;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .a4  { margin: 0; padding: 20mm; box-shadow: none; }
+    .print-hint { display: none; }
+  }
+</style>
+</head>
+<body>
 <div class="a4">
 
+  <!-- ══════════════════════════════════════
+       CARD 1 — д-р Гордана Стевчева
+  ══════════════════════════════════════ -->
   <div class="card">
     <div class="card-photo">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <img
+        src="https://oazamedika.github.io/oaza-medika-website/doctor-a-1.jpg"
+        alt="д-р Гордана Стевчева"
+        onerror="this.style.display='none'"
+      />
+      <div class="placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="8" r="4" stroke="#1d5e5e" stroke-width="1.2"/>
           <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#1d5e5e" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
-        <span>REPLACE WITH<br>PHOTO URL</span>
+        <span>REPLACE_PHOTO_1</span>
       </div>
     </div>
     <div class="card-divider"></div>
     <div class="card-info">
-      <div class="card-logo-area">
-        <div class="logo-placeholder-box"><span>https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png</span></div>
+      <div class="card-logo">
+        <img
+          src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png"
+          alt="Оаза Медика"
+          onerror="this.style.display='none'"
+        />
       </div>
       <div class="card-body">
         <div class="card-name">д-р Гордана Стевчева</div>
@@ -106,20 +204,32 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       CARD 2 — м.с. Елеонора Пешовска Лазаревска
+  ══════════════════════════════════════ -->
   <div class="card">
     <div class="card-photo">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <img
+        src="https://oazamedika.github.io/oaza-medika-website/sestra-1.jpg"
+        alt="м.с. Елеонора Пешовска Лазаревска"
+        onerror="this.style.display='none'"
+      />
+      <div class="placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="8" r="4" stroke="#1d5e5e" stroke-width="1.2"/>
           <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#1d5e5e" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
-        <span>REPLACE WITH<br>PHOTO URL</span>
+        <span>REPLACE_PHOTO_2</span>
       </div>
     </div>
     <div class="card-divider"></div>
     <div class="card-info">
-      <div class="card-logo-area">
-        <div class="logo-placeholder-box"><span>https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png URL</span></div>
+      <div class="card-logo">
+        <img
+          src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png"
+          alt="Оаза Медика"
+          onerror="this.style.display='none'"
+        />
       </div>
       <div class="card-body">
         <div class="card-name">м.с. Елеонора Пешовска Лазаревска</div>
@@ -128,20 +238,32 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════
+       CARD 3 — д-р Димитар Стевчев
+  ══════════════════════════════════════ -->
   <div class="card">
     <div class="card-photo">
-      <div class="photo-placeholder">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <img
+        src="REPLACE_PHOTO_3"
+        alt="д-р Димитар Стевчев"
+        onerror="this.style.display='none'"
+      />
+      <div class="placeholder">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="8" r="4" stroke="#1d5e5e" stroke-width="1.2"/>
           <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#1d5e5e" stroke-width="1.2" stroke-linecap="round"/>
         </svg>
-        <span>REPLACE WITH<br>PHOTO URL</span>
+        <span>REPLACE_PHOTO_3</span>
       </div>
     </div>
     <div class="card-divider"></div>
     <div class="card-info">
-      <div class="card-logo-area">
-        <div class="logo-placeholder-box"><span>https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png</span></div>
+      <div class="card-logo">
+        <img
+          src="https://oazamedika.github.io/oaza-medika-website/logo_firma_dolgnaziv.png"
+          alt="Оаза Медика"
+          onerror="this.style.display='none'"
+        />
       </div>
       <div class="card-body">
         <div class="card-name">д-р Димитар Стевчев</div>
@@ -150,5 +272,8 @@
     </div>
   </div>
 
-  <p class="print-hint">Ctrl+P / ⌘P · A4 · Margins: None · Enable background graphics</p>
+  <p class="print-hint">Ctrl+P / ⌘P · Paper: A4 · Margins: None · ☑ Background graphics</p>
+
 </div>
+</body>
+</html>
