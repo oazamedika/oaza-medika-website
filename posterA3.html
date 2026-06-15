@@ -42,6 +42,27 @@ body {
   text-transform: uppercase;
   align-self: flex-start;
 }
+
+/* ═══════════════════════════
+   Heights:
+   topbar   130
+   photos   360
+   slogan   160
+   services 253
+   contacts 110
+   footer    80
+   ──────────
+   total   1093  ← need 1123
+   gap: compensate in services → 283
+   final:
+   topbar   130
+   photos   360
+   slogan   160
+   services 283
+   contacts 110
+   footer    80
+   total   1123
+═══════════════════════════ */
 .poster {
   width: 794px;
   height: 1123px;
@@ -52,391 +73,235 @@ body {
   overflow: hidden;
 }
 
-/* ── 1. TOP BAR  70px ── */
+/* ── 1. TOP BAR  130px ── */
 .top-bar {
-  height: 70px;
-  flex: 0 0 70px;
+  height: 130px;
+  flex: 0 0 130px;
   background: var(--g-deep);
   display: flex;
   align-items: stretch;
   justify-content: space-between;
 }
-/* White logo panel on the left */
 .tb-logo {
   background: #fff;
-  padding: 8px 28px;
+  padding: 12px 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 220px;
+  min-width: 320px;
 }
 .tb-logo img {
-  height: 46px;
+  height: 96px;
   width: auto;
   object-fit: contain;
   display: block;
 }
-/* Fallback text logo when image is missing */
+/* Fallback wordmark */
 .tb-logo-text {
-  display: flex;
+  display: none;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
 .tb-logo-icon {
-  width: 42px;
-  height: 42px;
+  width: 72px; height: 72px;
   background: var(--g-mid);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .tb-logo-icon svg {
-  width: 22px; height: 22px;
+  width: 36px; height: 36px;
   fill: none; stroke: #fff; stroke-width: 2;
   stroke-linecap: round; stroke-linejoin: round;
 }
 .tb-logo-wordmark {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+  display: flex; flex-direction: column; line-height: 1.15;
 }
 .tb-logo-wordmark span:first-child {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -.01em;
+  font-size: 30px; font-weight: 700; color: var(--ink); letter-spacing: -.02em;
 }
 .tb-logo-wordmark span:last-child {
-  font-size: 9px;
-  font-weight: 500;
-  color: var(--ink-soft);
-  letter-spacing: .06em;
-  text-transform: uppercase;
+  font-size: 11px; font-weight: 500; color: var(--ink-soft); letter-spacing: .08em; text-transform: uppercase;
 }
 .tb-right {
   text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-right: 32px;
+  padding-right: 36px;
 }
 .tb-eyebrow {
   display: block;
-  font-size: 7px;
-  font-weight: 500;
-  letter-spacing: .22em;
-  text-transform: uppercase;
+  font-size: 8px; font-weight: 500;
+  letter-spacing: .22em; text-transform: uppercase;
   color: rgba(255,255,255,.45);
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 .tb-name {
   display: block;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
   color: rgba(255,255,255,.85);
 }
 
-/* ── 2. PHOTOS  380px ── */
+/* ── 2. PHOTOS  360px ── */
 .photo-block {
-  height: 380px;
-  flex: 0 0 380px;
+  height: 360px;
+  flex: 0 0 360px;
   position: relative;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
   gap: 3px;
   background: var(--g-deep);
 }
-.photo-block .pc {
-  overflow: hidden;
-  position: relative;
-}
-.photo-block .pc img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.photo-block .pc { overflow: hidden; position: relative; }
+.photo-block .pc img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .photo-block .pc.p1 { background: #1a4d3a; }
 .photo-block .pc.p2 { background: #236b52; }
 .photo-block .pc.p3 { background: #2f8a6a; }
 
 .location-chip {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  position: absolute; bottom: 16px; right: 16px;
+  display: flex; align-items: center; gap: 10px;
   background: rgba(255,255,255,.16);
   backdrop-filter: blur(14px) saturate(1.6);
   -webkit-backdrop-filter: blur(14px) saturate(1.6);
   border: 1px solid rgba(255,255,255,.34);
-  border-radius: 12px;
-  padding: 10px 14px 10px 10px;
-  box-shadow: 0 6px 28px rgba(0,0,0,.30);
-  z-index: 10;
+  border-radius: 12px; padding: 10px 14px 10px 10px;
+  box-shadow: 0 6px 28px rgba(0,0,0,.30); z-index: 10;
 }
 .lc-qr {
-  width: 64px; height: 64px;
-  background: #fff;
-  border-radius: 7px;
-  padding: 3px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  width: 64px; height: 64px; background: #fff;
+  border-radius: 7px; padding: 3px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .lc-qr svg { width: 58px; height: 58px; display: block; }
 .lc-label { display: flex; flex-direction: column; gap: 2px; }
-.lc-eyebrow {
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-}
-.lc-main {
-  font-size: 12px;
-  font-weight: 600;
-  color: #fff;
-  line-height: 1.25;
-}
-.lc-sub {
-  font-size: 9px;
-  color: rgba(255,255,255,.55);
-  font-weight: 300;
-}
+.lc-eyebrow { font-size: 7px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.lc-main { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.25; }
+.lc-sub { font-size: 9px; color: rgba(255,255,255,.55); font-weight: 300; }
 
-/* ── 3. SLOGAN  183px ── */
+/* ── 3. SLOGAN  160px ── */
 .slogan-block {
-  height: 183px;
-  flex: 0 0 183px;
+  height: 160px;
+  flex: 0 0 160px;
   background: #fff;
   border-top: 3px solid var(--g-bright);
-  padding: 18px 36px 16px;
+  padding: 24px 48px 20px;
   display: flex;
-  align-items: center;
-  gap: 28px;
+  flex-direction: column;
+  justify-content: center;
 }
-.slogan-left { flex: 1; min-width: 0; }
 .slogan-kicker {
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--g-bright);
-  margin-bottom: 8px;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: .28em; text-transform: uppercase;
+  color: var(--g-bright); margin-bottom: 10px;
 }
-/* FIXED: reduced font size and allowed wrapping to prevent overflow */
 .slogan-headline {
   font-family: 'Playfair Display', serif;
-  font-size: 52px;
-  font-weight: 900;
-  color: var(--ink);
-  line-height: .95;
+  font-size: 62px; font-weight: 900;
+  color: var(--ink); line-height: .92;
   letter-spacing: -.03em;
   white-space: nowrap;
 }
 .slogan-headline em {
-  font-style: italic;
-  font-weight: 400;
-  color: var(--g-mid);
+  font-style: italic; font-weight: 400; color: var(--g-mid);
 }
 .slogan-rule {
-  width: 48px;
-  height: 3px;
+  width: 56px; height: 3px;
   background: linear-gradient(90deg, var(--g-bright), transparent);
-  border-radius: 2px;
-  margin-top: 14px;
-}
-.slogan-right {
-  flex: 0 0 210px;
-  font-size: 12.5px;
-  font-weight: 300;
-  color: var(--ink-mid);
-  line-height: 1.68;
-  border-left: 1.5px solid var(--g-border);
-  padding-left: 22px;
-}
-.slogan-right strong {
-  color: var(--g-mid);
-  font-weight: 600;
+  border-radius: 2px; margin-top: 16px;
 }
 
-/* ── 4. SERVICES  300px ── */
+/* ── 4. SERVICES  283px ── */
 .services-block {
-  height: 300px;
-  flex: 0 0 300px;
+  height: 283px;
+  flex: 0 0 283px;
   background: #f7fcfa;
   border-top: 1.5px solid var(--g-border);
-  padding: 20px 36px 20px;
+  padding: 16px 36px 16px;
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 .svc-section-label {
-  font-size: 7.5px;
-  font-weight: 700;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 12px;
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 10px;
 }
 .svc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  flex: 1;
+  gap: 7px; flex: 1;
 }
 .svc-card {
-  border-radius: 9px;
+  border-radius: 8px;
   border: 1.5px solid transparent;
-  padding: 12px 14px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  padding: 10px 12px;
+  display: flex; align-items: flex-start; gap: 10px;
 }
 .svc-card.cg { background: var(--g-pale);   border-color: var(--g-border); }
 .svc-card.ca { background: var(--amber-bg); border-color: var(--amber-bd); }
 .svc-card.cs { background: var(--sky-bg);   border-color: var(--sky-bd); }
 .svc-card.cr { background: var(--rose-bg);  border-color: var(--rose-bd); }
 .svc-icon {
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  width: 30px; height: 30px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
 .svc-card.cg .svc-icon { background: var(--g-mid); }
 .svc-card.ca .svc-icon { background: var(--amber); }
 .svc-card.cs .svc-icon { background: var(--sky); }
 .svc-card.cr .svc-icon { background: var(--rose); }
-.svc-icon svg {
-  width: 16px; height: 16px;
-  fill: none; stroke: #fff; stroke-width: 2;
-  stroke-linecap: round; stroke-linejoin: round;
-}
-.svc-text h4 {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 3px;
-  line-height: 1.25;
-}
-.svc-text p {
-  font-size: 10.5px;
-  color: var(--ink-mid);
-  font-weight: 300;
-  line-height: 1.52;
-}
-.chip-row {
-  display: flex; gap: 5px; flex-wrap: wrap; margin-top: 4px;
-}
+.svc-icon svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.svc-text h4 { font-size: 11.5px; font-weight: 600; color: var(--ink); margin-bottom: 2px; line-height: 1.2; }
+.svc-text p { font-size: 10px; color: var(--ink-mid); font-weight: 300; line-height: 1.48; }
+.chip-row { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
 .chip {
-  font-size: 8.5px; font-weight: 600;
-  color: var(--rose);
-  background: #fff;
-  border: 1px solid var(--rose-bd);
-  border-radius: 20px;
-  padding: 2px 8px;
+  font-size: 8px; font-weight: 600; color: var(--rose);
+  background: #fff; border: 1px solid var(--rose-bd);
+  border-radius: 20px; padding: 2px 7px;
 }
 
 /* ── 5. CONTACTS  110px ── */
 .contacts-block {
-  height: 110px;
-  flex: 0 0 110px;
+  height: 110px; flex: 0 0 110px;
   background: var(--g-deep);
   border-top: 3px solid var(--g-bright);
   padding: 14px 36px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  align-items: center;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 8px; align-items: center;
 }
 .ct-pill {
-  display: flex;
-  align-items: center;
-  gap: 9px;
+  display: flex; align-items: center; gap: 9px;
   background: rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.14);
-  border-radius: 9px;
-  padding: 9px 12px;
-  height: 62px;
+  border-radius: 9px; padding: 9px 12px; height: 62px;
 }
 .ct-icon {
-  width: 30px; height: 30px;
-  border-radius: 50%;
+  width: 30px; height: 30px; border-radius: 50%;
   background: rgba(255,255,255,.13);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
-.ct-icon svg {
-  width: 12px; height: 12px;
-  fill: none; stroke: rgba(255,255,255,.82); stroke-width: 2;
-}
-.ct-icon.fb {
-  font-size: 17px; font-weight: 700;
-  color: rgba(255,255,255,.82);
-  line-height: 1;
-}
-.ct-label {
-  display: block;
-  font-size: 7px; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(255,255,255,.38);
-  margin-bottom: 2px;
-}
-.ct-value {
-  display: block;
-  font-size: 11.5px; font-weight: 600;
-  color: #fff;
-  line-height: 1.2;
-}
+.ct-icon svg { width: 12px; height: 12px; fill: none; stroke: rgba(255,255,255,.82); stroke-width: 2; }
+.ct-icon.fb { font-size: 17px; font-weight: 700; color: rgba(255,255,255,.82); line-height: 1; }
+.ct-label { display: block; font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.38); margin-bottom: 2px; }
+.ct-value { display: block; font-size: 11.5px; font-weight: 600; color: #fff; line-height: 1.2; }
 .ct-value.sm { font-size: 9px; }
 
-/* ── 6. FOOTER  80px (70+10 to compensate heights) ── */
+/* ── 6. FOOTER  80px ── */
 .footer-bar {
-  height: 80px;
-  flex: 0 0 80px;
+  height: 80px; flex: 0 0 80px;
   background: #0d2a1d;
   border-top: 1px solid rgba(255,255,255,.08);
   padding: 0 36px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex; align-items: center; gap: 20px;
 }
-.ft-sklop-label {
-  font-size: 7px; font-weight: 700;
-  letter-spacing: .22em; text-transform: uppercase;
-  color: rgba(255,255,255,.28);
-  white-space: nowrap;
-}
-.ft-div {
-  width: 1px; height: 22px;
-  background: rgba(255,255,255,.1);
-  flex-shrink: 0;
-}
-.footer-bar img {
-  height: 36px; width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
-  opacity: .4;
-  display: block;
-}
-/* fallback text for footer logo */
-.ft-logo-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(255,255,255,.4);
-  letter-spacing: -.01em;
-}
+.ft-sklop-label { font-size: 7px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.28); white-space: nowrap; }
+.ft-div { width: 1px; height: 22px; background: rgba(255,255,255,.1); flex-shrink: 0; }
+.footer-bar img { height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: .4; display: block; }
+.ft-logo-text { font-size: 18px; font-weight: 700; color: rgba(255,255,255,.4); letter-spacing: -.01em; display: none; }
 .ft-spacer { flex: 1; }
-.ft-url {
-  font-size: 10px; font-weight: 300;
-  color: rgba(255,255,255,.32);
-  letter-spacing: .04em;
-}
+.ft-url { font-size: 10px; font-weight: 300; color: rgba(255,255,255,.32); letter-spacing: .04em; }
+
 @media print {
   body { background: none; padding: 0; }
   .sheet-label { display: none; }
@@ -451,14 +316,12 @@ body {
 
 <div class="poster">
 
-  <!-- 1. TOP BAR — 70px -->
+  <!-- 1. TOP BAR — 130px -->
   <div class="top-bar">
-    <!-- White logo panel -->
     <div class="tb-logo">
       <img src="logo_firma_kratoknaziv.png" alt="ПЗУ Оаза Медика"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <!-- Fallback if image missing -->
-      <div class="tb-logo-text" style="display:none">
+      <div class="tb-logo-text">
         <div class="tb-logo-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
         </div>
@@ -474,17 +337,11 @@ body {
     </div>
   </div>
 
-  <!-- 2. PHOTOS — 380px -->
+  <!-- 2. PHOTOS — 360px -->
   <div class="photo-block">
-    <div class="pc p1">
-      <img src="flyer1.jpg" alt="Ординација" onerror="this.style.display='none'">
-    </div>
-    <div class="pc p2">
-      <img src="flyer2.jpg" alt="" onerror="this.style.display='none'">
-    </div>
-    <div class="pc p3">
-      <img src="flyer3.jpg" alt="" onerror="this.style.display='none'">
-    </div>
+    <div class="pc p1"><img src="flyer1.jpg" alt="Ординација" onerror="this.style.display='none'"></div>
+    <div class="pc p2"><img src="flyer2.jpg" alt="" onerror="this.style.display='none'"></div>
+    <div class="pc p3"><img src="flyer3.jpg" alt="" onerror="this.style.display='none'"></div>
     <div class="location-chip">
       <div class="lc-qr">
         <svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 29 29">
@@ -516,19 +373,14 @@ body {
     </div>
   </div>
 
-  <!-- 3. SLOGAN — 183px -->
+  <!-- 3. SLOGAN — 160px -->
   <div class="slogan-block">
-    <div class="slogan-left">
-      <div class="slogan-kicker">Вашето здравје, наша приоритет</div>
-      <div class="slogan-headline">Одберете <em>матичен лекар</em></div>
-      <div class="slogan-rule"></div>
-    </div>
-    <div class="slogan-right">
-      Со избор на <strong>ПЗУ Оаза Медика</strong> добивате посветен тим кој ги следи вашите здравствени потреби — брзо, ефикасно и без непотребно чекање. Сè на едно место: преглед, рецепт, упат, советување.
-    </div>
+    <div class="slogan-kicker">Вашето здравје, наша приоритет</div>
+    <div class="slogan-headline">Одберете <em>матичен лекар</em></div>
+    <div class="slogan-rule"></div>
   </div>
 
-  <!-- 4. SERVICES — 300px -->
+  <!-- 4. SERVICES — 283px -->
   <div class="services-block">
     <div class="svc-section-label">Услуги кои ги нудиме</div>
     <div class="svc-grid">
@@ -624,7 +476,7 @@ body {
     <div class="ft-div"></div>
     <img src="oazadom.png" alt="Оаза Дом"
          onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-    <span class="ft-logo-text" style="display:none">Оаза Дом</span>
+    <span class="ft-logo-text">Оаза Дом</span>
     <div class="ft-spacer"></div>
     <span class="ft-url">www.oazamedika.com</span>
   </div>
