@@ -7,9 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --teal: #2a7a7a;
       --white: #ffffff;
-      --text-dark: #1c2a22;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +34,7 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 50px 30px 40px 30px;
+      padding: 50px 30px 20px 30px;
     }
 
     /* Светла, замаглена позадина без затемнување */
@@ -63,7 +61,7 @@
       justify-content: space-between;
     }
 
-    /* Ново лого направено во чиста бела боја за подобар контраст */
+    /* Лого на ординацијата */
     .logo-area {
       text-align: center;
       width: 100%;
@@ -98,7 +96,7 @@
       justify-content: center;
     }
 
-    /* Зголемена слика на артиклот */
+    /* Зголемена слика */
     .card-image {
       width: 85%;
       max-width: 260px;
@@ -139,42 +137,27 @@
       padding: 0 5px;
     }
 
-    /* Дно: Линк Индикатор - Изваден целосно надвор под кутијата */
+    /* Дно: Само стрелка, крената за ~20% нагоре со помош на 20vh маргина */
     .link-placeholder {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 20px;
+      margin-top: 25px;
+      margin-bottom: 20vh; /* Го крева елементот нагоре од самото дно */
     }
 
     .arrow-indicator {
       color: var(--white);
       animation: bounce 1.5s infinite;
-      margin-bottom: 4px;
       display: flex;
       justify-content: center;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
-    }
-
-    .sticker-area {
-      background: var(--white);
-      padding: 14px 35px;
-      border-radius: 50px;
-      color: var(--teal);
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.4));
     }
 
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-8px); }
     }
   </style>
 </head>
@@ -185,14 +168,11 @@
 
     <div class="story-content">
       
-      <!-- Новото кратко лого (Бела верзија со висок контраст) -->
       <div class="logo-area">
         <img src="https://raw.githubusercontent.com/oazamedika/oaza-medika-website/refs/heads/main/logo_firma_kratoknaziv.png" alt="Оаза Медика" class="logo-img">
       </div>
 
-      <!-- Централна Стаклена Картичка -->
       <div class="main-card">
-        <!-- Зголемена слика -->
         <img src="https://www.oazamedika.com/blog/pictures-blog/lab.jpg" alt="Лабораторија" class="card-image">
 
         <span class="tag">Превентивна Медицина</span>
@@ -202,14 +182,9 @@
         </p>
       </div>
 
-      <!-- Стикер за Линк - Поставен ДИРЕКТНО под стаклениот елемент -->
       <div class="link-placeholder">
         <div class="arrow-indicator">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="sticker-area">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          Отвори Напис
+          <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
       </div>
 
