@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оаза Медика – Известување</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green:        #2f8a6a;
+  --green-mid:    #3dab83;
+  --green-light:  #5cc39d;
+  --green-pale:   #eaf6f0;
+  --green-border: #b4d9ca;
+  --teal-dark:    #2f7a5e;
+  --amber:        #d4931a;
+  --amber-pale:   #fdf3dc;
+  --text-dark:    #223c32;
+  --text-mid:     #3f6656;
+  --text-light:   #7fa393;
+}
+
+body {
+  background: #d8d8d8;
+  font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh; padding: 32px;
+}
+
+.cube {
+  width: 620px;
+  background: #fff;
+  border-radius: 14px;
+  outline: 1px solid #ccc;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(20, 50, 40, .18);
+}
+
+/* Top band */
+.top {
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--green-mid) 100%);
+  padding: 26px 30px 22px;
+  position: relative; overflow: hidden;
+  flex-shrink: 0;
+}
+.top::after { content:''; position:absolute; bottom:-50px; right:-50px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,.07); }
+.top-eyebrow {
+  font-size: 10px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase;
+  color: rgba(255,255,255,.65); margin-bottom: 6px; position: relative;
+}
+.top h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -.02em; line-height: 1;
+  position: relative;
+}
+.top .rule { width: 46px; height: 3px; background: linear-gradient(90deg, #9dd9be, transparent); border-radius: 2px; margin-top: 12px; position: relative; }
+
+/* Body */
+.body {
+  padding: 26px 30px; display: flex; flex-direction: column; gap: 16px;
+}
+
+.lead {
+  font-size: 21px; line-height: 1.55; color: var(--text-dark); font-weight: 400;
+}
+.lead strong { color: var(--green); font-weight: 700; }
+
+.pillbox {
+  background: var(--green-pale); border-left: 3px solid var(--green);
+  border-radius: 0 8px 8px 0; padding: 14px 18px;
+  font-size: 18px; line-height: 1.55; color: var(--text-mid); font-weight: 400;
+}
+.pillbox strong { color: var(--teal-dark); font-weight: 600; }
+
+.thanks {
+  font-size: 14px; color: var(--text-light); font-style: italic; line-height: 1.5;
+}
+
+/* Image strip */
+.imgstrip {
+  display: flex; gap: 8px; flex-shrink: 0;
+}
+.imgstrip img {
+  flex: 1; width: 0; aspect-ratio: 1 / 1; height: auto; object-fit: cover;
+  border-radius: 10px; display: block;
+  border: 1px solid var(--green-border);
+}
+
+/* Contact row (inside body) */
+.contactrow {
+  display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;
+}
+.chip {
+  display: flex; align-items: center; gap: 7px;
+  border-radius: 22px; padding: 8px 16px; font-size: 15px; font-weight: 600;
+}
+.chip svg { width: 14px; height: 14px; fill: none; stroke-width: 2; flex-shrink: 0; }
+.chip-light {
+  background: var(--green-pale) !important;
+  border: 1px solid var(--green-border) !important;
+  color: var(--text-dark) !important;
+}
+.chip-light svg { stroke: var(--green) !important; }
+
+/* Footer */
+.foot {
+  flex-shrink: 0; background: var(--teal-dark);
+  padding: 22px 32px; display: flex; align-items: center; justify-content: center;
+}
+.foot-text {
+  font-size: 15px; line-height: 1.6; color: rgba(255,255,255,.92); font-weight: 400;
+  text-align: center; max-width: 460px;
+}
+.foot-text strong { color: #9dd9be; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="cube">
+
+  <div class="top">
+    <div class="top-eyebrow">ПЗУ Оаза Медика · Општина Илинден · Скопје · Македонија</div>
+    <h1>Известување</h1>
+    <div class="rule"></div>
+  </div>
+
+  <div class="body">
+    <p class="lead">
+      <strong>ПЗУ Оаза Медика</strong> склучи договор со Фондот за здравствено осигурување на Македонија и веќе запишува <strong>матични пациенти</strong>!
+    </p>
+
+    <div class="contactrow">
+      <div class="chip chip-light">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        073 860 480
+      </div>
+      <div class="chip chip-light">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        pacienti@oazamedika.com
+      </div>
+      <div class="chip chip-light">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        www.oazamedika.com
+      </div>
+    </div>
+
+    <p class="thanks">Ве очекуваме за избор на матичен лекар. Вашето здравје е наш приоритет.</p>
+
+    <div class="imgstrip">
+      <img src="flyer2.jpg" alt="">
+      <img src="flyer3.jpg" alt="">
+      <img src="flyer4.jpg" alt="">
+    </div>
+  </div>
+
+  <div class="foot">
+    <p class="foot-text">
+      Ординацијата се наоѓа во склоп на <strong>Домот за стари лица Оаза Илинден</strong>, во срцето на општината, стручен тим, современа опрема, грижа на едно место.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
