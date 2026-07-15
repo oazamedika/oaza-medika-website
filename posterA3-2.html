@@ -3,459 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ПЗУ Оаза Медика — Информативен А3 Постер</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<title>ПЗУ Оаза Медика - А3 Информативен Постер</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --g-deep:    #1a4d3a;     /* Темно шумско зелена */
-  --g-mid:     #236b52;     /* Средна зелена */
-  --g-bright:  #3dab83;     /* Свежа смарагдна зелена */
-  --g-pale:    #eaf6f1;     /* Бледа пастелна зелена */
-  --g-border:  #b4d9ca;     /* Гранична зелена */
-  --amber:     #d4931a;     /* Златна / Килибарна */
-  --amber-bg:  #fdf3dc;     /* Нежно златна позадина */
-  --amber-bd:  #e0c06a;
-  --sky:       #3278af;     /* Небесно сина */
-  --sky-bg:    #deedf8;
-  --sky-bd:    #96c2e0;
-  --rose:      #b84f4f;     /* Розова акцентна */
-  --rose-bg:   #fceaea;
-  --rose-bd:   #dca8a8;
-  --ink:       #0d1f17;     /* Речиси црна зелена */
-  --ink-mid:   #2d4a3c;
-  --ink-soft:  #5a7a6c;
+  --primary-teal:   #0d7a70; /* Свежа медицинска тиркизна */
+  --calm-green:     #1b4c36; /* Смирувачка зелена за „Оаза“ */
+  --accent-blue:    #1a4b6e; /* Медицинско темно сина */
+  --soft-mint:      #edf6f4; /* Нежно тиркизна/зелена позадина за клучниот блок */
+  --light-bg:       #f7faf9; /* Светла позадина за заглавието */
+  --dark-footer:    #0a1d1c; /* Многу темно сино-зелена за футерот */
+  --text-dark:      #11241e; 
+  --text-muted:     #4a5f57;
+  --white:          #ffffff;
 }
-
 body {
-  background: #f0f2f5;
+  background: #ccc;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
-  gap: 12px;
-  font-family: 'DM Sans', sans-serif;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+  padding: 40px 0;
+  font-family: 'Montserrat', sans-serif;
 }
-
 .sheet-label {
-  font-size: 11px;
-  color: #666;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  align-self: flex-start;
+  font-size: 11px; color: #444;
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 12px; font-weight: 700;
 }
-
-/* А3 Формат на постер */
 .poster {
   width: 794px;
   height: 1123px;
-  background: #ffffff;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  background: var(--white);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   position: relative;
 }
 
-/* 1. ГОРЕН ДЕЛ (ЗАГЛАВИЕ) */
-.new-header {
-  padding: 35px 45px 25px;
+/* ── 1. ГОРЕН ДЕЛ (ЗАГЛАВИЕ) ── */
+.header-area {
+  background: var(--light-bg);
+  padding: 35px 50px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 2px solid rgba(13, 122, 112, 0.08);
 }
-
-.header-logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.header-logo-container img {
-  height: 75px;
+.logo-box img {
+  height: 70px;
   width: auto;
   object-fit: contain;
 }
-
-/* Fallback за логото доколку сликата не се вчита */
-.header-fallback-logo {
+.logo-fallback {
   display: none;
   align-items: center;
   gap: 12px;
 }
-
-.fallback-icon {
-  width: 50px;
-  height: 50px;
-  background: var(--g-deep);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo-icon {
+  width: 48px; height: 48px;
+  background: var(--calm-green);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
 }
+.logo-icon svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.5; }
+.logo-text { display: flex; flex-direction: column; }
+.logo-text span:first-child { font-size: 20px; font-weight: 800; color: var(--calm-green); line-height: 1.1; }
+.logo-text span:last-child { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
 
-.fallback-icon svg {
-  width: 26px;
-  height: 26px;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 2;
-}
-
-.fallback-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.fallback-text span:first-child {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--ink);
-  line-height: 1.1;
-}
-
-.fallback-text span:last-child {
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--ink-soft);
-  margin-top: 2px;
-}
-
-.header-right {
+.header-title-container {
   text-align: right;
 }
-
-.header-tag {
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--g-bright);
-  margin-bottom: 4px;
-}
-
-.header-web {
-  font-family: 'Playfair Display', serif;
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--g-deep);
-}
-
-/* 2. ЦЕНТРАЛНА ХЕРО КУТИЈА */
-.hero-campaign {
-  background: linear-gradient(135deg, var(--g-deep) 0%, #113326 100%);
-  color: #fff;
-  margin: 0 45px;
-  border-radius: 20px;
-  padding: 35px 40px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(26, 77, 58, 0.12);
-}
-
-.hero-campaign::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: -40px;
-  width: 140px;
-  height: 140px;
-  background: rgba(61, 171, 131, 0.15);
-  border-radius: 50%;
-}
-
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--g-bright);
-  margin-bottom: 12px;
-}
-
-.hero-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 38px;
-  font-weight: 900;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-
-.hero-title em {
-  font-style: italic;
-  color: var(--g-bright);
-  font-weight: 400;
-}
-
-.hero-main-claim {
-  font-size: 19px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.45;
-  border-left: 4px solid var(--g-bright);
-  padding-left: 18px;
-}
-
-.hero-main-claim span {
-  color: var(--amber);
-}
-
-/* 3. ДЕЛ СО СЛИКИ */
-.photo-strip {
-  margin: 22px 45px 0;
-  display: grid;
-  grid-template-columns: 1.8fr 1fr;
-  gap: 15px;
-  height: 180px;
-}
-
-.photo-strip .photo-card {
-  border-radius: 14px;
-  overflow: hidden;
-  position: relative;
-  background: var(--g-pale);
-}
-
-.photo-strip .photo-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: opacity 0.3s ease;
-}
-
-.photo-badge {
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  background: rgba(255, 255, 255, 0.92);
-  padding: 6px 12px;
-  border-radius: 8px;
+.notice-tag {
   font-size: 10px;
   font-weight: 800;
-  color: var(--g-deep);
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--primary-teal);
+  margin-bottom: 6px;
+}
+.main-question {
+  font-family: 'Lora', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent-blue);
+  line-height: 1.2;
 }
 
-/* 4. КАРТИЧКИ СО ФАКТИ */
-.facts-section {
-  margin: 25px 45px 0;
-  flex: 1;
-}
-
-.section-title {
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: rgba(0,0,0,0.08);
-}
-
-.facts-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
-
-.fact-card {
-  background: #fbfdfc;
-  border: 1px solid var(--g-border);
-  border-radius: 12px;
-  padding: 20px;
+/* ── 2. ЦЕНТРАЛЕН ДЕЛ (ВИЗУЕЛЕН ФОКУС) ── */
+.hero-wrapper {
+  padding: 30px 50px 0;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
 }
-
-.fact-card.featured {
-  background: var(--amber-bg);
-  border-color: var(--amber-bd);
-}
-
-.fact-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  display: flex;
+.hero-box {
+  background: var(--soft-mint);
+  border: 2.5px solid rgba(13, 122, 112, 0.25);
+  border-radius: 20px;
+  padding: 35px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 25px;
+  position: relative;
   align-items: center;
-  justify-content: center;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+}
+.hero-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--calm-green);
+  line-height: 1.35;
   margin-bottom: 14px;
 }
-
-.fact-card.c1 .fact-icon { background: var(--g-pale); color: var(--g-deep); }
-.fact-card.c2 .fact-icon { background: var(--sky-bg); color: var(--sky); }
-.fact-card.c3 .fact-icon { background: rgba(212, 147, 26, 0.15); color: var(--amber); }
-
-.fact-icon svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.5;
-}
-
-.fact-card h3 {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 8px;
-  line-height: 1.3;
-}
-
-.fact-card p {
-  font-size: 11.5px;
-  color: var(--ink-mid);
-  line-height: 1.5;
+.hero-desc {
+  font-size: 12.5px;
+  color: var(--text-dark);
+  line-height: 1.6;
   font-weight: 400;
 }
-
-/* 5. ФУТЕР И КОНТАКТИ */
-.bottom-area {
-  background: var(--g-deep);
-  color: #fff;
-  padding: 25px 45px 20px;
-  margin-top: auto;
-  border-top: 4px solid var(--g-bright);
-}
-
-.cta-row {
+.hero-visual {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 22px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  padding-bottom: 18px;
+  background: var(--white);
+  border-radius: 15px;
+  height: 100%;
+  min-height: 150px;
+  border: 1px dashed rgba(13, 122, 112, 0.3);
+  padding: 20px;
+}
+/* Стилизирана илустрација од генерации */
+.generation-svg {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
 }
 
-.cta-text h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 700;
+/* ── 3. ДОЛЕН-СРЕДЕН ДЕЛ (СПОДЕДНИ ФАКТИ) ── */
+.facts-area {
+  padding: 30px 50px 0;
+  flex: 1;
 }
-
-.cta-text p {
-  font-size: 12.5px;
-  color: rgba(255,255,255,0.7);
-  margin-top: 2px;
-}
-
-.location-inline {
+.facts-headline {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255,255,255,0.06);
-  padding: 10px 14px;
-  border-radius: 10px;
-  max-width: 400px;
 }
-
-.loc-qr {
-  width: 46px;
-  height: 46px;
-  background: #fff;
-  border-radius: 6px;
-  padding: 2px;
-  flex-shrink: 0;
+.facts-headline::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: rgba(13, 122, 112, 0.1);
 }
-
-.loc-desc {
-  font-size: 10.5px;
-  line-height: 1.4;
-  color: rgba(255,255,255,0.9);
-}
-
-.contacts-grid {
+.facts-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-bottom: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.04);
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.contact-icon {
-  width: 24px;
-  height: 24px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--g-bright);
-}
-
-.contact-icon svg {
-  width: 11px;
-  height: 11px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.5;
-}
-
-.contact-details {
+.fact-card {
+  border: 1px solid rgba(13, 122, 112, 0.15);
+  border-radius: 16px;
+  padding: 22px 18px;
+  background: var(--white);
   display: flex;
   flex-direction: column;
+  box-shadow: 0 4px 15px rgba(13, 122, 112, 0.03);
+}
+.fact-icon-container {
+  width: 44px; height: 44px;
+  background: var(--soft-mint);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  color: var(--primary-teal);
+}
+.fact-icon-container svg {
+  width: 22px; height: 22px;
+  fill: none; stroke: currentColor; stroke-width: 2.5;
+}
+.fact-card h3 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--accent-blue);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.fact-card p {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.55;
+  font-weight: 500;
 }
 
-.contact-details span:first-child {
-  font-size: 7px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+/* ── 4. ДОЛЕН ДЕЛ (FOOTER / CTA) ── */
+.footer-area {
+  background: var(--dark-footer);
+  color: var(--white);
+  padding: 30px 50px 25px;
+  margin-top: auto;
+  border-top: 5px solid var(--primary-teal);
+  position: relative;
+}
+.cta-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+.cta-header h2 {
+  font-family: 'Lora', serif;
+  font-size: 25px;
   font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.01em;
+}
+.cta-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--primary-teal);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.footer-info-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+/* Контакт листа (лево во футер) */
+.contact-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.footer-contact-icon {
+  width: 28px; height: 28px;
+  background: rgba(13, 122, 112, 0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary-teal);
+  flex-shrink: 0;
+}
+.footer-contact-icon svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; }
+.footer-contact-text {
+  display: flex; flex-direction: column;
+}
+.footer-contact-text span:first-child {
+  font-size: 7.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.5px;
+  font-weight: 700;
 }
-
-.contact-details span:last-child {
-  font-size: 12px;
+.footer-contact-text span:last-child {
+  font-size: 11px;
   font-weight: 600;
-  color: #fff;
+  color: var(--white);
 }
 
-.sub-footer {
+/* Локација (десно во футер) */
+.footer-location-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.loc-qr-wrapper {
+  width: 50px; height: 50px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+.loc-qr-wrapper img { width: 100%; height: 100%; }
+.loc-text-desc {
+  font-size: 10.5px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+}
+.loc-text-desc strong { color: var(--primary-teal); }
+
+/* Суб-футер партнерства */
+.sub-footer-area {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 9px;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.35);
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
 }
-
-.sub-partner {
+.partner-badge {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
-.sub-partner img {
-  height: 20px;
+.partner-badge img {
+  height: 18px;
   filter: brightness(0) invert(1);
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 @media print {
@@ -468,151 +339,157 @@ body {
 </head>
 <body>
 
-<p class="sheet-label">ПЗУ Оаза Медика — Информативен А3 Постер</p>
+<p class="sheet-label">ПЗУ Оаза Медика - Оригинален редизајн (А3)</p>
 
 <div class="poster">
 
-  <!-- 1. ЗАГЛАВИЕ (HEADER) -->
-  <div class="new-header">
-    <div class="header-logo-container">
+  <!-- 1. ГОРЕН ДЕЛ (ЗАГЛАВИЕ) -->
+  <div class="header-area">
+    <div class="logo-box">
       <img src="logo_firma_dolgnaziv.png" alt="ПЗУ Оаза Медика"
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-      <div class="header-fallback-logo">
-        <div class="fallback-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+      <div class="logo-fallback">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M19 12h-6V6h-2v6H5v2h6v6h2v-6h6z"/></svg>
         </div>
-        <div class="fallback-text">
+        <div class="logo-text">
           <span>Оаза Медика</span>
           <span>Приватна Здравствена Установа</span>
         </div>
       </div>
     </div>
-    <div class="header-right">
-      <div class="header-tag">Примарна здравствена заштита</div>
-      <div class="header-web">oazamedika.com</div>
+    <div class="header-title-container">
+      <div class="notice-tag">Важно Известување</div>
+      <h1 class="main-question">Дали знаевте дека...? 🤔</h1>
     </div>
   </div>
 
-  <!-- 2. ХЕРО БЛОК (КАМПАЊА) -->
-  <div class="hero-campaign">
-    <div class="hero-eyebrow">Информативна кампања</div>
-    <div class="hero-title">Дали знаевте <em>дека...?</em></div>
-    <div class="hero-main-claim">
-      Услугите на ПЗУ „Оаза Медика“ се <span>достапни за СИТЕ граѓани</span>, а не само за корисниците во социјалниот дом!
+  <!-- 2. ЦЕНТРАЛЕН ДЕЛ (ВИЗУЕЛЕН ФОКУС) -->
+  <div class="hero-wrapper">
+    <div class="hero-box">
+      <div class="hero-content">
+        <h2 class="hero-title">...вратите на ПЗУ „Оаза Медика“ се ширум отворени за СИТЕ граѓани?</h2>
+        <p class="hero-desc">
+          Иако сме лоцирани во склоп на социјално-медицинскиот комплекс (домот за стари лица), нашите услуги, прегледи и грижа се достапни за секој еден жител на нашата општина и пошироко. Не ви треба посебна најава или членство во домот – вие сте наш сосед и наш приоритет!
+        </p>
+      </div>
+      <div class="hero-visual">
+        <!-- Стилизирана заедница/семејство во SVG формат за врвна А3 острина -->
+        <svg class="generation-svg" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="85" r="16" fill="#0d7a70" opacity="0.8"/>
+          <circle cx="100" cy="70" r="18" fill="#1b4c36"/>
+          <circle cx="145" cy="90" r="14" fill="#1a4b6e" opacity="0.9"/>
+          <path d="M25 140c0-20 15-30 30-30s30 10 30 30" fill="#0d7a70" opacity="0.8"/>
+          <path d="M65 140c0-25 15-35 35-35s35 10 35 35" fill="#1b4c36"/>
+          <path d="M115 140c0-18 12-26 30-26s30 8 30 26" fill="#1a4b6e" opacity="0.9"/>
+          <circle cx="100" cy="40" r="6" fill="#0d7a70" opacity="0.5"/>
+          <circle cx="112" cy="48" r="4" fill="#1b4c36" opacity="0.4"/>
+        </svg>
+      </div>
     </div>
   </div>
 
-  <!-- 3. ВИЗУЕЛЕН БЛОК СО СЛИКИ -->
-  <div class="photo-strip">
-    <div class="photo-card">
-      <img src="flyer1.jpg" alt="Ординација Оаза Медика" onerror="this.style.opacity='0.25'">
-      <div class="photo-badge">Ординација Илинден</div>
-    </div>
-    <div class="photo-card">
-      <img src="posterekg.png" alt="ЕКГ прегледи" onerror="this.style.opacity='0.25'">
-      <div class="photo-badge">Дијагностика</div>
-    </div>
-  </div>
-
-  <!-- 4. ФАКТИ / ПРЕДНОСТИ -->
-  <div class="facts-section">
-    <div class="section-title">Што сè нудиме во нашата ординација</div>
+  <!-- 3. ДОЛЕН-СРЕДЕН ДЕЛ (СПОДЕДНИ ФАКТИ) -->
+  <div class="facts-area">
+    <div class="facts-headline">Останати интересни факти</div>
     <div class="facts-grid">
       
-      <!-- Картичка 1 -->
-      <div class="fact-card c1">
-        <div class="fact-icon">
-          <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      <!-- Спореден факт 1 -->
+      <div class="fact-card">
+        <div class="fact-icon-container">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <h3>Изберете ваш матичен лекар</h3>
-        <p>Уписите се во тек за сите возрасти. Обезбедете сигурна и навремена примарна медицинска грижа.</p>
+        <h3>...кај нас можете да го изберете вашиот матичен лекар?</h3>
+        <p>Обезбедете сигурна, посветена и долгорочна грижа за вашето здравје во пријатна и современа атмосфера.</p>
       </div>
 
-      <!-- Картичка 2 -->
-      <div class="fact-card c2">
-        <div class="fact-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      <!-- Спореден факт 2 -->
+      <div class="fact-card">
+        <div class="fact-icon-container">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </div>
-        <h3>Современа опрема</h3>
-        <p>Брзи дијагностички прегледи со нов 12-канален ЕКГ апарат, абдоминално ехо и брзи лабораториски анализи.</p>
+        <h3>...располагаме со најсовремена медицинска опрема?</h3>
+        <p>Вашите дијагностички прегледи (како ЕКГ и ехо дијагностика) ги вршиме со врвна технологија, брзо и без чекање.</p>
       </div>
 
-      <!-- Картичка 3 (Истакната) -->
-      <div class="fact-card c3 featured">
-        <div class="fact-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <!-- Спореден факт 3 -->
+      <div class="fact-card">
+        <div class="fact-icon-container">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3>Домашни посети</h3>
-        <p>За сите изнемоштени пациенти во општината, нудиме редовни домашни посети со терапија и прегледи на лице место.</p>
+        <h3>...нашиот тим нуди персонализиран пристап за секоја генерација?</h3>
+        <p>Од превентивни прегледи до менаџирање на хронични состојби – тука сме за целото ваше семејство.</p>
       </div>
 
     </div>
   </div>
 
-  <!-- 5. ТЕМЕН ФУТЕР СО CTA И КОНТАКТИ -->
-  <div class="bottom-area">
-    <div class="cta-row">
-      <div class="cta-text">
-        <h2>Посетете нè уште денес!</h2>
-        <p>Вашето здравје е наша примарна грижа.</p>
-      </div>
-      <div class="location-inline">
-        <div class="loc-qr">
-          <!-- Автоматски ќе генерира QR-код за Google Maps доколку немате локална датотека -->
-          <img src="lokacija.svg" alt="QR" width="42" height="42" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.google.com/?q=Oaza+Medika+Ilinden';">
+  <!-- 4. ДОЛЕН ДЕЛ (FOOTER / CTA) -->
+  <div class="footer-area">
+    <div class="cta-header">
+      <h2>Посетете нè или закажете го вашиот термин уште денес!</h2>
+      <div class="cta-divider"></div>
+    </div>
+
+    <div class="footer-info-grid">
+      <!-- Лево: Контакти -->
+      <div class="contact-list">
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span>Телефон</span>
+            <span>073 860 480</span>
+          </div>
         </div>
-        <div class="loc-desc">
-          <strong>Локација:</strong> ул. 2 бр. 105, Илинден (во склоп на комплекс Оаза, до ОУ Гоце Делчев)
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span>Е-пошта</span>
+            <span>pacienti@oazamedika.com</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+          </div>
+          <div class="footer-contact-text">
+            <span>Instagram</span>
+            <span>@oazamedika</span>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <div class="footer-contact-icon" style="font-weight: 800; font-size: 11px;">f</div>
+          <div class="footer-contact-text">
+            <span>Facebook</span>
+            <span>@oazamedika</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Десно: Локација со QR -->
+      <div class="footer-location-box">
+        <div class="loc-qr-wrapper">
+          <img src="lokacija.svg" alt="QR" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://maps.google.com/?q=Oaza+Medika+Ilinden';">
+        </div>
+        <div class="loc-text-desc">
+          <strong>Локација во Илинден:</strong><br>
+          ул. 2 бр. 105 (во склоп на социјално-медицинскиот комплекс Оаза, до ОУ Гоце Делчев)
         </div>
       </div>
     </div>
 
-    <!-- Контакт блокчиња -->
-    <div class="contacts-grid">
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-        </div>
-        <div class="contact-details">
-          <span>Телефон</span>
-          <span>073 860 480</span>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-        </div>
-        <div class="contact-details">
-          <span>Е-пошта</span>
-          <span>pacienti@oazamedika.com</span>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">
-          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
-        </div>
-        <div class="contact-details">
-          <span>Instagram</span>
-          <span>@oazamedika</span>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon" style="font-weight: 800; font-size: 11px;">f</div>
-        <div class="contact-details">
-          <span>Facebook</span>
-          <span>@oazamedika</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Заднински информации -->
-    <div class="sub-footer">
-      <div class="sub-partner">
-        <span>Во склоп на:</span>
+    <!-- Заднински партнерства -->
+    <div class="sub-footer-area">
+      <div class="partner-badge">
+        <span>Во соработка со:</span>
         <img src="oazadom.png" alt="Оаза Дом" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'">
-        <span style="font-size: 9px; opacity: 0.6; display: none;">Оаза Дом</span>
+        <span style="font-size: 9px; opacity: 0.5; display: none;">Оаза Дом</span>
       </div>
-      <div>Склучен договор со ФЗОМ</div>
+      <div>Договор со ФЗОМ</div>
     </div>
   </div>
 
