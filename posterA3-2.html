@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оаза Медика — Дали знаевте дека...? А3 Постер</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g-deep:   #1a4d3a;
+  --g-mid:    #236b52;
+  --g-bright: #3dab83;
+  --g-pale:   #eaf6f1;
+  --g-border: #b4d9ca;
+  --amber:    #d4931a;
+  --amber-bg: #fdf3dc;
+  --amber-bd: #e0c06a;
+  --sky:      #3278af;
+  --sky-bg:   #deedf8;
+  --sky-bd:   #96c2e0;
+  --rose:     #b84f4f;
+  --rose-bg:  #fceaea;
+  --rose-bd:  #dca8a8;
+  --ink:      #0d1f17;
+  --ink-mid:  #2d4a3c;
+  --ink-soft: #5a7a6c;
+}
+body {
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 12px;
+  font-family: 'DM Sans', sans-serif;
+}
+.sheet-label {
+  font-size: 10px; color: #eee;
+  letter-spacing: .1em; text-transform: uppercase;
+  align-self: flex-start;
+}
+
+/* ═══════════════════════
+   Heights:
+   header      150
+   hero-fact   340
+   secondary   353
+   footer      280
+   ──────────
+   total      1123 ✓
+═══════════════════════ */
+
+.poster {
+  width: 794px;
+  height: 1123px;
+  background: #fff;
+  outline: 1px solid #666;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── 1. HEADER  150px — light, logo + big question ── */
+.header-block {
+  height: 150px;
+  flex: 0 0 150px;
+  background: #fff;
+  border-bottom: 3px solid var(--g-bright);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px 0 36px;
+}
+.hd-logo img {
+  height: 78px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.hd-logo-text {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+.hd-logo-icon {
+  width: 58px; height: 58px;
+  background: var(--g-mid);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hd-logo-icon svg { width: 30px; height: 30px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.hd-logo-wordmark { display: flex; flex-direction: column; line-height: 1.15; }
+.hd-logo-wordmark span:first-child { font-size: 24px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
+.hd-logo-wordmark span:last-child { font-size: 10px; font-weight: 500; color: var(--ink-soft); letter-spacing: .08em; text-transform: uppercase; }
+
+.hd-question {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.hd-question-eyebrow {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: var(--g-bright);
+}
+.hd-question-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px; font-weight: 900;
+  color: var(--ink); letter-spacing: -.02em;
+  line-height: 1;
+}
+.hd-question-main em { font-style: italic; font-weight: 400; color: var(--g-mid); }
+
+/* ── 2. HERO FACT  340px — teal/green highlighted block ── */
+.hero-block {
+  height: 340px;
+  flex: 0 0 340px;
+  background: linear-gradient(160deg, var(--g-deep) 0%, var(--g-mid) 55%, var(--g-bright) 130%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 36px 48px;
+  overflow: hidden;
+}
+.hero-block::before {
+  content: "";
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+.hero-block::after {
+  content: "";
+  position: absolute;
+  bottom: -110px; left: -60px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.hero-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  z-index: 2;
+}
+.hero-icon-circ {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,255,255,.32);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-icon-circ svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.hero-badge {
+  display: inline-flex;
+  align-self: flex-start;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 16px;
+  z-index: 2;
+}
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px; font-weight: 700;
+  color: #fff; line-height: 1.18;
+  letter-spacing: -.01em;
+  max-width: 620px;
+  z-index: 2;
+  margin-bottom: 14px;
+}
+.hero-headline em { font-style: italic; font-weight: 900; color: var(--amber); }
+.hero-sub {
+  font-size: 14.5px; font-weight: 300;
+  color: rgba(255,255,255,.88); line-height: 1.55;
+  max-width: 560px;
+  z-index: 2;
+}
+.hero-sub strong { font-weight: 600; color: #fff; }
+
+/* ── 3. SECONDARY FACTS  353px ── */
+.secondary-block {
+  height: 353px;
+  flex: 0 0 353px;
+  background: #f7fcfa;
+  padding: 28px 40px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.sec-section-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: .26em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 18px;
+  text-align: center;
+}
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  flex: 1;
+}
+.sec-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1.5px solid var(--g-border);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.sec-card.amber { border-color: var(--amber-bd); }
+.sec-card.sky   { border-color: var(--sky-bd); }
+.sec-check {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--g-bright);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  top: -2px;
+}
+.sec-card.amber .sec-check { background: var(--amber); }
+.sec-card.sky .sec-check { background: var(--sky); }
+.sec-check svg { width: 12px; height: 12px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.sec-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: var(--g-pale);
+  display: flex; align-items: center; justify-content: center;
+}
+.sec-card.amber .sec-icon { background: var(--amber-bg); }
+.sec-card.sky .sec-icon { background: var(--sky-bg); }
+.sec-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--g-mid); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sec-card.amber .sec-icon svg { stroke: var(--amber); }
+.sec-card.sky .sec-icon svg { stroke: var(--sky); }
+.sec-card h4 {
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  line-height: 1.3;
+}
+.sec-card p {
+  font-size: 11.5px; font-weight: 300; color: var(--ink-mid);
+  line-height: 1.5;
+}
+
+/* ── 4. FOOTER  280px — dark, CTA + contacts ── */
+.footer-block {
+  height: 280px;
+  flex: 0 0 280px;
+  background: var(--g-deep);
+  border-top: 3px solid var(--g-bright);
+  padding: 32px 40px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.ft-cta-eyebrow {
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: .24em; text-transform: uppercase;
+  color: rgba(255,255,255,.5);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.ft-cta {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 700; font-style: italic;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 26px;
+  line-height: 1.25;
+}
+.ft-cta em { color: var(--amber); font-weight: 900; font-style: italic; }
+
+.ft-contacts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.ft-pill {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 10px; padding: 12px 14px;
+}
+.ft-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.13);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.ft-icon svg { width: 15px; height: 15px; fill: none; stroke: rgba(255,255,255,.9); stroke-width: 2; }
+.ft-label { display: block; font-size: 7.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.42); margin-bottom: 3px; }
+.ft-value { display: block; font-size: 14px; font-weight: 600; color: #fff; line-height: 1.25; }
+.ft-value.sm { font-size: 11.5px; font-weight: 400; }
+.ft-value.hl { color: var(--amber); }
+
+.ft-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.ft-social {
+  display: flex; gap: 10px;
+}
+.ft-social-pill {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; color: rgba(255,255,255,.75);
+}
+.ft-social-icon {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: rgba(255,255,255,.13);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.85);
+}
+.ft-social-icon svg { width: 11px; height: 11px; fill: none; stroke: rgba(255,255,255,.85); stroke-width: 2; }
+.ft-url { font-size: 9.5px; font-weight: 300; color: rgba(255,255,255,.35); letter-spacing: .04em; }
+
+@media print {
+  body { background: none; padding: 0; }
+  .sheet-label { display: none; }
+  .poster { outline: none; }
+  @page { size: A3 portrait; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<p class="sheet-label">А3 постер (портрет) — 794 × 1123 px — „Дали знаевте дека...?“ — подготвен за печат</p>
+
+<div class="poster">
+
+  <!-- 1. HEADER — 150px -->
+  <div class="header-block">
+    <div class="hd-logo">
+      <img src="logo_firma_dolgnaziv.png" alt="ПЗУ Оаза Медика"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div class="hd-logo-text">
+        <div class="hd-logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg>
+        </div>
+        <div class="hd-logo-wordmark">
+          <span>Оаза Медика</span>
+          <span>ПЗУ</span>
+        </div>
+      </div>
+    </div>
+    <div class="hd-question">
+      <span class="hd-question-eyebrow">Прашање за вас</span>
+      <span class="hd-question-main">Дали знаевте <em>дека...?</em> 🤔</span>
+    </div>
+  </div>
+
+  <!-- 2. HERO FACT — 340px, key message for ALL citizens -->
+  <div class="hero-block">
+    <div class="hero-icons">
+      <div class="hero-icon-circ">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/></svg>
+      </div>
+      <div class="hero-icon-circ">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21v-2a6 6 0 00-12 0v2"/></svg>
+      </div>
+      <div class="hero-icon-circ">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+    </div>
+    <div class="hero-badge">За сите граѓани</div>
+    <div class="hero-headline">...вратите на ПЗУ „Оаза Медика“ се <em>ширум отворени</em> за сите граѓани?</div>
+    <div class="hero-sub">Иако сме лоцирани во склоп на социјално-медицинскиот комплекс, нашите услуги, прегледи и грижа се достапни за <strong>секој жител</strong> на нашата општина и пошироко. Не ви треба посебна најава — вие сте наш сосед и наш приоритет!</div>
+  </div>
+
+  <!-- 3. SECONDARY FACTS — 353px -->
+  <div class="secondary-block">
+    <div class="sec-section-label">Останати интересни факти</div>
+    <div class="sec-grid">
+      <div class="sec-card">
+        <div class="sec-check">
+          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div class="sec-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <h4>Изберете матичен лекар</h4>
+        <p>Сигурна, посветена и долгорочна грижа за вашето здравје во пријатна и современа атмосфера.</p>
+      </div>
+      <div class="sec-card amber">
+        <div class="sec-check">
+          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div class="sec-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h4>Најсовремена опрема</h4>
+        <p>ЕКГ и ехо дијагностика со врвна технологија — брзо и без чекање.</p>
+      </div>
+      <div class="sec-card sky">
+        <div class="sec-check">
+          <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div class="sec-icon">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="17" cy="7" r="3"/></svg>
+        </div>
+        <h4>Пристап за секоја генерација</h4>
+        <p>Од превентивни прегледи до менаџирање на хронични состојби — за целото ваше семејство.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. FOOTER — 280px, CTA + contacts -->
+  <div class="footer-block">
+    <div class="ft-cta-eyebrow">Повик на акција</div>
+    <div class="ft-cta">Посетете нè или <em>закажете</em> го вашиот термин уште денес!</div>
+
+    <div class="ft-contacts">
+      <div class="ft-pill">
+        <div class="ft-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.8 19.8 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <div>
+          <span class="ft-label">Телефон</span>
+          <span class="ft-value">073 860 480</span>
+        </div>
+      </div>
+      <div class="ft-pill">
+        <div class="ft-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <span class="ft-label">Локација</span>
+          <span class="ft-value hl">Општина Илинден, Скопје</span>
+        </div>
+      </div>
+      <div class="ft-pill">
+        <div class="ft-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        </div>
+        <div>
+          <span class="ft-label">Е-маил</span>
+          <span class="ft-value sm">pacienti@oazamedika.com</span>
+        </div>
+      </div>
+      <div class="ft-pill">
+        <div class="ft-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 010 20a15 15 0 010-20z"/></svg>
+        </div>
+        <div>
+          <span class="ft-label">Веб-страница</span>
+          <span class="ft-value sm">www.oazamedika.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-bottom">
+      <div class="ft-social">
+        <div class="ft-social-pill">
+          <div class="ft-social-icon">f</div>
+          <span>@oazamedika</span>
+        </div>
+        <div class="ft-social-pill">
+          <div class="ft-social-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.85)" stroke="none"/></svg>
+          </div>
+          <span>@oazamedika</span>
+        </div>
+      </div>
+      <span class="ft-url">СКЛУЧЕН ДОГОВОР СО ФЗОМ</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
